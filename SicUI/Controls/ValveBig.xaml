@@ -1,0 +1,39 @@
+﻿<UserControl
+    x:Class="SicUI.Controls.ValveBig"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Width="25"
+    Height="18"
+    MinWidth="25"
+    MinHeight="18"
+    MaxWidth="25"
+    MaxHeight="18"
+    BorderThickness="1">
+    <!--  BorderBrush="Aqua"  -->
+    <UserControl.RenderTransform>
+        <RotateTransform x:Name="rotateTransform" Angle="0" CenterX="7.5" CenterY="7.5" />
+    </UserControl.RenderTransform>
+
+    <Canvas
+        Background="Transparent"
+        MouseEnter="Canvas_MouseEnter"
+        MouseLeave="Canvas_MouseLeave"
+        MouseRightButtonUp="Canvas_MouseRightButtonUp"
+        Opacity="1">
+        <!--<Canvas Name="nopass" Visibility="Hidden" Cursor="Hand" MouseLeftButtonDown="nopass_MouseLeftButtonDown"></Canvas>-->
+        <Polygon
+            Name="passtrigle"
+            Width="23"
+            Height="16"
+            Fill="Green"
+            Opacity="1"
+            Points="0,0 0,16 23,8" />
+        <Polygon
+            Name="nopass"
+            Width="23"
+            Height="16"
+            Fill="Black"
+            Opacity="1"
+            Points="0,0 0,16 23,8" />
+    </Canvas>
+</UserControl>

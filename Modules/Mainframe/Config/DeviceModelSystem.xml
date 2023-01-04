@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DeviceModelDefine type="Sic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  >
+	<IoInterLocks  assembly="Mainframe" classType="Mainframe.Devices.IoInterLock">
+		<IoInterLock id="IoInterLock" module="TM" display="IoInterLock" schematicId="IoInterLock" unit=""
+					 doTmAtProcessPress="DO_TMAtProcessPress" doLLAtProcessPress="DO_LoadAtProcessPress"  diTmAtATM="DI_TMPressure1ATM" diLoadLockAtATm="DI_LoadPressureATM"
+					 aiTmPressure="AI_TMPressure1" aiLLPressure="AI_LoadPressure" diTmUnderVac="DI_TMPressure1VAC"
+					 doTmCyclePurgeRoutineRunning="DO_TMCyclePurgeRoutineRunning" doTmLeakCheckRoutineRunning="DO_TMLeakCheckRoutineRunning"  doTmPumpDownRoutineRunning="DO_TMPumpDownRoutineRunning"
+					 doTmServoPressRoutineRunning="DO_TMServoPressRoutineRunning" doTmVentUpRoutineRunning="DO_TMVentUpRoutineRunning" doLLCyclePurgeRoutineRunning="DO_LoadCyclePurgeRoutineRunning"
+				     doLLLeakCheckRoutineRunning="DO_LoadLeakCheckRoutineRunning"  doLLPumpDownRoutineRunning="DO_LoadPumpDownRoutineRunning"  doLLVentUpRoutineRunning="DO_LoadVentUpRoutineRunning"
+					 diVacRobotExtenLLEnableFB="DI_VacRobotExtenLoadEnableFB" diVacRobotExtendBufferEnableFB="DI_VacRobotExtendBufferEnableFB" diVacRobotExtendPMAEnableFB="DI_VacRobotExtendPMAEnableFB"
+					 diATMRobotExtendUnloadEnableFB="DI_ATMRobotExtendUnloadEnableFB" diATMRobotExtendLoadLSideEnableFB="DI_ATMRobotExtendLoadLSideEnableFB" diATMRobotExtendLoadRSideEnableFB="DI_ATMRobotExtendLoadRSideEnableFB"
+					 diVacRobotExtendUnloadEnableFB="DI_VacRobotExtendUnloadEnableFB" diVacRobotExtendPMBEnableFB="DI_VacRobotExtendPMBEnableFB"
+					 doVacRobotExtenLLEnable="DO_VacRobotExtenLoadEnable" doVacRobotExtendBufferEnable="DO_VacRobotExtendBufferEnable" doVacRobotExtendPMAEnable="DO_VacRobotExtendPMAEnable"
+					 doVacRobotExtendUnloadEnable="DO_VacRobotExtendUnloadEnable" doVacRobotExtendPMBEnable="DO_VacRobotExtendPMBEnable" doATMRobotExtendUnloadEnable="DO_ATMRobotExtendUnloadEnable"
+					 doATMRobotExtendLoaLSideEnable="DO_ATMRobotExtendLoaLSideEnable" doATMRobotExtendLoaRSideEnable="DO_ATMRobotExtendLoaRSideEnable"
+					 doRectorAATMTransferReady="DO_ReactorAATMTransferReady" doRectorAProcessTransferReady="DO_ReactorAProcessTransferReady" doPm1LidClosed="DO_PM1LidClosed"
+					 doUnLoadPurgeRoutineRunning="DO_UnLoadCyclePurgeRoutineRunning" doUnLoadLeakCheckRoutineRunning="DO_UnLoadLeakCheckRoutineRunning"
+					 doUnLoadPumpDownRoutineRunning="DO_UnLoadPumpDownRoutineRunning" doUnLoadVentUpRoutineRunning="DO_UnLoadVentUpRoutineRunning"
+					 />
+	</IoInterLocks>
+
+	<IoMfcs classType="SicPM.Devices.IoMFC" assembly="SicPM">
+		<IoMfc3 id="Mfc60"  module="TM" display="Mfc60" schematicId="Mfc60" unit="sccm" aiFlow="AI_M60FlowRead" aoFlow="AO_M60FlowSetpoint" scBasePath="TM.MFC" aioType="float" />
+	</IoMfcs>
+
+	<TcAdses assembly="SicPM" classType="SicPM.Devices.SicAds">
+		<TcAds id="MainPLC" module="PM1" display="" schematicId="" unit=""  option="true"  />
+		<TcAds id="MainPLC" module="PM2" display="" schematicId="" unit=""  option="true"  />
+	</TcAdses>
+
+	<WcfPlcs assembly="MECF.Framework.Common" classType="MECF.Framework.Common.PLC.WcfPlc" >
+		<WcfPlc id="MainPLC" module="PM1" display="" schematicId="" unit="" option="true" />
+		<WcfPlc id="MainPLC" module="PM2" display="" schematicId="" unit="" option="true" />
+	</WcfPlcs>
+
+	<TcAdses assembly="Mainframe" classType="Mainframe.Devices.SicAds">
+		<TcAds id="MainPLC" module="TM" display="" schematicId="" unit=""  option="true"  />
+	</TcAdses>
+
+	<WcfPlcs assembly="MECF.Framework.Common" classType="MECF.Framework.Common.PLC.WcfPlc" >
+		<WcfPlc id="MainPLC" module="TM" display="" schematicId="" unit="" option="true" />
+	</WcfPlcs>
+
+	<IoSensors>
+		<IoSensor id="TMLidClosed"			module="TM" display="" schematicId="" unit="" di="DI_TMLidClosed"  textOutTrigValue="false"  warningText=""  alarmText="Alarm525 TM Lid Opened [DI-12]"   />
+		<IoSensor id="LLLidClosed"			module="LoadLock" display="" schematicId="" unit="" di="DI_LoadLidClosed"  textOutTrigValue="false"  warningText=""  alarmText="Alarm526 LoadLid Opened [DI-13]"   />
+		<IoSensor id="UnloadLidClosed"		module="UnLoad" display="" schematicId="" unit="" di="DI_UnloadStationLidClosed"  textOutTrigValue="false"  warningText=""  alarmText="Alarm527 UnloadStation Lid Opened [DI-14]"   />
+		<IoSensor id="BufferLidClosed"		module="Buffer" display="" schematicId="" unit="" di="DI_BufferStationLidClosed"  textOutTrigValue="false"  warningText=""  alarmText="Alarm528 BufferStation Lid Opened [DI-15]"   />
+		<IoSensor id="BufferWaferHigh"		module="TM" display="" schematicId="" unit="" di="DI_BufferStationOptSensorHigh"  textOutTrigValue="true"  warningText=""  alarmText=""   />
+		<IoSensor id="BufferWaferMiddle"	module="TM" display="" schematicId="" unit="" di="DI_BufferStationOptSensorMid"  textOutTrigValue="true"  warningText=""  alarmText=""   />
+		<IoSensor id="BufferWaferLow"		module="TM" display="" schematicId="" unit="" di="DI_BufferStationOptSensorLow"  textOutTrigValue="true"  warningText=""  alarmText=""   />
+		<IoSensor id="LLTrayPresence"			module="TM" display="" schematicId="" unit="" di="DI_LoadTrayPresence"  textOutTrigValue="true"  warningText=""  alarmText=""   />
+		<IoSensor id="LLWaferPlaced"		module="TM" display="" schematicId="" unit="" di="DI_LoadWaferPlaced"  textOutTrigValue="true"  warningText=""  alarmText=""   />
+		<IoSensor id="UnLoadTrayPlaced"		module="TM" display="" schematicId="" unit="" di="DI_UnloadStationWaferPresence"  textOutTrigValue="true"  warningText=""  alarmText=""   />
+		<IoSensor id="UnLoadWaferPlaced"	module="TM" display="" schematicId="" unit="" di="DI_UnloadStationWaferPresence"  textOutTrigValue="true"  warningText=""  alarmText=""   />
+		<IoSensor id="ForelineBasePressureReady" module="TM" display="" schematicId="" unit="" di="DI_ForelineBasePressureReady"  textOutTrigValue="true"  warningText=""  alarmText=""   />
+		<IoSensor id="LoadTrayHomeSensor" module="TM" display="" schematicId="" unit="" di="DI_LoadHomeTraySensor"  textOutTrigValue="true"  warningText=""  alarmText=""   />
+		<IoSensor id="CassALWaferConvexSensor" module="TM" display="" schematicId="" unit="" di="DI_WaferCassetLeftConvexSensor"  textOutTrigValue="true"  warningText=""  alarmText=""   />
+		<IoSensor id="CassARWaferConvexSensor" module="TM" display="" schematicId="" unit="" di="DI_WaferCassetRightConvexSensor"  textOutTrigValue="true"  warningText=""  alarmText=""   />
+		<IoSensor id="CassALInch6Sensor" module="TM" display="" schematicId="" unit="" di="DI_WaferCassetLeftInch6"  textOutTrigValue="true"  warningText=""  alarmText=""   />
+		<IoSensor id="CassARInch6Sensor" module="TM" display="" schematicId="" unit="" di="DI_WaferCassetRightInch6"  textOutTrigValue="true"  warningText=""  alarmText=""   />
+		<IoSensor id="CassBLInch6Sensor" module="TM" display="" schematicId="" unit="" di="DI_TrayCassetInch6"  textOutTrigValue="true"  warningText=""  alarmText=""   />
+		<IoSensor id="CassBLWaferConvexSensor" module="TM" display="" schematicId="" unit="" di="DI_TrayCassetConvexSensor"  textOutTrigValue="true"  warningText=""  alarmText=""   />
+	</IoSensors>
+
+	<IoPumps classType="Mainframe.Devices.IoPump" assembly="Mainframe">
+		<IoPump id="TMPump1" module="TM" display="Pump1" schematicId="TMPump1" unit=""  diRunning="DI_TMDryPump1Running" diAlarm="DI_TMDryPump1Alarm" diWarning="DI_TMDryPump1Warning"/>
+		<IoPump id="TMPump2" module="TM" display="Pump2" schematicId="TMPump2" unit=""  diRunning="DI_TMDryPump2Running" diAlarm="DI_TMDryPump2Alarm" diWarning="DI_TMDryPump2Warning"/>
+	</IoPumps>
+
+	<IoValves>
+		<IoValve  id="LoadSlowPump"		module="TM" display="V84"	schematicId="LoadSlowPump"		unit=""  isNc="true"  isDefaultOpen="false" diOpen="DI_LoadSlowPumpFB" doOpen="DO_LoadSlowPump"  />
+		<IoValve  id="LoadFastPump"		module="TM" display="V83"	schematicId="LoadFastPump"		unit=""  isNc="true"  isDefaultOpen="false" diOpen="DI_LoadFastPumpFB" doOpen="DO_LoadFastPump"/>
+		<IoValve  id="TMSlowPump"		module="TM" display="V82"	schematicId="TMSlowPump"		unit=""  isNc="true"  isDefaultOpen="false" diOpen="DI_TMSlowPumpFB" doOpen="DO_TMSlowPump"/>
+		<IoValve  id="TMFastPump"		module="TM" display="V81"	schematicId="TMFastPump"		unit=""  isNc="true"  isDefaultOpen="false" diOpen="DI_TMFastPumpFB" doOpen="DO_TMFastPump"/>
+		<IoValve  id="UnLoadSlowPump"	module="TM" display="V123"	schematicId="UnLoadSlowPump"	unit=""  isNc="true"  isDefaultOpen="false" diOpen="DI_UnloadSlowPumpFB" doOpen="DO_UnloadSlowPump"  />
+		<IoValve  id="UnLoadFastPump"	module="TM" display="V122"	schematicId="UnLoadFastPump"	unit=""  isNc="true"  isDefaultOpen="false" diOpen="DI_UnloadFastPumpFB" doOpen="DO_UnloadFastPump"/>
+		<IoValve  id="BufferVent"		module="TM" display="V80"	schematicId="BufferVent"		unit=""  isNc="true"  isDefaultOpen="false" diOpen="DI_BufferVentFB" doOpen="DO_BufferVent"/>
+		<IoValve  id="LoadVent"			module="TM" display="V79"	schematicId="LoadVent"			unit=""  isNc="true"  isDefaultOpen="false" diOpen="DI_LoadVentFB" doOpen="DO_LoadVent"/>
+		<IoValve  id="TMVent"			module="TM" display="V77"	schematicId="TMVent"			unit=""  isNc="true"  isDefaultOpen="false" diOpen="DI_TMVentFB" doOpen="DO_TMVent"  />
+		<IoValve  id="UnLoadVent"		module="TM" display="V78"	schematicId="UnLoadVent"		unit=""  isNc="true"  isDefaultOpen="false" diOpen="DI_UnloadVentFB" doOpen="DO_UnloadVent"/>
+		<IoValve  id="TMLoadBanlance"	module="TM" display="V85"	schematicId="TMLoadBanlance"	unit=""  isNc="true"  isDefaultOpen="false" diOpen="DI_TMLoadBanlanceFB" doOpen="DO_TMLoadBanlance"/>
+		<IoValve  id="TMUnLoadBanlance" module="TM" display="V124"	schematicId="TMToUnloadBanlance"	unit=""  isNc="true"  isDefaultOpen="false" diOpen="" doOpen="DO_TMToUnloadBanlance"/>
+	</IoValves>
+
+	<IoSlitValves>
+		<IoSlitValve  id="LoadLockDoor" module="TM"	display="LLDoor"	 Type="" unit="" schematicId="LLDoor"   scTimeout="System.SlitValveMotionTimeout" diOpen="DI_LoadDoorOpened" diClose="DI_LoadDoorClosed" doOpen="DO_LoadDoorOpen" doClose="DO_LoadDoorClose" />
+		<IoSlitValve  id="PM1Door"		module="TM" display="PM1Door"	 Type="" unit="" schematicId="PM1Door"    scTimeout="System.SlitValveMotionTimeout" diOpen="DI_ReactorADoorOpened" diClose="DI_ReactorADoorClosed" doOpen="DO_RectorADoorOpen" doClose="DO_RectorADoorClose" />
+		<IoSlitValve  id="PM2Door"		      module="TM" display="PM2Door"	 Type="" unit="" schematicId="PM2Door"    scTimeout="System.SlitValveMotionTimeout" diOpen="DI_ReactorBDoorOpened" diClose="DI_ReactorBDoorClosed" doOpen="DO_RectorBDoorOpen" doClose="DO_RectorBDoorClose" />
+		<IoSlitValve  id="UnLoadDoor"	      module="TM" display="UnLoadDoor" Type="" unit="" schematicId="UnLoadDoor"    scTimeout="System.SlitValveMotionTimeout" diOpen="DI_UnloadStationDoorOpened" diClose="DI_UnloadStationDoorClosed" doOpen="DO_UnloadStationDoorOpen" doClose="DO_UnloadStationDoorClose" />
+		<IoSlitValve  id="BufferDoor"	      module="TM" display="BufferDoor" Type="" unit="" schematicId="BufferDoor"    scTimeout="System.SlitValveMotionTimeout" diOpen="DI_BufferStationDoorOpened" diClose="DI_BufferStationDoorClosed" doOpen="DO_BufferStationDoorOpen" doClose="DO_BufferStationDoorClose" />
+		<IoSlitValve  id="UnLoadSubDoor"	  module="EFEM" display="UnLoadSubDoor" Type="" unit="" schematicId="UnLoadSubDoor"    scTimeout="System.SlitValveMotionTimeout" diOpen="DI_UnloadSubStationDoorOpened" diClose="DI_UnloadSubStationDoorClosed" doOpen="DO_UnloadSubStationDoorOpen" doClose="DO_UnloadSubStationDoorClose" />
+		<IoSlitValve  id="LoadLockLSideDoor"  module="EFEM" display="LLLSideDoor"   Type="" unit="" schematicId="LLLSideDoor"   scTimeout="System.SlitValveMotionTimeout" diOpen="DI_LoadLSideDoorOpened" diClose="DI_LoadLSideDoorClosed" doOpen="DO_LoadLSideDoorOpen" doClose="DO_LoadLSideDoorClose" />
+		<IoSlitValve  id="LoadLockRSideDoor"  module="EFEM" display="LLRSideDoor"   Type="" unit="" schematicId="LLRSideDoor"   scTimeout="System.SlitValveMotionTimeout" diOpen="DI_LoadRSideDoorOpened" diClose="DI_LoadRSideDoorClosed" doOpen="DO_LoadRSideDoorOpen" doClose="DO_LoadRSideDoorClose" />
+	</IoSlitValves>
+
+	<IoPressureMeter3s>
+		<IoPressureMeter3 id="LLPressure"		module="TM" display="LLPressure"  schematicId="LLPressure" unit="mbar" aioType="float" aiValue="AI_LoadPressure"  formatString="F1"  MaxValue="1500"/>
+		<IoPressureMeter3 id="UnLoadPressure"	module="TM" display="UnLoadPressure"  schematicId="UnLoadPressure" unit="mbar" aioType="float" aiValue="AI_UnloadPressure"  formatString="F1"  MaxValue="1500"/>
+		<IoPressureMeter3 id="TMPressure"		module="TM"  display="TMPressure"  schematicId="TMPressure" unit="mbar" aioType="float" aiValue="AI_TMPressure1"  formatString="F1" MaxValue="1500"/>
+		<IoPressureMeter3 id="ForelinePressure" module="TM" display="ForelinePressure"  schematicId="ForelinePressure" unit="mbar" aioType="float" aiValue="AI_TMPressure2"  formatString="F1"  MaxValue="1500"/>
+	</IoPressureMeter3s>
+
+	<IoTempMeters assembly="SicPM" classType="SicPM.Devices.IoTempMeter">
+		<IoTempMeter module="UnLoad"  id="UnLoadTemp" display="" schematicId=""  aioType="float" aiFeedback="AI_UnloadTemp" />
+		<IoTempMeter module="Buffer"  id="BufferTemp" display="" schematicId=""  aioType="float" aiFeedback="AI_BufferTemp" />
+	</IoTempMeters>
+
+	<IoLift4s>
+		<IoLift4 id="LLLift"		module="LoadLock" display="LLLift" schematicId="LLLift" unit="" aioType="" diUp="DI_LoadLifterCYUp" diDown="DI_LoadLifterCYDown" doUp="DO_LoadLifterCYUp" doDown="DO_LoadLifterCYDown" scTimeout="10"/>
+		<IoLift4 id="UnLoadLift"	module="UnLoad" display="UnLoadLift" schematicId="UnLoadLift" unit="" aioType="" diUp="DI_UnloadStationLifterCYUp" diDown="DI_UnloadStationLifterCYDown" doUp="DO_UnloadStationLifterCYUp" doDown="DO_UnloadStationLifterCYDown" scTimeout="10"/>
+	</IoLift4s>
+
+	<IoClaws>
+		<IoClaw id="LLWaferClaw"		module="LoadLock" display="LLWaferClaw" schematicId="LLWaferClaw" unit="" aioType="" diUp="DI_LoadWaferCYClamped" diDown="DI_LoadWafeCYOpened" doUp="DO_LoadWaferCYClamp" doDown="DO_LoadWaferCYOpen" scTimeout="10"/>
+		<IoClaw id="LLTrayClaw"			module="LoadLock" display="LLTrayClaw" schematicId="LLTrayClaw" unit="" aioType="" diUp="DI_LoadTrayCYClamped" diDown="DI_LoadTrayCYOpend" doUp="DO_LoadTrayCYClamp" doDown="DO_LoadTrayCYOpen" scTimeout="10"/>
+		<IoClaw id="UnLoadWaferClaw"	module="UnLoad" display="UnLoadWaferClaw" schematicId="UnLoadWaferClaw" unit="" aioType="" diUp="DI_UnloadStationWaferCYClamped" diDown="DI_UnloadStationWaferCYOpened" doUp="DO_UnloadStationWaferCYClamp" doDown="DO_UnloadStationWaferCYOpen" scTimeout="10"/>
+	</IoClaws>
+
+
+
+	<TMRobots assembly="Mainframe" classType="Mainframe.TMs.SicTMRobot">
+		<TMRobot id="TMRobot" module="TMRobot" display="" schematicId="" unit="" />
+	</TMRobots>
+
+	<WaferRobots assembly="Mainframe" classType="Mainframe.EFEMs.SicWaferRobot">
+		<WaferRobot id="WaferRobot" module="WaferRobot" display="" schematicId="" unit="" />
+	</WaferRobots>
+
+	<TrayRobots assembly="Mainframe" classType="Mainframe.EFEMs.SicTrayRobot">
+		<TrayRobot id="TrayRobot" module="TrayRobot" display="" schematicId="" unit="" />
+	</TrayRobots>
+
+	<Aligners assembly="Mainframe" classType="Mainframe.Aligners.SicAligner">
+		<Aligner id="Aligner" module="Aligner"  display="" schematicId="" unit="" />
+	</Aligners>
+
+	<Cassettes assembly="Mainframe" classType="Mainframe.Cassettes.SicCassette">
+		<Cassette id="CassAL" module="CassAL"  display="" schematicId="" unit="" />
+		<Cassette id="CassAR" module="CassAR"  display="" schematicId="" unit="" />
+		<Cassette id="CassBL" module="CassBL"  display="" schematicId="" unit="" />
+	</Cassettes>
+
+	<LoadRotations  assembly="Mainframe" classType="Mainframe.Devices.IoLoadRotation">
+		<LoadRotation id="Rotation" module="Load" display="LoadRotation" schematicId="LoadRotation" unit=""
+			  diServoOn="DI_LdRotationServoOn"   diServoBusy="DI_LdRotationBusy" diServoError="DI_LdRotationServoError" diMoveDone="DI_LdRotationMoveDone"
+			  diRelativeHomeDone="DI_LdRotationRelativeHomeDone"   diOneCircleDone="DI_LdRotationOneCircleDone" diCCD1PosDone="DI_LdRotationCCD1PosDone"
+			  diCCD2PosDone="DI_LdRotationCCD2PosDone" doServoOn="DO_LdRotationServoOn" doServoReset="DO_LdRotationReset"
+			  doJogCW="DO_LdRotationJogCW" doJogCCW="DO_LdRotationJogCCW" doStop="DO_LdRotationStop" doMoveRelativeHome="DO_LdRotationMoveRelativeHome"
+			  doMoveOneCircle="DO_LdRotationMoveOneCircle"  doMoveCCD1Pos="DO_LdRotationMoveCCD1Pos" doMoveCCD2Pos="DO_LdRotationMoveCCD2Pos"
+			  aiCurPos="AI_LdRotationRelativeDegree" aiCCD1Degree="AI_LdRotationCCD1Degree" aiCCD2Degree="AI_LdRotationCCD2Degree"
+			  aoCCD1Degree="AO_LdRotationCCD1Degree"  aoHomeSpeed="AO_LdRotationSpeed"  aoPosSpeed="AO_LdRotationPosSpeed" aoCCD2Degree="AO_LdRotationCCD2Degree"
+			  aoJogDegree="AO_LdRotationJogDegree" aoHomeOffset="AO_LdRotationHomeOffset"/>
+	</LoadRotations>
+
+	<TMs assembly="Mainframe" classType="Mainframe.TMs.SicTM">
+		<TM id="TM" module="System"  display="" schematicId="" unit="" DiTMLidClosedAlarm="DI_TMLidClosed" DiLLLidClosedAlarm="DI_LLLidClosed" DiBufferLidClosedAlarm="DI_BufferLidClosed" aiLLTemp="AI_LoadTemp" aiBufferTemp="AI_BufferTemp"/>
+	</TMs>
+
+	<EFEMs assembly="Mainframe" classType="Mainframe.EFEMs.SicEFEM">
+		<Buffer id="EFEM" module="EFEM"  display="" schematicId="" unit="" />
+	</EFEMs>
+
+	<LLs assembly="Mainframe" classType="Mainframe.LLs.SicLoadLock">
+		<TM id="LoadLock" module="LoadLock"  display="" schematicId="" unit="" />
+	</LLs>
+
+	<Unloads assembly="Mainframe" classType="Mainframe.UnLoads.SicUnLoad">
+		<Unload id="UnLoad" module="UnLoad"  display="" schematicId="" unit="" />
+	</Unloads>
+
+	<Buffers assembly="Mainframe" classType="Mainframe.Buffers.SicBuffer">
+		<Buffer id="Buffer" module="Buffer"  display="" schematicId="" unit="" />
+	</Buffers>
+
+</DeviceModelDefine>

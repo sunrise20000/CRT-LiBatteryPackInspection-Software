@@ -1,0 +1,366 @@
+﻿<UserControl
+    x:Class="MECF.Framework.UI.Client.CenterViews.Operations.RealTime.RealtimeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:OpenSEMI.Ctrlib.Controls"
+    xmlns:converter="clr-namespace:MECF.Framework.UI.Client.Ctrlib.Converter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:micro="clr-namespace:Caliburn.Micro"
+    xmlns:s="http://schemas.abtsoftware.co.uk/scichart"
+    xmlns:userControls="clr-namespace:MECF.Framework.UI.Client.CenterViews.Core.UserControls"
+    xmlns:userControls1="clr-namespace:Sicentury.Core.UserControls;assembly=Sicentury.Core"
+    d:DesignHeight="450"
+    d:DesignWidth="1800"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <converter:BoolReverseConverter x:Key="boolReverseConverter" />
+    </UserControl.Resources>
+
+    <Grid IsEnabled="{Binding IsPermission}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="200" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.RowSpan="2" Grid.Column="0">
+            <Border
+                Padding="5"
+                Background="{DynamicResource Tab_BG}"
+                BorderBrush="{DynamicResource Tab_BD}"
+                BorderThickness="1"
+                SnapsToDevicePixels="True">
+                <Grid>
+                    <userControls1:ParameterNodeTreeViewControl
+                        x:Name="tvParameterNodes"
+                        IsEnabled="{Binding IsBusy, Converter={StaticResource boolReverseConverter}}"
+                        TreeRoot="{Binding ParameterNodes}" 
+                        PresetGroupsFolderName="RealTimeView"/>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <GridSplitter
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Grid.Column="1"
+            Width="10"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Stretch"
+            Background="Transparent"
+            Style="{DynamicResource VerticalGridSplitterStyle}" />
+
+        <!--  data chart  -->
+        <Grid
+            Grid.Row="0"
+            Grid.Column="2"
+            Margin="0,0,0,0">
+            <s:SciChartSurface
+                Name="sciChart"
+                Padding="2"
+                s:ThemeManager.Theme="ExpressionLight"
+                BorderBrush="Gray"
+                DebugWhyDoesntSciChartRender="False"
+                Focusable="False"
+                IsTabStop="False"
+                RenderableSeries="{Binding SelectedData}">
+
+                <!--  Create an X Axis  -->
+                <s:SciChartSurface.XAxis>
+                    <s:DateTimeAxis
+                        Margin="0,0,0,0"
+                        AutoRange="{Binding ChartAutoRange}"
+                        DrawMinorGridLines="False"
+                        DrawMinorTicks="False"
+                        FontSize="20"
+                        Id="DefaultAxisId"
+                        SubDayTextFormatting="HH:mm:ss"
+                        TextFormatting="HH:mm:ss"
+                        TitleFontSize="15"
+                        TitleFontWeight="Normal" />
+
+                </s:SciChartSurface.XAxis>
+
+                <!--  Create a Y Axis  -->
+                <s:SciChartSurface.YAxis>
+                    <s:NumericAxis
+                        HorizontalAlignment="Center"
+                        AutoRange="{Binding ChartAutoRange}"
+                        AxisAlignment="Right"
+                        BorderThickness="0"
+                        CursorTextFormatting="0.######"
+                        DrawLabels="True"
+                        DrawMajorBands="False"
+                        DrawMajorGridLines="True"
+                        DrawMajorTicks="False"
+                        DrawMinorGridLines="False"
+                        DrawMinorTicks="False"
+                        Focusable="False"
+                        Id="DefaultAxisId"
+                        MajorDelta="0.001"
+                        MinorDelta="0.001">
+                        <s:NumericAxis.GrowBy>
+                            <s:DoubleRange Max="0.001" Min="0.001" />
+                        </s:NumericAxis.GrowBy>
+                    </s:NumericAxis>
+                </s:SciChartSurface.YAxis>
+
+                <s:SciChartSurface.ChartModifier>
+
+                    <s:ModifierGroup>
+
+                        <s:RubberBandXyZoomModifier
+                            x:Name="rubberBandZoomModifier"
+                            ExecuteOn="MouseLeftButton"
+                            IsAnimated="True"
+                            IsEnabled="True"
+                            IsXAxisOnly="False"
+                            ReceiveHandledEvents="True"
+                            ZoomExtentsY="True" />
+
+                        <s:CursorModifier
+                            IsEnabled="True"
+                            ShowAxisLabels="True"
+                            ShowTooltip="False"
+                            ShowTooltipOn="Never"
+                            SourceMode="AllSeries" />
+
+                        <s:LegendModifier
+                            x:Name="legendModifier"
+                            GetLegendDataFor="AllSeries"
+                            ShowLegend="False" />
+
+                        <s:ZoomExtentsModifier
+                            x:Name="zoomExtentsModifier"
+                            ExecuteOn="MouseDoubleClick"
+                            XyDirection="XYDirection" />
+
+                        <s:ZoomPanModifier
+                            x:Name="zoomPanModifier"
+                            ClipModeX="None"
+                            ExecuteOn="MouseRightButton"
+                            IsEnabled="True"
+                            XyDirection="XYDirection"
+                            ZoomExtentsY="False" />
+
+                        <s:RolloverModifier
+                            x:Name="rolloverModifier"
+                            DrawVerticalLine="False"
+                            FontFamily="Arial,SimSun"
+                            FontSize="9"
+                            IsEnabled="True"
+                            ShowAxisLabels="False"
+                            SnapsToDevicePixels="False"
+                            UseInterpolation="False" />
+
+                        <s:MouseWheelZoomModifier x:Name="mouseWheelZoomModifier" XyDirection="XYDirection" />
+
+                        <s:SeriesValueModifier />
+                    </s:ModifierGroup>
+                </s:SciChartSurface.ChartModifier>
+
+            </s:SciChartSurface>
+
+            <CheckBox
+                Margin="0,10,1208,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Content="Auto Zoom"
+                IsChecked="{Binding EnableAutoZoom, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+        </Grid>
+        <StackPanel
+            Grid.Row="1"
+            Grid.Column="2"
+            Orientation="Horizontal" Margin="0,5,0,0">
+
+            <userControls:DataViewDataGrid 
+                x:Name="dataGrid"
+                Width="1000" 
+                IsShowStatisticColumn="False"
+                IsEnabled="{Binding IsBusy, Converter={StaticResource boolReverseConverter}}"
+                ItemsSource="{Binding Path=SelectedData}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Deleted">
+                        <micro:ActionMessage MethodName="Deleted">
+                            <micro:Parameter Value="$source" />
+                            <micro:Parameter Value="$eventargs" />
+                        </micro:ActionMessage>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="Exporting">
+                        <micro:ActionMessage MethodName="Exporting">
+                            <micro:Parameter Value="$source" />
+                            <micro:Parameter Value="$eventargs" />
+                        </micro:ActionMessage>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="Exported">
+                        <micro:ActionMessage MethodName="Exported">
+                            <micro:Parameter Value="$source" />
+                            <micro:Parameter Value="$eventargs" />
+                        </micro:ActionMessage>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="ProgressMessageUpdating">
+                        <micro:ActionMessage MethodName="ProgressUpdating">
+                            <micro:Parameter Value="$source" />
+                            <micro:Parameter Value="$eventargs" />
+                        </micro:ActionMessage>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </userControls:DataViewDataGrid>
+
+            <Grid Margin="15,10,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="26" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="49" />
+                    <ColumnDefinition Width="61" />
+                    <ColumnDefinition Width="120" />
+                </Grid.ColumnDefinitions>
+                <Label
+                    Grid.Row="0"
+                    Grid.ColumnSpan="4"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Content="Trend Chart Setting"
+                    Style="{DynamicResource Table_TitleStyle}" />
+
+                <Border
+                    Grid.Row="1"
+                    Padding="5,1"
+                    Background="{DynamicResource Table_BG_Title}"
+                    BorderBrush="{DynamicResource Table_BD}"
+                    BorderThickness="1,0,1,1">
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontFamily="Arial"
+                        FontSize="12"
+                        Foreground="{DynamicResource FG_Black}"
+                        Text="Interval (ms)"
+                        TextWrapping="Wrap" />
+                </Border>
+                <Border
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Padding="5,1"
+                    Background="{Binding AlignerStatusBackground}"
+                    BorderBrush="{DynamicResource Table_BD}"
+                    BorderThickness="0,0,1,1">
+                    <controls:TextBoxEx
+                        Width="100"
+                        Height="25"
+                        EditBoxMode="UnSignInteger"
+                        MaxValue="60000"
+                        MinValue="100"
+                        Text="{Binding TrendInterval, Mode=TwoWay}"
+                        TextSaved="{Binding IntervalSaved, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        Validation.ErrorTemplate="{x:Null}" />
+                </Border>
+                <Border
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    Padding="5,1"
+                    Background="{DynamicResource Table_BG_Content}"
+                    BorderBrush="{DynamicResource Table_BD}"
+                    BorderThickness="0,0,1,1">
+                    <Button
+                        Width="70"
+                        Height="25"
+                        Margin="5,0,0,0"
+                        Content="Set">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <micro:ActionMessage MethodName="SetInterval" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                </Border>
+
+
+                <Border
+                    Grid.Row="2"
+                    Padding="5,1"
+                    Background="{DynamicResource Table_BG_Title}"
+                    BorderBrush="{DynamicResource Table_BD}"
+                    BorderThickness="1,0,1,1">
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontFamily="Arial"
+                        FontSize="12"
+                        Foreground="{DynamicResource FG_Black}"
+                        Text="Time Span (s)"
+                        TextWrapping="Wrap" />
+                </Border>
+                <Border
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Padding="5,1"
+                    Background="{Binding AlignerStatusBackground}"
+                    BorderBrush="{DynamicResource Table_BD}"
+                    BorderThickness="0,0,1,1">
+                    <controls:TextBoxEx
+                        Width="100"
+                        Height="25"
+                        EditBoxMode="UnSignInteger"
+                        MaxValue="3600"
+                        MinValue="1"
+                        Text="{Binding TrendTimeSpan, Mode=TwoWay}"
+                        TextSaved="{Binding TimeSpanSaved, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        Validation.ErrorTemplate="{x:Null}" />
+                </Border>
+                <Border
+                    Grid.Row="2"
+                    Grid.Column="3"
+                    Padding="5,1"
+                    Background="{DynamicResource Table_BG_Content}"
+                    BorderBrush="{DynamicResource Table_BD}"
+                    BorderThickness="0,0,1,1">
+                    <Button
+                        Width="70"
+                        Height="25"
+                        Margin="5,0,0,0"
+                        Content="Set">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <micro:ActionMessage MethodName="SetTimeSpan" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                </Border>
+            </Grid>
+
+        </StackPanel>
+
+        <userControls1:BusyIndicator
+            Grid.Row="1" Grid.Column="2"
+            Width="Auto" 
+            Height="Auto"
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Center"
+            BorderBrush="Gray"
+            BorderThickness="3"
+            Padding="20 10"
+            Background="{StaticResource Tab_BG}"
+            Visibility="{Binding IsBusy, Converter={StaticResource boolVisibilityConverter}}"
+            Message="{Binding BusyIndicatorContent}" Margin="350,0,0,0">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Canceled">
+                    <micro:ActionMessage MethodName="Cancel" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </userControls1:BusyIndicator>
+
+
+    </Grid>
+</UserControl>

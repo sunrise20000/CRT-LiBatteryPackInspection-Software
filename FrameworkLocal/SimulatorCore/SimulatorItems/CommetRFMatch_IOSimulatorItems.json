@@ -1,0 +1,272 @@
+{
+  "IOSimulatorItemList": [
+    {
+      "SourceCommandName": "TriggerFullRefRun",
+      "SourceCommand": "10,00",
+      "SuccessResponse": "50",
+      "FailedResponse": "93"
+    },
+    {
+      "SourceCommandName": "CheckFullRefRun",
+      "SourceCommand": "10,01",
+      "SuccessResponse": "53|52|51",
+      "FailedResponse": ""
+    },
+    {
+      "SourceCommandName": "TriggerGotoCap",
+      "SourceCommand": "20,00",
+      "SuccessResponse": "50",
+      "FailedResponse": "93"
+    },
+    {
+      "SourceCommandName": "CheckGotoCap",
+      "SourceCommand": "20,01",
+      "SuccessResponse": "53|52|51",
+      "FailedResponse": ""
+    },
+
+    {
+      "SourceCommandName": "TriggerGotoFullStepPos",
+      "SourceCommand": "21,00",
+      "SuccessResponse": "50",
+      "FailedResponse": "93"
+    },
+    {
+      "SourceCommandName": "CheckGotoFullStepPos",
+      "SourceCommand": "21,01",
+      "SuccessResponse": "53|52|51",
+      "FailedResponse": "93"
+    },
+    {
+      "SourceCommandName": "TriggerMoveFullSteps",
+      "SourceCommand": "22,00",
+      "SuccessResponse": "50",
+      "FailedResponse": "93"
+    },
+    {
+      "SourceCommandName": "CheckMoveFullSteps",
+      "SourceCommand": "22,01",
+      "SuccessResponse": "53|52|51",
+      "FailedResponse": "93"
+    },
+    {
+      "SourceCommandName": "TriggerGotoCmin",
+      "SourceCommand": "23,00",
+      "SuccessResponse": "50",
+      "FailedResponse": "93"
+    },
+    {
+      "SourceCommandName": "CheckGotoCmin",
+      "SourceCommand": "23,01",
+      "SuccessResponse": "53|52|51",
+      "FailedResponse": "93"
+    },
+    {
+      "SourceCommandName": "TriggerGotoCmax",
+      "SourceCommand": "24,00",
+      "SuccessResponse": "50",
+      "FailedResponse": "93"
+    },
+    {
+      "SourceCommandName": "CheckGotoCmax",
+      "SourceCommand": "24,01",
+      "SuccessResponse": "53|52|51",
+      "FailedResponse": "93"
+    },
+    {
+      "SourceCommandName": "TriggerGotoMicroStepPos",
+      "SourceCommand": "25,00",
+      "SuccessResponse": "50",
+      "FailedResponse": "93"
+    },
+    {
+      "SourceCommandName": "CheckGotoMicroStepPos",
+      "SourceCommand": "25,01",
+      "SuccessResponse": "53|52|51",
+      "FailedResponse": "93"
+    },
+    {
+      "SourceCommandName": "TriggerMoveMicroSteps",
+      "SourceCommand": "26,00",
+      "SuccessResponse": "50",
+      "FailedResponse": "93"
+    },
+    {
+      "SourceCommandName": "CheckMoveMicroSteps",
+      "SourceCommand": "26,01",
+      "SuccessResponse": "53|52|51",
+      "FailedResponse": "93"
+    },
+    {
+      "SourceCommandName": "TriggerGotoStoredPos",
+      "SourceCommand": "27,00",
+      "SuccessResponse": "50",
+      "FailedResponse": "93"
+    },
+    {
+      "SourceCommandName": "CheckGotoStoredPos",
+      "SourceCommand": "27,01",
+      "SuccessResponse": "53|52|51",
+      "FailedResponse": "93"
+    },
+
+    {
+      "SourceCommandName": "SetAccelerationSpeedIndex",
+      "SourceCommand": "43,00",
+      "SuccessResponse": "43,00",
+      "FailedResponse": "94"
+    },
+    {
+      "SourceCommandName": "SetCurrent",
+      "SourceCommand": "45,00",
+      "SuccessResponse": "45,00",
+      "FailedResponse": "94"
+    },
+    {
+      "SourceCommandName": "SetLowerCustomerLimit",
+      "SourceCommand": "72,01",
+      "SuccessResponse": "72,01",
+      "FailedResponse": "94"
+    },
+    {
+      "SourceCommandName": "SetUpperCustomerLimit",
+      "SourceCommand": "72,02",
+      "SuccessResponse": "72,02",
+      "FailedResponse": "94"
+    },
+    {
+      "SourceCommandName": "StoreIndexedPosition",
+      "SourceCommand": "75,00",
+      "SuccessResponse": "75,00",
+      "FailedResponse": "94"
+    },
+
+    {
+      "SourceCommandName": "GetActualCap",
+      "SourceCommand": "40,01",
+      "SuccessResponse": "41,01,03,20",
+      "FailedResponse": "94"
+    },
+    {
+      "SourceCommandName": "GetActualFullStepPos",
+      "SourceCommand": "40,02",
+      "SuccessResponse": "41,02,02,8A",
+      "FailedResponse": "94"
+    },
+    {
+      "SourceCommandName": "GetMinimumCap",
+      "SourceCommand": "40,10",
+      "SuccessResponse": "41,10,00,B4",
+      "FailedResponse": "94"
+    },
+    {
+      "SourceCommandName": "GetMaximumCap",
+      "SourceCommand": "40,11",
+      "SuccessResponse": "41,11,0A,10",
+      "FailedResponse": "94"
+    },
+    {
+      "SourceCommandName": "GetMinimumFullStepPo",
+      "SourceCommand": "40,12",
+      "SuccessResponse": "41,12,00,00",
+      "FailedResponse": "94"
+    },
+    {
+      "SourceCommandName": "GetMaximumFullStepPos",
+      "SourceCommand": "40,13,",
+      "SuccessResponse": "41,13,09,64",
+      "FailedResponse": "94"
+    },
+    {
+      "SourceCommandName": "GetAccelerationSpeed",
+      "SourceCommand": "40,21",
+      "SuccessResponse": "41,21,05,07",
+      "FailedResponse": "94"
+    },
+    {
+      "SourceCommandName": "GetStatus",
+      "SourceCommand": "40,22",
+      "SuccessResponse": "41,22,08,00",
+      "FailedResponse": "94"
+    },
+    {
+      "SourceCommandName": "GetCcurveIndexedFullStepCap",
+      "SourceCommand": "40,30",
+      "SuccessResponse": "41,30,00,03,00,96",
+      "FailedResponse": "94"
+    },
+    {
+      "SourceCommandName": "GetControllerTemp",
+      "SourceCommand": "40,32",
+      "SuccessResponse": "41,32,21",
+      "FailedResponse": "94"
+    },
+    {
+      "SourceCommandName": "GetMicroStepPos",
+      "SourceCommand": "40,36",
+      "SuccessResponse": "41,36,00,00,1F,40",
+      "FailedResponse": "94"
+    },
+    {
+      "SourceCommandName": "GetCminNom",
+      "SourceCommand": "40,70",
+      "SuccessResponse": "41,70,00,FA",
+      "FailedResponse": "94"
+    },
+    {
+      "SourceCommandName": "GetCmaxNom",
+      "SourceCommand": "40,71",
+      "SuccessResponse": "41,71,09,C4",
+      "FailedResponse": "94"
+    },
+    {
+      "SourceCommandName": "GetLowerCustomerLimit",
+      "SourceCommand": "40,72",
+      "Argument": "01",
+      "SuccessResponse": "41,72,01,00,FA",
+      "FailedResponse": "94"
+    },
+    {
+      "SourceCommandName": "GetUpperCustomerLimit",
+      "SourceCommand": "40,72",
+      "Argument": "02",
+      "SuccessResponse": "41,72,02,09,C4",
+      "FailedResponse": "94"
+    },
+    {
+      "SourceCommandName": "GetLowerFactoryLimit",
+      "SourceCommand": "40,72",
+      "Argument": "03",
+      "SuccessResponse": "41,72,03,00,FA",
+      "FailedResponse": "94"
+    },
+    {
+      "SourceCommandName": "GetUpperFactoryLimit",
+      "SourceCommand": "40,72",
+      "Argument": "04",
+      "SuccessResponse": "41,72,04,09,C4",
+      "FailedResponse": "94"
+    },
+    {
+      "SourceCommandName": "GetPresetCap",
+      "SourceCommand": "40,73",
+      "Argument": "00",
+      "SuccessResponse": "41,73,00,03,2B",
+      "FailedResponse": "94"
+    },
+    {
+      "SourceCommandName": "GetPresetFullStepPos",
+      "SourceCommand": "40,73",
+      "Argument": "01",
+      "SuccessResponse": "41,73,01,02,7E",
+      "FailedResponse": "94"
+    },
+    {
+      "SourceCommandName": "GetStoredFullStepPos",
+      "SourceCommand": "40,75",
+      "Argument": "02",
+      "SuccessResponse": "41,75,02,02,14",
+      "FailedResponse": "94"
+    }
+  ]
+}

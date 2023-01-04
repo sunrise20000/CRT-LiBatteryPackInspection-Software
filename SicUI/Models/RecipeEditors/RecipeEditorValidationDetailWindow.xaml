@@ -1,0 +1,85 @@
+﻿<Window x:Class="SicUI.RecipeEditorValidationDetailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SicUI.Models.RecipeEditors"
+        mc:Ignorable="d"
+        Title="Recipe Validation Overview" 
+        Height="450" Width="800"
+        Topmost="{Binding ElementName=cbxTopMost, Path=IsChecked, FallbackValue=False}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <Style TargetType="StackPanel">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Orientation" Value="Horizontal"/>
+                <Setter Property="Margin" Value="5 0"/>
+            </Style>
+        </Grid.Resources>
+        <StackPanel HorizontalAlignment="Left">
+            <StackPanel.Resources>
+                <Style TargetType="RadioButton">
+                    <Setter Property="Margin" Value="0 0 10 0"/>
+                    <Setter Property="GroupName" Value="InfoCategory"/>
+                </Style>
+            </StackPanel.Resources>
+
+            <RadioButton Content="All"/>
+            <RadioButton Content="Errors" IsChecked="True">
+                <RadioButton.ContentTemplate>
+                    <DataTemplate DataType="{x:Type RadioButton}">
+                        <Border CornerRadius="2" Background="#FFDC6262" Padding="5 0">
+                            <TextBlock Text="{TemplateBinding Content}" Foreground="#FF980000"/>
+                        </Border>
+                    </DataTemplate>
+                </RadioButton.ContentTemplate>
+            </RadioButton>
+            <RadioButton Content="Changed">
+                <RadioButton.ContentTemplate>
+                    <DataTemplate DataType="{x:Type RadioButton}">
+                        <Border CornerRadius="2" Background="#FFBDFFB4" Padding="5 0">
+                            <TextBlock Text="{TemplateBinding Content}" Foreground="#FF1A7F1C"/>
+                        </Border>
+                    </DataTemplate>
+                </RadioButton.ContentTemplate>
+            </RadioButton>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0"  HorizontalAlignment="Right">
+            <CheckBox x:Name="cbxTopMost" Content="Always On Top"/>
+        </StackPanel>
+
+        <ListView  
+            Grid.Row="1"
+            x:Name="listView" >
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <EventSetter Event="MouseDoubleClick" Handler="EventSetter_OnHandler"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="#" Width="35" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image 
+                                    Source="/MECF.Framework.UI.Core;component/Resources/SystemLog/Alarm.png"
+                                    Width="16"
+                                    Height="16"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Step No." DisplayMemberBinding="{Binding StepNo}"/>
+                    <GridViewColumn Header="Param" DisplayMemberBinding="{Binding ParamCaption}"/>
+                    <GridViewColumn Header="Value" DisplayMemberBinding="{Binding Value}" Width="100"/>
+                    <GridViewColumn Header="Error" Width="350" DisplayMemberBinding="{Binding Message}"/>
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+    </Grid>
+</Window>

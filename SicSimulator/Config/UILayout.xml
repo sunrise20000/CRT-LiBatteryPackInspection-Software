@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MECFUI Width="1920" TopPanelHeight="1" CenterPanelHeight="820" BottomPanelHeight="1" >
+  <Title Id="Top" Name="" ViewClass="MECF.Framework.UI.Core.E95Template.DefaultTopView" Assembly="MECF.Framework.UI.Core"/>
+
+  <Navigation Id="operation" Name="Operation" >
+		
+    <SubView Id="io1" Name="PM1-IO" ViewClass="SicSimulator.Views.SimulatorIOPM1View" Assembly="SicSimulator"/>
+		<SubView Id="io2" Name="PM2-IO" ViewClass="SicSimulator.Views.SimulatorIOPM2View" Assembly="SicSimulator"/>
+		<SubView Id="io3" Name="TM-IO" ViewClass="SicSimulator.Views.SimulatorIOTMView" Assembly="SicSimulator"/>
+    <SubView Id="tmRobot" Name="TM-Robot" ViewClass="MECF.Framework.Simulator.Core.Robots.BrooksMag7RobotView" Assembly="MECF.Framework.Simulator.Core"/>
+	  <SubView Id="WaferRobot" Name="WaferRobot" ViewClass="MECF.Framework.Simulator.Core.Robots.HwinRobotView" Assembly="MECF.Framework.Simulator.Core"/>
+	  <SubView Id="TrayRobot" Name="TrayRobot" ViewClass="MECF.Framework.Simulator.Core.Robots.TrayRobotView" Assembly="MECF.Framework.Simulator.Core"/>
+	  <SubView Id="TempOmron" Name="Omron-Temp" ViewClass="MECF.Framework.Simulator.Core.Temperature.OmronTempView" Assembly="MECF.Framework.Simulator.Core"/>
+		<SubView Id="NSXBreaker" Name="NSX-Breaker" ViewClass="MECF.Framework.Simulator.Core.Breakers.NSXBreakerView" Assembly="MECF.Framework.Simulator.Core"/>
+		<SubView Id="NAISSevor" Name="NAIS-Sevor" ViewClass="MECF.Framework.Simulator.Core.Sevors.NAIS.NAISSevorView" Assembly="MECF.Framework.Simulator.Core"/>
+
+		<SubView Id="Vacuoumeter" Name="Vacuoumeter" ViewClass="MECF.Framework.Simulator.Core.Vacuometer.VacuometerView" Assembly="MECF.Framework.Simulator.Core"/>
+		<!--<SubView Id="DRYVacuumPumpPM" Name="DRY-VacuumPumpPM" ViewClass="MECF.Framework.Simulator.Core.Pumps.DRYVacuum.DRYVacuumPumpView" Assembly="MECF.Framework.Simulator.Core"/>
+		<SubView Id="DRYVacuumPumpTM" Name="DRY-VacuumPumpTM" ViewClass="MECF.Framework.Simulator.Core.Pumps.DRYVacuum.DRYVacuumPumpView" Assembly="MECF.Framework.Simulator.Core"/>-->
+
+	</Navigation>
+
+</MECFUI>

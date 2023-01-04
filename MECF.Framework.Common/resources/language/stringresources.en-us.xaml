@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib">
+  <system:String x:Key="GlobalLableButtonOk">OK</system:String>
+  <system:String x:Key="GlobalLableMsgboxTitle">Notification</system:String>
+  <system:String x:Key="GlobalLableButtonExit">Exit</system:String>
+  <system:String x:Key="GlobalLableRecipeAlarmedTitle">Process Alarm</system:String>
+  <system:String x:Key="GlobalLableButtonContinue">Continue</system:String>
+  <system:String x:Key="GlobalLableButtonAbort">Abort</system:String>
+  <system:String x:Key="GlobalLableSelectRecipe">Select Recipe</system:String>
+  <system:String x:Key="GlobalLableButtonSelect">Select</system:String>
+  <system:String x:Key="GlobalLableButtonClose">Close</system:String>
+  <system:String x:Key="GlobalLableButtonSelectAll">Select All</system:String>
+  <system:String x:Key="GlobalLableButtonUnselect">Unselect</system:String>
+  <system:String x:Key="GlobalLableButtonDefault">Default</system:String>
+  <system:String x:Key="GlobalLableData">Data</system:String>
+  <system:String x:Key="GlobalLableColor">Color</system:String>
+  <system:String x:Key="GlobalLableWidth">Width</system:String>
+  <system:String x:Key="GlobalLableDisplayDataItemsPanel">Display Data Items Panel     </system:String>
+  <system:String x:Key="GlobalLableAutoZoom">Auto Zoom</system:String>
+  <system:String x:Key="GlobalLableMonitorViewEventList">Event List</system:String>
+  <system:String x:Key="GlobalLableMonitorViewDetail">Detail</system:String>
+  <system:String x:Key="GlobalLableMonitorViewType">Type</system:String>
+  <system:String x:Key="GlobalLableMonitorViewTime">Time</system:String>
+  <system:String x:Key="GlobalLableMonitorViewDescription">Description</system:String>
+  <system:String x:Key="GlobalLableEventViewQueryCondition">Query Condition</system:String>
+  <system:String x:Key="GlobalLableEventViewStartTime">Start Time</system:String>
+  <system:String x:Key="GlobalLableEventViewEndTime">End Time</system:String>
+  <system:String x:Key="GlobalLableEventViewQueryOption">Query Option</system:String>
+  <system:String x:Key="GlobalLableEventViewAlarm">Alarm</system:String>
+  <system:String x:Key="GlobalLableEventViewWarning">Warning</system:String>
+  <system:String x:Key="GlobalLableEventViewInformation">Information</system:String>
+  <system:String x:Key="GlobalLableEventViewExtraCondition">Extra Condition</system:String>
+  <system:String x:Key="GlobalLableEventViewKeyWords">Key Words</system:String>
+  <system:String x:Key="GlobalLableEventViewButtonQuery">Query</system:String>
+  <system:String x:Key="GlobalLableEventViewButtonExport">Export</system:String>
+  <system:String x:Key="GlobalLableEventViewType">Type</system:String>
+  <system:String x:Key="GlobalLableEventViewTime">Time</system:String>
+  <system:String x:Key="GlobalLableEventViewSystem">System</system:String>
+  <system:String x:Key="GlobalLableEventViewContent">Content</system:String>
+  <system:String x:Key="GlobalLableEventViewResult">Result：</system:String>
+  <system:String x:Key="GlobalLableEventViewRecords">Records</system:String>
+  <system:String x:Key="GlobalLableDeviceName">Device Name:</system:String>
+  <system:String x:Key="GlobalLableUnit">Unit:</system:String>
+  <system:String x:Key="GlobalLableMax">Max:</system:String>
+  <system:String x:Key="GlobalLableDefault">Default:</system:String>
+  <system:String x:Key="GlobalLableFeedback">Feedback:</system:String>
+  <system:String x:Key="GlobalLableSetPoint">Setpoint:</system:String>
+  <system:String x:Key="GlobalLableButtonSet">Set</system:String>
+  <system:String x:Key="GlobalLableButtonCancel">Cancel</system:String>
+  <system:String x:Key="GlobalLableSetPointTitle">Device Set Point</system:String>
+  <system:String x:Key="GlobalLableValveToolTip">Valve Name：{0} 
+ Device ID：{1} 
+ Default：{2} 
+ SetPoint：{3} 
+ Status：{4}</system:String>
+  <system:String x:Key="GlobalLableFlowMeterToolTip">{0}：{1}
+
+ID：{2}
+Feedback：{3} {4}</system:String>
+  <system:String x:Key="GlobalLableHeaterControlToolTip">{0}：{1}
+
+ID：{2}
+Scale：{3} {4}
+SetPoint：{5} {4} 
+Feedback：{6} {4}
+Tolerance：{7}%
+Status：{8}</system:String>
+  <system:String x:Key="GlobalLablePressureMeterToolTip">{0}：{1}
+
+ID：{2}
+Feedback：{3} {4}</system:String>
+  <system:String x:Key="GlobalLableWaterFlowSensorToolTip">{0}：{1}
+
+ID：{2}
+Feedback：{3} {4}
+Tolerance：{5}  </system:String>
+  <system:String x:Key="GlobalLablePressureSensorToolTip">{0}：{1}
+
+ID：{2}
+Feedback：{3} {4}
+Tolerance：{5}</system:String>
+  <system:String x:Key="GlobalLableSensorToolTip">{0}：{1}
+
+ID：{2}
+Feedback：{3}</system:String>
+  <system:String x:Key="GlobalLableRfGeneratorToolTipReflect">{0}：{1}
+
+ID：{2}
+Forward Power：{3} w
+Reflect Power：{4} w 
+SetPoint：{5}  w</system:String>
+  <system:String x:Key="GlobalLableRfGeneratorToolTipVoltage">{0}：{1}
+
+ID：{2}
+Forward Power：{3} w
+Voltage：{4} 
+Current：{5} 
+SetPoint：{6}  w</system:String>
+  <system:String x:Key="GlobalLableThermoMeterToolTip">{0}：{1}
+
+ID：{2}
+Feedback：{3} {4}
+Tolerance：{5} 
+Broken：{6} </system:String>
+  <system:String x:Key="GlobalLableThrottleValveToolTip">{0}：{1}
+
+ID：{2}
+Work Mode：{3} 
+Position：{4}  
+Pressure：{5} mTorr</system:String>
+  <system:String x:Key="GlobalLableMfcControlToolTip">{0}：{1}
+
+ID：{2}
+Scale：{3} {4}
+SetPoint：{5} {4} 
+Feedback：{6} {4}
+Tolerance：{7}%
+Status：{8}</system:String>
+  <system:String x:Key="GlobalLableValveOpenValve">Open Valve</system:String>
+  <system:String x:Key="GlobalLableValveCloseValve">Close Valve</system:String>
+  <system:String x:Key="GlobalLablePumpN2Pressure">Pump N2 Purge</system:String>
+  <system:String x:Key="GlobalLablePumpWaterFlow">Cooling Water</system:String>
+</ResourceDictionary>

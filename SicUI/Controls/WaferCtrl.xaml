@@ -1,0 +1,63 @@
+﻿<UserControl
+    x:Class="SicUI.Controls.WaferCtrl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cal="http://www.caliburn.org"
+    xmlns:ctrl="http://OpenSEMI.Ctrlib.com/presentation"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
+    <UserControl.Resources>
+        <Storyboard x:Key="sbRotateWafer" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="viewbox" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                <SplineDoubleKeyFrame KeyTime="00:00:01.5000000" Value="360"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <Viewbox x:Name="viewbox" RenderTransformOrigin="0.5,0.5">
+        <Viewbox.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Viewbox.RenderTransform>
+        <ctrl:Slot x:Name="slot"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            DataContext="{Binding WaferData, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+            LotID="{Binding LotID}"
+            ModuleID="{Binding ModuleID}"
+            RecipeName="{Binding RecipeName}"
+            SlotID="{Binding SlotID}"
+            SourceName="{Binding SourceName}"
+            ToolTip="{Binding ToolTip}"
+            ToolTipService.ShowOnDisabled="True"
+            TrayProcessCount="{Binding TrayProcessCount}"
+            TrayStatus="2"
+            ViewType="Top"
+            WaferStatus="{Binding WaferStatus}"
+            RenderTransformOrigin="0.5,0.5">
+            <ctrl:Slot.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ctrl:Slot.RenderTransform>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SlotMouseButtonDown">
+                    <cal:ActionMessage MethodName="OnMouseUp">
+                        <cal:Parameter Value="$source" />
+                        <cal:Parameter Value="$eventargs" />
+                    </cal:ActionMessage>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="WaferTransferStarted">
+                    <cal:ActionMessage MethodName="OnWaferTransfer">
+                        <cal:Parameter Value="$eventargs" />
+                    </cal:ActionMessage>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ctrl:Slot>
+    </Viewbox>
+</UserControl>

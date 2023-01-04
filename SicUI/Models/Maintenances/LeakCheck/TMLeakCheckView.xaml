@@ -1,0 +1,803 @@
+﻿<UserControl
+    x:Class="SicUI.Client.Models.Platform.LeakCheck.TMLeakCheckView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cal="http://www.caliburn.org"
+    xmlns:ctrl="http://OpenSEMI.Ctrlib.com/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="900"
+    d:DesignWidth="1800"
+    mc:Ignorable="d">
+
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <TabControl>
+            <TabItem Header="TM">
+                <Grid IsEnabled="{Binding TMLeakcheckIsenable}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <!--<Grid HorizontalAlignment="Left">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid  Width="350" HorizontalAlignment="Left" Margin="150,5,5,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Leak Check Setting" Style="{DynamicResource Table_TitleStyle}" Grid.Row="0" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title}" Grid.Row="1" Padding="5,1">
+                                <TextBlock Text="Pump Time (s)" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content}" Grid.Row="1" Grid.Column="1" Padding="5,1">
+                                <ctrl:TextBoxEx Text="{Binding Path=PumpTimeSetPoint, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" EditBoxMode="UnSignInteger" TextSaved="{Binding PumpTimeTextSaved, Mode=TwoWay}" Width="110" Height="25"/>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title}" Grid.Row="2" Padding="5,1">
+                                <TextBlock Text="Leak Check Time (s)" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content}" Grid.Row="2" Grid.Column="1" Padding="5,1">
+                                <ctrl:TextBoxEx Text="{Binding Path=LeakCheckTimeSetPoint, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" EditBoxMode="UnSignInteger" TextSaved="{Binding LeakCheckTimeTextSaved, Mode=TwoWay}" Width="110" Height="25"/>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Content}" Grid.Row="3" Grid.ColumnSpan="2" Padding="5,1">
+                                <UniformGrid  Columns="2"  >
+                                    <Button Content="Leak Check" Width="100" Height="25" Margin="25,0,0,0">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <cal:ActionMessage MethodName="LeakCheck">
+                                                    <cal:Parameter Value="TM"/>
+                                                </cal:ActionMessage>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+                                    <Button Content="Abort" Width="100" Height="25" Margin="20,0,0,0">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <cal:ActionMessage MethodName="Abort">
+                                                    <cal:Parameter Value="TM"/>
+                                                </cal:ActionMessage>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+                                </UniformGrid>
+                            </Border>
+
+
+                        </Grid>
+
+                        <Grid  Grid.Column="1" Width="350" HorizontalAlignment="Left" Margin="150,5,5,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Leak Check Status" Style="{DynamicResource Table_TitleStyle}" Grid.Row="0" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title}" Grid.Row="1" Padding="5,1">
+                                <TextBlock Text="Status" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content}" Grid.Row="1" Grid.Column="1" Padding="5,1">
+                                <TextBlock Text="{Binding TMLeakCheckStatus}" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title}" Grid.Row="2" Padding="5,1">
+                                <TextBlock Text="Leak Check Elapsed time (s)" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content}" Grid.Row="2" Grid.Column="1" Padding="5,1">
+                                <TextBlock Text="{Binding TMLeakCheckElapseTime}" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title}" Grid.Row="3" Padding="5,1">
+                                <TextBlock Text="TM Pressure (mbar)" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content}" Grid.Row="3" Grid.Column="1" Padding="5,1">
+                                <TextBlock Text="{Binding TMChamberPressure,StringFormat={}{0:F2}}" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                            </Border>
+
+                        </Grid>
+
+                    </Grid>-->
+                    <!--<TabControl Grid.Row="1">
+
+                        <TabItem Header="TM Leak check history">-->
+
+                    <DataGrid
+                        Grid.Row="1"
+                        Margin="0,5,0,0"
+                        HorizontalAlignment="Left"
+                        AlternationCount="2"
+                        AutoGenerateColumns="False"
+                        CanUserAddRows="False"
+                        ItemsSource="{Binding LeakCheckData}"
+                        RowHeaderWidth="0"
+                        VirtualizingPanel.IsVirtualizing="True"
+                        VirtualizingPanel.VirtualizationMode="Recycling">
+
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Width="200" Header="Date">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="5,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Arial"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            Text="{Binding OperateTime}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="150" Header="Status">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="5,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Arial"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            Text="{Binding Status}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="200" Header="Leak Rate (mbar/minutes)">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="5,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Arial"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            Text="{Binding LeakRate}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="200" Header="Start Pressure (mbar)">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="5,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Arial"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            Text="{Binding StartPressure}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="200" Header="Stop Pressure(mbar)">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="5,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Arial"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            Text="{Binding StopPressure}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
+                            <DataGridTemplateColumn Width="200" Header="Leak Check Time (s)">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="5,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Arial"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            Text="{Binding LeakCheckTime}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
+                            <DataGridTemplateColumn Width="150">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button
+                                            Width="120"
+                                            Height="25"
+                                            Content="Remove"
+                                            FontSize="12">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="Click">
+                                                    <cal:ActionMessage MethodName="DeleteLeakCheck">
+                                                        <cal:Parameter Value="{Binding}" />
+                                                    </cal:ActionMessage>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+
+                    <!--</TabItem>
+                    </TabControl>-->
+                </Grid>
+            </TabItem>
+            <TabItem Header="Load">
+                <Grid IsEnabled="{Binding LLLeakcheckIsenable}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <!--<Grid HorizontalAlignment="Left">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid  Width="350" HorizontalAlignment="Left" Margin="150,5,5,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Leak Check Setting" Style="{DynamicResource Table_TitleStyle}" Grid.Row="0" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title}" Grid.Row="1" Padding="5,1">
+                                <TextBlock Text="Pump Time (s)" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content}" Grid.Row="1" Grid.Column="1" Padding="5,1">
+                                <ctrl:TextBoxEx Text="{Binding Path=LLPumpTimeSetPoint, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" EditBoxMode="UnSignInteger" TextSaved="{Binding LLPumpTimeTextSaved, Mode=TwoWay}" Width="110" Height="25"/>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title}" Grid.Row="2" Padding="5,1">
+                                <TextBlock Text="Leak Check Time (s)" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content}" Grid.Row="2" Grid.Column="1" Padding="5,1">
+                                <ctrl:TextBoxEx Text="{Binding Path=LLLeakCheckTimeSetPoint, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" EditBoxMode="UnSignInteger" TextSaved="{Binding LLLeakCheckTimeTextSaved, Mode=TwoWay}" Width="110" Height="25"/>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Content}" Grid.Row="3" Grid.ColumnSpan="2" Padding="5,1">
+                                <UniformGrid  Columns="2"  >
+                                    <Button Content="Leak Check" Width="100" Height="25" Margin="25,0,0,0">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <cal:ActionMessage MethodName="LeakCheck">
+                                                    <cal:Parameter Value="LoadLock"/>
+                                                </cal:ActionMessage>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+                                    <Button Content="Abort" Width="100" Height="25" Margin="20,0,0,0">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <cal:ActionMessage MethodName="Abort">
+                                                    <cal:Parameter Value="LoadLock"/>
+                                                </cal:ActionMessage>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+                                </UniformGrid>
+                            </Border>
+
+
+                        </Grid>
+
+                        <Grid  Grid.Column="1" Width="350" HorizontalAlignment="Left" Margin="150,5,5,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Leak Check Status" Style="{DynamicResource Table_TitleStyle}" Grid.Row="0" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title}" Grid.Row="1" Padding="5,1">
+                                <TextBlock Text="Status" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content}" Grid.Row="1" Grid.Column="1" Padding="5,1">
+                                <TextBlock Text="{Binding LLLeakCheckStatus}" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title}" Grid.Row="2" Padding="5,1">
+                                <TextBlock Text="Leak Check Elapsed time (s)" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content}" Grid.Row="2" Grid.Column="1" Padding="5,1">
+                                <TextBlock Text="{Binding LLLeakCheckElapseTime}" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title}" Grid.Row="3" Padding="5,1">
+                                <TextBlock Text="LoadLock Pressure (mbar)" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content}" Grid.Row="3" Grid.Column="1" Padding="5,1">
+                                <TextBlock Text="{Binding LLChamberPressure,StringFormat={}{0:F2}}" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                            </Border>
+
+                        </Grid>
+
+                    </Grid>-->
+                    <!--<TabControl Grid.Row="1">
+
+                        <TabItem Header="LoadLock Leak check history">-->
+
+                    <DataGrid
+                        Grid.Row="1"
+                        Margin="0,5,0,0"
+                        HorizontalAlignment="Left"
+                        AlternationCount="2"
+                        AutoGenerateColumns="False"
+                        CanUserAddRows="False"
+                        ItemsSource="{Binding LLLeakCheckData}"
+                        RowHeaderWidth="0"
+                        VirtualizingPanel.IsVirtualizing="True"
+                        VirtualizingPanel.VirtualizationMode="Recycling">
+
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Width="200" Header="Date">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="5,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Arial"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            Text="{Binding OperateTime}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="150" Header="Status">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="5,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Arial"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            Text="{Binding Status}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="200" Header="Leak Rate (mbar/minutes)">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="5,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Arial"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            Text="{Binding LeakRate}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="200" Header="Start Pressure (mbar)">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="5,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Arial"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            Text="{Binding StartPressure}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="200" Header="Stop Pressure(mbar)">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="5,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Arial"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            Text="{Binding StopPressure}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
+                            <DataGridTemplateColumn Width="200" Header="Leak Check Time (s)">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="5,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Arial"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            Text="{Binding LeakCheckTime}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
+                            <DataGridTemplateColumn Width="150">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button
+                                            Width="120"
+                                            Height="25"
+                                            Content="Remove"
+                                            FontSize="12">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="Click">
+                                                    <cal:ActionMessage MethodName="DeleteLeakCheck">
+                                                        <cal:Parameter Value="{Binding}" />
+                                                    </cal:ActionMessage>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+
+                    <!--</TabItem>-->
+                    <!--</TabControl>-->
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="PM1">
+                <Grid IsEnabled="{Binding LLLeakcheckIsenable}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <DataGrid
+                        Grid.Row="1"
+                        Margin="0,5,0,0"
+                        HorizontalAlignment="Left"
+                        AlternationCount="2"
+                        AutoGenerateColumns="False"
+                        CanUserAddRows="False"
+                        ItemsSource="{Binding PM1LeakCheckData}"
+                        RowHeaderWidth="0"
+                        VirtualizingPanel.IsVirtualizing="True"
+                        VirtualizingPanel.VirtualizationMode="Recycling">
+
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Width="200" Header="Date">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="5,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Arial"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            Text="{Binding OperateTime}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="150" Header="Status">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="5,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Arial"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            Text="{Binding Status}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="200" Header="Leak Rate (mbar/minutes)">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="5,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Arial"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            Text="{Binding LeakRate}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="200" Header="Start Pressure (mbar)">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="5,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Arial"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            Text="{Binding StartPressure}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="200" Header="Stop Pressure(mbar)">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="5,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Arial"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            Text="{Binding StopPressure}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
+                            <DataGridTemplateColumn Width="200" Header="Leak Check Time (s)">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="5,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Arial"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            Text="{Binding LeakCheckTime}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
+                            <DataGridTemplateColumn Width="150">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button
+                                            Width="120"
+                                            Height="25"
+                                            Content="Remove"
+                                            FontSize="12">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="Click">
+                                                    <cal:ActionMessage MethodName="DeleteLeakCheck">
+                                                        <cal:Parameter Value="{Binding}" />
+                                                    </cal:ActionMessage>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Unload">
+                <Grid IsEnabled="{Binding UnloadLeakcheckIsenable}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+
+                    <DataGrid
+                        Grid.Row="1"
+                        Margin="0,5,0,0"
+                        HorizontalAlignment="Left"
+                        AlternationCount="2"
+                        AutoGenerateColumns="False"
+                        CanUserAddRows="False"
+                        ItemsSource="{Binding UnloadLeakCheckData}"
+                        RowHeaderWidth="0"
+                        VirtualizingPanel.IsVirtualizing="True"
+                        VirtualizingPanel.VirtualizationMode="Recycling">
+
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Width="200" Header="Date">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="5,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Arial"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            Text="{Binding OperateTime}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="150" Header="Status">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="5,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Arial"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            Text="{Binding Status}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="200" Header="Leak Rate (mbar/minutes)">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="5,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Arial"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            Text="{Binding LeakRate}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="200" Header="Start Pressure (mbar)">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="5,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Arial"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            Text="{Binding StartPressure}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="200" Header="Stop Pressure(mbar)">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="5,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Arial"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            Text="{Binding StopPressure}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
+                            <DataGridTemplateColumn Width="200" Header="Leak Check Time (s)">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="5,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Arial"
+                                            FontSize="14"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            Text="{Binding LeakCheckTime}"
+                                            ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
+                            <DataGridTemplateColumn Width="150">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button
+                                            Width="120"
+                                            Height="25"
+                                            Content="Remove"
+                                            FontSize="12">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="Click">
+                                                    <cal:ActionMessage MethodName="DeleteLeakCheck">
+                                                        <cal:Parameter Value="{Binding}" />
+                                                    </cal:ActionMessage>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </ScrollViewer>
+</UserControl>

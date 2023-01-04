@@ -1,0 +1,225 @@
+﻿<UserControl
+    x:Class="SicUI.Controls.Reactor"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:deviceControl="clr-namespace:Aitex.Core.UI.DeviceControl;assembly=MECF.Framework.UI.Core"
+    xmlns:local="clr-namespace:SicUI.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Name="RE"
+    d:DesignHeight="200"
+    d:DesignWidth="240"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <Storyboard x:Key="SlitValve_Open">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)">
+                <EasingDoubleKeyFrame KeyTime="0" Value="75" />
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="55" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="SlitValve_Close">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)">
+                <EasingDoubleKeyFrame KeyTime="0" Value="55" />
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="75" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Style x:Key="SlitValve_Animation" TargetType="{x:Type Rectangle}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ChamberDoorState}" Value="Open">
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard Storyboard="{StaticResource SlitValve_Open}" />
+                    </DataTrigger.EnterActions>
+                    <DataTrigger.ExitActions>
+                        <BeginStoryboard Storyboard="{StaticResource SlitValve_Close}" />
+                    </DataTrigger.ExitActions>
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding ChamberDoorState}" Value="Close">
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard Storyboard="{StaticResource SlitValve_Close}" />
+                    </DataTrigger.EnterActions>
+                    <DataTrigger.ExitActions>
+                        <BeginStoryboard Storyboard="{StaticResource SlitValve_Open}" />
+                    </DataTrigger.ExitActions>
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding ChamberDoorState}" Value="Unknown">
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard Name="Shine">
+                            <Storyboard RepeatBehavior="Forever">
+                                <ColorAnimation
+                                    AccelerationRatio="0.3"
+                                    AutoReverse="True"
+                                    DecelerationRatio="0.3"
+                                    RepeatBehavior="Forever"
+                                    Storyboard.TargetProperty="(Rectangle.Fill).Color"
+                                    To="#FFFFA500"
+                                    Duration="0:0:0.3" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.EnterActions>
+                    <DataTrigger.ExitActions>
+                        <StopStoryboard BeginStoryboardName="Shine" />
+                    </DataTrigger.ExitActions>
+                </DataTrigger>
+
+
+                <DataTrigger Binding="{Binding ChamberDoorState}" Value="Error">
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard Name="Shine2">
+                            <Storyboard RepeatBehavior="Forever">
+                                <ColorAnimation
+                                    AccelerationRatio="0.3"
+                                    AutoReverse="True"
+                                    DecelerationRatio="0.3"
+                                    RepeatBehavior="Forever"
+                                    Storyboard.TargetProperty="(Rectangle.Fill).Color"
+                                    To="OrangeRed"
+                                    Duration="0:0:0.3" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.EnterActions>
+                    <DataTrigger.ExitActions>
+                        <StopStoryboard BeginStoryboardName="Shine2" />
+                    </DataTrigger.ExitActions>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+
+        <Image
+            Width="200"
+            Height="150"
+            Margin="20,12,20,39"
+            VerticalAlignment="Top"
+            Source="/Resources/Images/chamber.png"
+            Stretch="Fill"
+            StretchDirection="Both" />
+
+        <Rectangle
+            Width="160"
+            Height="10"
+            VerticalAlignment="Top"
+            RadiusX="1"
+            RadiusY="1"
+            Stroke="DarkGray"
+            StrokeThickness="2">
+            <Rectangle.Effect>
+                <DropShadowEffect
+                    BlurRadius="2"
+                    ShadowDepth="2"
+                    Color="DimGray" />
+            </Rectangle.Effect>
+        </Rectangle>
+
+        <Rectangle
+            Width="200"
+            Height="10"
+            Margin="0,10"
+            VerticalAlignment="Top"
+            RadiusX="1"
+            RadiusY="1"
+            Stroke="DarkGray"
+            StrokeThickness="2">
+            <Rectangle.Effect>
+                <DropShadowEffect
+                    BlurRadius="2"
+                    ShadowDepth="2"
+                    Color="DimGray" />
+            </Rectangle.Effect>
+        </Rectangle>
+        <Rectangle
+            x:Name="SHLid_Top"
+            Width="156"
+            Height="6"
+            Margin="0,2,0,0"
+            VerticalAlignment="Top"
+            Fill="DimGray"
+            Visibility="{Binding ElementName=RE, Path=IsVisy}" />
+        <!-- <Rectangle x:Name="SlitValveL_Top" Style="{StaticResource SlitValve_Animation}" Fill="DimGray" Width="8" VerticalAlignment="Top" Height="66" Margin="-185,20,0,0" />
+        <Rectangle x:Name="SlitValveL_Bottom" Style="{StaticResource SlitValve_Animation}" Fill="DimGray" Width="8" VerticalAlignment="Top" Height="66" Margin="-185,85,0,0" />
+        <Rectangle x:Name="SlitValveR_Top" Style="{StaticResource SlitValve_Animation}" Fill="DimGray" Width="8" VerticalAlignment="Top" Height="66" Margin="185,20,0,0" />
+        <Rectangle x:Name="SlitValveR_Bottom" Style="{StaticResource SlitValve_Animation}" Fill="DimGray" Width="8" VerticalAlignment="Top" Height="66" Margin="185,85,0,0" />-->
+
+        <!--<Grid x:Name="Middle_LiftPin1" Margin="0,111,0,0"  Height="90" Width="162" VerticalAlignment="Bottom" >
+            <Grid.Resources>
+                <Storyboard x:Key="MidPinUp">
+                    <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" >
+                        <EasingThicknessKeyFrame KeyTime="0" Value="0,111,0,0"/>
+                        <EasingThicknessKeyFrame KeyTime="0:0:0.5" Value="39,111,0,0"/>
+                    </ThicknessAnimationUsingKeyFrames>
+                </Storyboard>
+                <Storyboard x:Key="MidPinDown">
+                    <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                        <EasingThicknessKeyFrame KeyTime="0" Value="39,111,0,0"/>
+                        <EasingThicknessKeyFrame KeyTime="0:0:0.5" Value="0,111,0,0"/>
+                    </ThicknessAnimationUsingKeyFrames>
+                </Storyboard>
+            </Grid.Resources>
+            <Grid.Style>
+                <Style>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding UpStatus}" Value="Up">
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource MidPinUp}"/>
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource MidPinDown}"/>
+                            </DataTrigger.ExitActions>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <Rectangle Width="160" Height="10"   VerticalAlignment="Top" StrokeThickness="2" Stroke="DarkGray" RadiusX="1" RadiusY="1">
+            <Rectangle.Effect>
+                <DropShadowEffect BlurRadius="2" ShadowDepth="2"  Color="DimGray"/>
+            </Rectangle.Effect>
+        </Rectangle>
+        <Rectangle Width="80" Height="78"  Margin="0,2" VerticalAlignment="Bottom" StrokeThickness="2" Stroke="DarkGray" RadiusX="1" RadiusY="1" >
+            <Rectangle.Effect>
+                <DropShadowEffect BlurRadius="2" ShadowDepth="2"  Color="DimGray"/>
+            </Rectangle.Effect>
+        </Rectangle>
+        </Grid>-->
+        <Rectangle
+            Width="200"
+            Height="10"
+            Margin="0,0,0,39.001"
+            VerticalAlignment="Bottom"
+            RadiusX="1"
+            RadiusY="1"
+            Stroke="DarkGray"
+            StrokeThickness="2">
+            <Rectangle.Effect>
+                <DropShadowEffect
+                    BlurRadius="2"
+                    ShadowDepth="2"
+                    Color="DimGray" />
+            </Rectangle.Effect>
+        </Rectangle>
+        <local:WaferCtrl
+            Canvas.Left="42"
+            Canvas.Top="-8"
+            Width="80"
+            Margin="80,34.5,80,89"
+            RenderTransformOrigin="0.5,0.5"
+            WaferData="{Binding Wafer}" />
+        <!--<Label FontSize="11" Content="UP" Foreground="White" Margin="-4.995,27.483,214.814,149.5"/>
+        <deviceControl:AITHeaterControl DeviceData="{Binding Heater1}" HideDialog="True" Width="64" Height="29" Canvas.Left="69.167" Canvas.Top="49.33" Margin="30.5,24.999,145.5,146"/>
+        <deviceControl:AITHeaterControl DeviceData="{Binding Heater1}" HideDialog="True" Width="64" Height="29" Canvas.Left="69.167" Canvas.Top="49.33" Margin="89.5,25,86.5,146"/>
+        <deviceControl:AITHeaterControl DeviceData="{Binding Heater1}" HideDialog="True" Width="64" Height="29" Canvas.Left="69.167" Canvas.Top="49.33" Margin="148,24.999,28,146"/>
+
+        <Label FontSize="11"  Content="MID" Foreground="White" Margin="-4.995,51.233,209.17,125.75"/>
+        <deviceControl:AITHeaterControl DeviceData="{Binding Heater1}" HideDialog="True" Width="64" Height="29" Canvas.Left="69.167" Canvas.Top="49.33" Margin="30.5,50.307,145.5,120.692"/>
+        <deviceControl:AITHeaterControl DeviceData="{Binding Heater1}" HideDialog="True" Width="64" Height="29" Canvas.Left="69.167" Canvas.Top="49.33" Margin="89.5,49.975,86.5,121.024"/>
+        <deviceControl:AITHeaterControl DeviceData="{Binding Heater1}" HideDialog="True" Width="64" Height="29" Canvas.Left="69.167" Canvas.Top="49.33" Margin="148,49.641,28,121.358"/>
+
+        <Label FontSize="11"  Content="LOW" Foreground="White" Margin="-4.995,77.54,209.17,99.443"/>
+        <deviceControl:AITHeaterControl DeviceData="{Binding Heater1}" HideDialog="True" Width="64" Height="29" Canvas.Left="69.167" Canvas.Top="49.33" Margin="30.5,75.056,145.5,95.943"/>
+        <deviceControl:AITHeaterControl DeviceData="{Binding Heater1}" HideDialog="True" Width="64" Height="29" Canvas.Left="69.167" Canvas.Top="49.33" Margin="89.5,75.056,86.5,95.943"/>
+        <deviceControl:AITHeaterControl DeviceData="{Binding Heater1}" HideDialog="True" Width="64" Height="29" Canvas.Left="69.167" Canvas.Top="49.33" Margin="148,75.056,28,95.943"/>-->
+
+    </Grid>
+</UserControl>

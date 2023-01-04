@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="SicUI.Controls.Parts.Wafer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SicUI.Controls.Parts"
+			 xmlns:Parts="clr-namespace:SicUI.Controls.Parts"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+	<Grid x:Name="root">
+		<Grid.ContextMenu>
+			<ContextMenu>
+				<MenuItem Header="Create Wafer" Command="{Binding CreateDeleteWaferCommand}" CommandParameter="CreateWafer" />
+				<MenuItem Header="Delete Wafer" Command="{Binding CreateDeleteWaferCommand}" CommandParameter="DeleteWafer" />
+			</ContextMenu>
+		</Grid.ContextMenu>
+		<Border Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualWidth}" Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualWidth}" Background="Transparent" Visibility="{Binding WaferStyle, Converter={StaticResource VisibilityConverter}}" MouseMove="Wafer_MouseMove" Drop="Wafer_Drop">
+			<Border.AllowDrop>
+				<MultiBinding Converter="{StaticResource WaferDropConverter}">
+					<Binding Path="WaferItem.Status" />
+					<Binding Path="WaferItem.IsDestination" />
+				</MultiBinding>
+			</Border.AllowDrop>
+			<Border.ToolTip>
+				<TextBlock>
+					<TextBlock.Text>
+						<MultiBinding Converter="{StaticResource WaferConverter}">
+							<Binding Path="WaferItem.Status" />
+							<Binding Path="WaferIDDisplayMode" />
+							<Binding Path="WaferItem.WaferOrigin" />
+							<Binding Path="WaferItem.LaserMarker" />
+							<Binding Path="WaferItem.T7Code" />
+						</MultiBinding>
+					</TextBlock.Text>
+				</TextBlock>
+			</Border.ToolTip>
+            <Ellipse Visibility="{Binding WaferItem.Status , Converter={StaticResource WaferVisibilityConverter}}" Stretch="Fill" StrokeThickness="0" StrokeLineJoin="Round" Stroke="#FF00641D" Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualWidth}" Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualWidth}">
+				<Ellipse.Fill>
+					<MultiBinding Converter="{StaticResource WaferColorConverter}">
+						<Binding Path="WaferItem.Status" />
+						<Binding Path="WaferItem.ProcessState" />
+						<Binding Path="WaferItem.IsDestination" />
+						<Binding Path="WaferItem.IsSource" />
+					</MultiBinding>
+				</Ellipse.Fill>
+			</Ellipse>
+		</Border>
+		<Border Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualWidth}" BorderThickness="0" BorderBrush="CadetBlue" Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualHeight}" Background="Transparent" Visibility="{Binding WaferStyle, Converter={StaticResource VisibilityConverter}, ConverterParameter=0 }" MouseMove="Wafer_MouseMove" Drop="Wafer_Drop" DragOver="Border_DragOver" DragLeave="Border_DragLeave">
+			<Border.AllowDrop>
+				<MultiBinding Converter="{StaticResource WaferDropConverter}">
+					<Binding Path="WaferItem.Status" />
+					<Binding Path="WaferItem.IsDestination" />
+				</MultiBinding>
+			</Border.AllowDrop>
+			<Grid>
+				<Parts:Slot VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-158,0,0,0" Visibility="{Binding ShowSlot, Converter={StaticResource BoolVisibilityConverter}}" />
+				<Rectangle Visibility="{Binding WaferItem.Status , Converter={StaticResource WaferVisibilityConverter}}" x:Name="green" Width="146" Height="14" Canvas.Left="16" Stretch="Fill" StrokeThickness="2" StrokeLineJoin="Round" Stroke="{Binding WaferItem.Status, Converter={StaticResource WaferStatusConverter}}">
+					<Rectangle.Fill>
+						<MultiBinding Converter="{StaticResource WaferColorConverter}">
+							<Binding Path="WaferItem.Status" />
+							<Binding Path="WaferItem.ProcessState" />
+							<Binding Path="WaferItem.IsDestination" />
+							<Binding Path="WaferItem.IsSource" />
+						</MultiBinding>
+					</Rectangle.Fill>
+				</Rectangle>
+				<TextBlock FontSize="8" Foreground="Black">
+					<TextBlock.Text>
+						<MultiBinding Converter="{StaticResource WaferConverter}">
+							<Binding Path="WaferItem.Status" />
+							<Binding Path="WaferIDDisplayMode" />
+							<Binding Path="WaferItem.WaferOrigin" />
+							<Binding Path="WaferItem.LaserMarker" />
+							<Binding Path="WaferItem.T7Code" />
+						</MultiBinding>
+					</TextBlock.Text>
+				</TextBlock>
+			</Grid>
+		</Border>
+	</Grid>
+</UserControl>

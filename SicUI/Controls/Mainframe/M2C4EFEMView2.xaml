@@ -1,0 +1,247 @@
+﻿<UserControl
+    x:Class="SicUI.Controls.M2C4Parts.M2C4EFEMView2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:SicUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SicUI.Controls.M2C4Parts"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:unitControls="clr-namespace:MECF.Framework.UI.Client.Ctrlib.UnitControls;assembly=MECF.Framework.UI.Client"
+    Width="771"
+    Height="699"
+    mc:Ignorable="d">
+    <Grid
+        x:Name="root"
+        Height="800"
+        VerticalAlignment="Top">
+        <Canvas Margin="0,45.333,0,26.667">
+            <Image
+                Canvas.Left="254"
+                Canvas.Top="233"
+                Source="Images/tm1.png" />
+            <Image
+                Canvas.Left="341.166"
+                Canvas.Top="327.333"
+                Source="Images/tm3.png" />
+
+
+            <Canvas Visibility="{Binding IsPM1Installed, Converter={StaticResource BoolVisibilityConverter}}">
+                <Image
+                    Canvas.Left="198"
+                    Canvas.Top="121"
+                    Width="160"
+                    Source="Images/pmbg51.png">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform />
+                            <SkewTransform />
+                            <RotateTransform Angle="0.43" />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <unitControls:Door
+                    Canvas.Left="273"
+                    Canvas.Top="264"
+                    Width="90"
+                    Height="8"
+                    IsDoorOpen="{Binding IsPM1DoorOpen}"
+                    RenderTransformOrigin="0.5,0.5">
+                    <unitControls:Door.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform />
+                            <SkewTransform />
+                            <RotateTransform Angle="-30.127" />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </unitControls:Door.RenderTransform>
+                </unitControls:Door>
+            </Canvas>
+            <Canvas Visibility="{Binding IsPM2Installed, Converter={StaticResource BoolVisibilityConverter}}">
+                <Image
+                    Canvas.Left="398"
+                    Canvas.Top="123"
+                    Width="160"
+                    Source="Images/pmbg41.png">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform />
+                            <SkewTransform />
+                            <RotateTransform Angle="0.535" />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <unitControls:Door
+                    Canvas.Left="390"
+                    Canvas.Top="267"
+                    Width="90"
+                    Height="8"
+                    IsDoorOpen="{Binding IsPM2DoorOpen}"
+                    RenderTransformOrigin="0.5,0.5">
+                    <unitControls:Door.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform />
+                            <SkewTransform />
+                            <RotateTransform Angle="30.086" />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </unitControls:Door.RenderTransform>
+                </unitControls:Door>
+            </Canvas>
+
+            <Canvas Visibility="{Binding IsUnLoadInstalled, Converter={StaticResource BoolVisibilityConverter}}">
+                <Image
+                    Canvas.Left="174"
+                    Canvas.Top="339"
+                    RenderTransformOrigin="0.5,0.5"
+                    Source="Images/wf.png">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform />
+                            <SkewTransform />
+                            <RotateTransform Angle="-13.5" />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <unitControls:Door
+                    Canvas.Left="232"
+                    Canvas.Top="372"
+                    Width="82"
+                    Height="8"
+                    IsDoorOpen="{Binding IsUnLoadDoorOpen}"
+                    RenderTransformOrigin="0.5,0.5">
+                    <unitControls:Door.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform />
+                            <SkewTransform />
+                            <RotateTransform Angle="76.127" />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </unitControls:Door.RenderTransform>
+                </unitControls:Door>
+            </Canvas>
+            <Canvas Visibility="{Binding IsLLInstalled, Converter={StaticResource BoolVisibilityConverter}}">
+                <unitControls:Door
+                    Canvas.Left="336"
+                    Canvas.Top="455"
+                    Width="83"
+                    Height="8"
+                    IsDoorOpen="{Binding IsLLDoorOpen}"
+                    RenderTransformOrigin="0.5,0.5" />
+                <Image
+                    Canvas.Left="327"
+                    Canvas.Top="458"
+                    Source="Images/wf.png" />
+            </Canvas>
+
+            <local:AtmRobotMultiLP
+                Canvas.Left="349"
+                Canvas.Top="316"
+                Width="550"
+                Height="80"
+                IsEnabled="{Binding EnableWaferClick}"
+                HasTray="{Binding TMRobotHaveTray}"
+                HasWafer="{Binding IsArmWater}"
+                RobotMoveInfo="{Binding TmRobotMoveInfo}"
+                ShowDock="False"
+                Wafer1="{Binding TMRobotWafer1}" />
+
+            <Canvas Visibility="{Binding IsBufferInstalled, Converter={StaticResource BoolVisibilityConverter}}">
+                <Image
+                    Canvas.Left="466"
+                    Canvas.Top="343"
+                    RenderTransformOrigin="0.5,0.5"
+                    Source="Images/Layout09.png">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform />
+                            <SkewTransform />
+                            <RotateTransform Angle="106" />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <unitControls:Door
+                    Canvas.Left="435"
+                    Canvas.Top="377"
+                    Width="82"
+                    Height="8"
+                    IsDoorOpen="{Binding IsBufferDoorOpen}"
+                    RenderTransformOrigin="0.5,0.5">
+                    <unitControls:Door.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform />
+                            <SkewTransform />
+                            <RotateTransform Angle="106.127" />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </unitControls:Door.RenderTransform>
+                </unitControls:Door>
+            </Canvas>
+
+            <Canvas Visibility="{Binding IsPM1Installed, Converter={StaticResource BoolVisibilityConverter}}">
+                <Image
+                    Canvas.Left="239"
+                    Canvas.Top="164"
+                    Width="96"
+                    Source="Images/pm52.png"
+                    Visibility="{Binding PM1HaveTray}" />
+                <controls:WaferCtrl
+                    Canvas.Left="258"
+                    Canvas.Top="183"
+                    Width="60"
+                    Height="60"
+                    IsEnabled="{Binding EnableWaferClick}"
+                    WaferData="{Binding PM1Wafer}"
+                    IsRotary="{Binding IsPm1WaferRotary}"/>
+            </Canvas>
+            <Canvas Visibility="{Binding IsPM2Installed, Converter={StaticResource BoolVisibilityConverter}}">
+                <Image
+                    Canvas.Left="420"
+                    Canvas.Top="165"
+                    Width="96"
+                    Source="Images/pm52.png"
+                    Visibility="{Binding PM2HaveTray}" />
+                <controls:WaferCtrl
+                    Canvas.Left="439"
+                    Canvas.Top="184"
+                    Width="60"
+                    Height="60"
+                    IsEnabled="{Binding EnableWaferClick}"
+                    WaferData="{Binding PM2Wafer}" />
+            </Canvas>
+            <Canvas Visibility="{Binding IsUnLoadInstalled, Converter={StaticResource BoolVisibilityConverter}}">
+                <Image
+                    Canvas.Left="176"
+                    Canvas.Top="340"
+                    Width="95"
+                    Source="Images/pm52.png"
+                    Visibility="{Binding UnLoadHaveTray}" />
+                <controls:WaferCtrl
+                    Canvas.Left="191"
+                    Canvas.Top="358"
+                    Width="66"
+                    Height="60"
+                    IsEnabled="{Binding EnableWaferClick}"
+                    WaferData="{Binding UnLoadWafer}" />
+            </Canvas>
+            <Canvas Visibility="{Binding IsLLInstalled, Converter={StaticResource BoolVisibilityConverter}}">
+                <Image
+                    Canvas.Left="330"
+                    Canvas.Top="459"
+                    Width="95"
+                    Source="Images/pm52.png"
+                    Visibility="{Binding LoadLockHaveTray}" />
+                <controls:WaferCtrl
+                    Canvas.Left="348"
+                    Canvas.Top="477"
+                    Width="60"
+                    Height="60"
+                    IsEnabled="{Binding EnableWaferClick}"
+                    WaferData="{Binding LoadLockWafer}" />
+            </Canvas>
+        </Canvas>
+    </Grid>
+</UserControl>

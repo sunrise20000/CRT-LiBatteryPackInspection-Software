@@ -1,0 +1,315 @@
+﻿<UserControl x:Class="SicSimulator.Views.SimulatorIOPM2View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:control="clr-namespace:MECF.Framework.UI.Core.Control;assembly=MECF.Framework.UI.Core"
+             xmlns:ctrl="http://OpenSEMI.Ctrlib.com/presentation"  
+             xmlns:toolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+             xmlns:views="clr-namespace:SicSimulator.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="1900">
+    <UserControl.Resources>
+        <views:BoolBackgroundConverter x:Key="BoolBackgroundConverter" />
+
+        <SolidColorBrush x:Key="DataGrid_Cell_BD" Color="Gray" />
+
+        <Style x:Key="Lamp-Button" TargetType="{x:Type views:IoButton}">
+            <Setter Property="Width" Value="16" />
+            <Setter Property="Height" Value="16" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type views:IoButton}">
+                        <Grid>
+                            <ContentPresenter
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content=""
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+
+                            <Ellipse
+                                Fill="DarkGray"
+                                Stroke="Gray"
+                                StrokeThickness="2" />
+                            <Ellipse
+                                x:Name="Highlight"
+                                Fill="Lime"
+                                Stroke="Gray"
+                                StrokeThickness="2" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="Highlight" Property="Visibility" Value="Visible" />
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="Highlight" Property="Visibility" Value="Collapsed" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="False">
+                                <Setter TargetName="Highlight" Property="Opacity" Value="1" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </UserControl.Resources>
+    <Grid ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="470" />
+            <ColumnDefinition Width="470" />
+            <ColumnDefinition Width="495" />
+            <ColumnDefinition Width="490" />
+        </Grid.ColumnDefinitions>
+
+        <TabControl Margin="0,0,0,0">
+            <TabItem Header="DI">
+                <ListView
+                    Name="DIListView"
+                    Grid.Column="2"
+                    VerticalAlignment="Top"
+                    AlternationCount="2"
+                    FontSize="12"
+                    ItemsSource="{Binding Path=DIList}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn
+                                Width="35"
+                                DisplayMemberBinding="{Binding Path=Index}"
+                                Header="No" />
+
+                            <GridViewColumn
+                                Width="250"
+                                DisplayMemberBinding="{Binding Path=Name}"
+                                Header="Name" />
+
+                            <GridViewColumn 
+                                Width="50" 
+                                Header="Add" 
+                                DisplayMemberBinding="{Binding Path=Address}"/>
+
+                            <GridViewColumn Width="55" Header="Status">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid Width="35">
+                                            <views:IoButton
+                                                HorizontalAlignment="Center"
+                                                IsChecked="{Binding BoolValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                ON="{Binding Path=BoolValue}"
+                                                Style="{StaticResource Lamp-Button}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="40" Header="Hold">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox
+                                            x:Name="ckHold"
+                                            Width="25"
+                                            Height="25"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            HorizontalContentAlignment="Center"
+                                            VerticalContentAlignment="Center"
+                                            IsChecked="{Binding Path=HoldValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+        </TabControl>
+
+        <TabControl Grid.Column="1" Margin="0,0,0,0">
+            <TabItem Header="DO">
+                <ListView
+                    Name="DOListView"
+                    Grid.Column="2"
+                    VerticalAlignment="Top"
+                    AlternationCount="2"
+                    FontSize="12"
+                    ItemsSource="{Binding Path=DOList}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn
+                                Width="35"
+                                DisplayMemberBinding="{Binding Path=Index}"
+                                Header="No" />
+
+                            <GridViewColumn
+                                Width="250"
+                                DisplayMemberBinding="{Binding Path=Name}"
+                                Header="Name" />
+
+                            <GridViewColumn 
+                                Width="50" 
+                                Header="Add" 
+                                DisplayMemberBinding="{Binding Path=Address}"/>
+
+                            <GridViewColumn Width="55" Header="Status">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid Width="35">
+                                            <views:IoButton
+                                                HorizontalAlignment="Center"
+                                                IsChecked="{Binding BoolValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                ON="{Binding Path=BoolValue}"
+                                                Style="{StaticResource Lamp-Button}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn Width="40" Header="Hold">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox
+                                            x:Name="ckHold"
+                                            Width="25"
+                                            Height="25"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            HorizontalContentAlignment="Center"
+                                            VerticalContentAlignment="Center"
+                                            IsChecked="{Binding Path=HoldValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+        </TabControl>
+
+        <TabControl Grid.Column="2" Margin="0,0,0,0">
+            <TabItem Header="AI">
+                <ListView
+                    Name="AIListView"
+                    VerticalAlignment="Top"
+                    AlternationCount="2"
+                    FontSize="12"
+                    ItemsSource="{Binding Path=AIList}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn
+                                Width="35"
+                                DisplayMemberBinding="{Binding Path=Index}"
+                                Header="No" />
+
+                            <GridViewColumn
+                                Width="250"
+                                DisplayMemberBinding="{Binding Path=Name}"
+                                Header="Name" />
+
+                            <GridViewColumn 
+                                Width="50" 
+                                Header="Add" 
+                                DisplayMemberBinding="{Binding Path=Address}"/>
+
+                            <GridViewColumn Width="80" Header="Value">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Center"
+                                            Width="70"
+                                            Height="20"
+                                            Margin="0"
+                                            Padding="0"
+                                            Text="{Binding Path=FloatValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn Width="40" Header="Hold">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox
+                                            x:Name="ckHold"
+                                            Width="25"
+                                            Height="25"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            HorizontalContentAlignment="Center"
+                                            VerticalContentAlignment="Center"
+                                            IsChecked="{Binding Path=HoldValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+
+        </TabControl>
+
+        <TabControl Grid.Column="3" Margin="0,0,0,0">
+            <TabItem Header="AO">
+                <ListView
+                    Name="AOListView"
+                    VerticalAlignment="Top"
+                    AlternationCount="2"
+                    FontSize="12"
+                    ItemsSource="{Binding Path=AOList}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn
+                                Width="35"
+                                DisplayMemberBinding="{Binding Path=Index}"
+                                Header="No" />
+
+                            <GridViewColumn
+                                Width="250"
+                                DisplayMemberBinding="{Binding Path=Name}"
+                                Header="Name" />
+
+                            <GridViewColumn 
+                                Width="50" 
+                                Header="Add" 
+                                DisplayMemberBinding="{Binding Path=Address}"/>
+
+                            <GridViewColumn Width="80" Header="Value">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Center"
+                                            Width="70"
+                                            Height="20"
+                                            Margin="0"
+                                            Padding="0"
+                                            Text="{Binding Path=FloatValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn Width="40" Header="Hold">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox
+                                            x:Name="ckHold"
+                                            Width="25"
+                                            Height="25"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            HorizontalContentAlignment="Center"
+                                            VerticalContentAlignment="Center"
+                                            IsChecked="{Binding Path=HoldValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+
+        </TabControl>
+
+    </Grid>
+</UserControl>

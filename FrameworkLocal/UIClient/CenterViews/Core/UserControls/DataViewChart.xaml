@@ -1,0 +1,145 @@
+﻿<UserControl x:Class="MECF.Framework.UI.Client.CenterViews.Core.UserControls.DataViewChart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:s="http://schemas.abtsoftware.co.uk/scichart"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid>
+
+
+
+        <s:SciChartSurface 
+        x:Name="sciChart"
+        s:ThemeManager.Theme="ExpressionLight"
+        Padding="0,0,0,0" 
+        DebugWhyDoesntSciChartRender="False" 
+        BorderBrush="Gray"
+        Focusable="False"
+        IsTabStop="False"
+        RenderableSeries="{Binding RenderableSeries, 
+        RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}}"
+        IsEnabled="{Binding IsEnabled, 
+        RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}}">
+
+            <!-- Create an X Axis -->
+            <s:SciChartSurface.XAxis>
+                <s:DateTimeAxis 
+                DrawMinorTicks="False" 
+                DrawMinorGridLines="False" 
+                SubDayTextFormatting="yyyy-MM-dd HH:mm:ss" 
+                TitleFontSize="15"
+                FontSize="12"
+                TextFormatting="yyyy-MM-dd HH:mm" 
+                Id="DefaultAxisId"
+                TitleFontWeight="Normal" 
+                AutoRange="{Binding AutoRange,
+                RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}}"
+                VisibleRange="{Binding VisibleRangeTime,
+                RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}}"/>
+
+            </s:SciChartSurface.XAxis>
+
+            <!-- Create a Y Axis -->
+            <s:SciChartSurface.YAxis>
+                <s:NumericAxis 
+                DrawMinorTicks="False"  
+                DrawMinorGridLines="False" 
+                AxisAlignment="Right"
+                MinWidth="35" MaxWidth="35" 
+                HorizontalAlignment="Center"
+                CursorTextFormatting="0.######"
+                Id="DefaultAxisId" MajorDelta="0.1" 
+                MinorDelta="0.1" DrawMajorBands="False" Focusable="False" 
+                DrawLabels="True" DrawMajorGridLines="True" DrawMajorTicks="False"
+                AutoRange="{Binding AutoRange,
+                RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}}"
+                >
+
+                    <!--VisibleRange="{Binding VisibleRangeValue,
+                RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}}"-->
+                    <s:NumericAxis.GrowBy>
+                        <s:DoubleRange Min="0.1" Max="0.1"/>
+                    </s:NumericAxis.GrowBy>
+                </s:NumericAxis>
+            </s:SciChartSurface.YAxis>
+
+            <s:SciChartSurface.ChartModifier>
+                <s:ModifierGroup>
+                    <s:RubberBandXyZoomModifier
+                    IsEnabled="True" 
+                    IsXAxisOnly="False" 
+                    ZoomExtentsY="True" 
+                    IsAnimated="False" 
+                    ExecuteOn="MouseLeftButton" 
+                    ReceiveHandledEvents="True" />
+
+                    <s:CursorModifier 
+                    IsEnabled="True"  
+                    ShowTooltipOn="MouseOver"  
+                    ShowAxisLabels="True" 
+                    SourceMode="AllSeries" 
+                    ShowTooltip="False" />
+
+                    <s:LegendModifier 
+                    ShowLegend="False" 
+                    GetLegendDataFor="AllSeries"/>
+
+                    <s:ZoomExtentsModifier  
+                    XyDirection="XYDirection" 
+                    IsAnimated="False"
+                    ExecuteOn="MouseDoubleClick"/>
+
+                    <s:ZoomPanModifier 
+                    IsEnabled="True"  
+                    ClipModeX="None" 
+                    XyDirection="XYDirection" 
+                    ExecuteOn="MouseRightButton"
+                    ZoomExtentsY="False" />
+
+                    <s:RolloverModifier 
+                    UseInterpolation="False" 
+                    FontSize="9" 
+                    IsEnabled="True" 
+                    DrawVerticalLine="False" 
+                    FontFamily="Arial,SimSun"
+                    ShowAxisLabels="False" />
+
+                    <s:MouseWheelZoomModifier XyDirection="XYDirection"/>
+
+                </s:ModifierGroup>
+            </s:SciChartSurface.ChartModifier>
+
+        </s:SciChartSurface>
+
+        <Border 
+            x:Name="btnFixCurveToScreen"
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top"
+            Margin="10,10,0,0"
+            ToolTip="Fit to Screen"
+            Opacity="0.2" Cursor="Hand" 
+            Background="Transparent"
+            PreviewMouseUp="BtnFixCurveToScreen_OnPreviewMouseUp">
+            <Path 
+                Fill="Black"
+                Stretch="Uniform"
+                Data="M20,2H4C2.89,2 2,2.89 2,4V20C2,21.11 2.89,22 4,22H20C21.11,22 22,21.11 22,20V4C22,2.89 21.11,2 20,2M12,4L15,7H13V9H11V7H9M7,15L4,12L7,9V11H9V13H7M12,20L9,17H11V15H13V17H15M17,15V13H15V11H17V9L20,12" 
+                Width="35" 
+                Height="35" >
+            </Path>
+            <Border.Style>
+                <Style>
+                    <Setter Property="Border.Opacity" Value="0.3"/>
+                    <Style.Triggers>
+                        <Trigger Property="Border.IsMouseOver" Value="True">
+                            <Setter Property="Border.Opacity" Value="1" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+        </Border>
+    </Grid>
+</UserControl>

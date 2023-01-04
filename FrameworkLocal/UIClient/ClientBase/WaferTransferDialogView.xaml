@@ -1,0 +1,254 @@
+﻿<UserControl
+    x:Class="MECF.Framework.UI.Client.ClientBase.WaferTransferDialogView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="Transparent"
+    mc:Ignorable="d">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+        <Grid.Effect>
+            <DropShadowEffect
+                BlurRadius="6"
+                Opacity="0.6"
+                ShadowDepth="6" />
+        </Grid.Effect>
+        <Grid
+            Grid.Row="1"
+            Width="400"
+            Height="250"
+            Margin="0,0,10,0">
+            <Border
+                x:Name="DialogWindow"
+                Background="{DynamicResource Color_BG_Dialog}"
+                BorderBrush="{DynamicResource Color_BD_Dialog}"
+                BorderThickness="1,1,0,0">
+                <Border BorderBrush="{DynamicResource Color_BG_Dialog_Shadow}" BorderThickness="0,0,1,1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Rectangle
+                            Grid.RowSpan="2"
+                            Margin="5"
+                            Fill="{DynamicResource Color_BG_Dialog_Inner}" />
+                        <ScrollViewer
+                            Margin="20,20,20,0"
+                            CanContentScroll="True"
+                            HorizontalScrollBarVisibility="Disabled"
+                            VerticalScrollBarVisibility="Auto">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid VerticalAlignment="Top">
+                                    <Grid
+                                        x:Name="Information"
+                                        Width="40"
+                                        Height="40">
+                                        <Grid Width="30" Height="30">
+                                            <Ellipse Fill="#FF00628B">
+                                                <Ellipse.Effect>
+                                                    <DropShadowEffect
+                                                        BlurRadius="10"
+                                                        ShadowDepth="0"
+                                                        Color="White" />
+                                                </Ellipse.Effect>
+                                            </Ellipse>
+                                            <Ellipse Margin="3,3,3,1.5">
+                                                <Ellipse.Effect>
+                                                    <BlurEffect Radius="10" />
+                                                </Ellipse.Effect>
+                                                <Ellipse.Fill>
+                                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                        <GradientStop Offset="0" Color="#FF007BDA" />
+                                                        <GradientStop Offset="1" Color="#FF68C6D8" />
+                                                    </LinearGradientBrush>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                            <Ellipse Margin="5,2.5,5,12">
+                                                <Ellipse.Fill>
+                                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                        <GradientStop Offset="0.2" Color="White" />
+                                                        <GradientStop Offset="1" />
+                                                    </LinearGradientBrush>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                            <TextBlock
+                                                Margin="9.5,2.5,6.5,-2.5"
+                                                FontFamily="Monotype Corsiva"
+                                                FontSize="26.667"
+                                                FontWeight="Bold"
+                                                Foreground="#FF002368"
+                                                Text="i"
+                                                TextWrapping="Wrap">
+                                                <TextBlock.Effect>
+                                                    <DropShadowEffect ShadowDepth="0" Color="White" />
+                                                </TextBlock.Effect>
+                                            </TextBlock>
+                                        </Grid>
+                                        <!--<Grid.Style>
+                                            <Style>
+                                                <Setter Property="Grid.Visibility" Value="Collapsed"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding DialogType}" Value="INFO">
+                                                        <Setter Property="Grid.Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Grid.Style>-->
+                                    </Grid>
+                                </Grid>
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Margin="0,10,0,0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"
+                                    FontFamily="Arial"
+                                    FontSize="14"
+                                    Foreground="{DynamicResource FG_Black}"
+                                    Text="{Binding ConfirmText}"
+                                    TextWrapping="Wrap" />
+                                <StackPanel
+                                    Grid.Column="1"
+                                    VerticalAlignment="Bottom"
+                                    Orientation="Vertical">
+                                    <StackPanel
+                                        Grid.Column="1"
+                                        Margin="0,0,0,10"
+                                        Orientation="Horizontal"
+                                        Visibility="{Binding AlignerVisibility}">
+                                        <CheckBox
+                                            Width="120"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Bottom"
+                                            IsChecked="{Binding Conditions.IsPassAligner}"
+                                            IsEnabled="{Binding DisplayPassAlignerCondition}">
+                                            Auto align
+                                        </CheckBox>
+                                        <TextBlock
+                                            Width="80"
+                                            VerticalAlignment="Bottom"
+                                            Text="Aligner Angle" />
+                                        <TextBox
+                                            Width="50"
+                                            IsEnabled="{Binding DisplayPassAlignerCondition}"
+                                            Text="{Binding Conditions.AlignerAngle, Mode=TwoWay}" />
+                                        <TextBlock
+                                            Margin="5,0,0,0"
+                                            VerticalAlignment="Bottom"
+                                            Text="" />
+                                    </StackPanel>
+                                    <StackPanel
+                                        Grid.Column="1"
+                                        Margin="0,0,0,10"
+                                        Orientation="Horizontal"
+                                        Visibility="{Binding CoolingVisibility}">
+                                        <CheckBox
+                                            Width="120"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Bottom"
+                                            Content="Auto Cooling"
+                                            IsChecked="{Binding Conditions.IsPassCooling}"
+                                            IsEnabled="{Binding DisplayPassCoolingCondition}" />
+                                        <TextBlock
+                                            Width="80"
+                                            VerticalAlignment="Bottom"
+                                            Text="Cooling time" />
+                                        <TextBox
+                                            Width="50"
+                                            IsEnabled="{Binding DisplayPassCoolingCondition}"
+                                            Text="{Binding Conditions.CoolingTime, Mode=TwoWay}" />
+                                        <TextBlock
+                                            Margin="5,0,0,0"
+                                            VerticalAlignment="Bottom"
+                                            Text="s" />
+                                    </StackPanel>
+                                    <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
+                                        <Label Width="230" Content="Virtual Transfer(无动作)" />
+                                    </StackPanel>
+                                    <StackPanel
+                                        Grid.Column="1"
+                                        Margin="0,0,0,10"
+                                        Orientation="Horizontal">
+                                        <WrapPanel VerticalAlignment="Center">
+                                            <CheckBox
+                                                x:Name="ChkVirtualTransferWaferInfo"
+                                                Margin="8,0,13,0"
+                                                VerticalContentAlignment="Center"
+                                                Checked="ChkAuto_Checked"
+                                                IsChecked="{Binding Conditions.IsVirtualTransferWaferInfo}" />
+                                            <Label Content="WaferInfo" />
+                                            <CheckBox
+                                                x:Name="ChkVirtualTransferTrayInfo"
+                                                Margin="8,0,13,0"
+                                                VerticalContentAlignment="Center"
+                                                Checked="ChkAuto_Checked"
+                                                IsChecked="{Binding Conditions.IsVirtualTransferTrayInfo}" />
+                                            <Label Content="TrayInfo" />
+                                        </WrapPanel>
+                                    </StackPanel>
+                                    <StackPanel
+                                        Grid.Column="2"
+                                        Margin="0,0,0,10"
+                                        Orientation="Horizontal"
+                                        Visibility="{Binding BladeVisibility}">
+                                        <Label
+                                            Width="50"
+                                            Content="Blade:"
+                                            IsEnabled="{Binding DisplayBladeCondition}" />
+                                        <WrapPanel VerticalAlignment="Center" IsEnabled="{Binding DisplayBladeCondition}">
+                                            <RadioButton Content="Blade1" IsChecked="{Binding IsBlade1, Mode=TwoWay}" />
+                                            <RadioButton
+                                                Margin="8,0"
+                                                Content="Blade2"
+                                                IsChecked="{Binding IsBlade2, Mode=TwoWay}" />
+                                        </WrapPanel>
+                                    </StackPanel>
+                                </StackPanel>
+
+                            </Grid>
+                        </ScrollViewer>
+                        <StackPanel
+                            Grid.Row="3"
+                            Margin="0,0,0,20"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="25"
+                                HorizontalAlignment="Left"
+                                Command="{Binding TransferCommand}"
+                                Content="Transfer" />
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="5,0,0,0"
+                                HorizontalAlignment="Left"
+                                Command="{Binding CancelCommand}"
+                                Content="Cancel" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Border>
+        </Grid>
+        <Path
+            Grid.Row="2"
+            Width="8"
+            Margin="0,-2,40,0"
+            HorizontalAlignment="Right"
+            Data="M8,0 L8,4 4,0"
+            Fill="{DynamicResource Color_BG_Dialog}"
+            Stretch="Fill"
+            Stroke="{DynamicResource Color_BG_Dialog_Shadow}" />
+    </Grid>
+</UserControl>

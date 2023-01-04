@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TMUnitAlarmDefine>
+	<Alarm ID="525" DI="DI_TMLidClosed" Description="TM Lid Open Alarm" GlobalDescription_en="TM Lid Open Alarm"  GlobalDescription_zh="TM Lid Open Alarm" Level="Alarm" AlarmValue="0"/>
+	<Alarm ID="526" DI="DI_LLLidClosed"  Description="LoadLock Lid Open Alarm" GlobalDescription_en="LoadLock Lid Open Alarm"  GlobalDescription_zh="LoadLock Lid Open Alarm" Level="Alarm" AlarmValue="0"/>
+	<Alarm ID="527" DI="DI_BufferLidClosed"  Description="Buffer Lid Open Alarm" GlobalDescription_en="Buffer Lid Open Alarm"  GlobalDescription_zh="Buffer Lid Open Alarm" Level="Alarm" AlarmValue="0"/>
+	
+</TMUnitAlarmDefine>

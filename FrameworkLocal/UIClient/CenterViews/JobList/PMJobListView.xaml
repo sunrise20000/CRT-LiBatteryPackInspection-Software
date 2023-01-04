@@ -1,0 +1,131 @@
+﻿<UserControl x:Class="MECF.Framework.UI.Client.CenterViews.JobList.PMJobListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MECF.Framework.UI.Client.CenterViews.JobList"
+             xmlns:cal="clr-namespace:Caliburn.Micro"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+              xmlns:wfi ="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" 
+             xmlns:wf ="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+             xmlns:interop="clr-namespace:Microsoft.DwayneNeed.Interop;assembly=Microsoft.DwayneNeed"
+             mc:Ignorable="d"              
+             d:DesignHeight="750"
+             d:DesignWidth="1920">
+    <TabControl>
+        <TabItem Header="Runtime Info">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120"/>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid  HorizontalAlignment="Left" Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="120"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title}" Padding="5,1">
+                        <TextBlock Text="StartTIme" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                    </Border>
+
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content}"  Grid.Column="1" Padding="5,1">
+                        <wfi:WindowsFormsHost Margin="0,0,0,0" FontSize="14" FontFamily="Arial" Width="170" Height="22" VerticalAlignment="Center">
+                            <wf:DateTimePicker x:Name="wfStartTime" Value="2011-8-1" CustomFormat="yyyy/MM/dd HH:mm:ss" Format="Custom"></wf:DateTimePicker>
+                        </wfi:WindowsFormsHost>
+                    </Border>
+
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title}" Grid.Row="1" Padding="5,1">
+                        <TextBlock Text="EndTime:" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                    </Border>
+
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content}"  Grid.Row="1" Grid.Column="1" Padding="5,1">
+                        <wfi:WindowsFormsHost Margin="0,0,0,0" FontSize="14" FontFamily="Arial" Width="170" Height="22" VerticalAlignment="Center">
+                            <wf:DateTimePicker x:Name="wfEndTime" Value="2011-8-1" CustomFormat="yyyy/MM/dd HH:mm:ss" Format="Custom"></wf:DateTimePicker>
+                        </wfi:WindowsFormsHost>
+                    </Border>
+
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content}" Grid.Column="2" Grid.RowSpan="2" Padding="5,1">
+                        <Button Content="Query" Width="80" Height="50" HorizontalAlignment="Center" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="QueryData">
+                                    </cal:ActionMessage>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+
+                </Grid>
+
+                <DataGrid Grid.Row="1" AlternationCount="2" HorizontalAlignment="Left" CanUserAddRows="False" AutoGenerateColumns="False" RowHeaderWidth="0"
+                  VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling"
+                  ItemsSource="{Binding JobListData}"  Margin="0,5,0,0" >
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="RecipeName" Width="300" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding RecipeName}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="LotName" Width="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding LotName}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="Status" Width="120">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Status}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="StartTime" Width="180">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding StartTime}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="ProcessBeginTime" Width="180">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ProcessBeginTime}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="ProcessEndTime" Width="180">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ProcessEndTime}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="EndTime" Width="180">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding EndTime}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</UserControl>

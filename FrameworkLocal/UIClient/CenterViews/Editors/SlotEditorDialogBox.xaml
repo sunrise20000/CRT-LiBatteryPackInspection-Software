@@ -1,0 +1,162 @@
+﻿<Window x:Class="MECF.Framework.UI.Client.CenterViews.Editors.SlotEditorDialogBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Width="450" Height="200" WindowStyle="ToolWindow"
+        WindowStartupLocation="CenterScreen" 
+        Title="{Binding DeviceTitle}">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Height" Value="23" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Width" Value="50" />
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Arial,SimSun" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="Height" Value="25" />
+        </Style>        
+    </Window.Resources>
+
+    <Border
+        Background="#FFDAE5F1"
+        BorderBrush="Gray"
+        BorderThickness="0,1,0,0">
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Border
+                Background="White"
+                BorderBrush="#FF505050"
+                BorderThickness="1">
+
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="400">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="80"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        x:Name="txtTitleWaferID"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        FontFamily="Arial"
+                        FontSize="12"
+                        Foreground="Black"
+                        Text="Wafer ID."
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Center"
+                        Margin="0,0,10,0" />
+                    <TextBox x:Name="txtWaferID"
+                             Grid.Row="0"
+                             Grid.Column="1"
+                             MaxLength="30"
+                             Margin="0,5,0,0" 
+                             Height="25"/>
+
+                    <TextBlock
+                        x:Name="txtTitleRecipe"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        FontFamily="Arial"
+                        FontSize="12"
+                        Foreground="Black"
+                        Text="Recipe Name:"
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Center"
+                        Margin="0,0,10,0" />
+                    <TextBox x:Name="txtRecipeName"
+                             Grid.Row="1"
+                             Grid.Column="1"
+                             IsReadOnly="True" Margin="0,5,0,5" Height="25"/>
+                    <Button 
+                        x:Name="btnSelectRecipe"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Content="Select" 
+                        Click="RecipeSelect_Click" Margin="10,0,0,0">
+                    </Button>
+
+                    <TextBlock
+                        x:Name="txtTitleTrayProcCount"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        FontFamily="Arial"
+                        FontSize="12"
+                        Foreground="Black"
+                        Text="Tray Process Count:"
+                        VerticalAlignment="Center"
+                        Margin="0,0,10,0" 
+                        HorizontalAlignment="Right" />
+                    <TextBox x:Name="txtTrayProcessCount"
+                             Grid.Row="2"
+                             Grid.Column="1" Height="25" />
+
+
+                </Grid>
+            </Border>
+            <StackPanel
+                Grid.Row="1"
+                Margin="0,10,0,0"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+                <Button
+                    Width="90"
+                    Height="30"
+                    Content="OK" Click="ButtonSet_Click" IsDefault="True">
+                </Button>
+                <Button
+                    Width="90"
+                    Height="30"
+                    Margin="10,0,0,0"
+                    Content="Cancel" Click="ButtonCancel_Click">
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+    
+    
+    <!--<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="1" Content="TrayPrcoessCount" />
+        <Label Grid.Row="1" Grid.Column="1" Content="RecipeName" />
+        <Label Grid.Row="2" Grid.Column="1" Content="Max" />
+        <Label Grid.Row="3" Grid.Column="1" Content="Default" />
+        <Label Grid.Row="4" Grid.Column="1" Content="Feedback" />
+        <Label Grid.Row="5" Grid.Column="1" Content="SetPoint" />
+
+        <Label Grid.Row="0" Grid.Column="2" Content="{Binding Path=DeviceName}" Width="150" Height="28" HorizontalAlignment="Left" BorderThickness="0,0,0,1" BorderBrush="Black" FontSize="13" FontFamily="Arial,SimSun" VerticalContentAlignment="Center" />
+        <Label Grid.Row="1" Grid.Column="2" Content="{Binding Path=Unit}" Width="150" BorderThickness="0,0,0,1" BorderBrush="Black" FontSize="13" FontFamily="Arial,SimSun" Height="28" VerticalContentAlignment="Center" />
+        <Label Grid.Row="2" Grid.Column="2" Content="{Binding Path=MaxValue}" ContentStringFormat="F1" Width="150" BorderThickness="0,0,0,1" BorderBrush="Black" FontSize="13" FontFamily="Arial,SimSun" Height="28" VerticalContentAlignment="Center" />
+        <Label Grid.Row="3" Grid.Column="2" Content="{Binding Path=DefaultValue}" Width="150" BorderThickness="0,0,0,1" BorderBrush="Black" FontSize="13" FontFamily="Arial,SimSun" Height="28" VerticalContentAlignment="Center" />
+        <Label Grid.Row="4" Grid.Column="2" Content="{Binding Path=RealValue}" Width="150" BorderThickness="0,0,0,1" BorderBrush="Black" FontSize="13" FontFamily="Arial,SimSun" Height="28" VerticalContentAlignment="Center" />
+        <TextBox Grid.Row="5" Grid.Column="2" x:Name="inputBox" BorderBrush="Green" BorderThickness="0,0,0,1" Style="{StaticResource textBoxInError}"  TextChanged="InputTextBox_TextChanged" Width="150" HorizontalAlignment="Left" FontSize="13" FontFamily="Arial,SimSun" Height="30" VerticalContentAlignment="Center" />
+        <Button Grid.Row="6" Grid.ColumnSpan="2"  Content="Set" x:Name="buttonSet" Click="ButtonSet_Click" Width="80" Height="26" VerticalAlignment="Top" Grid.Column="1" Margin="5,3,0,0" />
+        <Button Grid.Row="6" Grid.Column="2" Content="Cancel" Click="ButtonCancel_Click" Width="80" Height="26" VerticalAlignment="Top" Margin="44,3,0,0" />
+    </Grid>-->
+</Window>

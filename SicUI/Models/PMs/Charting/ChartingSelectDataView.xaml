@@ -1,0 +1,219 @@
+﻿<UserControl x:Class="SicUI.Models.PMs.Charting.ChartingSelectDataView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ctrl="http://OpenSEMI.Ctrlib.com/presentation"
+             xmlns:wfi ="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" 
+             xmlns:wf ="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+             xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:micro="http://www.caliburn.org"
+             xmlns:local="clr-namespace:SicUI.Models.PMs"
+             mc:Ignorable="d" 
+             d:DesignHeight="650" d:DesignWidth="1300" Background="#91b0cd">
+    <Grid Height="650" Width="1300">
+        <Border BorderBrush="Gray" BorderThickness="1" Background="White" Padding="10">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="5" Color="#3F000000" ShadowDepth="5"/>
+            </Border.Effect>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120"/>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid >
+                    <Grid.RowDefinitions >
+                        <RowDefinition Height="10"/>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition Height="5" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="180"/>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Row="1" Grid.Column="0" BorderBrush="{DynamicResource Table_BD}" BorderThickness="1" Background="{DynamicResource Table_BG_Title}" Padding="5,1" Height="40" Width="70">
+                        <TextBlock Text="Start" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" ></TextBlock>
+                    </Border>
+                    <Border Grid.Row="1" Grid.Column="1" BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content}" Padding="5,1">
+                        <wfi:WindowsFormsHost Margin="5,0,0,0" FontSize="14" FontFamily="Arial" Width="170" Height="22" VerticalAlignment="Center">
+                            <wf:DateTimePicker x:Name="wfTimeFrom" Value="2011-8-1" CustomFormat="yyyy/MM/dd HH:mm:ss" Format="Custom"></wf:DateTimePicker>
+                        </wfi:WindowsFormsHost>
+                    </Border>
+
+                    <Border Grid.Row="2" Grid.Column="0" BorderBrush="{DynamicResource Table_BD}" BorderThickness="1" Background="{DynamicResource Table_BG_Title}" Padding="5,1" Height="40" Width="70">
+                        <TextBlock Text="End" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                    </Border>
+                    <Border Grid.Row="2" Grid.Column="1" BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content}" Padding="5,1">
+                        <wfi:WindowsFormsHost Margin="5,0,0,0" FontSize="14" FontFamily="Arial" Width="170" Height="22" VerticalAlignment="Center">
+                            <wf:DateTimePicker x:Name="wfTimeTo" Value="2011-8-1" CustomFormat="yyyy/MM/dd HH:mm:ss" Format="Custom"></wf:DateTimePicker>
+                        </wfi:WindowsFormsHost>
+                    </Border>
+
+                    <Border Grid.Row="1" Grid.Column="2" BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Title}" Padding="5,1">
+                        <TextBlock Text="Chamber" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                    </Border>
+                    <Border Grid.Row="1" Grid.Column="3" BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content}" Padding="5,1">
+                        <toolkit:CheckComboBox x:Name="tbLoadPort" ItemsSource="{Binding SourcePM}" Width="150" FontFamily="Arial" FontSize="14" Height="30" Margin="5,0,0,0"
+                                               HorizontalAlignment="Center" 
+                                               VerticalAlignment="Center" 
+                                               SelectedValue="{Binding SelectedValuePM}" >
+                        </toolkit:CheckComboBox>
+                    </Border>
+
+                    <Border Grid.Row="2" Grid.Column="2" BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Title}" Padding="5,1">
+                        <TextBlock Text="Recipe" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                    </Border>
+
+                    <Border Grid.Row="2" Grid.Column="3" BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content}" Padding="5,1">
+                        <TextBox Text="{Binding RecipeName}" Width="Auto"></TextBox>
+                    </Border>
+
+                    <Border Grid.Row="1" Grid.Column="4" BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Title}" Padding="5,1">
+                        <TextBlock Text="Lot" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                    </Border>
+
+                    <Border Grid.Row="1" Grid.Column="5" BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content}" Padding="5,1">
+                        <TextBox Text="{Binding LotID}" Width="Auto"></TextBox>
+                    </Border>
+
+                    <Border Grid.Row="2" Grid.Column="4" BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Title}" Padding="5,1">
+                        <TextBlock Text="Slot" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                    </Border>
+
+                    <Border Grid.Row="2" Grid.Column="5" BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content}" Padding="5,1">
+                        <TextBox Text="{Binding SourceSLot}" Width="Auto"></TextBox>
+                    </Border>
+
+                    <Button Margin="5,0,0,0"  Grid.Row="1"  Grid.Column="6" Grid.RowSpan="2" Content="Search" Width="80" Height="80">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <micro:ActionMessage MethodName="SearchRecipe">
+                                </micro:ActionMessage>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+
+                </Grid>
+
+                <DataGrid Grid.Column="0" Grid.Row="1"  Margin="5"  HorizontalAlignment="Left" BorderThickness="1"
+                      AlternationCount="2" ColumnHeaderHeight="30" 
+                      ItemsSource="{Binding Recipes}" AutoGenerateColumns="False" 
+                      CanUserAddRows="False" CanUserResizeRows="False" CanUserResizeColumns="True" FontFamily="Arial" FontSize="12">
+                    <DataGrid.Columns>
+
+                        <DataGridTemplateColumn Header="Recipe Name" MinWidth="180">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Recipe}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Module Name" MinWidth="100" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Chamber}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Start Time" MinWidth="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding StartTime}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="End Time" MinWidth="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding EndTime}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Result" MinWidth="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Status}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Lot Name" MinWidth="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding LotID}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Slot" MinWidth="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding SlotID}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="" MinWidth="60">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Width="120">
+                            <DataGridTemplateColumn.HeaderTemplate >
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center"  >
+                                        <CheckBox VerticalAlignment="Center">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="Click">
+                                                    <micro:ActionMessage MethodName="CheckAllRecipe">
+                                                    </micro:ActionMessage>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </CheckBox>
+                                        <Button Content="Add" Margin="5,0">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="Click">
+                                                    <micro:ActionMessage MethodName="Add">
+                                                    </micro:ActionMessage>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+
+                                    <CheckBox IsChecked="{Binding Selected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <micro:ActionMessage MethodName="CheckRecipe">
+                                                    <micro:Parameter Value="{Binding }"/>
+                                                </micro:ActionMessage>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </CheckBox>
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

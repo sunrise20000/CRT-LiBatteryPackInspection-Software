@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<STEvents>
+  <STEvent name ="PM1.IsAlarm"                  Red="On" Yellow="Off" Green="Off" Blue="Off"  Buzzer="On"/>
+  <STEvent name ="PM2.IsAlarm"                  Red="On" Yellow="Off" Green="Off" Blue="Off"  Buzzer="On"/>
+  <STEvent name ="TM.IsAlarm"                  Red="On" Yellow="Off" Green="Off" Blue="Off"  Buzzer="On"/>
+  <STEvent name ="LoadLock.IsAlarm"                  Red="On" Yellow="Off" Green="Off" Blue="Off"  Buzzer="On"/>
+  <STEvent name ="UnLoad.IsAlarm"                  Red="On" Yellow="Off" Green="Off" Blue="Off"  Buzzer="On"/>
+  <STEvent name ="EFEM.IsAlarm"                  Red="On" Yellow="Off" Green="Off" Blue="Off"  Buzzer="On"/>
+  <STEvent name ="Aligner.IsAlarm"                  Red="On" Yellow="Off" Green="Off" Blue="Off"  Buzzer="On"/>
+
+  <STEvent name ="PM1.IsWarning"                  Red="Off" Yellow="On" Green="Off" Blue="Off"  Buzzer="Blinking"/>
+  <STEvent name ="TM.IsWarning"                  Red="Off" Yellow="On" Green="Off" Blue="Off"  Buzzer="Blinking"/>
+
+  <STEvent name ="PM1.IsIdle"                  Red="Off" Yellow="Off" Green="On" Blue="Off"  Buzzer="Off"/>
+  <STEvent name ="LoadLock.JobDone"                  Red="Off" Yellow="Off" Green="On" Blue="Off"  Buzzer="On"/>
+
+</STEvents>
+
+
+

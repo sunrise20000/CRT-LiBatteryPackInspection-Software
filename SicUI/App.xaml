@@ -1,0 +1,54 @@
+﻿<Application
+    x:Class="SicUI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sicConverter="clr-namespace:Sicentury.Core.Converters;assembly=Sicentury.Core"
+    xmlns:local="clr-namespace:SicUI.Client">
+
+    <Application.Resources>
+
+
+        <ResourceDictionary>
+
+            
+            <sicConverter:DummyConverter x:Key="dummyConverter"/>
+            <sicConverter:ReversBoolValueConverter x:Key="reversBoolValueConverter"/>
+
+            <SolidColorBrush x:Key="MessagesErrorForegroundBrush" Color="Red" />
+            <SolidColorBrush x:Key="MessagesWarningForegroundBrush" Color="#FF8C00" />
+            <SolidColorBrush x:Key="MessagesInformationForegroundBrush" Color="Black" />
+            <SolidColorBrush x:Key="MessagesInformationBackgroundBrush" Color="#FFC8E8FF" />
+            <SolidColorBrush x:Key="MessagesHorizontalGridLinesBrush" Color="LightGray" />
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MECF.Framework.UI.Client;component/Themes/SeaBlue/TextBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MECF.Framework.UI.Client;component/Themes/SeaBlue/Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MECF.Framework.UI.Client;component/Themes/SeaBlue/ComboBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MECF.Framework.UI.Client;component/Themes/SeaBlue/MenuItem.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MECF.Framework.UI.Client;component/Themes/SeaBlue/Listview.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MECF.Framework.UI.Client;component/Themes/SeaBlue/DataGrid.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MECF.Framework.UI.Client;component/Themes/SeaBlue/Tab.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MECF.Framework.UI.Client;component/Themes/SeaBlue/ListBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MECF.Framework.UI.Client;component/Themes/SeaBlue/TreeView.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MECF.Framework.UI.Client;component/Themes/SeaBlue/GroupBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MECF.Framework.UI.Client;component/Themes/SeaBlue/Scrollbar.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MECF.Framework.UI.Client;component/Themes/SeaBlue/Expander.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MECF.Framework.UI.Client;component/Themes/SeaBlue/Skin.xaml" />
+                
+                <ResourceDictionary>
+                    <local:Bootstrapper x:Key="start" />
+                </ResourceDictionary>
+
+                <ResourceDictionary Source="pack://application:,,,/SicUI;component/Themes/Generic.xaml" />
+
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/materialdesigntheme.menu.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+
+        </ResourceDictionary>
+
+
+
+    </Application.Resources>
+</Application>

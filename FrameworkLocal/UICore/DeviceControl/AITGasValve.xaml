@@ -1,0 +1,55 @@
+﻿<UserControl
+    x:Class="Aitex.Core.UI.DeviceControl.AITGasValve"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Width="32"
+    Height="32"
+    Loaded="AITGasValve_OnLoaded"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <Storyboard x:Key="OpenValveStoryBoard">
+            <DoubleAnimation
+                FillBehavior="HoldEnd"
+                Storyboard.TargetName="rotateTransform"
+                Storyboard.TargetProperty="Angle"
+                To="90"
+                Duration="0:0:0.3" />
+            <DoubleAnimation
+                FillBehavior="HoldEnd"
+                Storyboard.TargetName="imgValveClose"
+                Storyboard.TargetProperty="Opacity"
+                To="0"
+                Duration="0:0:0.3" />
+        </Storyboard>
+        <Storyboard x:Key="CloseValveStoryBoard">
+            <DoubleAnimation
+                FillBehavior="HoldEnd"
+                Storyboard.TargetName="rotateTransform"
+                Storyboard.TargetProperty="Angle"
+                To="0"
+                Duration="0:0:0.3" />
+            <DoubleAnimation
+                FillBehavior="HoldEnd"
+                Storyboard.TargetName="imgValveClose"
+                Storyboard.TargetProperty="Opacity"
+                To="100"
+                Duration="0:0:0.3" />
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.RenderTransform>
+        <RotateTransform x:Name="rotateTransform" CenterX="16" CenterY="16" />
+    </UserControl.RenderTransform>
+    <Canvas>
+        <Image Name="imgValveOpen" />
+        <Image Name="imgValveClose">
+            <Image.ContextMenu>
+                <ContextMenu Visibility="{Binding MenuVisibility}">
+                    <MenuItem Click="OpenValve" Header="Open Valve" />
+                    <MenuItem Click="CloseValve" Header="Close Valve" />
+                </ContextMenu>
+            </Image.ContextMenu>
+        </Image>
+    </Canvas>
+</UserControl>

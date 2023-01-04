@@ -1,0 +1,44 @@
+﻿<UserControl
+    x:Class="Aitex.Core.UI.DeviceControl.AITPressureMeter"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="self"
+    d:DesignHeight="24"
+    d:DesignWidth="45"
+    BorderThickness="1"
+    mc:Ignorable="d">
+    <Grid
+        Cursor="Hand"
+        MouseEnter="Grid_MouseEnter"
+        Opacity="1">
+        <Border
+            x:Name="bdRectangle"
+            Background="Transparent"
+            BorderThickness="1"
+            Style="{x:Null}">
+            <Rectangle
+                Name="rectBkground"
+                Margin="1"
+                Fill="CadetBlue"
+                Opacity="1"
+                RadiusX="2"
+                RadiusY="2"
+                Stroke="#373737"
+                StrokeThickness="1"
+                Style="{x:Null}" />
+        </Border>
+
+        <Label
+            x:Name="labelValue"
+            Margin="0,-2,-2,-2"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            Content="{Binding ElementName=self, Path=DeviceData.Display}"
+            ContentStringFormat="F0"
+            FontFamily="Verdana"
+            FontSize="{Binding ElementName=self, Path=FontSizeSetting}"
+            Foreground="{Binding ElementName=self, Path=ForegroundSetting}" />
+    </Grid>
+</UserControl>

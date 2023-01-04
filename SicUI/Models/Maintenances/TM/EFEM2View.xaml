@@ -1,0 +1,2026 @@
+﻿<UserControl
+    x:Class="SicUI.Models.Maintenances.TM.EFEM2View"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cal="http://www.caliburn.org"
+    xmlns:controls="clr-namespace:SicUI.Controls.Mainframe"
+    xmlns:ctrl="http://OpenSEMI.Ctrlib.com/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:deviceControl="clr-namespace:Aitex.Core.UI.DeviceControl;assembly=MECF.Framework.UI.Core"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:local="clr-namespace:SicUI.Models.Maintenances.TM"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:unitControls="clr-namespace:MECF.Framework.UI.Client.Ctrlib.UnitControls;assembly=MECF.Framework.UI.Client"
+    d:DesignHeight="800"
+    d:DesignWidth="1980"
+    mc:Ignorable="d">
+    <ScrollViewer
+        HorizontalScrollBarVisibility="Auto"
+        IsEnabled="{Binding IsPermission}"
+        VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="330" />
+                <ColumnDefinition Width="1100" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="520" />
+                <RowDefinition Height="240" />
+            </Grid.RowDefinitions>
+
+            <!--  左侧Casstte  -->
+            <TabControl
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                Margin="20,0,0,30"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                FontSize="12">
+                <TabItem Header="Wafer Cassette">
+                    <StackPanel
+                        Margin="10,5"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Orientation="Horizontal">
+                        <StackPanel>
+                            <unitControls:FOUPFrontView
+                                Margin="0,0,0,0"
+                                UnitData="{Binding CassAL}"
+                                Visibility="{Binding IsLP1Installed, Converter={StaticResource BoolVisibilityConverter}}" />
+                        </StackPanel>
+                        <StackPanel Margin="5,0,0,0">
+                            <unitControls:FOUPFrontView
+                                Margin="0,0,0,0"
+                                UnitData="{Binding CassAR}"
+                                Visibility="{Binding IsLP1Installed, Converter={StaticResource BoolVisibilityConverter}}" />
+                        </StackPanel>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+
+            <!--  显示EFEM控件  -->
+            <Grid Grid.Column="1">
+                <controls:EFEMControl Margin="50,80,0,0" />
+                <StackPanel Margin="840,20,0,0">
+                    <TabControl
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Stretch"
+                        FontSize="12">
+                        <TabItem Header="Tray Cassette">
+                            <unitControls:FOUPFrontView UnitData="{Binding CassBL}" />
+                        </TabItem>
+                    </TabControl>
+                </StackPanel>
+
+                <Canvas>
+                    <TextBlock
+                        Canvas.Left="228"
+                        Canvas.Top="96"
+                        FontFamily="Arial"
+                        FontSize="18"
+                        Text="UnLoad"
+                        Visibility="{Binding IsBufferInstalled, Converter={StaticResource BoolVisibilityConverter}}" />
+                    <TextBlock
+                        Canvas.Left="77"
+                        Canvas.Top="270"
+                        FontFamily="Arial"
+                        FontSize="18"
+                        Text="Aliger"
+                        Visibility="{Binding IsBufferInstalled, Converter={StaticResource BoolVisibilityConverter}}" />
+                    <TextBlock
+                        Canvas.Left="412"
+                        Canvas.Top="334"
+                        FontFamily="Arial"
+                        FontSize="18"
+                        Text="Load"
+                        Visibility="{Binding IsBufferInstalled, Converter={StaticResource BoolVisibilityConverter}}" />
+                    <TextBlock
+                        Canvas.Left="388"
+                        Canvas.Top="430"
+                        FontFamily="Arial"
+                        FontSize="18"
+                        Text="CassAR"
+                        Visibility="{Binding IsBufferInstalled, Converter={StaticResource BoolVisibilityConverter}}" />
+                    <TextBlock
+                        Canvas.Left="164"
+                        Canvas.Top="430"
+                        FontFamily="Arial"
+                        FontSize="18"
+                        Text="CassAL"
+                        Visibility="{Binding IsBufferInstalled, Converter={StaticResource BoolVisibilityConverter}}" />
+                    <TextBlock
+                        Canvas.Left="590"
+                        Canvas.Top="430"
+                        FontFamily="Arial"
+                        FontSize="18"
+                        Text="CassB"
+                        Visibility="{Binding IsBufferInstalled, Converter={StaticResource BoolVisibilityConverter}}" />
+                </Canvas>
+            </Grid>
+
+            <!--  右侧操作栏  -->
+            <StackPanel
+                Grid.RowSpan="1"
+                Grid.Column="2"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top">
+                <Grid Width="420" Margin="0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Row="0"
+                        Grid.ColumnSpan="4"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="EFEM"
+                        Style="{DynamicResource Table_TitleStyle}" />
+                    <Border
+                        Grid.Row="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Status"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="{Binding EFEMStatus}"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Padding="0,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,0,1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="Online">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Online">
+                                            <cal:Parameter Value="EFEM" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Padding="0,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="Offline">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Offline">
+                                            <cal:Parameter Value="EFEM" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Padding="0,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,0,1" />
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Padding="0,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,0,1">
+                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Content="Home">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Home">
+                                            <cal:Parameter Value="EFEM" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Padding="0,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,0,1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="Abort">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Abort">
+                                            <cal:Parameter Value="EFEM" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="3"
+                        Padding="0,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="Reset">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Reset">
+                                            <cal:Parameter Value="EFEM" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+
+                <Grid Width="420" Margin="0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Row="0"
+                        Grid.ColumnSpan="4"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="WaferRobot"
+                        Style="{DynamicResource Table_TitleStyle}" />
+                    <Border
+                        Grid.Row="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Status"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Module"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="3"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Slot"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="{Binding WaferRobotState}"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Padding="0,0,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <Button
+                            Width="80"
+                            Height="25"
+                            Margin="10,0"
+                            Content="GetError"
+                            IsEnabled="{Binding IsWaferRobotEnableManualOperation}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="RobotGetError">
+                                        <cal:Parameter Value="WaferRobot" />
+                                    </cal:ActionMessage>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Padding="0,0,1,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,1,1" >
+                        <Button
+                            Width="80"
+                            Height="25"
+                            Margin="5 0 0 0"
+                            Content="Reset">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="Reset">
+                                        <cal:Parameter Value="WaferRobot" />
+                                    </cal:ActionMessage>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <ComboBox
+                            Width="90"
+                            Height="25"
+                            ItemsSource="{Binding WaferModules}"
+                            SelectedItem="{Binding WaferSelectedModule}" />
+                    </Border>
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <ComboBox
+                            Width="90"
+                            Height="25"
+                            Margin="2.5,2"
+                            ItemsSource="{Binding WaferSlots}"
+                            SelectedItem="{Binding WaferSelectedSlot}" />
+                    </Border>
+
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Padding="0,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,0,1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="Home"
+                                IsEnabled="{Binding IsWaferRobotEnableManualOperation}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Home">
+                                            <cal:Parameter Value="WaferRobot" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="3"
+                        Padding="0,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <Button
+                            Width="80"
+                            Height="24"
+                            Margin="5,0,0,0"
+                            Content="Map"
+                            IsEnabled="{Binding IsWaferRobotEnableManualOperation}"
+                            cal:Message.Attach="WaferRobotMapRoutine()"/>
+                    </Border>
+
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="2"
+                        Padding="0,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,0,1">
+                        <Button
+                            Width="80"
+                            Height="24"
+                            Margin="5,0,0,0"
+                            Content="Pick"
+                            IsEnabled="{Binding IsWaferRobotEnableManualOperation}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="WaferRobotPickRoutine" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="3"
+                        Padding="0,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <Button
+                            Width="80"
+                            Height="24"
+                            Margin="5,0,0,0"
+                            Content="Place"
+                            IsEnabled="{Binding IsWaferRobotEnableManualOperation}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="WaferRobotPlaceRoutine" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+
+                    </Border>
+                </Grid>
+
+                <Grid Width="420" Margin="0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Row="0"
+                        Grid.ColumnSpan="4"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="TrayRobot"
+                        Style="{DynamicResource Table_TitleStyle}" />
+                    <Border
+                        Grid.Row="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Status"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Module"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="3"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Slot"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="{Binding TrayRobotState}"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Padding="0,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <Button
+                            Width="80"
+                            Height="25"
+                            Margin="10,0"
+                            Content="GetError"
+                            IsEnabled="{Binding IsTrayRobotEnableManualOperation}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="RobotGetError">
+                                        <cal:Parameter Value="TrayRobot" />
+                                    </cal:ActionMessage>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Padding="0,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,1,1">
+                        <Button
+                            Width="80"
+                            Height="25"
+                            Margin="5 0 0 0"
+                            Content="Reset">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="Reset">
+                                        <cal:Parameter Value="TrayRobot" />
+                                    </cal:ActionMessage>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <ComboBox
+                            Width="90"
+                            Height="25"
+                            ItemsSource="{Binding TrayModules}"
+                            SelectedItem="{Binding TraySelectedModule}" />
+                    </Border>
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <ComboBox
+                            Width="90"
+                            Height="25"
+                            Margin="2.5,2"
+                            ItemsSource="{Binding TraySlots}"
+                            SelectedItem="{Binding TraySelectedSlot}" />
+                    </Border>
+
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Padding="0,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,0,1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="Home"
+                                IsEnabled="{Binding IsTrayRobotEnableManualOperation}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Home">
+                                            <cal:Parameter Value="TrayRobot" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="3"
+                        Padding="0,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <Button
+                            Width="80"
+                            Height="24"
+                            Margin="5,0,0,0"
+                            Content="Map"
+                            IsEnabled="{Binding IsTrayRobotEnableManualOperation}"
+                            cal:Message.Attach="TrayRobotMapRoutine()"/>
+                    </Border>
+
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="2"
+                        Padding="0,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,0,1">
+                        <Button
+                            Width="80"
+                            Height="24"
+                            Margin="5,0,0,0"
+                            Content="Pick"
+                            IsEnabled="{Binding IsTrayRobotEnableManualOperation}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="TrayRobotPickRoutine" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="3"
+                        Padding="0,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <Button
+                            Width="80"
+                            Height="24"
+                            Margin="5,0,0,0"
+                            Content="Place"
+                            IsEnabled="{Binding IsTrayRobotEnableManualOperation}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="TrayRobotPlaceRoutine" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+
+                    </Border>
+                </Grid>
+
+            </StackPanel>
+
+            <!--  下方Load和UnLoad  -->
+
+            <StackPanel
+                Grid.Row="1"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Margin="30,-30,0,0"
+                HorizontalAlignment="Left"
+                Orientation="Horizontal">
+                <Grid Margin="10,0" Visibility="{Binding IsLLInstalled, Converter={StaticResource BoolVisibilityConverter}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="90" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.ColumnSpan="3"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="Load"
+                        Style="{DynamicResource Table_TitleStyle}" />
+
+                    <Border
+                        Grid.Row="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Status"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="{Binding LLStatus}"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="Home">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Home">
+                                            <cal:Parameter Value="LoadLock" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="Abort">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Abort">
+                                            <cal:Parameter Value="LoadLock" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="Reset">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Reset">
+                                            <cal:Parameter Value="LoadLock" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+
+                    <Border
+                        Grid.Row="2"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Pressure"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="{Binding LoadPressure, StringFormat=\{0:F1\}}"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="Pump"
+                                IsEnabled="{Binding IsLLEnableManualOperation}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Pump">
+                                            <cal:Parameter Value="LoadLock" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="Vent"
+                                IsEnabled="{Binding IsLLEnableManualOperation}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Vent">
+                                            <cal:Parameter Value="LoadLock" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+
+
+                        </StackPanel>
+                    </Border>
+
+                    <Border
+                        Grid.Row="3"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Door"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <ComboBox
+                            Width="90"
+                            Height="25"
+                            ItemsSource="{Binding LoadDoors}"
+                            SelectedItem="{Binding SelectedLLDoor}" />
+                    </Border>
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                HorizontalAlignment="Left"
+                                Content="Open"
+                                IsEnabled="{Binding IsLLEnableManualOperation}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="OpenSlitValve" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                HorizontalAlignment="Left"
+                                Content="Close"
+                                IsEnabled="{Binding IsLLEnableManualOperation}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="CloseSlitValve" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+
+                    <Border
+                        Grid.Row="4"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Lift"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="{Binding LLPinState}"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="4"
+                        Grid.Column="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <deviceControl:AITSensor
+                                Margin="10,0,0,0"
+                                HorizontalAlignment="Center"
+                                GreenColor="True"
+                                LightOnValue="{Binding LoadLiftUpSensor}" />
+                            <Button
+                                Width="80"
+                                Height="24"
+                                Margin="10,0"
+                                HorizontalAlignment="Left"
+                                Content="Up"
+                                IsEnabled="{Binding IsLLEnableManualOperation}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="LLLiftUp" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                            <deviceControl:AITSensor
+                                Margin="60,0,0,0"
+                                HorizontalAlignment="Center"
+                                GreenColor="True"
+                                LightOnValue="{Binding LoadLiftDownSensor}" />
+                            <Button
+                                Width="80"
+                                Height="24"
+                                Margin="10,0"
+                                HorizontalAlignment="Left"
+                                Content="Down"
+                                IsEnabled="{Binding IsLLEnableManualOperation}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="LLLiftDown" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+
+                    <Border
+                        Grid.Row="5"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="WaferClaw"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="{Binding LLWaferClawState}"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="5"
+                        Grid.Column="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="24"
+                                Margin="10,0"
+                                HorizontalAlignment="Left"
+                                Content="Open"
+                                IsEnabled="{Binding IsLLEnableManualOperation}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="LLWaferOpen" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                            <Button
+                                Width="80"
+                                Height="24"
+                                Margin="10,0"
+                                HorizontalAlignment="Left"
+                                Content="Clamp"
+                                IsEnabled="{Binding IsLLEnableManualOperation}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="LLWaferClamped" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+
+
+                    <Border
+                        Grid.Row="6"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="TrayClaw"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="6"
+                        Grid.Column="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="{Binding LLTrayClawState}"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="6"
+                        Grid.Column="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="24"
+                                Margin="10,0"
+                                HorizontalAlignment="Left"
+                                Content="Open"
+                                IsEnabled="{Binding IsLLEnableManualOperation}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="LLTrayOpen" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                            <Button
+                                Width="80"
+                                Height="24"
+                                Margin="10,0"
+                                HorizontalAlignment="Left"
+                                Content="Clamp"
+                                IsEnabled="{Binding IsLLEnableManualOperation}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="LLTrayClamped" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+
+                    <Border
+                        Grid.Row="7"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Routine"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="7"
+                        Grid.Column="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1" />
+                    <Border
+                        Grid.Row="7"
+                        Grid.Column="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="Group"
+                                IsEnabled="{Binding IsLLEnableManualOperation}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="LoadGroup" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="Separate"
+                                IsEnabled="{Binding IsLLEnableManualOperation}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="LoadSeparate" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+
+
+
+                </Grid>
+
+                <Grid Margin="10,0" Visibility="{Binding IsUnLoadInstalled, Converter={StaticResource BoolVisibilityConverter}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="90" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.ColumnSpan="3"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="UnLoad"
+                        Style="{DynamicResource Table_TitleStyle}" />
+
+                    <Border
+                        Grid.Row="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Status"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="{Binding UnLoadStatus}"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+                    </Border>
+
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="Home">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Home">
+                                            <cal:Parameter Value="UnLoad" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="Abort">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Abort">
+                                            <cal:Parameter Value="UnLoad" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="Reset">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Reset">
+                                            <cal:Parameter Value="UnLoad" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+
+
+                    <Border
+                        Grid.Row="2"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Pressure"
+                            TextWrapping="Wrap" />
+                    </Border>
+
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="{Binding UnLoadPressure, StringFormat=\{0:F1\}}"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="Pump"
+                                IsEnabled="{Binding IsUnLoadEnableManualOperation}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Pump">
+                                            <cal:Parameter Value="UnLoad" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="Vent"
+                                IsEnabled="{Binding IsUnLoadEnableManualOperation}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Vent">
+                                            <cal:Parameter Value="UnLoad" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+
+                    <Border
+                        Grid.Row="3"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Door"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <ComboBox
+                            Width="90"
+                            Height="25"
+                            ItemsSource="{Binding UnLoadDoors}"
+                            SelectedItem="{Binding SelectedUnLoadDoor}" />
+                    </Border>
+
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                HorizontalAlignment="Left"
+                                Content="Open"
+                                IsEnabled="{Binding IsUnLoadEnableManualOperation}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="OpenSlitValveUnLoad" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                HorizontalAlignment="Left"
+                                Content="Close"
+                                IsEnabled="{Binding IsUnLoadEnableManualOperation}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="CloseSlitValveUnLoad" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+
+                    <Border
+                        Grid.Row="5"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="WaferClaw"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="{Binding UnLoadWaferClawState}"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="5"
+                        Grid.Column="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="24"
+                                Margin="10,0"
+                                HorizontalAlignment="Left"
+                                Content="Open"
+                                IsEnabled="{Binding IsUnLoadEnableManualOperation}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="UnLoadWaferOpen" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                            <Button
+                                Width="80"
+                                Height="24"
+                                Margin="10,0"
+                                HorizontalAlignment="Left"
+                                Content="Clamp"
+                                IsEnabled="{Binding IsUnLoadEnableManualOperation}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="UnLoadWaferClamped" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+
+
+                    <Border
+                        Grid.Row="6"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Routine"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="6"
+                        Grid.Column="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1" />
+                    <Border
+                        Grid.Row="6"
+                        Grid.Column="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="24"
+                                Margin="10,0"
+                                HorizontalAlignment="Left"
+                                Content="Separate"
+                                IsEnabled="{Binding IsUnLoadEnableManualOperation}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="UnLoadSeparate" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+
+                        </StackPanel>
+                    </Border>
+
+                    <Border
+                        Grid.Row="4"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Lift"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="{Binding UnLoadPinState}"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="4"
+                        Grid.Column="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <deviceControl:AITSensor
+                                Margin="10,0,0,0"
+                                HorizontalAlignment="Center"
+                                GreenColor="True"
+                                LightOnValue="{Binding UnLoadLiftUpSensor}" />
+                            <Button
+                                Width="80"
+                                Height="24"
+                                Margin="10,0"
+                                HorizontalAlignment="Left"
+                                Content="Up"
+                                IsEnabled="{Binding IsUnLoadEnableManualOperation}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="UnLoadLiftUp" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                            <deviceControl:AITSensor
+                                Margin="60,0,0,0"
+                                HorizontalAlignment="Center"
+                                GreenColor="True"
+                                LightOnValue="{Binding UnLoadLiftDownSensor}" />
+                            <Button
+                                Width="80"
+                                Height="24"
+                                Margin="10,0"
+                                HorizontalAlignment="Left"
+                                Content="Down"
+                                IsEnabled="{Binding IsUnLoadEnableManualOperation}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="UnLoadLiftDown" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+
+                </Grid>
+            </StackPanel>
+            <StackPanel
+                Grid.Row="1"
+                Grid.Column="2"
+                Grid.ColumnSpan="1"
+                Margin="0,-30,0,0"
+                HorizontalAlignment="Left"
+                Orientation="Horizontal">
+                <Grid Width="420" Margin="0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                    </Grid.RowDefinitions>
+                    <!--  Row 1  -->
+                    <Label
+                        Grid.Row="0"
+                        Grid.ColumnSpan="4"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="Aligner"
+                        Style="{DynamicResource Table_TitleStyle}" />
+                    <Border
+                        Grid.Row="1"
+                        Grid.RowSpan="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,0,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Status"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.RowSpan="2"
+                        Grid.Column="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,0,1">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="{Binding AlignerStatus}"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Padding="0,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="Home">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Home">
+                                            <cal:Parameter Value="Aligner" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Padding="0,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="Abort"
+                                ToolTip="Abort the motions in queue.">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Abort">
+                                            <cal:Parameter Value="Aligner" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                    <!--  Row 2  -->
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Padding="0,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="Reset">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Reset">
+                                            <cal:Parameter Value="Aligner" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="3"
+                        Padding="0,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="Aliger"
+                                IsEnabled="{Binding IsAlignerEnableManualOperation}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="AlignerAlignerRoutine" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                    <!--  Row 3  -->
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4"
+                        Padding="0,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="HOM"
+                                IsEnabled="{Binding IsPMService}"
+                                ToolTip="Go back to HOME station.">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Aligner_HOM" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="MTM"
+                                IsEnabled="{Binding IsPMService}"
+                                ToolTip="Move to the center of measurement.">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Aligner_MTM" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="DOC"
+                                IsEnabled="{Binding IsPMService}"
+                                ToolTip="Check the wafer's existence.">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Aligner_DOC" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="Abort"
+                                IsEnabled="{Binding IsPMService}"
+                                ToolTip="Abort the motions in queue.">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Aligner_Abort" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                    <!--  Row 4  -->
+                    <Border
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4"
+                        Padding="0,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="CVN"
+                                IsEnabled="{Binding IsPMService}"
+                                ToolTip="Open vacuum and absorb the wafer.">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Aligner_CVN" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="BAL"
+                                IsEnabled="{Binding IsPMService}"
+                                ToolTip="Side-finding.">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Aligner_BAL" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="CVF"
+                                IsEnabled="{Binding IsPMService}"
+                                ToolTip="Close vacuum and loose the wafer.">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Aligner_CVF" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                            <Button
+                                Width="80"
+                                Height="25"
+                                Margin="10,0"
+                                Content="ERS"
+                                IsEnabled="{Binding IsPMService}"
+                                ToolTip="Clear alarms.">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Aligner_ERS" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

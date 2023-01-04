@@ -1,0 +1,2139 @@
+﻿<UserControl
+    x:Class="SicUI.Client.Models.Platform.TM.DeviceView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cal="http://www.caliburn.org"
+    xmlns:controls="clr-namespace:SicUI.Controls.Mainframe"
+    xmlns:ctrl="http://OpenSEMI.Ctrlib.com/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:deviceControl="clr-namespace:Aitex.Core.UI.DeviceControl;assembly=MECF.Framework.UI.Core"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:unitControls="clr-namespace:MECF.Framework.UI.Client.Ctrlib.UnitControls;assembly=MECF.Framework.UI.Client"
+    d:DesignHeight="800"
+    d:DesignWidth="1980"
+    mc:Ignorable="d">
+    <ScrollViewer
+        HorizontalScrollBarVisibility="Auto"
+        IsEnabled="{Binding IsPermission}"
+        VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="500" />
+                <ColumnDefinition Width="500" />
+                <ColumnDefinition Width="480" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="520" />
+                <RowDefinition Height="300" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.Column="0">
+                <Grid Margin="10,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="60" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="60" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="60" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="40" />
+
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.ColumnSpan="6"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="Load Rotation"
+                        Style="{DynamicResource Table_TitleStyle}" />
+                    <Border
+                        Grid.Row="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Busy"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <deviceControl:AITSensor
+                            HorizontalAlignment="Center"
+                            GreenColor="True"
+                            LightOnValue="{Binding LdRotationIsBusy}" />
+                    </Border>
+
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="ServoOn"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <deviceControl:AITSensor
+                            HorizontalAlignment="Center"
+                            GreenColor="True"
+                            LightOnValue="{Binding LdRotationIsServoOn}" />
+                    </Border>
+
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="4"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Done"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="5"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <deviceControl:AITSensor
+                            HorizontalAlignment="Center"
+                            GreenColor="True"
+                            LightOnValue="{Binding LdRotationIsServoDone}" />
+                    </Border>
+
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="WaferPlaced"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <deviceControl:AITSensor
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            CustomColorOff="Gray"
+                            CustomColorOn="Lime"
+                            DeviceData="{Binding LoadWaferPlaced}"
+                            IsCustomRender="True" />
+                    </Border>
+
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="TrayHomeSensor"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="3"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <deviceControl:AITSensor
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            CustomColorOff="Gray"
+                            CustomColorOn="Lime"
+                            DeviceData="{Binding LoadTraySensor}"
+                            IsCustomRender="True" />
+                    </Border>
+
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="4"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Error"
+                            TextWrapping="Wrap" />
+                    </Border>
+
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="5"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <deviceControl:AITSensor
+                            HorizontalAlignment="Center"
+                            GreenColor="True"
+                            LightOnValue="{Binding LdRotationIsServoError}" />
+                    </Border>
+
+
+                    <Border
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <Button
+                            Width="130"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            Content="RelativeHome"
+                            IsEnabled="{Binding LdRotationBtnEnable}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="LdRotationRelativeHome" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+                    <Border
+                        Grid.Row="5"
+                        Grid.Column="2"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <Button
+                            Width="130"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            Content="Offset"
+                            IsEnabled="{Binding LdRotationBtnEnable}"
+                            Visibility="Hidden">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="LdRotationRelativeHomeOffset" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+                    <Border
+                        Grid.Row="5"
+                        Grid.Column="4"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <Button
+                            Width="80"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            Content="Stop">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="LdRotationStop" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+
+                    <Border
+                        Grid.Row="6"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <Button
+                            Width="130"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            Content="JogCW"
+                            IsEnabled="{Binding LdRotationBtnEnable}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="LdRotationJogCW">
+                                        <cal:Parameter Value="{Binding Path=Text, ElementName=LdStationJogDegree}" />
+                                    </cal:ActionMessage>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+
+                    <Border
+                        Grid.Row="6"
+                        Grid.Column="2"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox
+                                x:Name="LdStationJogDegree"
+                                MinWidth="90"
+                                Margin="10,10,10,9.6"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                FontFamily="Arial"
+                                FontSize="12"
+                                Text="0.00" />
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="°" />
+                        </StackPanel>
+                    </Border>
+
+                    <Border
+                        Grid.Row="6"
+                        Grid.Column="4"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <Button
+                            Width="80"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            Content="ServoOn">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="LdRotationServoOn" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+
+                    <Border
+                        Grid.Row="7"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <Button
+                            Width="130"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            Content="JogCCW"
+                            IsEnabled="{Binding LdRotationBtnEnable}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="LdRotationJogCCW">
+                                        <cal:Parameter Value="{Binding Path=Text, ElementName=LdStationJogDegree}" />
+                                    </cal:ActionMessage>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+                    <Border
+                        Grid.Row="7"
+                        Grid.Column="2"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1" />
+                    <Border
+                        Grid.Row="7"
+                        Grid.Column="4"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <Button
+                            Width="80"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            Content="Reset">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="LdRotationReset" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="CurrentPos"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="{Binding LdRotationCurPos, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F1}}"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="2"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="TrayPresence"
+                            TextWrapping="Wrap" />
+                    </Border>
+
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="3"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <deviceControl:AITSensor
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            CustomColorOff="Gray"
+                            CustomColorOn="Lime"
+                            DeviceData="{Binding LoadTrayPresence}"
+                            IsCustomRender="True" />
+                    </Border>
+
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="3"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <deviceControl:AITSensor
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            CustomColorOff="Gray"
+                            CustomColorOn="Lime"
+                            DeviceData="{Binding LoadTrayHomeSensor}"
+                            IsCustomRender="True" />
+                    </Border>
+
+
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="4"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1" />
+
+                    <Border
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <Button
+                            Width="130"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            Content="MoveOneCircle"
+                            IsEnabled="{Binding LdRotationBtnEnable}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="LdRotationMoveOneCircle" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+                    <Border
+                        Grid.Row="4"
+                        Grid.Column="2"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1" />
+                    <Border
+                        Grid.Row="4"
+                        Grid.Column="4"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1" />
+
+                    <Border
+                        Grid.Row="8"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <Button
+                            Width="130"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            Content="CCDPos1"
+                            IsEnabled="{Binding LdRotationBtnEnable}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="LdRotationMoveCCD1Pos" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+                    <Border
+                        Grid.Row="8"
+                        Grid.Column="2"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="{Binding LdCCD1Degree, StringFormat={}{0:F1}}"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="8"
+                        Grid.Column="4"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1" />
+
+                    <Border
+                        Grid.Row="9"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <Button
+                            Width="130"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            Content="CCDPos2"
+                            IsEnabled="{Binding LdRotationBtnEnable}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="LdRotationMoveCCD2Pos" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+                    <Border
+                        Grid.Row="9"
+                        Grid.Column="2"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="{Binding LdCCD2Degree, StringFormat={}{0:F1}}"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="9"
+                        Grid.Column="4"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1" />
+
+                </Grid>
+
+                <Grid Margin="10,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="60" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="60" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="60" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.ColumnSpan="6"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="Load CCD"
+                        Style="{DynamicResource Table_TitleStyle}" />
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <Button
+                            Width="130"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            Content="CCD Trigger">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="CCDTrig" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Grid.ColumnSpan="1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <ComboBox
+                            Width="80"
+                            Height="25"
+                            ItemsSource="{Binding CCDPos}"
+                            SelectedItem="{Binding CCDPosSelected}" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Grid.ColumnSpan="3"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="{Binding CCDResult}"
+                            TextWrapping="Wrap" />
+                    </Border>
+
+                    <!--  line 2  -->
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <Button
+                            Width="130"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            Content="Go To Run">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="RunR0" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Grid.ColumnSpan="4"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1" />
+                </Grid>
+
+            </StackPanel>
+            <!--
+            <StackPanel Grid.Row="0" Grid.Column="1">
+                <Grid Margin="10,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="60" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="60" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="60" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="40" />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.ColumnSpan="6"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="ConfinementRing"
+                        Style="{DynamicResource Table_TitleStyle}" />
+                    <Border
+                        Grid.Row="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Busy"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <deviceControl:AITSensor
+                            HorizontalAlignment="Center"
+                            GreenColor="True"
+                            LightOnValue="{Binding RingIsBusy}" />
+                    </Border>
+
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="ServoOn"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <deviceControl:AITSensor
+                            HorizontalAlignment="Center"
+                            GreenColor="True"
+                            LightOnValue="{Binding RingIsServoOn}" />
+                    </Border>
+
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="4"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Done"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="5"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <deviceControl:AITSensor
+                            HorizontalAlignment="Center"
+                            GreenColor="True"
+                            LightOnValue="{Binding RingDone}" />
+                    </Border>
+
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="UpSensor"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <deviceControl:AITSensor
+                            HorizontalAlignment="Center"
+                            GreenColor="True"
+                            LightOnValue="{Binding RingUpSensor}" />
+                    </Border>
+
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="DownSensor"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="3"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <deviceControl:AITSensor
+                            HorizontalAlignment="Center"
+                            GreenColor="True"
+                            LightOnValue="{Binding RingDownSensor}" />
+                    </Border>
+
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="4"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Error"
+                            TextWrapping="Wrap" />
+                    </Border>
+
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="5"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <deviceControl:AITSensor
+                            HorizontalAlignment="Center"
+                            GreenColor="True"
+                            LightOnValue="{Binding RingIsAlarm}" />
+                    </Border>
+
+                    <Border
+                        Grid.Row="6"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <Button
+                            Width="130"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            Content="JogUp"
+                            IsEnabled="{Binding ConfinementRingBtnEnable}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="RingJogUp">
+                                        <cal:Parameter Value="{Binding Path=Text, ElementName=RingJogDistance}" />
+                                    </cal:ActionMessage>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+                    <Border
+                        Grid.Row="6"
+                        Grid.RowSpan="2"
+                        Grid.Column="2"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox
+                                x:Name="RingJogDistance"
+                                MinWidth="90"
+                                Margin="10,10,10,9.6"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                FontFamily="Arial"
+                                FontSize="12"
+                                Text="0.00" />
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="mm" />
+                        </StackPanel>
+                    </Border>
+                    <Border
+                        Grid.Row="6"
+                        Grid.Column="4"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <Button
+                            Width="80"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            Content="ServoOn">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="RingServoOn" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+
+                    <Border
+                        Grid.Row="7"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <Button
+                            Width="130"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            Content="JogDown"
+                            IsEnabled="{Binding ConfinementRingBtnEnable}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="RingJogDown">
+                                        <cal:Parameter Value="{Binding Path=Text, ElementName=RingJogDistance}" />
+                                    </cal:ActionMessage>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+                    <Border
+                        Grid.Row="7"
+                        Grid.Column="4"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <Button
+                            Width="80"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            Content="Reset">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="RingServoReset" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="CurrentPos"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="{Binding RingCurPos, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F1}}"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="2"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1" />
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="4"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1" />
+
+                    <Border
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <Button
+                            Width="130"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            Content="MoveUpPos"
+                            IsEnabled="{Binding ConfinementRingBtnEnable}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="RingMoveUpPos" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+                    <Border
+                        Grid.Row="4"
+                        Grid.Column="2"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="{Binding RingUpPos, StringFormat={}{0:F1}}"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="4"
+                        Grid.Column="4"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1" />
+
+                    <Border
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <Button
+                            Width="130"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            Content="MoveDownPos"
+                            IsEnabled="{Binding ConfinementRingBtnEnable}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="RingMoveDownPos" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+                    <Border
+                        Grid.Row="5"
+                        Grid.Column="2"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="{Binding RingDownPos, StringFormat={}{0:F1}}"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="5"
+                        Grid.Column="4"
+                        Grid.ColumnSpan="2"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <Button
+                            Width="80"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            Content="Stop">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="RingStop" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+
+                </Grid>
+
+            </StackPanel>
+            -->
+            <StackPanel Grid.Row="1" Grid.Column="0">
+                <Grid
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Width="475"
+                    Margin="0,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="255" />
+                        <ColumnDefinition Width="90" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Row="0"
+                        Grid.ColumnSpan="4"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="Aligner Parameters"
+                        Style="{DynamicResource Table_TitleStyle}" />
+                    <!--  Line 1  -->
+                    <Border
+                        Grid.Row="1"
+                        Grid.RowSpan="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="WaferSize"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.RowSpan="1"
+                        Grid.Column="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            IsEnabled="False"
+                            Text="Wafer Size HPA48:4/5/6/8"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.RowSpan="1"
+                        Grid.Column="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <ComboBox
+                            Width="80"
+                            Height="25"
+                            ItemsSource="{Binding WaferSizes}"
+                            SelectedItem="{Binding WaferSizeSelected}" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Grid.ColumnSpan="1"
+                        Padding="2,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="40"
+                                Height="25"
+                                Margin="1,0,0,0"
+                                Content="Set"
+                                FontSize="10"
+                                IsEnabled="{Binding IsAlignerAlignEnable}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Aligner_WaferSize">
+                                            <cal:Parameter Value="{Binding ElementName=TxtWaferSize, Path=Text}" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                    <!--  Line 2  -->
+                    <Border
+                        Grid.Row="2"
+                        Grid.RowSpan="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="WaferType"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Grid.RowSpan="1"
+                        Grid.Column="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            IsEnabled="False"
+                            Text="Wafer Type 0/1/2(Non Notch or Flat/Notch/One or more Flat)"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Grid.RowSpan="1"
+                        Grid.Column="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <ComboBox
+                            Width="80"
+                            Height="25"
+                            ItemsSource="{Binding WaferTypes}"
+                            SelectedItem="{Binding WaferTypeSelected}" />
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="3"
+                        Grid.ColumnSpan="1"
+                        Padding="2,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="40"
+                                Height="25"
+                                Margin="1,0,0,0"
+                                Content="Set"
+                                FontSize="10"
+                                IsEnabled="{Binding IsAlignerAlignEnable}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Aligner_WaferType">
+                                            <cal:Parameter Value="{Binding ElementName=TxtWaferType, Path=Text}" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                    <!--  Line 3  -->
+                    <Border
+                        Grid.Row="3"
+                        Grid.RowSpan="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="WaferMaterial"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="3"
+                        Grid.RowSpan="1"
+                        Grid.Column="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            IsEnabled="False"
+                            Text="Wafer Material  0/1(non/transparent)"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="3"
+                        Grid.RowSpan="1"
+                        Grid.Column="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <ComboBox
+                            Width="80"
+                            Height="25"
+                            ItemsSource="{Binding WaferMaterial}"
+                            SelectedItem="{Binding WaferMaterialSelected}" />
+                    </Border>
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="3"
+                        Grid.ColumnSpan="1"
+                        Padding="2,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="40"
+                                Height="25"
+                                Margin="1,0,0,0"
+                                Content="Set"
+                                FontSize="10"
+                                IsEnabled="{Binding IsAlignerAlignEnable}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Aligner_WaferMaterial">
+                                            <cal:Parameter Value="{Binding ElementName=TxtWaferMaterial, Path=Text}" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                    <!--  Line 4  -->
+                    <Border
+                        Grid.Row="4"
+                        Grid.RowSpan="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="WaferOrentation"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="4"
+                        Grid.RowSpan="1"
+                        Grid.Column="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            IsEnabled="False"
+                            Text="Wafer Orientation. Unit:0.1 Degree"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="4"
+                        Grid.RowSpan="1"
+                        Grid.Column="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBox
+                            x:Name="TxtWaferOrientation"
+                            Width="80"
+                            Margin="0,0,0,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text=""
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="4"
+                        Grid.Column="3"
+                        Grid.ColumnSpan="1"
+                        Padding="2,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="40"
+                                Height="25"
+                                Margin="1,0,0,0"
+                                Content="Set"
+                                FontSize="10"
+                                IsEnabled="{Binding IsAlignerAlignEnable}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Aligner_WaferOrientation">
+                                            <cal:Parameter Value="{Binding ElementName=TxtWaferOrientation, Path=Text}" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                    <!--  Line 5  -->
+                    <Border
+                        Grid.Row="5"
+                        Grid.RowSpan="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="SaveParameter"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="5"
+                        Grid.RowSpan="1"
+                        Grid.Column="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="Save the parameters after Set them."
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="5"
+                        Grid.RowSpan="1"
+                        Grid.Column="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="{Binding AlignerStatus}"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="5"
+                        Grid.Column="3"
+                        Grid.ColumnSpan="1"
+                        Padding="2,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="46"
+                                Height="25"
+                                Margin="0,0,0,0"
+                                Content="Save"
+                                FontSize="10"
+                                IsEnabled="{Binding IsAlignerAlignEnable}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Aligner_SaveParameters" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="1">
+                <Grid
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="10,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180" />
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Row="0"
+                        Grid.ColumnSpan="3"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="UPS Info"
+                        Style="{DynamicResource Table_TitleStyle}" />
+                    <!--  Line 1  -->
+                    <Border
+                        Grid.Row="1"
+                        Grid.RowSpan="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="UPS:IP"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.RowSpan="1"
+                        Grid.Column="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            IsEnabled="False"
+                            Text="UPS1:192.168.1.106"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.RowSpan="1"
+                        Grid.Column="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            IsEnabled="False"
+                            Text="UPS2:192.168.1.116"
+                            TextWrapping="Wrap" />
+                    </Border>
+
+                    <!--  Line 2  -->
+                    <Border
+                        Grid.Row="2"
+                        Grid.RowSpan="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="SystemStatus"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Grid.RowSpan="1"
+                        Grid.Column="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            IsEnabled="False"
+                            Text="{Binding UPSA_SystemStatus}"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="2"
+                        Grid.RowSpan="1"
+                        Grid.Column="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            IsEnabled="False"
+                            Text="{Binding UPSB_SystemStatus}"
+                            TextWrapping="Wrap" />
+                    </Border>
+
+                    <!--  Line 3  -->
+                    <Border
+                        Grid.Row="3"
+                        Grid.RowSpan="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="InputVoltage"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="3"
+                        Grid.RowSpan="1"
+                        Grid.Column="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            IsEnabled="False"
+                            Text="{Binding UPSA_InputVoltage}"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="3"
+                        Grid.RowSpan="1"
+                        Grid.Column="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            IsEnabled="False"
+                            Text="{Binding UPSB_InputVoltage}"
+                            TextWrapping="Wrap" />
+                    </Border>
+
+                    <!--  Line 4  -->
+                    <Border
+                        Grid.Row="4"
+                        Grid.RowSpan="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="BatteryVoltage"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="4"
+                        Grid.RowSpan="1"
+                        Grid.Column="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            IsEnabled="False"
+                            Text="{Binding UPSA_BatteryVoltage}"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="4"
+                        Grid.RowSpan="1"
+                        Grid.Column="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            IsEnabled="False"
+                            Text="{Binding UPSB_BatteryVoltage}"
+                            TextWrapping="Wrap" />
+                    </Border>
+
+                    <!--  Line 5  -->
+                    <Border
+                        Grid.Row="5"
+                        Grid.RowSpan="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Title}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="BatteryRemainsTime"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="5"
+                        Grid.RowSpan="1"
+                        Grid.Column="1"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="{Binding UPSA_BatteryRemainsTime}"
+                            TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                        Grid.Row="5"
+                        Grid.RowSpan="1"
+                        Grid.Column="2"
+                        Padding="5,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="1,0,1,1">
+                        <TextBlock
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            Text="{Binding UPSB_BatteryRemainsTime}"
+                            TextWrapping="Wrap" />
+                    </Border>
+
+
+                    <!--
+                    <Border
+                    Grid.Row="6"
+                    Grid.RowSpan="1"
+                    Padding="5,1"
+                    Background="{DynamicResource Table_BG_Title}"
+                    BorderBrush="{DynamicResource Table_BD}"
+                    BorderThickness="1,0,1,1">
+                        <TextBlock
+                        VerticalAlignment="Center"
+                        FontFamily="Arial"
+                        FontSize="12"
+                        Foreground="{DynamicResource FG_Black}"
+                        Text="UtilityPowerFailure"
+                        TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                    Grid.Row="6"
+                    Grid.RowSpan="1"
+                    Grid.Column="1"
+                    Padding="5,1"
+                    Background="{DynamicResource Table_BG_Content}"
+                    BorderBrush="{DynamicResource Table_BD}"
+                    BorderThickness="1,0,1,1">
+                        <TextBlock
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontFamily="Arial"
+                        FontSize="12"
+                        Foreground="{DynamicResource FG_Black}"
+                        Text="{Binding UPSA_UtilityPowerFailure}"
+                        TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                    Grid.Row="6"
+                    Grid.RowSpan="1"
+                    Grid.Column="2"
+                    Padding="5,1"
+                    Background="{DynamicResource Table_BG_Content}"
+                    BorderBrush="{DynamicResource Table_BD}"
+                    BorderThickness="1,0,1,1">
+                        <TextBlock
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontFamily="Arial"
+                        FontSize="12"
+                        Foreground="{DynamicResource FG_Black}"
+                        Text="{Binding UPSB_UtilityPowerFailure}"
+                        TextWrapping="Wrap" />
+                    </Border>
+
+
+
+
+                    <Border
+                    Grid.Row="7"
+                    Grid.RowSpan="1"
+                    Padding="5,1"
+                    Background="{DynamicResource Table_BG_Title}"
+                    BorderBrush="{DynamicResource Table_BD}"
+                    BorderThickness="1,0,1,1">
+                        <TextBlock
+                        VerticalAlignment="Center"
+                        FontFamily="Arial"
+                        FontSize="12"
+                        Foreground="{DynamicResource FG_Black}"
+                        Text="BatteryUnderVoltage"
+                        TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                    Grid.Row="7"
+                    Grid.RowSpan="1"
+                    Grid.Column="1"
+                    Padding="5,1"
+                    Background="{DynamicResource Table_BG_Content}"
+                    BorderBrush="{DynamicResource Table_BD}"
+                    BorderThickness="1,0,1,1">
+                        <TextBlock
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontFamily="Arial"
+                        FontSize="12"
+                        Foreground="{DynamicResource FG_Black}"
+                        Text="{Binding UPSA_BatteryUnderVoltage}"
+                        TextWrapping="Wrap" />
+                    </Border>
+                    <Border
+                    Grid.Row="7"
+                    Grid.RowSpan="1"
+                    Grid.Column="2"
+                    Padding="5,1"
+                    Background="{DynamicResource Table_BG_Content}"
+                    BorderBrush="{DynamicResource Table_BD}"
+                    BorderThickness="1,0,1,1">
+                        <TextBlock
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontFamily="Arial"
+                        FontSize="12"
+                        Foreground="{DynamicResource FG_Black}"
+                        Text="{Binding UPSB_BatteryUnderVoltage}"
+                        TextWrapping="Wrap" />
+                    </Border>
+                    -->
+                </Grid>
+            </StackPanel>
+            <!--
+            <StackPanel Grid.Row="0" Grid.Column="2">
+                <Grid Margin="1,1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="80" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="400" />
+
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.ColumnSpan="6"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="AutoTransfer Conditions"
+                        Style="{DynamicResource Table_TitleStyle}" />
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1">
+                        <Button
+                            Width="80"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            Content="TrayRobotLoad"
+                            FontSize="8">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <cal:ActionMessage MethodName="AutoTransferCond">
+                                        <cal:Parameter Value="TrayRobotLoad" />
+                                    </cal:ActionMessage>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1" />
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1" />
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1" />
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="4"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1" />
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="5"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1" />
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1" />
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1" />
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1" />
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="3"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1" />
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="4"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1" />
+                    <Border
+                        Grid.Row="2"
+                        Grid.Column="5"
+                        Padding="5,1,0,1"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,0,1" />
+                    <Border
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="6"
+                        Padding="0,0,0,0"
+                        Background="{DynamicResource Table_BG_Content}"
+                        BorderBrush="{DynamicResource Table_BD}"
+                        BorderThickness="0,0,1,1">
+                        <TextBox
+                            Width="480"
+                            Height="400"
+                            Margin="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            FontFamily="Arial"
+                            FontSize="12"
+                            Foreground="{DynamicResource FG_Black}"
+                            IsReadOnly="True"
+                            Text="{Binding AutoTransferConditionText}"
+                            TextWrapping="Wrap" />
+                    </Border>
+
+
+                </Grid>
+            </StackPanel>
+            -->
+        </Grid>
+
+
+
+
+    </ScrollViewer>
+</UserControl>

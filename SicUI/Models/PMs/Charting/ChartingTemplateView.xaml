@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="SicUI.Models.PMs.Charting.ChartingTemplateView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SicUI.Models.PMs"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:micro="http://www.caliburn.org"
+             xmlns:controls="http://OpenSEMI.Ctrlib.com/presentation"
+             mc:Ignorable="d" 
+             Height="450" Width="700">
+    <Grid Height="450">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition />
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Title}" Padding="5,1">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Label Content="Save current data selection to:"/>
+                <controls:TextBoxEx  Height="25" Width="200" Margin="10,0" AllowBackgroundChange="False"  Text="{Binding Path=CurrentFileName}" HorizontalAlignment="Stretch" ></controls:TextBoxEx>
+                <Button Height="25" Width="80" Margin="5,0,0,0" Content="Save">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <micro:ActionMessage MethodName="SaveToTemplate">
+                            </micro:ActionMessage>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <DataGrid Grid.Column="3" Grid.Row="1"  Margin="5,5,0,5"  HorizontalAlignment="Left" BorderThickness="1"
+                      AlternationCount="2" ColumnHeaderHeight="30" 
+                      ItemsSource="{Binding TemplateInfos}" AutoGenerateColumns="False" SelectedItem="{Binding SelectTemplate}"
+                      CanUserAddRows="False" CanUserResizeRows="False" CanUserResizeColumns="True" FontFamily="Arial" FontSize="12" Width="690" >
+            <DataGrid.Columns>                
+                <DataGridTemplateColumn Header="Name" MinWidth="240" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding TemplateName}" Margin="5,0" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Create Time" MinWidth="240" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding TemplateCreateTime}" Margin="5,0" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Load" MinWidth="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Load" Margin="5,0">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <micro:ActionMessage MethodName="Load">
+                                        </micro:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Remove" MinWidth="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Remove" Margin="5,0">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <micro:ActionMessage MethodName="Remove">
+                                        </micro:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Border Grid.Row="2" BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Title}" Padding="5,1">
+        </Border>
+    </Grid>
+</UserControl>

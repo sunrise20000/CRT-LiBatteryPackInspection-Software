@@ -1,0 +1,567 @@
+<?xml version="1.0"?>
+<EventDefine xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <EventDefinition>
+    <Id>9</Id>
+    <Description>操控权限：{0}</Description>
+    <Level>Information</Level>
+    <EventEnum>OperationAuthorization</EventEnum>
+    <DetailDesc>Only authorized account can execute operation and control command</DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>10</Id>
+    <Description>'{0}' 退出系统。</Description>
+    <Level>Information</Level>
+    <EventEnum>UserLoggedOff</EventEnum>
+    <DetailDesc>用户退出系统。</DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>11</Id>
+    <Description>User {0} login</Description>
+    <Level>Information</Level>
+    <EventEnum>UserLoggedIn</EventEnum>
+    <DetailDesc>用户登录</DetailDesc>
+    <GlobalDescription_en>User {0} login</GlobalDescription_en>
+    <GlobalDescription_zh>账号{0}登录</GlobalDescription_zh>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>12</Id>
+    <Description>用户帐号'{0}'的内容被修改。</Description>
+    <Level>Information</Level>
+    <EventEnum>AccountChanged</EventEnum>
+    <DetailDesc>用户帐号改变</DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>13</Id>
+    <Description>用户账号'{0}'的密码被修改。</Description>
+    <Level>Information</Level>
+    <EventEnum>PasswordChanged</EventEnum>
+    <DetailDesc>用户账号密码变更</DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>14</Id>
+    <Description>用户帐号'{0}'已被删除。</Description>
+    <Level>Information</Level>
+    <EventEnum>AccountDeleted</EventEnum>
+    <DetailDesc>用户帐号删除</DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>15</Id>
+    <Description>用户帐号'{0}'已被创建。</Description>
+    <Level>Information</Level>
+    <EventEnum>AccountCreated</EventEnum>
+    <DetailDesc>用户帐号创建</DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>19</Id>
+    <Description>Wafer placed to {0}</Description>
+    <Level>Information</Level>
+    <EventEnum>PuttingWaferToChamberEnds</EventEnum>
+    <DetailDesc>This event is posted right after put a wafer</DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>20</Id>
+    <Description>Placing wafer to {0}</Description>
+    <Level>Information</Level>
+    <EventEnum>PuttingWaferToChamberBegins</EventEnum>
+    <DetailDesc>This event is posted right before placing</DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>21</Id>
+    <Description>Wafer picked from {0}</Description>
+    <Level>Information</Level>
+    <EventEnum>PickingWaferFromChamberEnds</EventEnum>
+    <DetailDesc>This event is posted right after wafer picked</DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>22</Id>
+    <Description>Picking wafer from {0}</Description>
+    <Level>Information</Level>
+    <EventEnum>PickingWaferFromChamberBegins</EventEnum>
+    <DetailDesc>This event is posted right before  picking  </DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>25</Id>
+    <Description>Align start：notch is {0}。</Description>
+    <Level>Information</Level>
+    <EventEnum>AlignBegins</EventEnum>
+    <DetailDesc>When aligners start aligning.</DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>26</Id>
+    <Description>Align end。</Description>
+    <Level>Information</Level>
+    <EventEnum>AlignEnds</EventEnum>
+    <DetailDesc>When aligners aligning completed.</DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>27</Id>
+    <Description>Align failed。{0}</Description>
+    <Level>Warning</Level>
+    <EventEnum>AlignFailed</EventEnum>
+    <DetailDesc>When aligners aligning failed.</DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>28</Id>
+    <Description>Wafer {0} moved from {1} {2} to {3} {4}</Description>
+    <Level>Information</Level>
+    <EventEnum>WaferMoved</EventEnum>
+    <DetailDesc>Wafer Move information.</DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>36</Id>
+    <Description>Wafer created at {0} slot {1}, status is {2}.</Description>
+    <Level>Information</Level>
+    <EventEnum>WaferCreate</EventEnum>
+    <DetailDesc>Wafer Create Information </DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>37</Id>
+    <Description>Wafer deleted from {0} slot {1}.</Description>
+    <Level>Information</Level>
+    <EventEnum>WaferDelete</EventEnum>
+    <DetailDesc>Wafer Delete Information</DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>41</Id>
+    <Description>{0} load FOUP start.</Description>
+    <Level>Information</Level>
+    <EventEnum>LoadFOUPStart</EventEnum>
+    <DetailDesc>
+    </DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>42</Id>
+    <Description>{0} load FOUP end.</Description>
+    <Level>Information</Level>
+    <EventEnum>LoadFOUPEnd</EventEnum>
+    <DetailDesc>
+    </DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>43</Id>
+    <Description>{0} load FOUP Failed.</Description>
+    <Level>Alarm</Level>
+    <EventEnum>LoadFOUPFailed</EventEnum>
+    <DetailDesc>
+    </DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>44</Id>
+    <Description>{0} unload FOUP start.</Description>
+    <Level>Information</Level>
+    <EventEnum>UnloadFOUPStart</EventEnum>
+    <DetailDesc>
+    </DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>45</Id>
+    <Description>{0} unload Foup end.</Description>
+    <Level>Information</Level>
+    <EventEnum>UnloadFOUPEnd</EventEnum>
+    <DetailDesc>
+    </DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>46</Id>
+    <Description>{0} unload Foup failed.</Description>
+    <Level>Alarm</Level>
+    <EventEnum>UnloadFOUPFailed</EventEnum>
+    <DetailDesc>
+    </DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <!-- PM Information -->
+  <EventDefinition>
+    <Id>1000</Id>
+    <Description>{0}</Description>
+    <Level>Information</Level>
+    <EventEnum>GeneralInfo</EventEnum>
+    <DetailDesc>默认事件类型(通用)</DetailDesc>
+    <Solution>1222</Solution>
+  </EventDefinition>
+  <EventDefinition>
+    <Id>1023</Id>
+    <Description>{0} '{1}' stopped，reason: {2}。</Description>
+    <Level>Information</Level>
+    <EventEnum>ServiceRoutineAborted</EventEnum>
+    <DetailDesc>where {0} is the chamber name, while {1} is the service name. When service routine is aborted, this event will be posted.</DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>1033</Id>
+    <Description>{0} {1}：{2}。</Description>
+    <Level>Information</Level>
+    <EventEnum>ServiceRoutineInfo</EventEnum>
+    <DetailDesc>用于显示在服务程序运行过程中的信息显示，{0}反应腔名，{1}服务程序名，{2}当前动作名。</DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>1040</Id>
+    <Description>{0} {1}。</Description>
+    <Level>Information</Level>
+    <EventEnum>GuiCmdExecSucc</EventEnum>
+    <DetailDesc>当收到用户界面命令，并成功执行时，发出该事件。{0}反应腔名，{1}命令解释。</DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>1052</Id>
+    <Description>{0} {1}。</Description>
+    <Level>Information</Level>
+    <EventEnum>SwInterlock</EventEnum>
+    <DetailDesc>当发生软件互锁时，发出该警告信息。{0}反应腔名，{1}具体软件互锁原因。</DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <!-- TM Warning -->
+  <EventDefinition>
+    <Id>2052</Id>
+    <Description>用户 {0} 无操控权，请先获取操控权</Description>
+    <Level>Warning</Level>
+    <EventEnum>AccountWithoutAuthorization</EventEnum>
+    <DetailDesc>只有拥有操控权的用户，才能进行操控</DetailDesc>
+    <Solution>获取操控权限</Solution>
+  </EventDefinition>
+  <EventDefinition>
+    <Id>2053</Id>
+    <Description>{0}。</Description>
+    <Level>Warning</Level>
+    <EventEnum>DefaultWarning</EventEnum>
+    <DetailDesc>警告范围2000~3999，如果系统反馈的警告事件没有指定事件ID，或者ID编号范围有误，则使用当前默认的警告代码作为该事件的警告代码。</DetailDesc>
+    <Solution>默认的警告代码。</Solution>
+  </EventDefinition>
+  <!-- PM Warning -->
+  <EventDefinition>
+    <Id>3027</Id>
+    <Description>{0} {1}。</Description>
+    <Level>Warning</Level>
+    <EventEnum>GuiCmdExecFailed</EventEnum>
+    <DetailDesc>当用户命令执行失败时发出该警告事件。</DetailDesc>
+    <Solution>
+      1.检查操作指令是否符合设备操作要求。
+      2.检查当前操作是否触发软件互锁。
+    </Solution>
+  </EventDefinition>
+  <EventDefinition>
+    <Id>3034</Id>
+    <Description>{0} 数据库连接失败。</Description>
+    <Level>Warning</Level>
+    <EventEnum>DbConnFailed</EventEnum>
+    <DetailDesc>当控制程序与数据库连接断开时发出该事件。</DetailDesc>
+    <Solution>
+      1.请检查数据库连接配置参数。
+      2.请检查网线是否已联通。
+    </Solution>
+  </EventDefinition>
+  <EventDefinition>
+    <Id>3038</Id>
+    <Description>{0} {1}。</Description>
+    <Level>Warning</Level>
+    <EventEnum>SafePlcInterlock</EventEnum>
+    <DetailDesc>当安全PLC的安全逻辑将某DO设定值拦截下来的时候发出该警告信息。</DetailDesc>
+    <Solution>
+      检查软件互锁逻辑与硬件互锁逻辑内容，检查互锁发生原因。
+    </Solution>
+  </EventDefinition>
+  <EventDefinition>
+    <Id>3039</Id>
+    <Description>{0} Valve {1}{2} failed, reason {3}</Description>
+    <Level>Warning</Level>
+    <EventEnum>ValveOperationFail</EventEnum>
+    <DetailDesc>valve operation failed</DetailDesc>
+    <Solution>
+      1.check interlock 
+      2.check io module normally running
+    </Solution>
+  </EventDefinition>
+  <!-- TM Alarm -->
+  <EventDefinition>
+    <Id>4050</Id>
+    <Description>Prepare transfer failed, {0}</Description>
+    <Level>Alarm</Level>
+    <EventEnum>TransferPrepareFailed</EventEnum>
+    <DetailDesc></DetailDesc>
+    <Solution>See detail description</Solution>
+  </EventDefinition>
+  <EventDefinition>
+    <Id>4051</Id>
+    <Description>{0}未检测到托盘，且无托盘记录，不能取出托盘</Description>
+    <Level>Alarm</Level>
+    <EventEnum>WaferAbsentWithoutRecord</EventEnum>
+    <DetailDesc>只有目标腔同时检测到托盘和托盘记录，才能取出托盘。</DetailDesc>
+    <Solution>
+      1.检查腔体是否有托盘。
+      2.检查腔体是否有托盘信息。若有托盘，但无托盘信息，请先创建该托盘的信息。
+    </Solution>
+  </EventDefinition>
+  <EventDefinition>
+    <Id>4052</Id>
+    <Description>{0}检测到托盘，且有托盘记录，无法送入托盘。</Description>
+    <Level>Alarm</Level>
+    <EventEnum>WaferPresentWithRecord</EventEnum>
+    <DetailDesc>只有目标腔无托盘且无托盘记录时，才能送入托盘。</DetailDesc>
+    <Solution>
+      1.目标腔体必须无托盘。若有，请先取走托盘。
+      2.目标腔体必须无托盘信息。若无托盘，但已有托盘信息，请删除该托盘信息。
+    </Solution>
+  </EventDefinition>
+  <EventDefinition>
+    <Id>4054</Id>
+    <Description>Place wafer to {0} {1} by {2} failed,{3}</Description>
+    <Level>Alarm</Level>
+    <EventEnum>PlaceWaferFailed</EventEnum>
+    <DetailDesc>PlaceWaferFailed</DetailDesc>
+    <Solution>
+      Check detail reason
+    </Solution>
+  </EventDefinition>
+  <EventDefinition>
+    <Id>4055</Id>
+    <Description>Failed pick wafer from {0}</Description>
+    <Level>Alarm</Level>
+    <EventEnum>PickingWaferFromChamberFails</EventEnum>
+    <DetailDesc>failed pick wafer</DetailDesc>
+    <Solution>
+      1.check log to get the reason。
+
+    </Solution>
+  </EventDefinition>
+  <EventDefinition>
+    <Id>4061</Id>
+    <Description>送盘后机械臂上检测到托盘。</Description>
+    <Level>Alarm</Level>
+    <EventEnum>WaferDetectedAfterSend</EventEnum>
+    <DetailDesc>在送盘后机械臂上检测到托盘时，发出此错误事件。</DetailDesc>
+    <Solution>
+      1.检查腔体对应的托盘传感器信号是否工作正常。
+      2.检查机械臂/机械臂控制器是否工作正常。
+    </Solution>
+  </EventDefinition>
+  <EventDefinition>
+    <Id>4062</Id>
+    <Description>送盘前机械臂上未检测到托盘。</Description>
+    <Level>Alarm</Level>
+    <EventEnum>WaferNotDetectedBeforeSend</EventEnum>
+    <DetailDesc>在送盘前机械臂上未检测到托盘时，发出此错误事件。</DetailDesc>
+    <Solution>
+      1.检查腔体对应的托盘传感器信号是否工作正常。
+      2.送盘前，机械臂上需要有托盘。
+    </Solution>
+  </EventDefinition>
+  <EventDefinition>
+    <Id>4063</Id>
+    <Description>取盘后机械臂上未检测到托盘。</Description>
+    <Level>Alarm</Level>
+    <EventEnum>WaferNotDetectedAfterPick</EventEnum>
+    <DetailDesc>在取盘后机械臂上未检测到托盘时，发出此错误事件。</DetailDesc>
+    <Solution>
+      1.检查腔体对应的托盘传感器信号是否工作正常。
+      2.检查是否因外力作用，托盘在传盘过程中，从机械臂上滑落。
+    </Solution>
+  </EventDefinition>
+  <EventDefinition>
+    <Id>4064</Id>
+    <Description>取盘前机械臂上检测到托盘。</Description>
+    <Level>Alarm</Level>
+    <EventEnum>WaferDetectedBeforePick</EventEnum>
+    <DetailDesc>在取盘前机械臂上检测到托盘时，发出此错误事件。</DetailDesc>
+    <Solution>
+      1.取盘前，机械臂上必须无托盘和托盘信息。
+    </Solution>
+  </EventDefinition>
+  <EventDefinition>
+    <Id>4093</Id>
+    <Description>Alarm event:{0}.</Description>
+    <GlobalDescription_en>Alarm event:{0}.</GlobalDescription_en>
+    <GlobalDescription_zh>报警事件:{0}。</GlobalDescription_zh>
+    <Level>Alarm</Level>
+    <EventEnum>DefaultAlarm</EventEnum>
+    <DetailDesc>警告范围4000~4000+，如果系统反馈的警告事件没有指定事件ID，或者ID编号范围有误，则使用当前默认的报警代码作为该事件的警告代码。</DetailDesc>
+    <Solution>默认报警事件</Solution>
+  </EventDefinition>
+  <!-- PM Alarm -->
+  <EventDefinition>
+    <Id>5020</Id>
+    <Description>{0} 蝶阀工作异常。</Description>
+    <Level>Alarm</Level>
+    <EventEnum>ThrottleValveAbnormal</EventEnum>
+    <DetailDesc>当蝶阀工作状态异常时，发出该报警。</DetailDesc>
+    <Solution>
+      1. 检查蝶阀运行状态。
+    </Solution>
+  </EventDefinition>
+  <EventDefinition>
+    <Id>5027</Id>
+    <Description>{0} PLC运行失败，请检查PLC运行情况。</Description>
+    <Level>Alarm</Level>
+    <EventEnum>PlcHeartBeatFail</EventEnum>
+    <DetailDesc>PLC运行时需不断向C#程序发送心跳包消息，如果消息发送超时，则向GUI发送该错误消息。</DetailDesc>
+    <Solution>
+      1.检查反应腔工控机上的PLC程序是否已运行。
+    </Solution>
+  </EventDefinition>
+  <EventDefinition>
+    <Id>5120</Id>
+    <EventEnum>TCPConnSucess</EventEnum>
+    <Description>TCP connect success,IP:{0} Port:{1}</Description>
+    <DetailDesc>TCP connect success</DetailDesc>
+    <Solution />
+    <Level>Information</Level>
+  </EventDefinition>
+  <EventDefinition>
+    <Id>5125</Id>
+    <Description>{0} Communication error, {1}</Description>
+    <Level>Alarm</Level>
+    <EventEnum>CommunicationError</EventEnum>
+    <DetailDesc>Error occur during communication with hardware</DetailDesc>
+    <Solution>
+      1.Check network
+      2.Check hardware working status
+    </Solution>
+  </EventDefinition>
+  <EventDefinition>
+    <Id>5126</Id>
+    <Description>{0} {1}Tolerance alarm：{2}.</Description>
+    <GlobalDescription_en>{0} {1} Tolerance alarm：{2}.</GlobalDescription_en>
+    <GlobalDescription_zh>{0} {1} 跟随误差报警：{2}.</GlobalDescription_zh>
+    <Level>Alarm</Level>
+    <EventEnum>ToleranceAlarm</EventEnum>
+    <DetailDesc>当设备模块的设定量和实际反馈量的误差比较报警时发出该警告。</DetailDesc>
+    <Solution>
+      1.检查发生跟随误差的器件工作是否正常。
+      2.检查设定值或变化速率是否超出范围。
+    </Solution>
+  </EventDefinition>
+  <EventDefinition>
+    <Id>5128</Id>
+    <Description>TC {0} broken.</Description>
+    <GlobalDescription_en>TC {0} broken.</GlobalDescription_en>
+    <GlobalDescription_zh>温度计 {0} 坏了。</GlobalDescription_zh>
+    <Level>Alarm</Level>
+    <EventEnum>TCBroken</EventEnum>
+    <DetailDesc>display if TC is broken</DetailDesc>
+    <Solution>
+      change the broken TC.
+    </Solution>
+  </EventDefinition>
+  <EventDefinition>
+    <Id>5130</Id>
+    <Description>System running mode changed to {0}</Description>
+    <Level>Information</Level>
+    <EventEnum>RunningModeChanged</EventEnum>
+    <DetailDesc>system changed running mode</DetailDesc>
+    <Solution />
+    <GlobalDescription_en>System running mode changed to {0}</GlobalDescription_en>
+    <GlobalDescription_zh>系统运行模式切换到 {0}</GlobalDescription_zh>
+  </EventDefinition>
+  <EventDefinition>
+    <Id>5200</Id>
+    <Description>Initialize start。</Description>
+    <Level>Information</Level>
+    <EventEnum>HomeBegins</EventEnum>
+    <DetailDesc></DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>5201</Id>
+    <Description>Initialize end。</Description>
+    <Level>Information</Level>
+    <EventEnum>HomeEnds</EventEnum>
+    <DetailDesc></DetailDesc>
+    <Solution />
+  </EventDefinition>
+  <EventDefinition>
+    <Id>5202</Id>
+    <Description>Initialize failed，{0} 。</Description>
+    <Level>Alarm</Level>
+    <EventEnum>HomeFailed</EventEnum>
+    <DetailDesc></DetailDesc>
+    <Solution>
+      check subsystem。
+    </Solution>
+  </EventDefinition>
+  <EventDefinition>
+    <Id>5203</Id>
+    <Description>Foup Arrived at {0}</Description>
+    <Level>Information</Level>
+    <EventEnum>CarrierArrived</EventEnum>
+    <DetailDesc></DetailDesc>
+    <Solution>
+      Notify the Foup placed at the position.
+    </Solution>
+  </EventDefinition>
+  <EventDefinition>
+    <Id>5204</Id>
+    <Description>Foup removed from {0}</Description>
+    <Level>Information</Level>
+    <EventEnum>CarrierRemoved</EventEnum>
+    <DetailDesc></DetailDesc>
+    <Solution>
+      Notify the Foup is removed from the position.
+    </Solution>
+  </EventDefinition>
+  <EventDefinition>
+    <Id>5205</Id>
+    <Description>Manually Push the OP button at {0}</Description>
+    <Level>Information</Level>
+    <EventEnum>ManualOpAccess</EventEnum>
+    <DetailDesc></DetailDesc>
+    <Solution>
+      Notify the Foup will be load.
+    </Solution>
+  </EventDefinition>
+
+  <EventDefinition>
+    <Id>5206</Id>
+    <Description>Read {0} Carrier ID, {1}</Description>
+    <Level>Information</Level>
+    <EventEnum>CarrierIdRead</EventEnum>
+    <DetailDesc></DetailDesc>
+    <Solution>
+      Notify the carrier id was read.
+    </Solution>
+  </EventDefinition>
+
+  <EventDefinition>
+    <Id>5207</Id>
+    <Description>Failed read {0} carrier ID</Description>
+    <Level>Alarm</Level>
+    <EventEnum>CarrierIdReadFailed</EventEnum>
+    <DetailDesc></DetailDesc>
+    <Solution>
+      Notify failed while reading the carrier id.
+    </Solution>
+  </EventDefinition>
+
+  <EventDefinition>
+    <Id>5208</Id>
+    <Description>{0} wafer mapped, {1}</Description>
+    <Level>Information</Level>
+    <EventEnum>SlotMapAvailable</EventEnum>
+    <DetailDesc></DetailDesc>
+    <Solution>
+      Notify after mapped wafer.
+    </Solution>
+  </EventDefinition>
+  
+</EventDefine>

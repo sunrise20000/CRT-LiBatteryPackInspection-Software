@@ -1,0 +1,66 @@
+{
+  "IOSimulatorItemList": [
+    {
+      "SourceCommandName": "GetControl",
+      "SourceCommand": "05,01,00,00",
+      "SuccessResponse": {
+        "GS": "08",
+        "Status": "FF"
+      },
+      "FailedResponse": {
+        "GS": "08",
+        "Status": "02"
+      }
+    },
+    {
+      "SourceCommandName": "PreSetPiValue",
+      "SourceCommand": "02,06,00,01",
+      "SuccessResponse": {
+        "GS": "08",
+        "Status": "FF"
+      },
+      "FailedResponse": {
+        "GS": "08",
+        "Status": "02"
+      }
+    },
+    {
+      "SourceCommandName": "ReadPiValue",
+      "SourceCommand": "01,12,00,01",
+      "SuccessResponse": {
+        "GS": "08",
+        "Status": "00",
+        "Type": "04",
+        "Data": "58,02,00,00"
+      },
+      "FailedResponse": {
+        "GS": "08",
+        "Status": "01"
+      }
+    },
+    {
+      "SourceCommandName": "ReleaseControl",
+      "SourceCommand": "05,02,00,00",
+      "SuccessResponse": {
+        "GS": "00",
+        "Status": "FF"
+      },
+      "FailedResponse": {
+        "GS": "00",
+        "Status": "02"
+      }
+    },
+    {
+      "SourceCommandName": "ExecuteAnyCommand",
+      "SourceCommand": "05,02,00,00",
+      "SuccessResponse": {
+        "GS": "08",
+        "Status": "00"
+      },
+      "FailedResponse": {
+        "GS": "08",
+        "Status": "01"
+      }
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "IOSimulatorItemList": [
+    {
+      "SourceCommandName": "CloseValve",
+      "SourceCommand": "C:",
+      "SuccessResponse": "",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "OpenValve",
+      "SourceCommand": "O:",
+      "SuccessResponse": "",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "Hold",
+      "SourceCommand": "H:",
+      "SuccessResponse": "",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "SetPosition",
+      "SourceCommand": "R:",
+      "Argument": "100000",
+      "SuccessResponse": "",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "SetPressure",
+      "SourceCommand": "S:",
+      "SuccessResponse": "",
+      "FailedResponse": "000001"
+    },
+
+    {
+      "SourceCommandName": "SetAcessMode",
+      "SourceCommand": "c:01",
+      "SuccessResponse": "",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "SetValveConfig",
+      "SourceCommand": "s:04",
+      "SuccessResponse": "",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "SetSensorConfig",
+      "SourceCommand": "s:01",
+      "SuccessResponse": "",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "SetSensorScale",
+      "SourceCommand": "s:05",
+      "SuccessResponse": "",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "SetSensor1Linearization",
+      "SourceCommand": "s:17",
+      "SuccessResponse": "",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "SetSensor2Linearization",
+      "SourceCommand": "s:18",
+      "SuccessResponse": "",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "SetSensorAverage",
+      "SourceCommand": "s:19",
+      "SuccessResponse": "",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "SetCommRangeConfig",
+      "SourceCommand": "s:21",
+      "SuccessResponse": "",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "SetInterfaceConfig",
+      "SourceCommand": "s:20",
+      "SuccessResponse": "",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "SetValveSpeed",
+      "SourceCommand": "V:",
+      "SuccessResponse": "",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "ResetError",
+      "SourceCommand": "c:82:",
+      "SuccessResponse": "",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "SetPressureControllerMode",
+      "SourceCommand": "s:02Z00",
+      "SuccessResponse": "",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "SetPressureControllerConfig",
+      "SourceCommand": "s:02",
+      "SuccessResponse": "",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "RequestPositoin",
+      "SourceCommand": "A:",
+      "SuccessResponse": "001000",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "RequestPressure",
+      "SourceCommand": "P:",
+      "SuccessResponse": "00010000",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "RequestSensor1Offset",
+      "SourceCommand": "i:60",
+      "SuccessResponse": "01200000",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "RequestSensor2Offset",
+      "SourceCommand": "i:61",
+      "SuccessResponse": "01300000",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "RequestSensor1Reading",
+      "SourceCommand": "i:64",
+      "SuccessResponse": "00100000",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "RequestSensor2Reading",
+      "SourceCommand": "i:65",
+      "SuccessResponse": "00200000",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "RequestDeviceStatus",
+      "SourceCommand": "i:30",
+      "SuccessResponse": "11010001",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "RequestError",
+      "SourceCommand": "i:50",
+      "SuccessResponse": "011",
+      "FailedResponse": "000001"
+    },
+    {
+      "SourceCommandName": "RequestWarnings",
+      "SourceCommand": "i:51",
+      "SuccessResponse": "01010000",
+      "FailedResponse": "000001"
+    }
+
+  ]
+}

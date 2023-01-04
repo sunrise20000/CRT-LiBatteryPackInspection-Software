@@ -1,0 +1,164 @@
+﻿<UserControl x:Class="SicUI.Models.Maintenances.RuntimeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SicUI.Models.Maintenances"  
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:cal="http://www.caliburn.org"
+              xmlns:ctrl="http://OpenSEMI.Ctrlib.com/presentation"
+             mc:Ignorable="d" 
+             d:DesignHeight="900" d:DesignWidth="1800">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Runtime Info">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="120"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+
+                    <Grid  HorizontalAlignment="Left" Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="120"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title}" Padding="5,1">
+                            <TextBlock Text="DeviceName" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                        </Border>
+
+                        <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content}"  Grid.Column="1" Padding="5,1">
+                            <ctrl:TextBoxEx Text="{Binding Path=DeviceNameSet, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Width="205" Height="25"/>
+                        </Border>
+                        
+                        <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content}" Grid.Column="2" Grid.RowSpan="2" Padding="5,1">
+                            <Button Content="AddNew" Width="80" Height="50" HorizontalAlignment="Center" >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Add">
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </Border>
+
+                        <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title}" Grid.Row="1" Padding="5,1">
+                            <TextBlock Text="Maintenance Cycle Time" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                        </Border>
+
+                        <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content}"  Grid.Row="1" Grid.Column="1" Padding="5,1">
+                            <ctrl:TextBoxEx Text="{Binding Path=DeviceValueSet, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Width="205" Height="25"/>
+                        </Border>
+
+                    </Grid>
+
+                    <DataGrid Grid.Row="1" AlternationCount="2" HorizontalAlignment="Left" CanUserAddRows="False" AutoGenerateColumns="False" RowHeaderWidth="0"
+                  VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling"
+                  ItemsSource="{Binding RuntimeData}"  Margin="0,5,0,0" >
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Guid" Width="200" Visibility="Hidden">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                        <TextBlock Text="{Binding Guid}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" >
+                                    </TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="DeviceName" Width="300">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                        <TextBlock Text="{Binding DeviceName}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="Maintenance Cycle Time(hour)" Width="240">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <!--<TextBlock Text="{Binding SetValue}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>-->
+                                        <ctrl:TextBoxEx AllowBackgroundChange="False" Text="{Binding SetValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80" Margin="5,0" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                    </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="Run Time(hour)" Width="200">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                        <TextBlock Text="{Binding ElapseValue}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="IsPM" Width="200" Visibility="Hidden">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                        <TextBlock Text="{Binding IsPM}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+
+                            <DataGridTemplateColumn Width="120"  >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Update" Width="100" Height="25" FontSize="12">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="Click">
+                                                    <cal:ActionMessage MethodName="Update">
+                                                        <cal:Parameter Value="{Binding }" />
+                                                    </cal:ActionMessage>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        
+                            <DataGridTemplateColumn Width="120"  >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Reset" Width="100" Height="25" FontSize="12">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                    <cal:ActionMessage MethodName="Reset">
+                                                        <cal:Parameter Value="{Binding }" />
+                                                    </cal:ActionMessage>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="120"  >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Delete" Width="100" Height="25" FontSize="12">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="Click">
+                                                    <cal:ActionMessage MethodName="Delete">
+                                                        <cal:Parameter Value="{Binding }" />
+                                                    </cal:ActionMessage>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+                </DataGrid>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

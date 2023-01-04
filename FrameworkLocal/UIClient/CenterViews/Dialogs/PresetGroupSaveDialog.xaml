@@ -1,0 +1,80 @@
+﻿<Window x:Class="MECF.Framework.UI.Client.CenterViews.Dialogs.PresetGroupSaveDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MECF.Framework.UI.Client.CenterViews.Dialogs"
+             xmlns:controls="clr-namespace:OpenSEMI.Ctrlib.Controls"
+             mc:Ignorable="d" 
+             d:Height="200" d:Width="400"
+             WindowStyle="None"
+             WindowStartupLocation="CenterScreen"
+             ResizeMode="NoResize"
+             AllowsTransparency="True"
+             Background="Transparent">
+    <Grid Height="140" Width="330">
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="40" ShadowDepth="10" Opacity="0.7" />
+        </Grid.Effect>
+        <Border
+        Background="{DynamicResource Tab_BG}"
+        BorderBrush="Gray"
+        BorderThickness="3">
+            <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Border
+                Background="{DynamicResource Table_BG_Content_Highlight}"
+                BorderBrush="{DynamicResource Table_BD}"
+                BorderThickness="1">
+                <Canvas>
+                    <TextBlock
+                        Canvas.Left="10"
+                        Canvas.Top="22"
+                        FontFamily="Arial"
+                        FontSize="12"
+                        Foreground="{DynamicResource FG_Black}"
+                        Text="Group Name" />
+                    <controls:TextBoxEx
+                        x:Name="txtGroupName"
+                        Canvas.Left="100"
+                        Canvas.Top="16"
+                        Width="200"
+                        Height="28"
+                        MaxLength="30"
+                        AllowBackgroundChange="False" />
+                    <TextBlock 
+                        x:Name="txtErrors"
+                        Canvas.Left="100"
+                        Canvas.Top="47"
+                        Text="" Foreground="Red"/>
+
+                </Canvas>
+            </Border>
+            <StackPanel
+                Grid.Row="1"
+                Margin="0 10 0 0"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+                <Button x:Name="btnOk"
+                    Width="90"
+                    Height="30"
+                    Content="OK"
+                    Click="BtnOk_OnClick">
+                </Button>
+                <Button x:Name="btnCancel"
+                    Width="90"
+                    Height="30"
+                    Margin="10,0,0,0"
+                    Content="Cancel"
+                    Click="BtnCancel_OnClick">
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+       
+    </Grid>
+</Window>

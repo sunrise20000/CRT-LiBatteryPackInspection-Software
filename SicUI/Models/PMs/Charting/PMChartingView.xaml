@@ -1,0 +1,819 @@
+﻿<UserControl x:Class="SicUI.Models.PMs.Charting.PMChartingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:s="http://schemas.abtsoftware.co.uk/scichart" 
+             xmlns:micro="http://www.caliburn.org"
+             xmlns:control="clr-namespace:Aitex.Core.UI.Control;assembly=MECF.Framework.UI.Core"
+             xmlns:controls="http://OpenSEMI.Ctrlib.com/presentation"
+             xmlns:converters="clr-namespace:Aitex.Core.UI.Converters;assembly=MECF.Framework.UI.Core"
+             xmlns:converter="clr-namespace:MECF.Framework.UI.Client.Ctrlib.Converter;assembly=MECF.Framework.UI.Client"
+             mc:Ignorable="d" 
+             d:DesignHeight="780" d:DesignWidth="1900" Background="#91b0cd">
+    <UserControl.Resources>
+        <converters:LineColorConverter x:Key="colorConverter"/>
+        <converter:BoolCollapsedConverter x:Key="BoolVisibility"/>
+        <Style TargetType="Button" x:Key="ChartingButtonStyle">
+            <Setter Property="Margin" Value="3" />
+            <Setter Property="Background" Value="#FF323539" />
+            <Setter Property="Foreground" Value="#FFF" />
+            <Setter Property="Padding" Value="3" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="#FF5B5B5B" />
+            <Setter Property="Width" Value="35" />
+            <Setter Property="Height" Value="35" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="Border" Margin="{TemplateBinding Margin}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2" Opacity="0.6" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter Name="ContentHost" HorizontalAlignment="Center" VerticalAlignment="Center" ContentTemplate="{TemplateBinding ContentTemplate}"  />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Opacity" Value="1"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Line" x:Key="AnomationStyle">
+            <Setter Property="Stroke" Value="Black"/>
+            <Setter Property="StrokeThickness" Value="2"/>
+            <Setter Property="StrokeDashArray" Value="2 2"/>
+            <Setter Property="IsHitTestVisible" Value="False"/>
+            <Setter Property="UseLayoutRounding" Value="True"/>
+        </Style>
+
+        <ControlTemplate x:Key="LegendTemplate">
+            <Border HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Background="#88444444"
+                    BorderBrush="#88EEEEEE"
+                    BorderThickness="1"
+                    CornerRadius="3">
+                <TextBlock Margin="5"
+                           FontSize="16"
+                           Foreground="#eee"
+                           Text="{Binding DataContext.ThresholdX1,
+                                          StringFormat='Threshold = {0:#0.00}',
+                                          RelativeSource={RelativeSource AncestorType=s:SciChartSurface}}" />
+            </Border>
+        </ControlTemplate>
+    </UserControl.Resources>
+    <Grid x:Name="gridMain">
+        <TabControl x:Name="TabMain" Background="Transparent"  Height="{Binding ElementName=gridMain, Path=ActualHeight}" Width="{Binding ElementName=gridMain, Path=ActualWidth}"  VerticalAlignment="Top"  >
+            <TabItem Header="Data Source" Height="25">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="1.5*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <StackPanel Grid.Row="0" Grid.ColumnSpan="5" Orientation="Horizontal" VerticalAlignment="Bottom" >
+                        <Button Height="30" Width="100" Margin="5,0" Content="Add">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <micro:ActionMessage MethodName="Add">
+                                    </micro:ActionMessage>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                        <Button Height="30" Width="100"  Content="Remove All">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <micro:ActionMessage MethodName="RemoveAllProcessData">
+                                    </micro:ActionMessage>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </StackPanel>
+
+                    <DataGrid  Grid.Row="1"  Margin="5,5,0,5"  HorizontalAlignment="Left" BorderThickness="1"
+                      AlternationCount="2" ColumnHeaderHeight="30" 
+                      ItemsSource="{Binding Recipes}" SelectedItem="{Binding SelectedProcessData}" AutoGenerateColumns="False" 
+                      CanUserAddRows="False" CanUserResizeRows="False" CanUserResizeColumns="True" FontFamily="Arial" FontSize="12" Width="1800">
+                        <DataGrid.Columns>
+
+                            <DataGridTemplateColumn Header="Recipe Name" MinWidth="180">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Recipe}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Module" MinWidth="100" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Chamber}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Start Time" MinWidth="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding StartTime}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="End Time" MinWidth="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding EndTime}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Status" MinWidth="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Status}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Lot Name" MinWidth="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding LotID}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Slot Number" MinWidth="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding SlotID}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Sync Step" MinWidth="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding SyncStep}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="" MinWidth="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Delete" MinWidth="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Delete" Margin="5,0">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="Click">
+                                                    <micro:ActionMessage MethodName="DeleteProcessData">
+                                                        <micro:Parameter Value="{Binding }"/>
+                                                    </micro:ActionMessage>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="450"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="10,0,0,5">
+                            <TextBox VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="250" Height="30" Template="{StaticResource SearchTextBoxTemplate}" Text="{Binding Path=CurrentCriteria, UpdateSourceTrigger=PropertyChanged}" Foreground="Black"/>
+                        </StackPanel>
+
+                        <StackPanel  Grid.Column="1"  Orientation="Horizontal" VerticalAlignment="Bottom" Margin="20,0,0,5" >
+                            <Button Height="30" Width="100" Margin="5,0,0,0" Content="Remove All">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <micro:ActionMessage MethodName="RemoveAllLine">
+                                        </micro:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                            <Button Height="30" Width="100" Margin="5,0,0,0" Content="Template">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <micro:ActionMessage MethodName="Template">
+                                        </micro:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                            <Button Height="30" Width="110" Margin="500,0,0,0" Content="Goto Charting" Click="Button_Click">
+                                <!--<i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <micro:ActionMessage MethodName="GotoCharting">
+                                    </micro:ActionMessage>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>-->
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="450"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border BorderBrush="{DynamicResource MainFrame_BD_Highlight}" BorderThickness="1" SnapsToDevicePixels="True" Background="{DynamicResource Tab_BG}" Padding="2">
+                            <TreeView x:Name="ParameterTreeView" ItemsSource="{Binding ConfigNodes}" >
+                                <TreeView.ItemTemplate>
+                                    <HierarchicalDataTemplate  ItemsSource="{Binding PMNodeInfo}" >
+                                        <StackPanel Orientation="Horizontal">
+                                            <CheckBox IsChecked="{Binding Selected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <micro:ActionMessage MethodName="ParameterCheck">
+                                                            <micro:Parameter Value="{Binding }"/>
+                                                        </micro:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </CheckBox>
+                                            <TextBlock Text="{Binding NodeStr}"  />
+                                        </StackPanel>
+                                    </HierarchicalDataTemplate>
+                                </TreeView.ItemTemplate>
+
+                                <TreeView.ItemContainerStyle>
+                                    <Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource ResourceKey={x:Type TreeViewItem}}">
+                                        <Setter Property="Visibility" Value="{Binding Path=IsMatch, Mode=OneWay, Converter={StaticResource ResourceKey=BoolVisibility}}"></Setter>
+                                    </Style>
+                                </TreeView.ItemContainerStyle>
+                            </TreeView>
+                        </Border>
+
+                        <DataGrid Grid.Column="2"  Margin="20,0,0,0"  HorizontalAlignment="Left" BorderThickness="1"
+                        AlternationCount="2" ColumnHeaderHeight="30" 
+                        ItemsSource="{Binding SelectedData}" AutoGenerateColumns="False" 
+                        CanUserAddRows="False" CanUserResizeRows="False" CanUserResizeColumns="True" FontFamily="Arial" FontSize="12" Width="1300" Grid.ColumnSpan="2" >
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn  Width="60">
+                                    <DataGridTemplateColumn.HeaderTemplate >
+                                        <DataTemplate>
+                                            <TextBlock Text="Visible" FontFamily="Arial" FontSize="12" VerticalAlignment="Bottom" Margin="3,0,0,0"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding IsVisible, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Source" MinWidth="280">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding DataName}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Name" MinWidth="300" >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding RecName}" Margin="5,0" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Color" MinWidth="100">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Style="{DynamicResource Color_Button}" HorizontalAlignment="Stretch" Background="{Binding Stroke, Converter={StaticResource colorConverter}}" Width="50">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <micro:ActionMessage MethodName="SelectColor">
+                                                            <micro:Parameter Value="{Binding}" ></micro:Parameter>
+                                                        </micro:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Factor" MinWidth="100">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <controls:TextBoxEx AllowBackgroundChange="False" Text="{Binding DataFactor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Offset" MinWidth="100">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <controls:TextBoxEx AllowBackgroundChange="False" Text="{Binding DataOffset, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80" Margin="5,0" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Width" MinWidth="100">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <controls:TextBoxEx AllowBackgroundChange="False" Text="{Binding LineThickness, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80" Margin="5,0" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="120">
+                                    <DataGridTemplateColumn.HeaderTemplate >
+                                        <DataTemplate>
+
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="120">
+                                    <DataGridTemplateColumn.HeaderTemplate >
+                                        <DataTemplate>
+
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                    </Grid>
+                </Grid>
+
+            </TabItem>
+
+
+            <TabItem Header="Charting View">
+                <Grid x:Name="MainGrid">
+                    <Grid.RowDefinitions >
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <StackPanel Background="#eee">
+                                <Button Command="{Binding DefaultZoomCommand}"
+                                            Padding="0"
+                                            FontSize="11"
+                                            Content="Zoom"
+                                            Style="{StaticResource ChartingButtonStyle}"/>
+
+                                <Button Command="{Binding ShowLegendCommand}"
+                                            Padding="0"
+                                            FontSize="11"
+                                            Content="Legend"
+                                            Style="{StaticResource ChartingButtonStyle}"/>
+                                <Button Command="{Binding ShowAlarmCommand}"
+                                            Padding="0"
+                                            FontSize="11"
+                                            Content="Alarm"
+                                            Style="{StaticResource ChartingButtonStyle}"/>
+                            </StackPanel>
+                            <StackPanel Background="#eee" Grid.Row="1">
+                                <Button Command="{Binding DataDetailVisbleCommand}"
+                                            Padding="0"
+                                            FontSize="11"
+                                            Content="Data"
+                                            Style="{StaticResource ChartingButtonStyle}"/>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Column="1" >
+                            <s:SciChartSurface Name="sciChart" RenderableSeries="{Binding SelectedData}" Annotations="{Binding AlarmAnnotation}"
+                                      s:ThemeManager.Theme="ExpressionLight"
+                                      Padding="0,0,0,0" 
+                                      DebugWhyDoesntSciChartRender="False" BorderBrush="Gray" Focusable="False" IsTabStop="False" ViewportManager="{Binding ViewportManager}">
+
+                                
+                                <!--<s:SciChartSurface.Annotations>
+                                    <s:VerticalLineAnnotation  HorizontalAlignment="Stretch" Visibility="{Binding StatAnnotationVisibility}"
+                                            FontSize="13"
+                                            FontWeight="Bold"
+                                            Foreground="White"
+                                            IsEditable="True"
+                                            LabelPlacement="Axis"
+                                            LabelTextFormatting="0.00"
+                                            ShowLabel="True"
+                                            Stroke="Blue"
+                                            StrokeThickness="2"
+                                            X1="{Binding ThresholdX1,
+                                                         Mode=TwoWay,
+                                                         FallbackValue=5.6}" />
+                                    <s:VerticalLineAnnotation HorizontalAlignment="Stretch" Visibility="{Binding StatAnnotationVisibility}"
+                                            FontSize="13"
+                                            FontWeight="Bold"
+                                            Foreground="White"
+                                            IsEditable="True"
+                                            LabelPlacement="Axis"
+                                            LabelTextFormatting="0.00"
+                                            ShowLabel="True"
+                                            Stroke="Blue"
+                                            StrokeThickness="2"
+                                            X1="{Binding ThresholdX2,
+                                                         Mode=TwoWay,
+                                                         FallbackValue=50}" />
+                                </s:SciChartSurface.Annotations>-->
+
+
+                                <!-- Create an X Axis -->
+                                <s:SciChartSurface.XAxis>
+                                    <s:NumericAxis DrawMinorTicks="False" 
+                                    DrawMinorGridLines="True" Focusable="False" 
+                                    Margin="0,0,0,0" 
+                                    TitleFontSize="15"
+                                    FontSize="20"  
+                                    AutoRange="{Binding ChartAutoRange}"
+                                    VisibleRangeLimit="{Binding VisibleRangeXLimit}"
+                                    VisibleRange="{Binding VisibleRangeX}"
+                                    Id="DefaultAxisId" TitleFontWeight="Normal" />
+
+                                </s:SciChartSurface.XAxis>
+
+                                <!-- Create a Y Axis -->
+                                <s:SciChartSurface.YAxis>
+                                    <s:NumericAxis DrawMinorTicks="False"  
+                                          DrawMinorGridLines="True" 
+                                          AxisAlignment="Right"
+                                   MinWidth="35" MaxWidth="35" 
+                                   HorizontalAlignment="Center"
+                                   CursorTextFormatting="0.######"
+                                   VisibleRange="{Binding VisibleRangeY}"
+                                   VisibleRangeLimit="{Binding VisibleRangeYLimit}"
+                                   Id="DefaultAxisId" MajorDelta="0.1" 
+                                   MinorDelta="0.1" DrawMajorBands="False" Focusable="False" 
+                                   BorderThickness="0" AutoRange="{Binding ChartAutoRange}" 
+                                   DrawLabels="True" DrawMajorGridLines="True" DrawMajorTicks="False">
+                                        <s:NumericAxis.GrowBy>
+                                            <s:DoubleRange Min="0.1" Max="0.1"/>
+                                        </s:NumericAxis.GrowBy>
+                                    </s:NumericAxis>
+                                </s:SciChartSurface.YAxis>
+
+                                <s:SciChartSurface.ChartModifier>
+
+                                    <s:ModifierGroup  >
+                                        <s:RubberBandXyZoomModifier x:Name="rubberBandZoomModifier" IsEnabled="True" 
+                                                           IsXAxisOnly="False" 
+                                                           ZoomExtentsY="True" 
+                                                           IsAnimated="True" ExecuteOn="MouseLeftButton" ReceiveHandledEvents="True" />
+
+                                        <s:CursorModifier IsEnabled="True"  ShowTooltipOn="MouseOver"  ShowAxisLabels="True"  
+                                          SourceMode="AllSeries" ShowTooltip="False" />
+
+                                        <s:LegendModifier ShowLegend="False" GetLegendDataFor="AllSeries" x:Name="legendModifier"/>
+
+                                        <s:ZoomExtentsModifier x:Name="zoomExtentsModifier"  XyDirection="XYDirection" ExecuteOn="MouseDoubleClick"/>
+
+                                        <s:ZoomPanModifier x:Name="zoomPanModifier" IsEnabled="True"  ClipModeX="None" XyDirection="XYDirection" ExecuteOn="MouseRightButton" ZoomExtentsY="False" />
+
+                                        <s:RolloverModifier x:Name="rolloverModifier" 
+                                                   UseInterpolation="False" FontSize="9" IsEnabled="True" 
+                                                   DrawVerticalLine="False" FontFamily="Arial,SimSun" 
+                                                   SnapsToDevicePixels="False"                                             
+                                                  ShowAxisLabels="False" />
+
+                                        <s:MouseWheelZoomModifier x:Name="mouseWheelZoomModifier" XyDirection="XYDirection"/>
+
+                                        <s:RolloverModifier IsEnabled="True" DrawVerticalLine="True" ShowAxisLabels="False" x:Name="RolloverModifier"
+                                        ShowTooltipOn="Always" SourceMode="AllSeries" ExecuteOn="MouseMove" >
+                                            <s:RolloverModifier.LineOverlayStyle>
+                                                <!-- The style for the rollover line -->
+                                                <Style TargetType="Line">
+                                                    <Setter Property="Stroke" Value="Pink"/>
+                                                    <Setter Property="StrokeThickness" Value="2"/>
+                                                    <Setter Property="StrokeDashArray" Value="2 2"/>
+                                                    <Setter Property="IsHitTestVisible" Value="False"/>
+                                                    <Setter Property="UseLayoutRounding" Value="True"/>
+                                                </Style>
+                                            </s:RolloverModifier.LineOverlayStyle>
+                                        </s:RolloverModifier>
+
+                                        <s:YAxisDragModifier DragMode="Scale"/>
+                                        <s:XAxisDragModifier DragMode="Pan"/>
+                                        <s:LegendModifier ShowLegend="{Binding ShowLegendInfo}"/>
+                                        
+                                    </s:ModifierGroup>                                   
+                                    
+                                </s:SciChartSurface.ChartModifier>
+
+                                
+                            </s:SciChartSurface>
+
+                            <StackPanel Margin="30,30" Orientation="Horizontal" HorizontalAlignment="Right" Visibility="{Binding RealTimeMode, Converter={StaticResource BoolVisibilityConverter}}">
+                                <StackPanel.Effect>
+                                    <DropShadowEffect BlurRadius="5" ShadowDepth="0" Color="#FFB3E8F6"/>
+                                </StackPanel.Effect>
+
+                                <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+                                    <Canvas Name="layer1" Width="20" Height="20" Margin="12,34,10,0">
+                                        <Canvas.RenderTransform>
+                                            <ScaleTransform CenterX="-6" CenterY="-6" ScaleX="2" ScaleY="2" />
+                                        </Canvas.RenderTransform>
+                                        <Path Data="m 0 0 c -4 -4 -8.866933 -10.79431 -10 -15 0 0 0 -5 5 -5 5 0 5 5 5 5 0 0 0 -5 5 -5 5 0 5.242535 4.02986 5 5 -1 4 -6 11 -10 15 z" Fill="#4e72b8"/>
+                                    </Canvas>
+                                </Grid>
+
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="ArialBlack" FontSize="36" FontWeight="Bold" Foreground="#4e72b8" Text="{Binding RealTimeX}"/>
+                                <!--<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="ArialBlack" FontSize="36" FontWeight="Bold" Foreground="#4e72b8" Text="RealTime"/>-->
+                            </StackPanel>
+                        </Grid>
+
+                    </Grid>
+
+                    <Grid Grid.Row="1" Visibility="{Binding DataDetailVisbility}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1410"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TabControl  Margin="5" >
+                            <TabItem Header="Data Line" Height="24" VerticalAlignment="Top">
+                                <Grid>
+                                    <DataGrid  Margin="5"  HorizontalAlignment="Left" BorderThickness="1"
+                                          AlternationCount="2" ColumnHeaderHeight="30" 
+                                          ItemsSource="{Binding SelectedData}" AutoGenerateColumns="False" 
+                                          CanUserAddRows="False" CanUserResizeRows="False" CanUserResizeColumns="True" FontFamily="Arial" FontSize="12"  Width="1380">
+                                        <DataGrid.Columns>
+                                            <DataGridTemplateColumn  Width="60">
+                                                <DataGridTemplateColumn.HeaderTemplate >
+                                                    <DataTemplate>
+                                                        <TextBlock Text="Visible" FontFamily="Arial" FontSize="12" VerticalAlignment="Bottom" Margin="3,0,0,0"/>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.HeaderTemplate>
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <CheckBox IsChecked="{Binding IsVisible, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center"/>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Header="Source" MinWidth="280">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding DataName}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Header="Name" MinWidth="300" >
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding RecName}" Margin="5,0" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Header="Color" MinWidth="100">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Button Style="{DynamicResource Color_Button}" Height="25" HorizontalAlignment="Stretch" Background="{Binding Stroke, Converter={StaticResource colorConverter}}" Width="50">
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="Click">
+                                                                    <micro:ActionMessage MethodName="SelectColor">
+                                                                        <micro:Parameter Value="{Binding}" ></micro:Parameter>
+                                                                    </micro:ActionMessage>
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                        </Button>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Header="Factor" MinWidth="100">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <controls:TextBoxEx AllowBackgroundChange="False" Text="{Binding DataFactor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Header="YOffset" MinWidth="100">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <controls:TextBoxEx AllowBackgroundChange="False" Text="{Binding DataOffset, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80" Margin="5,0" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Header="XOffset" MinWidth="100">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <controls:TextBoxEx AllowBackgroundChange="False" Text="{Binding DataXOffset, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80" Margin="5,0" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Header="Width" MinWidth="100">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <controls:TextBoxEx AllowBackgroundChange="False" Text="{Binding LineThickness, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80" Margin="5,0" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header="Data Statistics" Height="24" VerticalAlignment="Top">
+                                <Grid>
+                                    <DataGrid  Margin="5"  HorizontalAlignment="Left" BorderThickness="1"
+                                          AlternationCount="2" ColumnHeaderHeight="30" 
+                                          ItemsSource="{Binding SelectedData}" AutoGenerateColumns="False" 
+                                          CanUserAddRows="False" CanUserResizeRows="False" CanUserResizeColumns="True" FontFamily="Arial" FontSize="12"  Width="1380">
+                                        <DataGrid.Columns>
+                                            <DataGridTemplateColumn Header="Source" MinWidth="280">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding DataName}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Header="Name" MinWidth="300" >
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding RecName}" Margin="5,0" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Header="PointCount" MinWidth="100" >
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding PointCount}" Margin="5,0" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Header="MaxValue" MinWidth="100" >
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding MaxValue,StringFormat={}{0:F4}}"  Margin="5,0" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Header="MinValue" MinWidth="100" >
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding MinValue,StringFormat={}{0:F4}}" Margin="5,0" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Header="AvgValue" MinWidth="100" >
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding AvgValue,StringFormat={}{0:F4}}" Margin="5,0" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Header="Variance" MinWidth="100" >
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Variance,StringFormat={}{0:F4}}" Margin="5,0" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </Grid>
+                            </TabItem>
+                        </TabControl>
+
+                        <Grid Grid.Column="1"  Margin="15,25,0,0" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="26"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="35" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="95"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Trend Chart Setting" Style="{DynamicResource Table_TitleStyle}" Grid.Row="0" Grid.ColumnSpan="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title}" Grid.Row="1" Padding="5,1">
+                                <TextBlock Text="YValueRange" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{Binding AlignerStatusBackground}" Grid.Row="1" Grid.Column="1" Padding="5,1" Grid.ColumnSpan="1">
+                                <controls:TextBoxEx   MinValue="0" MaxValue="10000000" Text="{Binding UseSetY1, Mode=TwoWay}" Validation.ErrorTemplate="{x:Null}"  Width="110" Height="25"/>
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{Binding AlignerStatusBackground}" Grid.Row="1" Grid.Column="2" Padding="5,1" Grid.ColumnSpan="1">
+                                <controls:TextBoxEx   MinValue="0" MaxValue="10000000" Text="{Binding UseSetY2, Mode=TwoWay}" Validation.ErrorTemplate="{x:Null}"  Width="110" Height="25"/>
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content}" Grid.Row="1"  Grid.Column="3" Padding="5,1"  >
+                                <Button Content="Set" Width="70" Height="25" Margin="5,0,0,0">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <micro:ActionMessage MethodName="SetYValue">
+                                            </micro:ActionMessage>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                            </Border>
+
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title}" Grid.Row="2" Padding="5,1">
+                                <TextBlock Text="XValueRange" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{Binding AlignerStatusBackground}" Grid.Row="2"  Grid.Column="1" Padding="5,1" Grid.ColumnSpan="1">
+                                <controls:TextBoxEx   MinValue="0" MaxValue="10000000" Text="{Binding UseSetX1, Mode=TwoWay}" Validation.ErrorTemplate="{x:Null}"  Width="110" Height="25"/>
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{Binding AlignerStatusBackground}" Grid.Row="2"  Grid.Column="2" Padding="5,1" Grid.ColumnSpan="1">
+                                <controls:TextBoxEx   MinValue="0" MaxValue="10000000" Text="{Binding UseSetX2, Mode=TwoWay}" Validation.ErrorTemplate="{x:Null}"  Width="110" Height="25"/>
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content}" Grid.Row="2"  Grid.Column="3" Padding="5,1"  >
+                                <Button Content="Set" Width="70" Height="25" Margin="5,0,0,0">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <micro:ActionMessage MethodName="SetXValue">
+                                            </micro:ActionMessage>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title}" Grid.Row="3" Grid.Column="0" Padding="5,1" >
+                                <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+                                    <CheckBox IsChecked="{Binding RealTimeMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <TextBlock Text="RealTime" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title}" Grid.Row="3" Grid.Column="1" Padding="5,1" >
+                                <TextBlock Text="Interval(ms):" HorizontalAlignment="Right" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title}" Grid.Row="3" Grid.Column="2" Padding="5,1" >
+                                <controls:TextBoxEx EditBoxMode="UnSignInteger"  MinValue="2000" MaxValue="60000" Text="{Binding TrendInterval, Mode=TwoWay}" Validation.ErrorTemplate="{x:Null}"  Width="100" Height="25"/>
+                            </Border>
+
+                            <Border  BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title}"   Grid.Row="3" Grid.Column="3" Padding="5,1" Grid.ColumnSpan="3">
+                                <Button Content="Set" Width="70" Height="25" Margin="5,0,0,0">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <micro:ActionMessage MethodName="SetTimeSpan">
+                                            </micro:ActionMessage>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title}" Grid.Row="4" Padding="5,1">
+                                <TextBlock Text="Statistics" TextWrapping="Wrap" Foreground="{DynamicResource FG_Black}" FontSize="12" FontFamily="Arial" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content}" Grid.Row="4"  Grid.Column="1" Grid.ColumnSpan="3" Padding="5,1"  >
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Button Content="Statistics" Width="80" Height="25" Margin="10,0">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <micro:ActionMessage MethodName="DataStatistics">
+                                                </micro:ActionMessage>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+                                    <Button Content="Reset" Width="80" Height="25" Margin="10,0">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <micro:ActionMessage MethodName="DataStatisticsReset">
+                                                </micro:ActionMessage>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+                                    <!--<Button Content="Current" Width="80" Height="25" Margin="10,0">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <micro:ActionMessage MethodName="DataStatisticsCurrent">
+                                                </micro:ActionMessage>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>-->
+                                </StackPanel>
+                            </Border>
+
+
+                        </Grid>
+                    </Grid>
+                    
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

@@ -1,0 +1,58 @@
+﻿<UserControl
+    x:Class="MECF.Framework.UI.Client.Ctrlib.UnitControls.Door"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="20"
+    d:DesignWidth="100"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+
+        <Storyboard x:Key="Door_Open">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)">
+                <EasingDoubleKeyFrame KeyTime="0" Value="55" />
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="15" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Door_Close">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)">
+                <EasingDoubleKeyFrame KeyTime="0" Value="15" />
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="55" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Style x:Key="Door_Animation" TargetType="{x:Type Rectangle}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsDoorOpen, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}" Value="true">
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard Storyboard="{StaticResource Door_Open}" />
+                    </DataTrigger.EnterActions>
+                    <DataTrigger.ExitActions>
+                        <BeginStoryboard Storyboard="{StaticResource Door_Close}" />
+                    </DataTrigger.ExitActions>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Rectangle
+            x:Name="Door_Left"
+            Width="55"
+            HorizontalAlignment="Left"
+            Fill="DimGray"
+            Style="{StaticResource Door_Animation}" />
+        <Rectangle
+            x:Name="Door_Right"
+            Grid.Column="1"
+            Width="55"
+            HorizontalAlignment="Right"
+            Fill="DimGray"
+            Style="{StaticResource Door_Animation}" />
+    </Grid>
+</UserControl>

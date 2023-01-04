@@ -1,0 +1,1425 @@
+﻿<UserControl x:Class="SicUI.Controls.Parts.MFCView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:cal="http://www.caliburn.org"     
+             xmlns:ctrl="http://OpenSEMI.Ctrlib.com/presentation"
+             mc:Ignorable="d"
+             d:DesignHeight="900" d:DesignWidth="1920">
+    <UserControl.Resources>
+        
+        <Style x:Key="Point1Style" TargetType="DataGridColumnHeader">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid x:Name="Root">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid
+                                Grid.Column="0"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <ContentPresenter
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="5"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Point 1"
+                                    TextBlock.Foreground="#F7F8F8"
+                                     />
+                                <Rectangle
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="5"
+                                    VerticalAlignment="Stretch" Height="1"
+                                    Fill="Black"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="SetPoint"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Width="1"
+                                    VerticalAlignment="Stretch"
+                                    Fill="#ccc"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="2"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Actual Flow"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="2"
+                                    Grid.Column="3"
+                                    Width="1"
+                                    VerticalAlignment="Stretch"
+                                    Fill="#ccc"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="4"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Error%"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                            </Grid>
+                            <Rectangle
+                                Grid.Column="1"
+                                Width="1"
+                                VerticalAlignment="Stretch"
+                                Fill="Black"
+                                Visibility="Visible"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style x:Key="Point2Style" TargetType="DataGridColumnHeader">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid x:Name="Root">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid
+                                Grid.Column="0"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <ContentPresenter
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="5"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Point 2"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="5"
+                                    VerticalAlignment="Stretch" Height="1"
+                                    Fill="Black"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="SetPoint"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Width="1"
+                                    VerticalAlignment="Stretch"
+                                    Fill="#ccc"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="2"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Actual Flow"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="2"
+                                    Grid.Column="3"
+                                    Width="1"
+                                    VerticalAlignment="Stretch"
+                                    Fill="#ccc"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="4"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Error%"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                            </Grid>
+                            <Rectangle
+                                Grid.Column="1"
+                                Width="1"
+                                VerticalAlignment="Stretch"
+                                Fill="Black"
+                                Visibility="Visible"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style x:Key="Point3Style" TargetType="DataGridColumnHeader">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid x:Name="Root">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid
+                                Grid.Column="0"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <ContentPresenter
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="5"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Point 3"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="5"
+                                    VerticalAlignment="Stretch" Height="1"
+                                    Fill="Black"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="SetPoint"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Width="1"
+                                    VerticalAlignment="Stretch"
+                                    Fill="#ccc"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="2"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Actual Flow"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="2"
+                                    Grid.Column="3"
+                                    Width="1"
+                                    VerticalAlignment="Stretch"
+                                    Fill="#ccc"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="4"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Error%"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                            </Grid>
+                            <Rectangle
+                                Grid.Column="1"
+                                Width="1"
+                                VerticalAlignment="Stretch"
+                                Fill="Black"
+                                Visibility="Visible"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Point4Style" TargetType="DataGridColumnHeader">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid x:Name="Root">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid
+                                Grid.Column="0"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <ContentPresenter
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="5"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Point 4"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="5"
+                                    VerticalAlignment="Stretch" Height="1"
+                                    Fill="Black"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="SetPoint"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Width="1"
+                                    VerticalAlignment="Stretch"
+                                    Fill="#ccc"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="2"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Actual Flow"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="2"
+                                    Grid.Column="3"
+                                    Width="1"
+                                    VerticalAlignment="Stretch"
+                                    Fill="#ccc"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="4"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Error%"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                            </Grid>
+                            <Rectangle
+                                Grid.Column="1"
+                                Width="1"
+                                VerticalAlignment="Stretch"
+                                Fill="Black"
+                                Visibility="Visible"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Point5Style" TargetType="DataGridColumnHeader">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid x:Name="Root">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid
+                                Grid.Column="0"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <ContentPresenter
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="5"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Point 5"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="5"
+                                    VerticalAlignment="Stretch" Height="1"
+                                    Fill="Black"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="SetPoint"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Width="1"
+                                    VerticalAlignment="Stretch"
+                                    Fill="#ccc"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="2"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Actual Flow"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="2"
+                                    Grid.Column="3"
+                                    Width="1"
+                                    VerticalAlignment="Stretch"
+                                    Fill="#ccc"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="4"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Error%"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                            </Grid>
+                            <Rectangle
+                                Grid.Column="1"
+                                Width="1"
+                                VerticalAlignment="Stretch"
+                                Fill="Black"
+                                Visibility="Visible"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Point6Style" TargetType="DataGridColumnHeader">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid x:Name="Root">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid
+                                Grid.Column="0"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <ContentPresenter
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="5"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Point 6"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="5"
+                                    VerticalAlignment="Stretch" Height="1"
+                                    Fill="Black"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="SetPoint"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Width="1"
+                                    VerticalAlignment="Stretch"
+                                    Fill="#ccc"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="2"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Actual Flow"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="2"
+                                    Grid.Column="3"
+                                    Width="1"
+                                    VerticalAlignment="Stretch"
+                                    Fill="#ccc"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="4"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Error%"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                            </Grid>
+                            <Rectangle
+                                Grid.Column="1"
+                                Width="1"
+                                VerticalAlignment="Stretch"
+                                Fill="Black"
+                                Visibility="Visible"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Point7Style" TargetType="DataGridColumnHeader">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid x:Name="Root">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid
+                                Grid.Column="0"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <ContentPresenter
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="5"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Point 7"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="5"
+                                    VerticalAlignment="Stretch" Height="1"
+                                    Fill="Black"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="SetPoint"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Width="1"
+                                    VerticalAlignment="Stretch"
+                                    Fill="#ccc"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="2"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Actual Flow"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="2"
+                                    Grid.Column="3"
+                                    Width="1"
+                                    VerticalAlignment="Stretch"
+                                    Fill="#ccc"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="4"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Error%"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                            </Grid>
+                            <Rectangle
+                                Grid.Column="1"
+                                Width="1"
+                                VerticalAlignment="Stretch"
+                                Fill="Black"
+                                Visibility="Visible"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Point8Style" TargetType="DataGridColumnHeader">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid x:Name="Root">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid
+                                Grid.Column="0"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <ContentPresenter
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="5"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Point 8"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="5"
+                                    VerticalAlignment="Stretch" Height="1"
+                                    Fill="Black"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="SetPoint"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Width="1"
+                                    VerticalAlignment="Stretch"
+                                    Fill="#ccc"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="2"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Actual Flow"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="2"
+                                    Grid.Column="3"
+                                    Width="1"
+                                    VerticalAlignment="Stretch"
+                                    Fill="#ccc"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="4"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Error%"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                            </Grid>
+                            <Rectangle
+                                Grid.Column="1"
+                                Width="1"
+                                VerticalAlignment="Stretch"
+                                Fill="Black"
+                                Visibility="Visible"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Point9Style" TargetType="DataGridColumnHeader">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid x:Name="Root">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid
+                                Grid.Column="0"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <ContentPresenter
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="5"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Point 9" 
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="5"
+                                    VerticalAlignment="Stretch" Height="1"
+                                    Fill="Black"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="SetPoint"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Width="1"
+                                    VerticalAlignment="Stretch"
+                                    Fill="#ccc"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="2"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Actual Flow"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="2"
+                                    Grid.Column="3"
+                                    Width="1"
+                                    VerticalAlignment="Stretch"
+                                    Fill="#ccc"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="4"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Error%"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                            </Grid>
+                            <Rectangle
+                                Grid.Column="1"
+                                Width="1"
+                                VerticalAlignment="Stretch"
+                                Fill="Black"
+                                Visibility="Visible"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Point10Style" TargetType="DataGridColumnHeader">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid x:Name="Root">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid
+                                Grid.Column="0"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <ContentPresenter
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="5"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Point 10"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="5"
+                                    VerticalAlignment="Stretch" Height="1"
+                                    Fill="Black"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="SetPoint"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Width="1"
+                                    VerticalAlignment="Stretch"
+                                    Fill="#ccc"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="2"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Actual Flow"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                                <Rectangle
+                                    Grid.Row="2"
+                                    Grid.Column="3"
+                                    Width="1"
+                                    VerticalAlignment="Stretch"
+                                    Fill="#ccc"
+                                    Visibility="Visible"/>
+                                <ContentPresenter
+                                    Grid.Row="2"
+                                    Grid.Column="4"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="Error%"
+                                    TextBlock.Foreground="#F7F8F8"/>
+                            </Grid>
+                            <Rectangle
+                                Grid.Column="1"
+                                Width="1"
+                                VerticalAlignment="Stretch"
+                                Fill="Black"
+                                Visibility="Visible"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid HorizontalAlignment="Left">
+        <TabControl>
+            <TabItem Header="Appointed Point">
+
+                <DataGrid Grid.Row="1" AlternationCount="2" HorizontalAlignment="Left" CanUserAddRows="False" AutoGenerateColumns="False" RowHeaderWidth="0"
+                  VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling"
+                  ItemsSource="{Binding StatData}" Margin="0,5,0,0" IsEnabled="{Binding IsEnableEdit}">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Available" Width="130">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox Height="35" Width="35" VerticalContentAlignment="Center" IsChecked="{Binding AlarmEnable, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Checked">
+                                                <cal:ActionMessage MethodName="ResetEnableAlarm">
+                                                    <cal:Parameter Value="{Binding }" />
+                                                </cal:ActionMessage>
+                                            </i:EventTrigger>
+                                            <i:EventTrigger EventName="Unchecked">
+                                                <cal:ActionMessage MethodName="ResetEnableAlarm">
+                                                    <cal:Parameter Value="{Binding }" />
+                                                </cal:ActionMessage>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </CheckBox>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="Gas" Width="150">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Gas}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="Gas Name" Width="150">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding GasName}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="Flow" Width="150">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding AlarmValue}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="Set Flow" Width="180">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ctrl:TextBoxEx Text="{Binding Path=AlarmValueSetPoint, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextSaved="{Binding AlarmTextSaved, Mode=TwoWay}" Width="110" Height="25"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        
+                        <DataGridTemplateColumn Width="140">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Set" Width="60" Height="25" FontSize="12">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <cal:ActionMessage MethodName="SetAlarmValue">
+                                                    <cal:Parameter Value="{Binding }" />
+                                                </cal:ActionMessage>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="Actual Flow" Width="150">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding AlarmValue}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+
+                        <DataGridTemplateColumn Header="Error %" Width="150">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding AlarmValue}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="Inverted Volume" Width="150">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Value}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+ 
+                        <DataGridTemplateColumn Header="Data Time" Width="240">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding LastResetTotalTime}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="Elapse Time" Width="240">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding LastResetTime}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </TabItem>
+            <TabItem Header="Ten Points">
+
+                <DataGrid Grid.Row="1" AlternationCount="2" HorizontalAlignment="Left" CanUserAddRows="False" AutoGenerateColumns="False" RowHeaderWidth="0"
+                  VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling"
+                  ItemsSource="{Binding StatData}" Margin="0,5,0,0" IsEnabled="{Binding IsEnableEdit}">
+                    
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Available" Width="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox Height="35" Width="35" VerticalContentAlignment="Center" IsChecked="{Binding AlarmEnable, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Checked">
+                                                <cal:ActionMessage MethodName="ResetEnableAlarm">
+                                                    <cal:Parameter Value="{Binding }" />
+                                                </cal:ActionMessage>
+                                            </i:EventTrigger>
+                                            <i:EventTrigger EventName="Unchecked">
+                                                <cal:ActionMessage MethodName="ResetEnableAlarm">
+                                                    <cal:Parameter Value="{Binding }" />
+                                                </cal:ActionMessage>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </CheckBox>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="Gas" Width="120">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Gas}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="Gas Name" Width="120">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding GasName}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="Date Time" Width="200">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding LastResetTime}" Margin="5,0" FontFamily="Arial" FontSize="14" Foreground="{DynamicResource FG_Black}" HorizontalAlignment="Left" VerticalAlignment="Center" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn HeaderStyle="{StaticResource Point1Style}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                    Width="100"
+                                    Margin="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Value}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                        <Rectangle Width="1" Fill="#ccc">
+                                        </Rectangle>
+                                        <TextBlock
+                                    Width="100"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Value}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                        <Rectangle Width="1" Fill="#ccc">
+                                        </Rectangle>
+                                        <TextBlock
+                                    Width="100"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Value}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn HeaderStyle="{StaticResource Point2Style}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                    Width="100"
+                                    Margin="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Province}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                        <Rectangle Width="1" Fill="#ccc">
+                                        </Rectangle>
+                                        <TextBlock
+                                    Width="100"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding City}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                        <Rectangle Width="1" Fill="#ccc">
+                                        </Rectangle>
+                                        <TextBlock
+                                    Width="100"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding County}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn HeaderStyle="{StaticResource Point3Style}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                    Width="100"
+                                    Margin="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Province}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                        <Rectangle Width="1" Fill="#ccc">
+                                        </Rectangle>
+                                        <TextBlock
+                                    Width="100"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding City}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                        <Rectangle Width="1" Fill="#ccc">
+                                        </Rectangle>
+                                        <TextBlock
+                                    Width="100"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding County}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn HeaderStyle="{StaticResource Point4Style}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                    Width="100"
+                                    Margin="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Province}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                        <Rectangle Width="1" Fill="#ccc">
+                                        </Rectangle>
+                                        <TextBlock
+                                    Width="100"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding City}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                        <Rectangle Width="1" Fill="#ccc">
+                                        </Rectangle>
+                                        <TextBlock
+                                    Width="100"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding County}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn HeaderStyle="{StaticResource Point5Style}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                    Width="100"
+                                    Margin="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Province}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                        <Rectangle Width="1" Fill="#ccc">
+                                        </Rectangle>
+                                        <TextBlock
+                                    Width="100"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding City}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                        <Rectangle Width="1" Fill="#ccc">
+                                        </Rectangle>
+                                        <TextBlock
+                                    Width="100"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding County}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn HeaderStyle="{StaticResource Point6Style}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                    Width="100"
+                                    Margin="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Province}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                        <Rectangle Width="1" Fill="#ccc">
+                                        </Rectangle>
+                                        <TextBlock
+                                    Width="100"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding City}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                        <Rectangle Width="1" Fill="#ccc">
+                                        </Rectangle>
+                                        <TextBlock
+                                    Width="100"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding County}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn HeaderStyle="{StaticResource Point7Style}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                    Width="100"
+                                    Margin="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Province}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                        <Rectangle Width="1" Fill="#ccc">
+                                        </Rectangle>
+                                        <TextBlock
+                                    Width="100"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding City}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                        <Rectangle Width="1" Fill="#ccc">
+                                        </Rectangle>
+                                        <TextBlock
+                                    Width="100"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding County}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn HeaderStyle="{StaticResource Point8Style}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                    Width="100"
+                                    Margin="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Province}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                        <Rectangle Width="1" Fill="#ccc">
+                                        </Rectangle>
+                                        <TextBlock
+                                    Width="100"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding City}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                        <Rectangle Width="1" Fill="#ccc">
+                                        </Rectangle>
+                                        <TextBlock
+                                    Width="100"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding County}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn HeaderStyle="{StaticResource Point9Style}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                    Width="100"
+                                    Margin="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Province}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                        <Rectangle Width="1" Fill="#ccc">
+                                        </Rectangle>
+                                        <TextBlock
+                                    Width="100"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding City}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                        <Rectangle Width="1" Fill="#ccc">
+                                        </Rectangle>
+                                        <TextBlock
+                                    Width="100"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding County}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn HeaderStyle="{StaticResource Point10Style}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                    Width="100"
+                                    Margin="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Province}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                        <Rectangle Width="1" Fill="#ccc">
+                                        </Rectangle>
+                                        <TextBlock
+                                    Width="100"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding City}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                        <Rectangle Width="1" Fill="#ccc">
+                                        </Rectangle>
+                                        <TextBlock
+                                    Width="100"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding County}"
+                                    TextAlignment="Center">
+                                        </TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</UserControl>

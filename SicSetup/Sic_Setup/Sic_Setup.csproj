@@ -1,0 +1,575 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C842F167-DB8E-4827-ACDD-74215AF5100A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sic_Setup</RootNamespace>
+    <AssemblyName>Sic_Setup</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="License.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NSIS\Bin\GenPat.exe" />
+    <Content Include="NSIS\Bin\MakeLangId.exe" />
+    <Content Include="NSIS\Bin\makensis.exe" />
+    <Content Include="NSIS\Bin\zip2exe.exe" />
+    <Content Include="NSIS\Bin\zlib1.dll" />
+    <Content Include="NSIS\Contrib\EmbeddedLists\EmbeddedLists.cpp" />
+    <Content Include="NSIS\Contrib\EmbeddedLists\EmbeddedLists.rc" />
+    <Content Include="NSIS\Contrib\EmbeddedLists\EmbeddedLists.sln" />
+    <Content Include="NSIS\Contrib\EmbeddedLists\nsis_ansi\api.h" />
+    <Content Include="NSIS\Contrib\EmbeddedLists\nsis_ansi\pluginapi.h" />
+    <Content Include="NSIS\Contrib\EmbeddedLists\nsis_unicode\api.h" />
+    <Content Include="NSIS\Contrib\EmbeddedLists\nsis_unicode\nsis_tchar.h" />
+    <Content Include="NSIS\Contrib\EmbeddedLists\nsis_unicode\pluginapi.h" />
+    <Content Include="NSIS\Contrib\EmbeddedLists\resource.h" />
+    <Content Include="NSIS\Contrib\Graphics\Checks\big.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Checks\classic-cross.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Checks\classic.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Checks\colorful.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Checks\grey-cross.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Checks\grey.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Checks\modern.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Checks\red-round.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Checks\red.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Checks\simple-round.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Checks\simple-round2.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Checks\simple.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Header\nsis-r.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Header\nsis.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Header\nsis3-branding-r.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Header\nsis3-branding.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Header\nsis3-grey-right.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Header\nsis3-grey.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Header\nsis3-metro-right.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Header\nsis3-metro.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Header\nsis3-vintage-right.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Header\nsis3-vintage.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Header\orange-nsis.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Header\orange-r-nsis.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Header\orange-r.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Header\orange-uninstall-nsis.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Header\orange-uninstall-r-nsis.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Header\orange-uninstall-r.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Header\orange-uninstall.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Header\orange.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Header\win.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\arrow-install.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\arrow-uninstall.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\arrow2-install.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\arrow2-uninstall.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\box-install.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\box-uninstall.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\classic-install.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\classic-uninstall.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\llama-blue.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\llama-grey.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\modern-install-blue-full.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\modern-install-blue.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\modern-install-colorful.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\modern-install-full.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\modern-install.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\modern-uninstall-blue-full.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\modern-uninstall-blue.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\modern-uninstall-colorful.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\modern-uninstall-full.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\modern-uninstall.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\nsis-menu.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\nsis1-install.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\nsis1-uninstall.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\nsis3-install-alt.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\nsis3-install.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\nsis3-uninstall.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\orange-install-nsis.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\orange-install.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\orange-uninstall-nsis.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\orange-uninstall.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\pixel-install.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\pixel-uninstall.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\win-install.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Icons\win-uninstall.ico" />
+    <Content Include="NSIS\Contrib\Graphics\Wizard\arrow.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Wizard\llama.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Wizard\nsis.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Wizard\nsis3-branding.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Wizard\nsis3-grey.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Wizard\nsis3-metro.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Wizard\nsis3-vintage.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Wizard\nullsoft.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Wizard\orange-nsis.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Wizard\orange-uninstall-nsis.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Wizard\orange-uninstall.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Wizard\orange.bmp" />
+    <Content Include="NSIS\Contrib\Graphics\Wizard\win.bmp" />
+    <Content Include="NSIS\Contrib\Inetc\afxres.h" />
+    <Content Include="NSIS\Contrib\Inetc\api.h" />
+    <Content Include="NSIS\Contrib\Inetc\crt.cpp" />
+    <Content Include="NSIS\Contrib\Inetc\inetc.cpp" />
+    <Content Include="NSIS\Contrib\Inetc\inetc.rc" />
+    <Content Include="NSIS\Contrib\Inetc\inetc.sln" />
+    <Content Include="NSIS\Contrib\Inetc\inetc.vcxproj.filters" />
+    <Content Include="NSIS\Contrib\Inetc\nsis_tchar.h" />
+    <Content Include="NSIS\Contrib\Inetc\pluginapi.c" />
+    <Content Include="NSIS\Contrib\Inetc\pluginapi.h" />
+    <Content Include="NSIS\Contrib\Inetc\resource.h" />
+    <Content Include="NSIS\Contrib\SelfDel\nsis_ansi\api.h" />
+    <Content Include="NSIS\Contrib\SelfDel\nsis_ansi\pluginapi.h" />
+    <Content Include="NSIS\Contrib\SelfDel\nsis_unicode\api.h" />
+    <Content Include="NSIS\Contrib\SelfDel\nsis_unicode\nsis_tchar.h" />
+    <Content Include="NSIS\Contrib\SelfDel\nsis_unicode\pluginapi.h" />
+    <Content Include="NSIS\Contrib\SelfDel\resource.h" />
+    <Content Include="NSIS\Contrib\SelfDel\selfdel.c" />
+    <Content Include="NSIS\Contrib\SelfDel\selfdel.rc" />
+    <Content Include="NSIS\Contrib\SelfDel\selfdel.sln" />
+    <Content Include="NSIS\Contrib\SelfDel\selfdel.vcxproj.filters" />
+    <Content Include="NSIS\Contrib\UIs\default.exe" />
+    <Content Include="NSIS\Contrib\UIs\modern.exe" />
+    <Content Include="NSIS\Contrib\UIs\modern_headerbmp.exe" />
+    <Content Include="NSIS\Contrib\UIs\modern_headerbmpr.exe" />
+    <Content Include="NSIS\Contrib\UIs\modern_headerbmpr__BIG.exe" />
+    <Content Include="NSIS\Contrib\UIs\modern_headerbmpr__ORIGINAL.exe" />
+    <Content Include="NSIS\Contrib\UIs\modern_headerbmp__BIG.exe" />
+    <Content Include="NSIS\Contrib\UIs\modern_headerbmp__ORIGINAL.exe" />
+    <Content Include="NSIS\Contrib\UIs\modern_nodesc.exe" />
+    <Content Include="NSIS\Contrib\UIs\modern_smalldesc.exe" />
+    <Content Include="NSIS\Contrib\UIs\modern__BIG.exe" />
+    <Content Include="NSIS\Contrib\UIs\modern__ORIGINAL.exe" />
+    <Content Include="NSIS\Contrib\UIs\sdbarker_tiny.exe" />
+    <Content Include="NSIS\makensis.exe" />
+    <Content Include="NSIS\Plugins\EmbeddedLists.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\advsplash.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\Banner.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\BgImage.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\Dialer.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\DialogsA.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\ExecDos.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\filecheck.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\FindProcDLL.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\INetC.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\InstallOptions.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\KillProc.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\KillProcDLL.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\LangDLL.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\libDialogsA.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\Math.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\MoreInfo.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\newadvsplash.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\nsDialogs.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\nsExec.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\nsisdl.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\registry.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\splash.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\StartMenu.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\System.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\textreplace.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\TypeLib.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\UserInfo.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\VPatch.dll" />
+    <Content Include="NSIS\Plugins\x86-ansi\w7tbp.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\advsplash.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\Banner.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\BgImage.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\Dialer.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\dialogsEx.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\DialogsW.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\EmbeddedLists.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\EnumINI.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\execDos.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\filecheck.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\FindProcDLL.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\inetc.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\InstallOptions.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\KillProcDLL.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\LangDLL.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\libDialogsW.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\Math.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\md5dll.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\MoreInfo.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\newadvsplash.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\newtextreplace.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\nsDialogs.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\nsExec.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\nsisdl.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\RealProgress.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\registry.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\SelfDel.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\splash.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\StartMenu.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\System.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\TypeLib.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\UserInfo.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\VPatch.dll" />
+    <Content Include="NSIS\Plugins\x86-unicode\w7tbp.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="SetupGenerationScript.nsi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="NSIS\Bin\RegTool-x86.bin" />
+    <None Include="NSIS\Contrib\EmbeddedLists\EmbeddedLists.vcproj" />
+    <None Include="NSIS\Contrib\EmbeddedLists\nsis_ansi\pluginapi.lib" />
+    <None Include="NSIS\Contrib\EmbeddedLists\nsis_unicode\pluginapi.lib" />
+    <None Include="NSIS\Contrib\Inetc\build_msvc.cmd" />
+    <None Include="NSIS\Contrib\Inetc\inetc.vcxproj" />
+    <None Include="NSIS\Contrib\Language files\Afrikaans.nlf" />
+    <None Include="NSIS\Contrib\Language files\Afrikaans.nsh" />
+    <None Include="NSIS\Contrib\Language files\Albanian.nlf" />
+    <None Include="NSIS\Contrib\Language files\Albanian.nsh" />
+    <None Include="NSIS\Contrib\Language files\Arabic.nlf" />
+    <None Include="NSIS\Contrib\Language files\Arabic.nsh" />
+    <None Include="NSIS\Contrib\Language files\Armenian.nlf" />
+    <None Include="NSIS\Contrib\Language files\Armenian.nsh" />
+    <None Include="NSIS\Contrib\Language files\Asturian.nlf" />
+    <None Include="NSIS\Contrib\Language files\Asturian.nsh" />
+    <None Include="NSIS\Contrib\Language files\Basque.nlf" />
+    <None Include="NSIS\Contrib\Language files\Basque.nsh" />
+    <None Include="NSIS\Contrib\Language files\Belarusian.nlf" />
+    <None Include="NSIS\Contrib\Language files\Belarusian.nsh" />
+    <None Include="NSIS\Contrib\Language files\Bengali.nlf" />
+    <None Include="NSIS\Contrib\Language files\Bengali.nsh" />
+    <None Include="NSIS\Contrib\Language files\Bosnian.nlf" />
+    <None Include="NSIS\Contrib\Language files\Bosnian.nsh" />
+    <None Include="NSIS\Contrib\Language files\Breton.nlf" />
+    <None Include="NSIS\Contrib\Language files\Breton.nsh" />
+    <None Include="NSIS\Contrib\Language files\Bulgarian.nlf" />
+    <None Include="NSIS\Contrib\Language files\Bulgarian.nsh" />
+    <None Include="NSIS\Contrib\Language files\Burmese.nlf" />
+    <None Include="NSIS\Contrib\Language files\Burmese.nsh" />
+    <None Include="NSIS\Contrib\Language files\Catalan.nlf" />
+    <None Include="NSIS\Contrib\Language files\Catalan.nsh" />
+    <None Include="NSIS\Contrib\Language files\Cibemba.nlf" />
+    <None Include="NSIS\Contrib\Language files\Cibemba.nsh" />
+    <None Include="NSIS\Contrib\Language files\Corsican.nlf" />
+    <None Include="NSIS\Contrib\Language files\Corsican.nsh" />
+    <None Include="NSIS\Contrib\Language files\Croatian.nlf" />
+    <None Include="NSIS\Contrib\Language files\Croatian.nsh" />
+    <None Include="NSIS\Contrib\Language files\Czech.nlf" />
+    <None Include="NSIS\Contrib\Language files\Czech.nsh" />
+    <None Include="NSIS\Contrib\Language files\Danish.nlf" />
+    <None Include="NSIS\Contrib\Language files\Danish.nsh" />
+    <None Include="NSIS\Contrib\Language files\Dutch.nlf" />
+    <None Include="NSIS\Contrib\Language files\Dutch.nsh" />
+    <None Include="NSIS\Contrib\Language files\Efik.nlf" />
+    <None Include="NSIS\Contrib\Language files\Efik.nsh" />
+    <None Include="NSIS\Contrib\Language files\English.nlf" />
+    <None Include="NSIS\Contrib\Language files\English.nsh" />
+    <None Include="NSIS\Contrib\Language files\EnglishGB.nlf" />
+    <None Include="NSIS\Contrib\Language files\EnglishGB.nsh" />
+    <None Include="NSIS\Contrib\Language files\Esperanto.nlf" />
+    <None Include="NSIS\Contrib\Language files\Esperanto.nsh" />
+    <None Include="NSIS\Contrib\Language files\Estonian.nlf" />
+    <None Include="NSIS\Contrib\Language files\Estonian.nsh" />
+    <None Include="NSIS\Contrib\Language files\Farsi.nlf" />
+    <None Include="NSIS\Contrib\Language files\Farsi.nsh" />
+    <None Include="NSIS\Contrib\Language files\Filipino.nlf" />
+    <None Include="NSIS\Contrib\Language files\Filipino.nsh" />
+    <None Include="NSIS\Contrib\Language files\Finnish.nlf" />
+    <None Include="NSIS\Contrib\Language files\Finnish.nsh" />
+    <None Include="NSIS\Contrib\Language files\French.nlf" />
+    <None Include="NSIS\Contrib\Language files\French.nsh" />
+    <None Include="NSIS\Contrib\Language files\Galician.nlf" />
+    <None Include="NSIS\Contrib\Language files\Galician.nsh" />
+    <None Include="NSIS\Contrib\Language files\Georgian.nlf" />
+    <None Include="NSIS\Contrib\Language files\Georgian.nsh" />
+    <None Include="NSIS\Contrib\Language files\German.nlf" />
+    <None Include="NSIS\Contrib\Language files\German.nsh" />
+    <None Include="NSIS\Contrib\Language files\Greek.nlf" />
+    <None Include="NSIS\Contrib\Language files\Greek.nsh" />
+    <None Include="NSIS\Contrib\Language files\Hebrew.nlf" />
+    <None Include="NSIS\Contrib\Language files\Hebrew.nsh" />
+    <None Include="NSIS\Contrib\Language files\Hindi.nlf" />
+    <None Include="NSIS\Contrib\Language files\Hindi.nsh" />
+    <None Include="NSIS\Contrib\Language files\Hungarian.nlf" />
+    <None Include="NSIS\Contrib\Language files\Hungarian.nsh" />
+    <None Include="NSIS\Contrib\Language files\Icelandic.nlf" />
+    <None Include="NSIS\Contrib\Language files\Icelandic.nsh" />
+    <None Include="NSIS\Contrib\Language files\Igbo.nlf" />
+    <None Include="NSIS\Contrib\Language files\Igbo.nsh" />
+    <None Include="NSIS\Contrib\Language files\Indonesian.nlf" />
+    <None Include="NSIS\Contrib\Language files\Indonesian.nsh" />
+    <None Include="NSIS\Contrib\Language files\Irish.nlf" />
+    <None Include="NSIS\Contrib\Language files\Irish.nsh" />
+    <None Include="NSIS\Contrib\Language files\Italian.nlf" />
+    <None Include="NSIS\Contrib\Language files\Italian.nsh" />
+    <None Include="NSIS\Contrib\Language files\Japanese.nlf" />
+    <None Include="NSIS\Contrib\Language files\Japanese.nsh" />
+    <None Include="NSIS\Contrib\Language files\Khmer.nlf" />
+    <None Include="NSIS\Contrib\Language files\Khmer.nsh" />
+    <None Include="NSIS\Contrib\Language files\Korean.nlf" />
+    <None Include="NSIS\Contrib\Language files\Korean.nsh" />
+    <None Include="NSIS\Contrib\Language files\Kurdish.nlf" />
+    <None Include="NSIS\Contrib\Language files\Kurdish.nsh" />
+    <None Include="NSIS\Contrib\Language files\Latvian.nlf" />
+    <None Include="NSIS\Contrib\Language files\Latvian.nsh" />
+    <None Include="NSIS\Contrib\Language files\Lithuanian.nlf" />
+    <None Include="NSIS\Contrib\Language files\Lithuanian.nsh" />
+    <None Include="NSIS\Contrib\Language files\Luxembourgish.nlf" />
+    <None Include="NSIS\Contrib\Language files\Luxembourgish.nsh" />
+    <None Include="NSIS\Contrib\Language files\Macedonian.nlf" />
+    <None Include="NSIS\Contrib\Language files\Macedonian.nsh" />
+    <None Include="NSIS\Contrib\Language files\Malagasy.nlf" />
+    <None Include="NSIS\Contrib\Language files\Malagasy.nsh" />
+    <None Include="NSIS\Contrib\Language files\Malay.nlf" />
+    <None Include="NSIS\Contrib\Language files\Malay.nsh" />
+    <None Include="NSIS\Contrib\Language files\Mongolian.nlf" />
+    <None Include="NSIS\Contrib\Language files\Mongolian.nsh" />
+    <None Include="NSIS\Contrib\Language files\Norwegian.nlf" />
+    <None Include="NSIS\Contrib\Language files\Norwegian.nsh" />
+    <None Include="NSIS\Contrib\Language files\NorwegianNynorsk.nlf" />
+    <None Include="NSIS\Contrib\Language files\NorwegianNynorsk.nsh" />
+    <None Include="NSIS\Contrib\Language files\Pashto.nlf" />
+    <None Include="NSIS\Contrib\Language files\Pashto.nsh" />
+    <None Include="NSIS\Contrib\Language files\Polish.nlf" />
+    <None Include="NSIS\Contrib\Language files\Polish.nsh" />
+    <None Include="NSIS\Contrib\Language files\Portuguese.nlf" />
+    <None Include="NSIS\Contrib\Language files\Portuguese.nsh" />
+    <None Include="NSIS\Contrib\Language files\PortugueseBR.nlf" />
+    <None Include="NSIS\Contrib\Language files\PortugueseBR.nsh" />
+    <None Include="NSIS\Contrib\Language files\Punjabi.nlf" />
+    <None Include="NSIS\Contrib\Language files\Punjabi.nsh" />
+    <None Include="NSIS\Contrib\Language files\Romanian.nlf" />
+    <None Include="NSIS\Contrib\Language files\Romanian.nsh" />
+    <None Include="NSIS\Contrib\Language files\Russian.nlf" />
+    <None Include="NSIS\Contrib\Language files\Russian.nsh" />
+    <None Include="NSIS\Contrib\Language files\ScotsGaelic.nlf" />
+    <None Include="NSIS\Contrib\Language files\ScotsGaelic.nsh" />
+    <None Include="NSIS\Contrib\Language files\Serbian.nlf" />
+    <None Include="NSIS\Contrib\Language files\Serbian.nsh" />
+    <None Include="NSIS\Contrib\Language files\SerbianLatin.nlf" />
+    <None Include="NSIS\Contrib\Language files\SerbianLatin.nsh" />
+    <None Include="NSIS\Contrib\Language files\Sesotho.nlf" />
+    <None Include="NSIS\Contrib\Language files\Sesotho.nsh" />
+    <None Include="NSIS\Contrib\Language files\SimpChinese.nlf" />
+    <None Include="NSIS\Contrib\Language files\SimpChinese.nsh" />
+    <None Include="NSIS\Contrib\Language files\Slovak.nlf" />
+    <None Include="NSIS\Contrib\Language files\Slovak.nsh" />
+    <None Include="NSIS\Contrib\Language files\Slovenian.nlf" />
+    <None Include="NSIS\Contrib\Language files\Slovenian.nsh" />
+    <None Include="NSIS\Contrib\Language files\Spanish.nlf" />
+    <None Include="NSIS\Contrib\Language files\Spanish.nsh" />
+    <None Include="NSIS\Contrib\Language files\SpanishInternational.nlf" />
+    <None Include="NSIS\Contrib\Language files\SpanishInternational.nsh" />
+    <None Include="NSIS\Contrib\Language files\Sundanese.nlf" />
+    <None Include="NSIS\Contrib\Language files\Sundanese.nsh" />
+    <None Include="NSIS\Contrib\Language files\Swahili.nlf" />
+    <None Include="NSIS\Contrib\Language files\Swahili.nsh" />
+    <None Include="NSIS\Contrib\Language files\Swedish.nlf" />
+    <None Include="NSIS\Contrib\Language files\Swedish.nsh" />
+    <None Include="NSIS\Contrib\Language files\Tamil.nlf" />
+    <None Include="NSIS\Contrib\Language files\Tamil.nsh" />
+    <None Include="NSIS\Contrib\Language files\Tatar.nlf" />
+    <None Include="NSIS\Contrib\Language files\Tatar.nsh" />
+    <None Include="NSIS\Contrib\Language files\Thai.nlf" />
+    <None Include="NSIS\Contrib\Language files\Thai.nsh" />
+    <None Include="NSIS\Contrib\Language files\TradChinese.nlf" />
+    <None Include="NSIS\Contrib\Language files\TradChinese.nsh" />
+    <None Include="NSIS\Contrib\Language files\Turkish.nlf" />
+    <None Include="NSIS\Contrib\Language files\Turkish.nsh" />
+    <None Include="NSIS\Contrib\Language files\Twi.nlf" />
+    <None Include="NSIS\Contrib\Language files\Twi.nsh" />
+    <None Include="NSIS\Contrib\Language files\Ukrainian.nlf" />
+    <None Include="NSIS\Contrib\Language files\Ukrainian.nsh" />
+    <None Include="NSIS\Contrib\Language files\Urdu.nlf" />
+    <None Include="NSIS\Contrib\Language files\Urdu.nsh" />
+    <None Include="NSIS\Contrib\Language files\Uyghur.nlf" />
+    <None Include="NSIS\Contrib\Language files\Uyghur.nsh" />
+    <None Include="NSIS\Contrib\Language files\Uzbek.nlf" />
+    <None Include="NSIS\Contrib\Language files\Uzbek.nsh" />
+    <None Include="NSIS\Contrib\Language files\Vietnamese.nlf" />
+    <None Include="NSIS\Contrib\Language files\Vietnamese.nsh" />
+    <None Include="NSIS\Contrib\Language files\Welsh.nlf" />
+    <None Include="NSIS\Contrib\Language files\Welsh.nsh" />
+    <None Include="NSIS\Contrib\Language files\Yoruba.nlf" />
+    <None Include="NSIS\Contrib\Language files\Yoruba.nsh" />
+    <None Include="NSIS\Contrib\Language files\Zulu.nlf" />
+    <None Include="NSIS\Contrib\Language files\Zulu.nsh" />
+    <None Include="NSIS\Contrib\Modern UI 2\Deprecated.nsh" />
+    <None Include="NSIS\Contrib\Modern UI 2\Interface.nsh" />
+    <None Include="NSIS\Contrib\Modern UI 2\Localization.nsh" />
+    <None Include="NSIS\Contrib\Modern UI 2\MUI2.nsh" />
+    <None Include="NSIS\Contrib\Modern UI 2\Pages.nsh" />
+    <None Include="NSIS\Contrib\Modern UI 2\Pages\Components.nsh" />
+    <None Include="NSIS\Contrib\Modern UI 2\Pages\Directory.nsh" />
+    <None Include="NSIS\Contrib\Modern UI 2\Pages\Finish.nsh" />
+    <None Include="NSIS\Contrib\Modern UI 2\Pages\Finish__BIG.nsh" />
+    <None Include="NSIS\Contrib\Modern UI 2\Pages\Finish__ORIGINAL.nsh" />
+    <None Include="NSIS\Contrib\Modern UI 2\Pages\InstallFiles.nsh" />
+    <None Include="NSIS\Contrib\Modern UI 2\Pages\License.nsh" />
+    <None Include="NSIS\Contrib\Modern UI 2\Pages\StartMenu.nsh" />
+    <None Include="NSIS\Contrib\Modern UI 2\Pages\switch_to_big.bat" />
+    <None Include="NSIS\Contrib\Modern UI 2\Pages\switch_to_original.bat" />
+    <None Include="NSIS\Contrib\Modern UI 2\Pages\UninstallConfirm.nsh" />
+    <None Include="NSIS\Contrib\Modern UI 2\Pages\Welcome.nsh" />
+    <None Include="NSIS\Contrib\Modern UI 2\Pages\Welcome__BIG.nsh" />
+    <None Include="NSIS\Contrib\Modern UI 2\Pages\Welcome__ORIGINAL.nsh" />
+    <None Include="NSIS\Contrib\Modern UI\ioSpecial.ini" />
+    <None Include="NSIS\Contrib\Modern UI\System.nsh" />
+    <None Include="NSIS\Contrib\SelfDel\nsis_ansi\pluginapi.lib" />
+    <None Include="NSIS\Contrib\SelfDel\nsis_unicode\pluginapi.lib" />
+    <None Include="NSIS\Contrib\SelfDel\selfdel.dsp" />
+    <None Include="NSIS\Contrib\SelfDel\selfdel.dsw" />
+    <None Include="NSIS\Contrib\SelfDel\selfdel.vcxproj" />
+    <None Include="NSIS\Contrib\UIs\switch_to_big.bat" />
+    <None Include="NSIS\Contrib\UIs\switch_to_original.bat" />
+    <None Include="NSIS\Contrib\zip2exe\Base.nsh" />
+    <None Include="NSIS\Contrib\zip2exe\Classic.nsh" />
+    <None Include="NSIS\Contrib\zip2exe\Modern.nsh" />
+    <None Include="NSIS\COPYING" />
+    <None Include="NSIS\Include\Colors.nsh" />
+    <None Include="NSIS\Include\dialogs.nsh" />
+    <None Include="NSIS\Include\FileFunc.nsh" />
+    <None Include="NSIS\Include\InstallOptions.nsh" />
+    <None Include="NSIS\Include\Integration.nsh" />
+    <None Include="NSIS\Include\LangFile.nsh" />
+    <None Include="NSIS\Include\Library.nsh" />
+    <None Include="NSIS\Include\LogicLib.nsh" />
+    <None Include="NSIS\Include\Memento.nsh" />
+    <None Include="NSIS\Include\MUI.nsh" />
+    <None Include="NSIS\Include\MUI2.nsh" />
+    <None Include="NSIS\Include\MultiUser.nsh" />
+    <None Include="NSIS\Include\NewTextReplace.nsh" />
+    <None Include="NSIS\Include\nsDialogs.nsh" />
+    <None Include="NSIS\Include\Registry.nsh" />
+    <None Include="NSIS\Include\Sections.nsh" />
+    <None Include="NSIS\Include\StrFunc.nsh" />
+    <None Include="NSIS\Include\TBProgress.nsh" />
+    <None Include="NSIS\Include\TextFunc.nsh" />
+    <None Include="NSIS\Include\TextReplace.nsh" />
+    <None Include="NSIS\Include\UpgradeDLL.nsh" />
+    <None Include="NSIS\Include\Util.nsh" />
+    <None Include="NSIS\Include\VB6RunTime.nsh" />
+    <None Include="NSIS\Include\VPatchLib.nsh" />
+    <None Include="NSIS\Include\WinCore.nsh" />
+    <None Include="NSIS\Include\WinMessages.nsh" />
+    <None Include="NSIS\Include\WinVer.nsh" />
+    <None Include="NSIS\Include\Win\COM.nsh" />
+    <None Include="NSIS\Include\Win\Propkey.nsh" />
+    <None Include="NSIS\Include\Win\WinDef.nsh" />
+    <None Include="NSIS\Include\Win\WinError.nsh" />
+    <None Include="NSIS\Include\Win\WinNT.nsh" />
+    <None Include="NSIS\Include\Win\WinUser.nsh" />
+    <None Include="NSIS\Include\WordFunc.nsh" />
+    <None Include="NSIS\Include\x64.nsh" />
+    <None Include="NSIS\Stubs\bzip2-x86-ansi" />
+    <None Include="NSIS\Stubs\bzip2-x86-unicode" />
+    <None Include="NSIS\Stubs\bzip2_solid-x86-ansi" />
+    <None Include="NSIS\Stubs\bzip2_solid-x86-unicode" />
+    <None Include="NSIS\Stubs\lzma-x86-ansi" />
+    <None Include="NSIS\Stubs\lzma-x86-unicode" />
+    <None Include="NSIS\Stubs\lzma_solid-x86-ansi" />
+    <None Include="NSIS\Stubs\lzma_solid-x86-unicode" />
+    <None Include="NSIS\Stubs\uninst" />
+    <None Include="NSIS\Stubs\zlib-x86-ansi" />
+    <None Include="NSIS\Stubs\zlib-x86-unicode" />
+    <None Include="NSIS\Stubs\zlib_solid-x86-ansi" />
+    <None Include="NSIS\Stubs\zlib_solid-x86-unicode" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>echo 清理旧的打包文件。。。
+if exist "$(ProjectDir)..\Packages\NSIS" rd "$(ProjectDir)..\Packages\NSIS"  /s /q
+del "$(ProjectDir)..\Packages\*.exe"
+del "$(ProjectDir)..\Packages\SicRT\Config\*.data"
+del "$(ProjectDir)..\Packages\SicRT\Config\*.bak"
+
+echo 复制NSIS工程文件到输出目录。。。
+copy   "$(TargetDir)SetupGenerationScript.nsi"  "$(ProjectDir)..\Packages\SetupGenerationScript.nsi" /y
+copy   "$(TargetDir)license.txt"  "$(ProjectDir)..\Packages\license.txt" /y
+xcopy "$(ProjectDir)NSIS\*.*" "$(ProjectDir)..\Packages\NSIS\" /E
+
+echo 开始执行NSIS打包程序。。。
+cd "$(ProjectDir)..\Packages\NSIS"
+makensis.exe /V3 ..\SetupGenerationScript.nsi
+
+echo 清理NSIS工程文件。。。
+cd "$(ProjectDir)..\Packages"
+rd "NSIS"  /s /q
+del "license.txt"
+del "SetupGenerationScript.nsi"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

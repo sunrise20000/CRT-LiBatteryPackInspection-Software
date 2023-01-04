@@ -1,0 +1,947 @@
+﻿<UserControl x:Class="SicUI.Models.PMs.PMCommMonitorView"         
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:cal="http://www.caliburn.org"
+             xmlns:ctrl="http://OpenSEMI.Ctrlib.com/presentation"
+             xmlns:deviceControl="clr-namespace:Aitex.Core.UI.DeviceControl;assembly=MECF.Framework.UI.Core"
+             xmlns:control="clr-namespace:Aitex.Core.UI.Control;assembly=MECF.Framework.UI.Core"
+             xmlns:converters="clr-namespace:Aitex.Core.UI.Converters;assembly=MECF.Framework.UI.Core"
+             xmlns:controls="clr-namespace:SicUI.Controls"
+             xmlns:view="clr-namespace:SicUI.Models.PMs"
+              xmlns:controls1="clr-namespace:OpenSEMI.Ctrlib.Controls;assembly=MECF.Framework.UI.Client"
+             xmlns:dgExtension="clr-namespace:RecipeEditorLib.DGExtension;assembly=MECF.Framework.UI.Client"
+              xmlns:editors="clr-namespace:MECF.Framework.UI.Client.CenterViews.Editors;assembly=MECF.Framework.UI.Client"
+               xmlns:micro="clr-namespace:Caliburn.Micro;assembly=MECF.Framework.UI.Client"
+             xmlns:OpenSEMI="http://OpenSEMI.Ctrlib.com/presentation"
+             mc:Ignorable="d"
+             d:DesignHeight="880" d:DesignWidth="1920" Background="#91b0cd">
+
+    <Grid>
+        <!--<Border BorderBrush="{DynamicResource MainFrame_BD}" BorderThickness="1,0,1,0" Background="{DynamicResource MainFrame_BG}" Padding="5,1" Margin="0,0,0,0">-->
+
+        <TabControl Background="Transparent" Height="880" VerticalAlignment="Top"  >
+           
+
+            <TabItem Header="Communication Monitor">
+                <Grid Canvas.Left="3000" Canvas.Top="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="32"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="32"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="150"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="MFC" Style="{DynamicResource Table_TitleStyle}" Grid.Row="0" Grid.ColumnSpan="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <!-- Line 1 -->
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="1" Grid.Column="0" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc1Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="1" Grid.Column="1">
+                        <Label Content="MFC1"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="1" Grid.Column="2" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc2Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="1" Grid.Column="3">
+                        <Label Content="MFC2"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="1" Grid.Column="4" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc3Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="1" Grid.Column="5">
+                        <Label Content="MFC3"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="1" Grid.Column="6" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc4Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="1" Grid.Column="7">
+                        <Label Content="MFC4"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="1" Grid.Column="8" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc5Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="1" Grid.Column="9">
+                        <Label Content="MFC5"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <!-- Line 2 -->
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="2" Grid.Column="0" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc6Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="2" Grid.Column="1">
+                        <Label Content="MFC6"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="2" Grid.Column="2" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc7Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="2" Grid.Column="3">
+                        <Label Content="MFC7"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="2" Grid.Column="4" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc8Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="2" Grid.Column="5">
+                        <Label Content="MFC8"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="2" Grid.Column="6" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc9Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="2" Grid.Column="7">
+                        <Label Content="MFC9"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="2" Grid.Column="8" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc10Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="2" Grid.Column="9">
+                        <Label Content="MFC10"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <!-- Line 3 -->
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="3" Grid.Column="0" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc11Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="3" Grid.Column="1">
+                        <Label Content="MFC11"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="3" Grid.Column="2" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc12Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="3" Grid.Column="3">
+                        <Label Content="MFC12"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="3" Grid.Column="4" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc13Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="3" Grid.Column="5">
+                        <Label Content="MFC13"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="3" Grid.Column="6" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc14Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="3" Grid.Column="7">
+                        <Label Content="MFC14"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="3" Grid.Column="8" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc15Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="3" Grid.Column="9">
+                        <Label Content="MFC15"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <!-- Line 4 -->
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="4" Grid.Column="0" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc16Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="4" Grid.Column="1">
+                        <Label Content="MFC16"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="4" Grid.Column="2" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc17Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="4" Grid.Column="3">
+                        <Label Content="MFC17"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="4" Grid.Column="4" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc18Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="4" Grid.Column="5">
+                        <Label Content="MFC18"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="4" Grid.Column="6" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc19Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="4" Grid.Column="7">
+                        <Label Content="MFC19"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="4" Grid.Column="8" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc20Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="4" Grid.Column="9">
+                        <Label Content="MFC20"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <!-- Line 5 -->
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="5" Grid.Column="0" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc21Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="5" Grid.Column="1">
+                        <Label Content="MFC21"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="5" Grid.Column="2" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc22Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="5" Grid.Column="3">
+                        <Label Content="MFC22"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="5" Grid.Column="4" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc23Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="5" Grid.Column="5">
+                        <Label Content="MFC23"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="5" Grid.Column="6" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc24Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="5" Grid.Column="7">
+                        <Label Content="MFC24"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="5" Grid.Column="8" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc25Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="5" Grid.Column="9">
+                        <Label Content="MFC25"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <!-- Line 6 -->
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="6" Grid.Column="0" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc26Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="6" Grid.Column="1">
+                        <Label Content="MFC26"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="6" Grid.Column="2" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc27Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="6" Grid.Column="3">
+                        <Label Content="MFC27"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="6" Grid.Column="4" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc28Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="6" Grid.Column="5">
+                        <Label Content="MFC28"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="6" Grid.Column="6" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc29Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="6" Grid.Column="7">
+                        <Label Content="MFC29"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="6" Grid.Column="8" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc30Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="6" Grid.Column="9">
+                        <Label Content="MFC30"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <!-- Line 7 -->
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="7" Grid.Column="0" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc31Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="7" Grid.Column="1">
+                        <Label Content="MFC31"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="7" Grid.Column="2" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc32Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="7" Grid.Column="3">
+                        <Label Content="MFC32"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="7" Grid.Column="4" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc33Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="7" Grid.Column="5">
+                        <Label Content="MFC33"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="7" Grid.Column="6" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc34Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="7" Grid.Column="7">
+                        <Label Content="MFC34"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="7" Grid.Column="8" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc35Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="7" Grid.Column="9">
+                        <Label Content="MFC35"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <!-- Line 8 -->
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="8" Grid.Column="0" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc36Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="8" Grid.Column="1">
+                        <Label Content="MFC36"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="8" Grid.Column="2" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc37Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="8" Grid.Column="3">
+                        <Label Content="MFC37"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="8" Grid.Column="4" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding !Mfc38Data.IsOffline}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="8" Grid.Column="5">
+                        <Label Content="MFC38"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <!-- Line 9 -->
+                    <Label Content="PC" Style="{DynamicResource Table_TitleStyle}" Grid.Row="9" Grid.ColumnSpan="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <!-- Line 10 -->
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="10" Grid.Column="0" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding PT1Data}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="10" Grid.Column="1">
+                        <Label Content="PC1"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="10" Grid.Column="2" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding PT2Data}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="10" Grid.Column="3">
+                        <Label Content="PC2"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="10" Grid.Column="4" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding PT3Data}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="10" Grid.Column="5">
+                        <Label Content="PC3"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="10" Grid.Column="6" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding PT4Data}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="10" Grid.Column="7">
+                        <Label Content="PC4"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="10" Grid.Column="8" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding PT5Data}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="10" Grid.Column="9">
+                        <Label Content="PC5"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <!-- Line 11 -->
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="11" Grid.Column="0" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding PT6Data}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="11" Grid.Column="1">
+                        <Label Content="PC6"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="11" Grid.Column="2" >
+                        <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding PT7Data}"/>
+                    </Border>
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="11" Grid.Column="3">
+                        <Label Content="PC7"   FontSize="12"  HorizontalContentAlignment="Left"  />
+                    </Border>
+                    <!-- TestAlarm -->
+                    <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content}" Grid.Row="11" Grid.Column="5" Padding="1,1" Visibility="Hidden">
+                        <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
+                            <Button Content="AlarmTest" Width="100" Height="25" IsEnabled="{Binding IsServiceMode}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="AlarmTest"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+
+
+                </Grid>
+
+
+
+
+
+
+            </TabItem>
+
+            <!--<TabItem Header="Heat">
+
+
+                <StackPanel Margin="20,10">
+                    <Grid  Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="120"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Content="HeatEnable" Background="#FF243664" Foreground="White" Grid.Row="0" Grid.ColumnSpan="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="0" Grid.Column="1" Padding="5,1">
+                            <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding AllHeatEnable}"/>
+                        </Border>
+
+                        <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Column="2" Padding="5,1" >
+                            <Button Content="Enable" IsEnabled="{Binding IsActionEnable}" Margin="10,1">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="SetAllHeatEnable">
+                                            <cal:Parameter Value="PSU1"></cal:Parameter>
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </Border>                        
+                    </Grid>
+                    
+                    
+                    <StackPanel Orientation="Horizontal" Margin="0,80" Grid.Row="1">
+                        <Grid  Margin="10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="120"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="PSU1" Style="{DynamicResource Table_TitleStyle}" Grid.Row="0" Grid.ColumnSpan="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="1" Padding="5,1">
+                                <Label Content="Running"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="1" Grid.Column="1" Padding="5,1">
+                                <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding PSU1Running}"/>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="2" Padding="5,1">
+                                <Label Content="Alarm"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="2" Grid.Column="1" Padding="5,1">
+                                <deviceControl:AITSensor EnableToolTip="False" GreenColor="False" LightOnValue="{Binding PSU1Alarm}"/>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="3" Padding="5,1" >
+                                <Button Content="Enable" IsEnabled="{Binding AllHeatEnable}" Margin="10,1">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <cal:ActionMessage MethodName="SetPSUEnable">
+                                                <cal:Parameter Value="PSU1"></cal:Parameter>
+                                            </cal:ActionMessage>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="3" Grid.Column="1" Padding="5,1">
+                                <Button Content="Reset" IsEnabled="{Binding IsActionEnable}" Margin="10,1">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <cal:ActionMessage MethodName="SetPSUReset">
+                                                <cal:Parameter Value="PSU1"></cal:Parameter>
+                                            </cal:ActionMessage>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                            </Border>
+
+
+                          <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="5" Padding="5,1">
+                                <Label Content="Voltage"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="5" Grid.Column="1" Padding="5,1">
+                                <Label Content="{Binding PSU1OutputVoltageFeedBack}"   FontSize="14"  HorizontalContentAlignment="Center"  />
+                            </Border>
+                        <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="6" Padding="5,1">
+                                <Label Content="Arms"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="6" Grid.Column="1" Padding="5,1">
+                                <Label Content="{Binding PSU1OutputArmsFeedBack}"    FontSize="14"  HorizontalContentAlignment="Center"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="7" Padding="5,1">
+                                <Label Content="Power"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="7" Grid.Column="1" Padding="5,1">
+                                <Label Content="{Binding PSU1OutputPowerFeedBack}"    FontSize="14"  HorizontalContentAlignment="Center"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="8" Padding="5,1">
+                                <Label Content="SimVoltage"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="8" Grid.Column="1" Padding="5,1">
+                                <Label Content="{Binding PSU1SimVoltageFeedBack}"    FontSize="14"  HorizontalContentAlignment="Center"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="9" Padding="5,1">
+                                <Label Content="SimArms"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="9" Grid.Column="1" Padding="5,1">
+                                <Label Content="{Binding PSU1SimArmsFeedBack}"   FontSize="14"  HorizontalContentAlignment="Center"  />
+                            </Border>
+                        </Grid>
+
+                        <Grid Margin="10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="120"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="PSU2" Style="{DynamicResource Table_TitleStyle}" Grid.Row="0" Grid.ColumnSpan="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="1" Padding="5,1">
+                                <Label Content="Running"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="1" Grid.Column="1" Padding="5,1">
+                                <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding PSU2Running}"/>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="2" Padding="5,1">
+                                <Label Content="Alarm"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="2" Grid.Column="1" Padding="5,1">
+                                <deviceControl:AITSensor EnableToolTip="False" GreenColor="False" LightOnValue="{Binding PSU2Alarm}"/>
+                            </Border>
+
+
+
+
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="3" Padding="5,1" >
+                                <Button Content="Enable" IsEnabled="{Binding AllHeatEnable}" Margin="10,1">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <cal:ActionMessage MethodName="SetPSUEnable">
+                                                <cal:Parameter Value="PSU2"></cal:Parameter>
+                                            </cal:ActionMessage>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="3" Grid.Column="1" Padding="5,1">
+                                <Button Content="Reset" IsEnabled="{Binding IsActionEnable}" Margin="10,1">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <cal:ActionMessage MethodName="SetPSUReset">
+                                                <cal:Parameter Value="PSU2"></cal:Parameter>
+                                            </cal:ActionMessage>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                            </Border>
+
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="5" Padding="5,1">
+                                <Label Content="Voltage"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="5" Grid.Column="1" Padding="5,1">
+                                <Label Content="{Binding PSU2OutputVoltageFeedBack}"   FontSize="14"  HorizontalContentAlignment="Center"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="6" Padding="5,1">
+                                <Label Content="Arms"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="6" Grid.Column="1" Padding="5,1">
+                                <Label Content="{Binding PSU2OutputArmsFeedBack}"    FontSize="14"  HorizontalContentAlignment="Center"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="7" Padding="5,1">
+                                <Label Content="Power"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="7" Grid.Column="1" Padding="5,1">
+                                <Label Content="{Binding PSU2OutputPowerFeedBack}"    FontSize="14"  HorizontalContentAlignment="Center"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="8" Padding="5,1">
+                                <Label Content="SimVoltage"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="8" Grid.Column="1" Padding="5,1">
+                                <Label Content="{Binding PSU2SimVoltageFeedBack}"    FontSize="14"  HorizontalContentAlignment="Center"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="9" Padding="5,1">
+                                <Label Content="SimArms"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="9" Grid.Column="1" Padding="5,1">
+                                <Label Content="{Binding PSU2SimArmsFeedBack}"   FontSize="14"  HorizontalContentAlignment="Center"  />
+                            </Border>
+
+                        </Grid>
+
+                        <Grid Margin="10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="120"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="PSU3" Style="{DynamicResource Table_TitleStyle}" Grid.Row="0" Grid.ColumnSpan="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="1" Padding="5,1">
+                                <Label Content="Running"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="1" Grid.Column="1" Padding="5,1">
+                                <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding PSU3Running}"/>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="2" Padding="5,1">
+                                <Label Content="Alarm"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="2" Grid.Column="1" Padding="5,1">
+                                <deviceControl:AITSensor EnableToolTip="False" GreenColor="False" LightOnValue="{Binding PSU3Alarm}"/>
+                            </Border>
+
+
+
+
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="3" Padding="5,1" >
+                                <Button Content="Enable" IsEnabled="{Binding AllHeatEnable}" Margin="10,1">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <cal:ActionMessage MethodName="SetPSUEnable">
+                                                <cal:Parameter Value="PSU3"></cal:Parameter>
+                                            </cal:ActionMessage>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="3" Grid.Column="1" Padding="5,1">
+                                <Button Content="Reset" IsEnabled="{Binding IsActionEnable}" Margin="10,1">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <cal:ActionMessage MethodName="SetPSUReset">
+                                                <cal:Parameter Value="PSU3"></cal:Parameter>
+                                            </cal:ActionMessage>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                            </Border>
+
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="5" Padding="5,1">
+                                <Label Content="Voltage"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="5" Grid.Column="1" Padding="5,1">
+                                <Label Content="{Binding PSU3OutputVoltageFeedBack}"   FontSize="14"  HorizontalContentAlignment="Center"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="6" Padding="5,1">
+                                <Label Content="Arms"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="6" Grid.Column="1" Padding="5,1">
+                                <Label Content="{Binding PSU3OutputArmsFeedBack}"    FontSize="14"  HorizontalContentAlignment="Center"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="7" Padding="5,1">
+                                <Label Content="Power"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="7" Grid.Column="1" Padding="5,1">
+                                <Label Content="{Binding PSU3OutputPowerFeedBack}"    FontSize="14"  HorizontalContentAlignment="Center"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="8" Padding="5,1">
+                                <Label Content="SimVoltage"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="8" Grid.Column="1" Padding="5,1">
+                                <Label Content="{Binding PSU3SimVoltageFeedBack}"    FontSize="14"  HorizontalContentAlignment="Center"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="9" Padding="5,1">
+                                <Label Content="SimArms"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="9" Grid.Column="1" Padding="5,1">
+                                <Label Content="{Binding PSU3SimArmsFeedBack}"   FontSize="14"  HorizontalContentAlignment="Center"  />
+                            </Border>
+
+                        </Grid>
+
+                        <Grid Margin="100,0,10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="120"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="SCR1" Style="{DynamicResource Table_TitleStyle}" Grid.Row="0" Grid.ColumnSpan="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="1" Padding="5,1">
+                                <Label Content="Running"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="1" Grid.Column="1" Padding="5,1">
+                                <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding SCR1Running}"/>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="2" Padding="5,1"/>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="2" Grid.Column="1" Padding="5,1"/>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="3" Padding="5,1" >
+                                <Button Content="Enable" IsEnabled="{Binding AllHeatEnable}" Margin="10,1">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <cal:ActionMessage MethodName="SetSCREnable">
+                                                <cal:Parameter Value="SCR1"></cal:Parameter>
+                                            </cal:ActionMessage>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="3" Grid.Column="1" Padding="5,1">
+                                <Button Content="Reset" IsEnabled="{Binding IsActionEnable}" Margin="10,1">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <cal:ActionMessage MethodName="SetSCRReset">
+                                                <cal:Parameter Value="SCR1"></cal:Parameter>
+                                            </cal:ActionMessage>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="5" Padding="5,1">
+                                <Label Content="Voltage"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="5" Grid.Column="1" Padding="5,1">
+                                <Label Content="{Binding SCR1VoltageFeedBack}"   FontSize="14"  HorizontalContentAlignment="Center"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="6" Padding="5,1">
+                                <Label Content="Arms"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="6" Grid.Column="1" Padding="5,1">
+                                <Label Content="{Binding SCR1ArmsFeedBack}"    FontSize="14"  HorizontalContentAlignment="Center"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="7" Padding="5,1">
+                                <Label Content="Power"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="7" Grid.Column="1" Padding="5,1">
+                                <Label Content="{Binding SCR1PowerFeedBack}"    FontSize="14"  HorizontalContentAlignment="Center"  />
+                            </Border>
+
+                        </Grid>
+
+                        <Grid Margin="10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="120"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="SCR2" Style="{DynamicResource Table_TitleStyle}" Grid.Row="0" Grid.ColumnSpan="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="1" Padding="5,1">
+                                <Label Content="Running"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="1" Grid.Column="1" Padding="5,1">
+                                <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding SCR2Running}"/>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="2" Padding="5,1"/>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="2" Grid.Column="1" Padding="5,1"/>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="3" Padding="5,1" >
+                                <Button Content="Enable" IsEnabled="{Binding AllHeatEnable}" Margin="10,1">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <cal:ActionMessage MethodName="SetSCREnable">
+                                                <cal:Parameter Value="SCR2"></cal:Parameter>
+                                            </cal:ActionMessage>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="3" Grid.Column="1" Padding="5,1">
+                                <Button Content="Reset" IsEnabled="{Binding IsActionEnable}" Margin="10,1">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <cal:ActionMessage MethodName="SetSCRReset">
+                                                <cal:Parameter Value="SCR2"></cal:Parameter>
+                                            </cal:ActionMessage>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="5" Padding="5,1">
+                                <Label Content="Voltage"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="5" Grid.Column="1" Padding="5,1">
+                                <Label Content="{Binding SCR2VoltageFeedBack}"   FontSize="14"  HorizontalContentAlignment="Center"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="6" Padding="5,1">
+                                <Label Content="Arms"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="6" Grid.Column="1" Padding="5,1">
+                                <Label Content="{Binding SCR2ArmsFeedBack}"    FontSize="14"  HorizontalContentAlignment="Center"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="7" Padding="5,1">
+                                <Label Content="Power"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="7" Grid.Column="1" Padding="5,1">
+                                <Label Content="{Binding SCR2PowerFeedBack}"    FontSize="14"  HorizontalContentAlignment="Center"  />
+                            </Border>
+
+                        </Grid>
+                        
+                        <Grid Margin="10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="120"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="SCR3" Style="{DynamicResource Table_TitleStyle}" Grid.Row="0" Grid.ColumnSpan="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="1" Padding="5,1">
+                                <Label Content="Running"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="1" Grid.Column="1" Padding="5,1">
+                                <deviceControl:AITSensor EnableToolTip="False"  GreenColor="True" LightOnValue="{Binding SCR3Running}"/>
+                            </Border>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="2" Padding="5,1"/>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="2" Grid.Column="1" Padding="5,1"/>
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,0,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="3" Padding="5,1" >
+                                <Button Content="Enable" IsEnabled="{Binding AllHeatEnable}" Margin="10,1">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <cal:ActionMessage MethodName="SetSCREnable">
+                                                <cal:Parameter Value="SCR3"></cal:Parameter>
+                                            </cal:ActionMessage>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                            </Border>
+
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="3" Grid.Column="1" Padding="5,1">
+                                <Button Content="Reset" IsEnabled="{Binding IsActionEnable}" Margin="10,1">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <cal:ActionMessage MethodName="SetSCRReset">
+                                                <cal:Parameter Value="SCR3"></cal:Parameter>
+                                            </cal:ActionMessage>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="3" Grid.Column="1" Padding="5,1"/>
+
+
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,1,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="5" Padding="5,1">
+                                <Label Content="Voltage"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,1,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="5" Grid.Column="1" Padding="5,1">
+                                <Label Content="{Binding SCR3VoltageFeedBack}"   FontSize="14"  HorizontalContentAlignment="Center"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="6" Padding="5,1">
+                                <Label Content="Arms"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="6" Grid.Column="1" Padding="5,1">
+                                <Label Content="{Binding SCR3ArmsFeedBack}"    FontSize="14"  HorizontalContentAlignment="Center"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="1,0,1,1" Background="{DynamicResource Table_BG_Title_Inner}" Grid.Row="7" Padding="5,1">
+                                <Label Content="Power"   FontSize="14"  HorizontalContentAlignment="Right"  />
+                            </Border>
+                            <Border BorderBrush="{DynamicResource Table_BD}" BorderThickness="0,0,1,1" Background="{DynamicResource Table_BG_Content_Inner}" Grid.Row="7" Grid.Column="1" Padding="5,1">
+                                <Label Content="{Binding SCR3PowerFeedBack}"    FontSize="14"  HorizontalContentAlignment="Center"  />
+                            </Border>
+
+                        </Grid>
+                        
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>-->
+
+
+        </TabControl>
+
+
+
+        
+    </Grid>
+
+</UserControl>

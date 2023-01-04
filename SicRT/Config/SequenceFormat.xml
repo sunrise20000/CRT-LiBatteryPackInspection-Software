@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Aitex>
+	<TableSequenceFormat RecipeVersion="Sic">
+		<Catalog Type="Position">
+			<Item Name="Position" DisplayName="Position" InputType="ReadOnlySelection"   >
+				<Selection Name="Sic" DisplayName="PM" Parameter="PMSelection,ProcessRecipe" />
+				<Selection Name="Buffer" DisplayName="Buffer" Parameter="SlotSelection,BufferType,SetValue,PurgeCount,PumpDelayTime" />
+				<Selection Name="Aligner" DisplayName="Aligner" Parameter="" />
+				<Selection Name="Load" DisplayName="Load" Parameter="PurgeCount,PumpDelayTime" />
+				<Selection Name="UnLoad" DisplayName="UnLoad" Parameter="PurgeCount,PumpDelayTime,PurgeCountBeforeWaferPicking,PumpDelayTimeBeforeWaferPicking,PurgeCountAfterWaferPicking,PumpDelayTimeAfterWaferPicking,CoolingTime" />
+			</Item>
+		</Catalog>
+
+		<Catalog Type="Parameter">
+			<Item Name="PMSelection" DisplayName="Reactor Selection" InputType="MultiSelection" >
+				<Selection Name="PM1" DisplayName="PM1"/>
+				<!--<Selection Name="PM2" DisplayName="PM2"/>-->
+			</Item>
+			<Item Name="ProcessRecipe" DisplayName="Process Recipe" InputType="RecipeSelection" Parameter="Process"   Min="0" Max="999999"  />
+			<Item Name="SlotSelection" DisplayName="SlotSelection" InputType="MultiSelection" >
+				<Selection Name="1" DisplayName="1"/>
+				<Selection Name="2" DisplayName="2"/>
+				<Selection Name="3" DisplayName="3"/>
+			</Item>
+			<Item Name="BufferType" DisplayName="Type" InputType="ReadOnlySelection" >
+				<Selection Name="HeatByTime" DisplayName="HeatByTime"/>
+				<Selection Name="HeatByTemp" DisplayName="HeatByTemp"/>
+				<Selection Name="CoolingByTime" DisplayName="CoolingByTime"/>
+			</Item>
+			<Item Name="SetValue" DisplayName="SetValue" InputType="NumInput"   Min="0" Max="10000"  />
+			<Item Name="PurgeCount" DisplayName="Purge Loop" InputType="NumInput"   Min="0" Max="1000"  />
+			<Item Name="PumpDelayTime" DisplayName="Pump Delay" InputType="NumInput"   Min="0" Max="1000"  />
+			<Item Name="PurgeCountBeforeWaferPicking" DisplayName="Purge Loop Before ATM" InputType="NumInput"   Min="0" Max="1000"  />
+			<Item Name="PumpDelayTimeBeforeWaferPicking" DisplayName="Pump Delay Before ATM" InputType="NumInput"   Min="0" Max="1000"  />
+			<Item Name="PurgeCountAfterWaferPicking" DisplayName="Purge Loop After ATM" InputType="NumInput"   Min="0" Max="1000"  />
+			<Item Name="PumpDelayTimeAfterWaferPicking" DisplayName="Pump Delay After ATM" InputType="NumInput"   Min="0" Max="1000"  />
+			<Item Name="CoolingTime" DisplayName="Cooling Time(s)" InputType="NumInput"   Min="0" Max="3600"  />
+		</Catalog>
+	</TableSequenceFormat>
+	<TableSequenceData RecipeVersion="Sic" CreatedBy="System" Barcode="" CreationTime="2016-05-13T13:56:44" LastRevisedBy="admin" LastRevisionTime="2015-10-13T13:56:44" Description="（Empty）">
+		<Step></Step>
+	</TableSequenceData>
+	<TableRecipeSchema>
+		<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+			<xs:simpleType name="booleanType">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="0" />
+					<xs:enumeration value="1" />
+					<xs:enumeration value="False" />
+					<xs:enumeration value="True" />
+					<xs:enumeration value="false" />
+					<xs:enumeration value="true" />
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:element name="TableSequenceData">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" name="Step">
+
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="RecipeVersion" type="xs:string" fixed="Sic" use="required" />
+					<xs:attribute name="CreatedBy" type="xs:string" use="required" />
+					<xs:attribute name="CreationTime" type="xs:dateTime" use="required" />
+					<xs:attribute name="LastRevisedBy" type="xs:string" use="required" />
+					<xs:attribute name="LastRevisionTime" type="xs:dateTime" use="required" />
+					<xs:attribute name="Barcode" type="xs:string" use="required" />
+					<xs:attribute name="Description" type="xs:string" use="required" />
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+	</TableRecipeSchema>
+	<Signature>axPPcBt+girefGdBoafkJf+pBhY=</Signature>
+</Aitex>

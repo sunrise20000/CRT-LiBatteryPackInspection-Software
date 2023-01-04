@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="MECF.Framework.UI.Core.E95Template.DefaultTopView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MECF.Framework.UI.Core.E95Template"
+             Background="{StaticResource mainBackgroundColor}">
+    <Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+            <StackPanel.Resources>
+                <Style TargetType="RadioButton">
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Setter Property="Margin" Value="5 5"/>
+                </Style>
+            </StackPanel.Resources>
+            <RadioButton x:Name="rbtnSimSpeed1x" Content="1x" IsChecked="True" Checked="RbtnSimSpeed1x_OnChecked"/>
+            <RadioButton x:Name="rbtnSimSpeed2x" Content="2x" Checked="RbtnSimSpeed2x_OnChecked"/>
+            <RadioButton x:Name="rbtnSimSpeed4x" Content="4x" Checked="RbtnSimSpeed4x_OnChecked"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <roles>
+    <!--2:read and write-->
+    <roleItem id="0" name="Manager" autologout="1" logouttime="20">
+		Header,3;Overview,3;TM,3;EFEM,3;Device,3;ioPlatform,3;LeakCheck,3;Sequence,3;Recipe,3;EventLog,3;RealTimeCharting,3;DataHistory,3;Config,3;
+		Account,3;Role,3;Runtime,3;Alarm,3;mainPM1,3;processPM1,3;ioPM1,3;motionPM1,3;heaterPM1,3;alarmPM1,3;MFCFlowPM1,3;
+		Step,3;Name,3;Time,3;1. Ar/H2 Switch,3;2. SH Total Flow,3;3. Carray Gas Flow (M40),3;4. SH Total Flow Split Ratio,3;5. Flow Set Mode,3;6. Pressure Set,3;
+		7. Rotation Set,3;8. PSU Control Mode,3;9. PSU Set Mode,3;10. SCR Control Mode,3;11. SCR Set Mode,3;12. PSU Inner Temp Set,3;
+		13. PSU Middle Temp Set,3;14. PSU Outer Temp Set,3;15. SCR Temp Set,3;16. PSU Inner Ratio Set,3;17. PSU Middle Ratio Set,3;18. PSU Outer Ratio Set,3;
+		19. SCR Upper Ratio Set,3;20. SCR Middle Ratio Set,3;21. SCR Lower Ratio Set,3;22. Si Source Total Flow,3;23. SiH4 Flow Mode,3;24. SiH4 Flow (M14),3;
+		25. TCS Flow Mode,3;26. TCS Bubb Low Flow (M11),3;27. TCS Bubb High Flow (M10),3;28. TCS Push Flow (M12),3;29. TCS Bubb Pressure (PC3),3;
+		30. HCl Flow Mode,3;31. HCl Flow (M13),3;32. Si Source Split Ratio,3;33. Si Source Push Pressure (PC6),3;34. Si Source Inner Flow (M23),3;
+		35. Si Source Middle Flow (M22),3;36. Si Source Outer Flow (M9),3;37. C Source Total Flow,3;38. C2H4 Flow Mode,3;39. C2H4 Flow (M16),3;
+		42. C Source Split Ratio,3;43. C Source Push Pressure (PC7),3;44. C Source Inner Flow (M26),3;45. C Source Middle Flow (M25),3;
+		46. C Source Outer Flow (M15),3;47. Dope Total Flow,3;48. N2 Flow Mode,3;49. N2 Actual Flow,3;50. N2 Low Flow (M4),3;51. Dilut Flow For N2 (M3),3;
+		52. Diluted N2 Flow (M6),3;53. N2 Post Dilut Pressure (PC1),3;54. N2 High Flow Mode,3;55. N2 High Flow (M5),3;56. TMA Flow Mode,3;
+		57. TMA Bubb Flow (M7),3;58. TMA Push Flow (M8),3;59. TMA Bubb Pressure (PC2),3;60. Dope Split Ratio,3;64. Dope Push Pressure (PC5),3;
+		62. Dope Inner Flow (M20),3;63. Dope Middle Flow (M19),3;61. Dope Outer Flow (M2),3;65. SH Push Total Flow,3;66. SH Inner Flow,3;
+		67. SH Middle Flow,3;68. SH Outer Flow,3;69. Inner Push Flow (M29),3;70. Middle Push Flow (M31),3;71. Outer Push Flow (M28),3;
+		72. SH Purge Flow (M27),3;73. Optic Purge Flow (M33),3;74. GasRing Purge Flow (M32),3;75. Chamber Purge Flow (M35),3;
+		76. Rotation-Up Purge Flow (M36),3;77. Shutter Purge Flow (M37),3;78. Heater-WF Purge Flow (M38),3;79. Total Vent Flow,3;
+		80. Vent Push Flow (M1),3;81. Vent Pre-Exhaust Pressure (PC4),3;
+		Operation.Overview.Operation,3;Operation.Overview.RunningMode,3;PM1.Main.ReactorStatus,3;PM1.Main.ReactorService,3;PM1.Process.Steps,3;PM1.Process.MfcValueVisibility,3;PM1.Process.MfcValueDisturbance,3;PM1.Process.ProcessMonitorWindow,3;
+		Platform.Mainframe.PM1,3;Platform.Mainframe.Buffer,3;Platform.Mainframe.LL,3;Platform.Mainframe.TM,3;Platform.Mainframe.PreHeat,3;
+		Recipe.Behaviour.AllowEditCellAccessPerm,3;Recipe.Behaviour.ShowValuesInRecipeEditor,3;Recipe.Behaviour.ShowValueInProcessView,3;Recipe.Behaviour.AllowSaveInProcessView,3;Recipe.Behaviour.AllowRipInProcessView,3;
+		Step1,3;Step2,3;Step3,3;Step4,3;Step5,3;Step6,3;Step7,3;Step8,3;Step9,3;Step10,3;Step11,3;Step12,3;Step13,3;Step14,3;Step15,3;Step16,3;Step17,3;Step18,3;
+		Step19,3;Step20,3;Step21,3;Step22,3;Step23,3;Step24,3;Step25,3;Step26,3;Step27,3;Step28,3;Step29,3;Step30,3;Step31,3;Step32,3;Step33,3;Step34,3;Step35,3;
+		Step36,3;Step37,3;Step38,3;Step39,3;Step40,3;Step41,3;Step42,3;Step43,3;Step44,3;Step45,3;Step46,3;Step47,3;Step48,3;Step49,3;Step50,3;
+	</roleItem>
+    <roleItem id="1" name="Engineer" autologout="1" logouttime="20">
+		Header,3;Overview,3;TM,3;EFEM,3;Device,3;ioPlatform,3;LeakCheck,3;Sequence,3;Recipe,3;EventLog,3;RealTimeCharting,3;DataHistory,3;Config,3;
+		Account,3;Role,3;Runtime,3;Alarm,3;mainPM1,3;processPM1,3;ioPM1,3;motionPM1,3;heaterPM1,3;alarmPM1,3;MFCFlowPM1,3;
+		Step,3;Name,3;Time,3;1. Ar/H2 Switch,3;2. SH Total Flow,3;3. Carray Gas Flow (M40),3;4. SH Total Flow Split Ratio,3;5. Flow Set Mode,3;6. Pressure Set,3;
+		7. Rotation Set,3;8. PSU Control Mode,3;9. PSU Set Mode,3;10. SCR Control Mode,3;11. SCR Set Mode,3;12. PSU Inner Temp Set,3;
+		13. PSU Middle Temp Set,3;14. PSU Outer Temp Set,3;15. SCR Temp Set,3;16. PSU Inner Ratio Set,3;17. PSU Middle Ratio Set,3;18. PSU Outer Ratio Set,3;
+		19. SCR Upper Ratio Set,3;20. SCR Middle Ratio Set,3;21. SCR Lower Ratio Set,3;22. Si Source Total Flow,3;23. SiH4 Flow Mode,3;24. SiH4 Flow (M14),3;
+		25. TCS Flow Mode,3;26. TCS Bubb Low Flow (M11),3;27. TCS Bubb High Flow (M10),3;28. TCS Push Flow (M12),3;29. TCS Bubb Pressure (PC3),3;
+		30. HCl Flow Mode,3;31. HCl Flow (M13),3;32. Si Source Split Ratio,3;33. Si Source Push Pressure (PC6),3;34. Si Source Inner Flow (M23),3;
+		35. Si Source Middle Flow (M22),3;36. Si Source Outer Flow (M9),3;37. C Source Total Flow,3;38. C2H4 Flow Mode,3;39. C2H4 Flow (M16),3;
+		42. C Source Split Ratio,3;43. C Source Push Pressure (PC7),3;44. C Source Inner Flow (M26),3;45. C Source Middle Flow (M25),3;
+		46. C Source Outer Flow (M15),3;47. Dope Total Flow,3;48. N2 Flow Mode,3;49. N2 Actual Flow,3;50. N2 Low Flow (M4),3;51. Dilut Flow For N2 (M3),3;
+		52. Diluted N2 Flow (M6),3;53. N2 Post Dilut Pressure (PC1),3;54. N2 High Flow Mode,3;55. N2 High Flow (M5),3;56. TMA Flow Mode,3;
+		57. TMA Bubb Flow (M7),3;58. TMA Push Flow (M8),3;59. TMA Bubb Pressure (PC2),3;60. Dope Split Ratio,3;64. Dope Push Pressure (PC5),3;
+		62. Dope Inner Flow (M20),3;63. Dope Middle Flow (M19),3;61. Dope Outer Flow (M2),3;65. SH Push Total Flow,3;66. SH Inner Flow,3;
+		67. SH Middle Flow,3;68. SH Outer Flow,3;69. Inner Push Flow (M29),3;70. Middle Push Flow (M31),3;71. Outer Push Flow (M28),3;
+		72. SH Purge Flow (M27),3;73. Optic Purge Flow (M33),3;74. GasRing Purge Flow (M32),3;75. Chamber Purge Flow (M35),3;
+		76. Rotation-Up Purge Flow (M36),3;77. Shutter Purge Flow (M37),3;78. Heater-WF Purge Flow (M38),3;79. Total Vent Flow,3;
+		80. Vent Push Flow (M1),3;81. Vent Pre-Exhaust Pressure (PC4),3;
+		Operation.Overview.Operation,3;Operation.Overview.RunningMode,3;PM1.Main.ReactorStatus,3;PM1.Main.ReactorService,3;PM1.Process.Steps,3;PM1.Process.MfcValueVisibility,3;PM1.Process.MfcValueDisturbance,3;PM1.Process.ProcessMonitorWindow,3;
+		Platform.Mainframe.PM1,3;Platform.Mainframe.Buffer,3;Platform.Mainframe.LL,3;Platform.Mainframe.TM,3;Platform.Mainframe.PreHeat,3;
+		Recipe.Behaviour.AllowEditCellAccessPerm,3;Recipe.Behaviour.ShowValuesInRecipeEditor,3;Recipe.Behaviour.ShowValueInProcessView,3;Recipe.Behaviour.AllowSaveInProcessView,3;Recipe.Behaviour.AllowRipInProcessView,3;
+		Step1,3;Step2,3;Step3,3;Step4,3;Step5,3;Step6,3;Step7,3;Step8,3;Step9,3;Step10,3;Step11,3;Step12,3;Step13,3;Step14,3;Step15,3;Step16,3;Step17,3;Step18,3;
+		Step19,3;Step20,3;Step21,3;Step22,3;Step23,3;Step24,3;Step25,3;Step26,3;Step27,3;Step28,3;Step29,3;Step30,3;Step31,3;Step32,3;Step33,3;Step34,3;Step35,3;
+		Step36,3;Step37,3;Step38,3;Step39,3;Step40,3;Step41,3;Step42,3;Step43,3;Step44,3;Step45,3;Step46,3;Step47,3;Step48,3;Step49,3;Step50,3;
+	</roleItem>
+    <roleItem id="2" name="Technician" autologout="1" logouttime="20">
+		Header,3;Overview,3;TM,3;EFEM,3;Device,3;ioPlatform,3;LeakCheck,3;Sequence,3;Recipe,3;EventLog,3;RealTimeCharting,3;DataHistory,3;Config,3;
+		Account,3;Role,3;Runtime,3;Alarm,3;mainPM1,3;processPM1,3;ioPM1,3;motionPM1,3;heaterPM1,3;alarmPM1,3;MFCFlowPM1,3;
+		Step,3;Name,3;Time,3;1. Ar/H2 Switch,3;2. SH Total Flow,3;3. Carray Gas Flow (M40),3;4. SH Total Flow Split Ratio,3;5. Flow Set Mode,3;6. Pressure Set,3;
+		7. Rotation Set,3;8. PSU Control Mode,3;9. PSU Set Mode,3;10. SCR Control Mode,3;11. SCR Set Mode,3;12. PSU Inner Temp Set,3;
+		13. PSU Middle Temp Set,3;14. PSU Outer Temp Set,3;15. SCR Temp Set,3;16. PSU Inner Ratio Set,3;17. PSU Middle Ratio Set,3;18. PSU Outer Ratio Set,3;
+		19. SCR Upper Ratio Set,3;20. SCR Middle Ratio Set,3;21. SCR Lower Ratio Set,3;22. Si Source Total Flow,3;23. SiH4 Flow Mode,3;24. SiH4 Flow (M14),3;
+		25. TCS Flow Mode,3;26. TCS Bubb Low Flow (M11),3;27. TCS Bubb High Flow (M10),3;28. TCS Push Flow (M12),3;29. TCS Bubb Pressure (PC3),3;
+		30. HCl Flow Mode,3;31. HCl Flow (M13),3;32. Si Source Split Ratio,3;33. Si Source Push Pressure (PC6),3;34. Si Source Inner Flow (M23),3;
+		35. Si Source Middle Flow (M22),3;36. Si Source Outer Flow (M9),3;37. C Source Total Flow,3;38. C2H4 Flow Mode,3;39. C2H4 Flow (M16),3;
+		42. C Source Split Ratio,3;43. C Source Push Pressure (PC7),3;44. C Source Inner Flow (M26),3;45. C Source Middle Flow (M25),3;
+		46. C Source Outer Flow (M15),3;47. Dope Total Flow,3;48. N2 Flow Mode,3;49. N2 Actual Flow,3;50. N2 Low Flow (M4),3;51. Dilut Flow For N2 (M3),3;
+		52. Diluted N2 Flow (M6),3;53. N2 Post Dilut Pressure (PC1),3;54. N2 High Flow Mode,3;55. N2 High Flow (M5),3;56. TMA Flow Mode,3;
+		57. TMA Bubb Flow (M7),3;58. TMA Push Flow (M8),3;59. TMA Bubb Pressure (PC2),3;60. Dope Split Ratio,3;64. Dope Push Pressure (PC5),3;
+		62. Dope Inner Flow (M20),3;63. Dope Middle Flow (M19),3;61. Dope Outer Flow (M2),3;65. SH Push Total Flow,3;66. SH Inner Flow,3;
+		67. SH Middle Flow,3;68. SH Outer Flow,3;69. Inner Push Flow (M29),3;70. Middle Push Flow (M31),3;71. Outer Push Flow (M28),3;
+		72. SH Purge Flow (M27),3;73. Optic Purge Flow (M33),3;74. GasRing Purge Flow (M32),3;75. Chamber Purge Flow (M35),3;
+		76. Rotation-Up Purge Flow (M36),3;77. Shutter Purge Flow (M37),3;78. Heater-WF Purge Flow (M38),3;79. Total Vent Flow,3;
+		80. Vent Push Flow (M1),3;81. Vent Pre-Exhaust Pressure (PC4),3;
+		Operation.Overview.Operation,3;Operation.Overview.RunningMode,3;PM1.Main.ReactorStatus,3;PM1.Main.ReactorService,3;PM1.Process.Steps,3;PM1.Process.MfcValueVisibility,3;PM1.Process.MfcValueDisturbance,3;PM1.Process.ProcessMonitorWindow,3;
+		Platform.Mainframe.PM1,3;Platform.Mainframe.Buffer,3;Platform.Mainframe.LL,3;Platform.Mainframe.TM,3;Platform.Mainframe.PreHeat,3;
+		Recipe.Behaviour.AllowEditCellAccessPerm,3;Recipe.Behaviour.ShowValuesInRecipeEditor,3;Recipe.Behaviour.ShowValueInProcessView,3;Recipe.Behaviour.AllowSaveInProcessView,3;Recipe.Behaviour.AllowRipInProcessView,3;
+		Step1,3;Step2,3;Step3,3;Step4,3;Step5,3;Step6,3;Step7,3;Step8,3;Step9,3;Step10,3;Step11,3;Step12,3;Step13,3;Step14,3;Step15,3;Step16,3;Step17,3;Step18,3;
+		Step19,3;Step20,3;Step21,3;Step22,3;Step23,3;Step24,3;Step25,3;Step26,3;Step27,3;Step28,3;Step29,3;Step30,3;Step31,3;Step32,3;Step33,3;Step34,3;Step35,3;
+		Step36,3;Step37,3;Step38,3;Step39,3;Step40,3;Step41,3;Step42,3;Step43,3;Step44,3;Step45,3;Step46,3;Step47,3;Step48,3;Step49,3;Step50,3;
+	</roleItem>
+    <roleItem id="3" name="Operator" autologout="1" logouttime="20">
+		Header,3;Overview,3;TM,3;EFEM,3;Device,3;ioPlatform,3;LeakCheck,3;Sequence,3;Recipe,3;EventLog,3;RealTimeCharting,3;DataHistory,3;Config,3;
+		Account,3;Role,3;Runtime,3;Alarm,3;mainPM1,3;processPM1,3;ioPM1,3;motionPM1,3;heaterPM1,3;alarmPM1,3;MFCFlowPM1,3;
+		Step,3;Name,3;Time,3;1. Ar/H2 Switch,3;2. SH Total Flow,3;3. Carray Gas Flow (M40),3;4. SH Total Flow Split Ratio,3;5. Flow Set Mode,3;6. Pressure Set,3;
+		7. Rotation Set,3;8. PSU Control Mode,3;9. PSU Set Mode,3;10. SCR Control Mode,3;11. SCR Set Mode,3;12. PSU Inner Temp Set,3;
+		13. PSU Middle Temp Set,3;14. PSU Outer Temp Set,3;15. SCR Temp Set,3;16. PSU Inner Ratio Set,3;17. PSU Middle Ratio Set,3;18. PSU Outer Ratio Set,3;
+		19. SCR Upper Ratio Set,3;20. SCR Middle Ratio Set,3;21. SCR Lower Ratio Set,3;22. Si Source Total Flow,3;23. SiH4 Flow Mode,3;24. SiH4 Flow (M14),3;
+		25. TCS Flow Mode,3;26. TCS Bubb Low Flow (M11),3;27. TCS Bubb High Flow (M10),3;28. TCS Push Flow (M12),3;29. TCS Bubb Pressure (PC3),3;
+		30. HCl Flow Mode,3;31. HCl Flow (M13),3;32. Si Source Split Ratio,3;33. Si Source Push Pressure (PC6),3;34. Si Source Inner Flow (M23),3;
+		35. Si Source Middle Flow (M22),3;36. Si Source Outer Flow (M9),3;37. C Source Total Flow,3;38. C2H4 Flow Mode,3;39. C2H4 Flow (M16),3;
+		42. C Source Split Ratio,3;43. C Source Push Pressure (PC7),3;44. C Source Inner Flow (M26),3;45. C Source Middle Flow (M25),3;
+		46. C Source Outer Flow (M15),3;47. Dope Total Flow,3;48. N2 Flow Mode,3;49. N2 Actual Flow,3;50. N2 Low Flow (M4),3;51. Dilut Flow For N2 (M3),3;
+		52. Diluted N2 Flow (M6),3;53. N2 Post Dilut Pressure (PC1),3;54. N2 High Flow Mode,3;55. N2 High Flow (M5),3;56. TMA Flow Mode,3;
+		57. TMA Bubb Flow (M7),3;58. TMA Push Flow (M8),3;59. TMA Bubb Pressure (PC2),3;60. Dope Split Ratio,3;64. Dope Push Pressure (PC5),3;
+		62. Dope Inner Flow (M20),3;63. Dope Middle Flow (M19),3;61. Dope Outer Flow (M2),3;65. SH Push Total Flow,3;66. SH Inner Flow,3;
+		67. SH Middle Flow,3;68. SH Outer Flow,3;69. Inner Push Flow (M29),3;70. Middle Push Flow (M31),3;71. Outer Push Flow (M28),3;
+		72. SH Purge Flow (M27),3;73. Optic Purge Flow (M33),3;74. GasRing Purge Flow (M32),3;75. Chamber Purge Flow (M35),3;
+		76. Rotation-Up Purge Flow (M36),3;77. Shutter Purge Flow (M37),3;78. Heater-WF Purge Flow (M38),3;79. Total Vent Flow,3;
+		80. Vent Push Flow (M1),3;81. Vent Pre-Exhaust Pressure (PC4),3;
+		Operation.Overview.Operation,3;Operation.Overview.RunningMode,3;PM1.Main.ReactorStatus,3;PM1.Main.ReactorService,3;PM1.Process.Steps,3;PM1.Process.MfcValueVisibility,3;PM1.Process.MfcValueDisturbance,3;PM1.Process.ProcessMonitorWindow,3;
+		Platform.Mainframe.PM1,3;Platform.Mainframe.Buffer,3;Platform.Mainframe.LL,3;Platform.Mainframe.TM,3;Platform.Mainframe.PreHeat,3;
+		Recipe.Behaviour.AllowEditCellAccessPerm,3;Recipe.Behaviour.ShowValuesInRecipeEditor,3;Recipe.Behaviour.ShowValueInProcessView,3;Recipe.Behaviour.AllowSaveInProcessView,3;Recipe.Behaviour.AllowRipInProcessView,3;
+		Step1,3;Step2,3;Step3,3;Step4,3;Step5,3;Step6,3;Step7,3;Step8,3;Step9,3;Step10,3;Step11,3;Step12,3;Step13,3;Step14,3;Step15,3;Step16,3;Step17,3;Step18,3;
+		Step19,3;Step20,3;Step21,3;Step22,3;Step23,3;Step24,3;Step25,3;Step26,3;Step27,3;Step28,3;Step29,3;Step30,3;Step31,3;Step32,3;Step33,3;Step34,3;Step35,3;
+		Step36,3;Step37,3;Step38,3;Step39,3;Step40,3;Step41,3;Step42,3;Step43,3;Step44,3;Step45,3;Step46,3;Step47,3;Step48,3;Step49,3;Step50,3;
+	</roleItem>
+  </roles>
+
+  <users>
+    <userItem id="1" loginname="admin" password="YWRtaW4=" firstname="MAE" lastname="dd" email="" description="">
+      <rolegroup>
+        <role id="0"></role>
+        <role id="1"></role>
+        <role id="2"></role>
+        <role id="3"></role>
+      </rolegroup>
+    </userItem>
+  </users>
+</root>

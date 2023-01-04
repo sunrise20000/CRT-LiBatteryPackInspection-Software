@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="SicUI.Controls.Parts.Slot"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SicUI.Controls.Parts"
+             mc:Ignorable="d">
+	<Canvas>
+		<Path x:Name="left" Width="28" Height="11" Canvas.Left="0" Canvas.Top="0" Stretch="Fill" Fill="{StaticResource blueSlot}" Data="M 10,144L 18,144L 18,150L 38,150L 38,155L 10,155L 10,144 Z ">
+			<Path.ToolTip>
+				<ToolTip x:Name="tipLeft" />
+			</Path.ToolTip>
+		</Path>
+		<Path x:Name="right" Width="28" Height="11" Canvas.Left="131" Canvas.Top="0" Stretch="Fill" Fill="{StaticResource blueSlot}" Data="M 169,144L 161,144L 161,150L 141,150L 141,155L 169,155L 169,144 Z ">
+			<Path.ToolTip>
+				<ToolTip x:Name="tipRight" />
+			</Path.ToolTip>
+		</Path>
+	</Canvas>
+</UserControl>

@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{424E9610-FA50-49CD-B5BE-BAF256DBF327}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mainframe</RootNamespace>
+    <AssemblyName>Mainframe</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DePacker">
+      <HintPath>..\..\ThirdParty\dlls\DePacker.dll</HintPath>
+    </Reference>
+    <Reference Include="Global">
+      <HintPath>..\..\ThirdParty\dlls\Global.dll</HintPath>
+    </Reference>
+    <Reference Include="InfoHelp">
+      <HintPath>..\..\ThirdParty\dlls\InfoHelp.dll</HintPath>
+    </Reference>
+    <Reference Include="SessionLayer">
+      <HintPath>..\..\ThirdParty\dlls\SessionLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Tools">
+      <HintPath>..\..\ThirdParty\dlls\Tools.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Aligners\AlignerModule.cs" />
+    <Compile Include="Aligners\AlignerModuleBase.cs" />
+    <Compile Include="Aligners\Routines\AlignerAlignRoutine.cs" />
+    <Compile Include="Aligners\Routines\AlignerBaseRoutine.cs" />
+    <Compile Include="Aligners\Routines\AlignerHomeRoutine.cs" />
+    <Compile Include="Aligners\SicAligner.cs" />
+    <Compile Include="Buffers\BufferModule.cs" />
+    <Compile Include="Buffers\BufferModuleBase.cs" />
+    <Compile Include="Buffers\Routines\BufferCoolingRoutine.cs" />
+    <Compile Include="Buffers\Routines\BufferHomeRoutine.cs" />
+    <Compile Include="Buffers\SicBuffer.cs" />
+    <Compile Include="Cassettes\CassetteModule.cs" />
+    <Compile Include="Cassettes\CassetteModuleBase.cs" />
+    <Compile Include="Cassettes\SicCassette.cs" />
+    <Compile Include="Devices\AkOpticsViper.cs" />
+    <Compile Include="Devices\AkOpticsViperGuide.cs" />
+    <Compile Include="Devices\IoInterLock.cs" />
+    <Compile Include="Devices\IoLoadRotation.cs" />
+    <Compile Include="Devices\IoPump.cs" />
+    <Compile Include="Devices\SicAds.cs" />
+    <Compile Include="Devices\SiemensIoProvider.cs" />
+    <Compile Include="Devices\TcAds.cs" />
+    <Compile Include="EFEMs\EFEMModule.cs" />
+    <Compile Include="EFEMs\EFEMModuleBase.cs" />
+    <Compile Include="EFEMs\RobotModuleBase.cs" />
+    <Compile Include="EFEMs\Routines\EfemBaseRoutine.cs" />
+    <Compile Include="EFEMs\Routines\EFEMHomeRoutine.cs" />
+    <Compile Include="EFEMs\Routines\EfemSlitValveRoutine.cs" />
+    <Compile Include="EFEMs\Routines\TrayRobotMapRoutine.cs" />
+    <Compile Include="EFEMs\Routines\TrayRobotPickRoutine.cs" />
+    <Compile Include="EFEMs\Routines\TrayRobotPlaceRoutine.cs" />
+    <Compile Include="EFEMs\Routines\WaferRobotMapRoutine.cs" />
+    <Compile Include="EFEMs\Routines\WaferRobotPickRoutine.cs" />
+    <Compile Include="EFEMs\Routines\WaferRobotPlaceRoutine.cs" />
+    <Compile Include="EFEMs\SicEFEM.cs" />
+    <Compile Include="EFEMs\SicEfemRobot.cs" />
+    <Compile Include="EFEMs\Routines\TrayRobotHomeRoutine.cs" />
+    <Compile Include="EFEMs\TrayRobotModule.cs" />
+    <Compile Include="EFEMs\Routines\WaferRobotHomeRoutine.cs" />
+    <Compile Include="EFEMs\WaferRobotModule.cs" />
+    <Compile Include="LLs\LoadLockModule.cs" />
+    <Compile Include="LLs\LoadLockModuleBase.cs" />
+    <Compile Include="LLs\Routines\LoadHomeRoutine.cs" />
+    <Compile Include="LLs\Routines\LoadLockBaseRoutine.cs" />
+    <Compile Include="LLs\Routines\LoadLockClawRoutine.cs" />
+    <Compile Include="LLs\Routines\LoadLockGroupRoutine.cs" />
+    <Compile Include="LLs\Routines\LoadLockLeakCheckRoutine.cs" />
+    <Compile Include="LLs\Routines\LoadLockLiftRoutine.cs" />
+    <Compile Include="LLs\Routines\LoadLockPrepareTransferRoutine.cs" />
+    <Compile Include="LLs\Routines\LoadLockPumpRoutine.cs" />
+    <Compile Include="LLs\Routines\LoadLockPurgeRoutine.cs" />
+    <Compile Include="LLs\Routines\LoadLockServoToRoutine.cs" />
+    <Compile Include="LLs\Routines\LoadLockTrayAlignerRoutine.cs" />
+    <Compile Include="LLs\Routines\LoadLockTrayClawRoutine.cs" />
+    <Compile Include="LLs\Routines\LoadLockVentRoutine.cs" />
+    <Compile Include="LLs\Routines\LoadRotationHomeOffsetRoutine.cs" />
+    <Compile Include="LLs\Routines\LoadSeparateRoutine.cs" />
+    <Compile Include="LLs\SicLoadLock.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TMs\Routines\TMBaseRoutine.cs" />
+    <Compile Include="TMs\Routines\TMHomeRoutine.cs" />
+    <Compile Include="TMs\Routines\TMLeakcheckRoutine.cs" />
+    <Compile Include="TMs\Routines\TMPressureBalancePidRoutine.cs" />
+    <Compile Include="TMs\Routines\TMPressureBalanceRoutine.cs" />
+    <Compile Include="TMs\Routines\TMPumpRoutine.cs" />
+    <Compile Include="TMs\Routines\TMPurgeRoutine.cs" />
+    <Compile Include="TMs\Routines\TMRobotExtendRoutine.cs" />
+    <Compile Include="TMs\Routines\TMRobotGoToRoutine.cs" />
+    <Compile Include="TMs\Routines\TMRobotHomeRoutine.cs" />
+    <Compile Include="TMs\Routines\TMRobotPickAndPlaceRoutine.cs" />
+    <Compile Include="TMs\Routines\TMRobotPickRoutine.cs" />
+    <Compile Include="TMs\Routines\TMRobotPlaceRoutine.cs" />
+    <Compile Include="TMs\Routines\TMRobotRetractRoutine.cs" />
+    <Compile Include="TMs\Routines\TMServoRoutine.cs" />
+    <Compile Include="TMs\Routines\TMSlitValveRoutine.cs" />
+    <Compile Include="TMs\Routines\TMVentRoutine.cs" />
+    <Compile Include="TMs\Routines\TMVerifySlitValveRoutine.cs" />
+    <Compile Include="TMs\SicTM.cs" />
+    <Compile Include="TMs\SicTMRobot.cs" />
+    <Compile Include="TMs\TMModule.cs" />
+    <Compile Include="TMs\TMModuleBase.cs" />
+    <Compile Include="UnLoads\Routines\UnLoadBaseRoutine.cs" />
+    <Compile Include="UnLoads\Routines\UnLoadClawRoutine.cs" />
+    <Compile Include="UnLoads\Routines\UnLoadCoolingRoutine.cs" />
+    <Compile Include="UnLoads\Routines\UnLoadHomeRoutine.cs" />
+    <Compile Include="UnLoads\Routines\UnLoadLeakCheckRoutine.cs" />
+    <Compile Include="UnLoads\Routines\UnLoadLiftRoutine.cs" />
+    <Compile Include="UnLoads\Routines\UnLoadPrepareTransferRoutine.cs" />
+    <Compile Include="UnLoads\Routines\UnLoadPumpRoutine.cs" />
+    <Compile Include="UnLoads\Routines\UnLoadCoolingAndPurgeRoutine.cs" />
+    <Compile Include="UnLoads\Routines\UnLoadPurgeRoutine.cs" />
+    <Compile Include="UnLoads\Routines\UnLoadSeparateRoutine.cs" />
+    <Compile Include="UnLoads\Routines\UnLoadServoToRoutine.cs" />
+    <Compile Include="UnLoads\Routines\UnLoadVentRoutine.cs" />
+    <Compile Include="UnLoads\SicUnLoad.cs" />
+    <Compile Include="UnLoads\UnLoadModule.cs" />
+    <Compile Include="UnLoads\UnLoadModuleBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\DeviceModelSystem.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\IODefinePlatform.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\FrameworkLocal\RTCore\RTCore.csproj">
+      <Project>{bcbd839a-c9a0-4be7-98ca-b0a88ad38e5a}</Project>
+      <Name>RTCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FrameworkLocal\RTEquipmentLibrary\RTEquipmentLibrary.csproj">
+      <Project>{090a1e9c-1087-4c8a-b4e0-ff074459e071}</Project>
+      <Name>RTEquipmentLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MECF.Framework.Common\MECF.Framework.Common.csproj">
+      <Project>{efad063f-fa97-42b7-87f8-8279eba30d34}</Project>
+      <Name>MECF.Framework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Sicentury.Core\Sicentury.Core.csproj">
+      <Project>{a78b3f87-4601-43f7-a941-edb339ce35a9}</Project>
+      <Name>Sicentury.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SicPM\SicPM.csproj">
+      <Project>{DC5FD3DC-4CF4-4484-9EF9-1B878B25A6D5}</Project>
+      <Name>SicPM</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\interlock.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Config\UnitAlarmDefine\TMUnitAlarmDefine.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

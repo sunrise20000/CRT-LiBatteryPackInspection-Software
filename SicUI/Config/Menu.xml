@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu>
+  <menuItem id="Operation" resKey="Operation">
+    <menuItem id="Overview" resKey="Overview" viewmodel="SicUI.Models.Operations.Overviews.OverViewViewModel,SicUI" />
+  </menuItem>
+
+  <menuItem id="Platform" resKey="Platform">
+    <menuItem id="TM" resKey="Mainframe" viewmodel="SicUI.Client.Models.Platform.TM.TMViewModel,SicUI" />
+    <!--<menuItem id="EFEM" resKey="EFEM" viewmodel="SicUI.Client.Models.Platform.TM.EFEMViewModel,SicUI" />-->
+	<menuItem id="EFEM" resKey="EFEM" viewmodel="SicUI.Models.Maintenances.TM.EFEM2ViewModel,SicUI" />
+    <menuItem id="Device" resKey="Device" viewmodel="SicUI.Client.Models.Platform.TM.DeviceViewModel,SicUI" />
+	<menuItem id="ioPlatform" resKey="Platform IO" System="TM.io" viewmodel="MECF.Framework.UI.Client.CenterViews.Maitenances.IO3.IO3ViewModel,MECF.Framework.UI.Client" />
+    <menuItem id="LeakCheck" resKey="LeakCheck" viewmodel="SicUI.Client.Models.Platform.LeakCheck.TMLeakCheckViewModel,SicUI" />
+  </menuItem>
+
+  <menuItem id="Editor" resKey="Editor">
+    <menuItem id="Sequence" resKey="Sequence" viewmodel="MECF.Framework.UI.Client.CenterViews.Editors.Sequence.SequenceViewModel,MECF.Framework.UI.Client" />
+    <menuItem id="Recipe" resKey="Recipe" viewmodel="SicUI.Models.RecipeEditors.RecipeEditorViewModel,SicUI" />
+  </menuItem>
+
+  <menuItem id="DataLog" resKey="DataLog">
+    <menuItem id="EventLog" resKey="Operation Log" viewmodel="MECF.Framework.UI.Client.CenterViews.DataLogs.Event.EventViewModel,MECF.Framework.UI.Client" />
+    <menuItem id="ProcessHistory" resKey="Process History" viewmodel="MECF.Framework.UI.Client.CenterViews.DataLogs.ProcessHistory.ProcessHistoryViewModel,MECF.Framework.UI.Client" />
+    <menuItem id="RealTimeCharting" resKey="RealTime Charting" viewmodel="MECF.Framework.UI.Client.CenterViews.Operations.RealTime.RealtimeViewModel,MECF.Framework.UI.Client" />
+    <menuItem id="WaferHistory" resKey="Wafer History" viewmodel="MECF.Framework.UI.Client.CenterViews.DataLogs.WaferHistory.WaferHistoryDBViewModel,MECF.Framework.UI.Client" />
+    <menuItem id="DataHistory" resKey="Data History" viewmodel="MECF.Framework.UI.Client.CenterViews.DataLogs.DataHistory.DataViewModel,MECF.Framework.UI.Client" />
+    <menuItem id="Statistics" resKey="Statistics" viewmodel="MECF.Framework.UI.Client.CenterViews.DataLogs.Statistics.StatisticsViewModel,MECF.Framework.UI.Client" />
+     <!-- <menuItem id="JobList" resKey="JobList" viewmodel="MECF.Framework.UI.Client.CenterViews.JobList.PMJobListViewModel,MECF.Framework.UI.Client" />-->
+      <menuItem id="Charting" resKey="Charting" viewmodel="SicUI.Models.PMs.Charting.PMChartingViewModel,SicUI" />
+  </menuItem>
+
+  <menuItem id="Configuration" resKey="Configuration">
+    <menuItem id="Config" resKey="Config"  System="System"  viewmodel="MECF.Framework.UI.Client.CenterViews.Configs.SystemConfig.SystemConfigViewModel,MECF.Framework.UI.Client" />
+    <menuItem id="Account" resKey="Account" viewmodel="MECF.Framework.UI.Client.CenterViews.Configs.Accounts.AccountViewModel,MECF.Framework.UI.Client" />
+    <menuItem id="Role" resKey="Role" viewmodel="MECF.Framework.UI.Client.CenterViews.Configs.Roles.RoleViewModel,MECF.Framework.UI.Client" />
+	 <menuItem id="Runtime" resKey="Runtime" viewmodel="SicUI.Models.Maintenances.RuntimeViewModel,SicUI" />
+  </menuItem>
+
+	<menuItem id="Alarm" resKey="Alarm" AlarmModule="System" >
+		<menuItem id="Alarm" resKey="Alarm" viewmodel="MECF.Framework.UI.Client.CenterViews.Alarms.Alarm.AlarmViewModel,MECF.Framework.UI.Client" />
+	</menuItem>
+
+	<menuItem id="PM1" resKey="PM1" System="PM1">
+		<menuItem id="mainPM1" resKey="Main" System="PM1"  viewmodel="SicUI.Models.PMs.PMOperationViewModel,SicUI" />
+		<menuItem id="processPM1" resKey="Process" System="PM1"  viewmodel="SicUI.Models.PMs.PMProcessViewModel,SicUI" />
+		<menuItem id="ioPM1" resKey="IO" System="PM1.io" viewmodel="MECF.Framework.UI.Client.CenterViews.Maitenances.IO3.IO3ViewModel,MECF.Framework.UI.Client" />
+		<menuItem id="motionPM1" resKey="Motion" System="PM1" viewmodel="SicUI.Models.PMs.PMMotionViewModel,SicUI" />
+		<menuItem id="heaterPM1" resKey="Heater" System="PM1" viewmodel="SicUI.Models.PMs.PMHeaterViewModel,SicUI" />
+		<!--<menuItem id="alarmPM1" resKey="Alarm" System="PM1" viewmodel="SicUI.Models.PMs.PMAlarmViewModel,SicUI" />-
+		<menuItem id="linkedDevicePM1" resKey="Linked Device" System="PM1" viewmodel="SicUI.Models.PMs.PMLinkedDeviceViewModel,SicUI" />-->
+		<menuItem id="MFCFlowPM1" resKey="MFCFlow" System="PM1" viewmodel="SicUI.Models.PMs.PMMfcDynamicFlowViewModel,SicUI" />
+	</menuItem>
+	<!--
+	<menuItem id="PM2" resKey="PM2" System="PM2">
+		<menuItem id="mainPM2" resKey="Main" System="PM2"  viewmodel="SicUI.Models.PMs.PMOperationViewModel,SicUI" />
+		<menuItem id="processPM2" resKey="Process" System="PM2"  viewmodel="SicUI.Models.PMs.PMProcessViewModel,SicUI" />
+		<menuItem id="ioPM2" resKey="IO" System="PM2.io" viewmodel="MECF.Framework.UI.Client.CenterViews.Maitenances.IO3.IO3ViewModel,MECF.Framework.UI.Client" />
+		<menuItem id="motionPM2" resKey="Motion" System="PM2" viewmodel="SicUI.Models.PMs.PMMotionViewModel,SicUI" />
+		<menuItem id="heaterPM2" resKey="Heater" System="PM2" viewmodel="SicUI.Models.PMs.PMHeaterViewModel,SicUI" />
+		<menuItem id="alarmPM2" resKey="Alarm" System="PM2" viewmodel="SicUI.Models.PMs.PMAlarmViewModel,SicUI" />
+		<!- -<menuItem id="linkedDevicePM2" resKey="Linked Device" System="PM2" viewmodel="SicUI.Models.PMs.PMLinkedDeviceViewModel,SicUI" />- ->
+		<menuItem id="MFCFlowPM2" resKey="MFCFlow" System="PM1" viewmodel="SicUI.Models.PMs.PMMfcDynamicFlowViewModel,SicUI" />
+	</menuItem>
+  -->
+
+</menu>

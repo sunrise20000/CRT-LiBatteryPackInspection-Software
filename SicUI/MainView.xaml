@@ -1,0 +1,1381 @@
+﻿<wnd:CustomWnd
+    x:Class="SicUI.Client.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cal="http://www.caliburn.org"
+    xmlns:client="clr-namespace:SicUI.Client"
+    xmlns:converter="clr-namespace:MECF.Framework.UI.Client.Ctrlib.Converter;assembly=MECF.Framework.UI.Client"
+    xmlns:deviceControl="clr-namespace:Aitex.Core.UI.DeviceControl;assembly=MECF.Framework.UI.Core"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:wnd="http://OpenSEMI.Ctrlib.com/presentation"
+    Title="MainView"
+    Width="1900"
+    Height="980"
+    WindowStartupLocation="CenterScreen"
+    WindowState="Maximized">
+    <Window.Resources>
+        <client:DateTimeToTextConverter x:Key="dateTimeToTextConverter" />
+        <client:CollectionLastIndexConverter x:Key="collectionLastIndexConverter" />
+        <converter:UnitOnlineBorderColorConverter x:Key="UnitOnlineBorderColorConverter" />
+        <converter:BoolReverseConverter x:Key="BoolReverseConverter" />
+    </Window.Resources>
+
+    <Grid Background="{DynamicResource MainArea_BG}">
+        <Grid x:Name="LoginPart" Background="{StaticResource Login_BG}">
+            <Ellipse
+                MaxWidth="1000"
+                MaxHeight="800"
+                Fill="{DynamicResource Login_BG_Highlight}" />
+            <Grid Width="590" Height="465">
+                <Grid.Effect>
+                    <DropShadowEffect
+                        BlurRadius="30"
+                        ShadowDepth="0"
+                        Color="#FF0B1E5A" />
+                </Grid.Effect>
+                <Border
+                    Background="{DynamicResource LoginPanel_BG}"
+                    BorderBrush="{DynamicResource LoginPanel_BD}"
+                    BorderThickness="1"
+                    CornerRadius="3">
+                    <Grid>
+                        <Path
+                            Width="590"
+                            Height="252.338"
+                            VerticalAlignment="Bottom"
+                            Data="M0,0 L0.67857742,0.054499656 C95.091171,7.7605554 387.09985,38.266688 589.03564,132.3875 L590,132.84716 590,249.338 C590,250.99486 588.65686,252.338 587,252.338 L441.29346,252.338 440.83957,252.18517 C350.99802,222.35816 203.01686,189.00345 6.2653065,198.4652 L0,198.80318 z"
+                            Fill="{DynamicResource LoginPanel_InnerGrow}"
+                            Stretch="Fill" />
+                        <Grid Margin="60,40">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70" />
+                                <RowDefinition Height="10" />
+                                <RowDefinition />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0,0,0,5"
+                                    VerticalAlignment="Bottom"
+                                    FontFamily="Arial"
+                                    FontSize="50"
+                                    FontWeight="Bold"
+                                    Foreground="White"
+                                    Text="Login"
+                                    TextWrapping="Wrap" />
+                                <TextBlock
+                                    Margin="10,0,0,12"
+                                    VerticalAlignment="Bottom"
+                                    FontFamily="SimHei"
+                                    FontSize="32"
+                                    FontWeight="Bold"
+                                    Foreground="White"
+                                    Opacity="0.5"
+                                    Text="登录"
+                                    TextWrapping="Wrap" />
+                            </StackPanel>
+                            <StackPanel
+                                Grid.Row="1"
+                                Margin="-20,0"
+                                Orientation="Horizontal">
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Fill="#19FFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="3,0,0,0"
+                                    Fill="#7FFFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="3,0,0,0"
+                                    Fill="#33FFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="50,0,0,0"
+                                    Fill="#66FFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="3,0,0,0"
+                                    Fill="#7FFFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="3,0,0,0"
+                                    Fill="#4CFFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="3,0,0,0"
+                                    Fill="#33FFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="3,0,0,0"
+                                    Fill="#66FFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="3,0,0,0"
+                                    Fill="#99FFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="3,0,0,0"
+                                    Fill="#7FFFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="20,0,0,0"
+                                    Fill="#99FFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="3,0,0,0"
+                                    Fill="#B2FFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="3,0,0,0"
+                                    Fill="#CCFFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="3,0,0,0"
+                                    Fill="#CCFFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="3,0,0,0"
+                                    Fill="#B2FFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="50,0,0,0"
+                                    Fill="#19FFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="3,0,0,0"
+                                    Fill="#4CFFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="3,0,0,0"
+                                    Fill="#19FFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="30,0,0,0"
+                                    Fill="#4CFFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="3,0,0,0"
+                                    Fill="#66FFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="3,0,0,0"
+                                    Fill="#33FFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="3,0,0,0"
+                                    Fill="#33FFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="3,0,0,0"
+                                    Fill="#66FFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="3,0,0,0"
+                                    Fill="#7FFFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="3,0,0,0"
+                                    Fill="#4CFFFFFF" />
+                                <Rectangle
+                                    Width="10"
+                                    Height="10"
+                                    Margin="3,0,0,0"
+                                    Fill="#33FFFFFF" />
+                            </StackPanel>
+                            <Grid Grid.Row="2" Margin="40">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="130" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <TextBox
+                                    x:Name="tbLoginName"
+                                    Grid.Column="1"
+                                    Height="45"
+                                    VerticalAlignment="Center"
+                                    Style="{DynamicResource Login_TextBox}"
+                                    TabIndex="0"
+                                    Text="LastLoginName"
+                                    TextWrapping="Wrap" />
+                                <PasswordBox
+                                    x:Name="pdbPassword"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Height="45"
+                                    Style="{DynamicResource Login_PasswordBox}"
+                                    TabIndex="1">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="KeyDown">
+                                            <cal:ActionMessage MethodName="Enter">
+                                                <cal:Parameter Value="$eventargs" />
+                                                <cal:Parameter Value="{Binding ElementName=tbLoginName, Path=Text}" />
+                                                <cal:Parameter Value="{Binding ElementName=pdbPassword}" />
+                                                <cal:Parameter Value="{Binding ElementName=cbRole, Path=SelectedValue}" />
+                                            </cal:ActionMessage>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </PasswordBox>
+                                <ComboBox
+                                    x:Name="cbRole"
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Height="45"
+                                    DisplayMemberPath="RoleName"
+                                    ItemsSource="{Binding Roles}"
+                                    SelectedIndex="0"
+                                    Style="{DynamicResource Login_ComboBox}"
+                                    TabIndex="2" />
+                                <TextBlock
+                                    Margin="0,0,20,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    FontFamily="Arial"
+                                    FontSize="16"
+                                    FontWeight="Bold"
+                                    Foreground="{DynamicResource FG_White}"
+                                    Text="User Name"
+                                    TextWrapping="Wrap" />
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Margin="0,0,20,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    FontFamily="Arial"
+                                    FontSize="16"
+                                    FontWeight="Bold"
+                                    Foreground="{DynamicResource FG_White}"
+                                    Text="Password"
+                                    TextWrapping="Wrap" />
+                                <TextBlock
+                                    Grid.Row="2"
+                                    Margin="0,0,20,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    FontFamily="Arial"
+                                    FontSize="16"
+                                    FontWeight="Bold"
+                                    Foreground="{DynamicResource FG_White}"
+                                    Text="Role"
+                                    TextWrapping="Wrap" />
+                            </Grid>
+                            <Button
+                                Grid.Row="3"
+                                Width="160"
+                                Height="55"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Content="Login"
+                                FontFamily="Arial"
+                                FontSize="18"
+                                FontWeight="Bold"
+                                Style="{StaticResource Login_Button}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <cal:ActionMessage MethodName="Login">
+                                            <cal:Parameter Value="{Binding ElementName=tbLoginName, Path=Text}" />
+                                            <cal:Parameter Value="{Binding ElementName=pdbPassword}" />
+                                            <cal:Parameter Value="{Binding ElementName=cbRole, Path=SelectedValue}" />
+                                        </cal:ActionMessage>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+            <Grid.Style>
+                <Style>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsLogin}" Value="True">
+                            <Setter Property="Grid.Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+        </Grid>
+
+        <Border
+            Margin="3,1"
+            Padding="1"
+            BorderBrush="LightCyan"
+            BorderThickness="2"
+            CornerRadius="4">
+            <Grid x:Name="MainPage">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120" />
+                    <RowDefinition />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="70" />
+                </Grid.RowDefinitions>
+                <Grid x:Name="Top_Frame">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30*" />
+                    </Grid.RowDefinitions>
+                    <Border Style="{DynamicResource TopFrame_Style}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="250" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="150" />
+                            </Grid.ColumnDefinitions>
+                            <!--<TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="LOGO" VerticalAlignment="Center" FontFamily="Arial" Foreground="White" FontSize="50" FontWeight="Bold" Margin="10,0" FontStyle="Italic">
+                                <TextBlock.Effect>
+                                    <DropShadowEffect/>
+                                </TextBlock.Effect>
+                            </TextBlock>-->
+                            <Image
+                                Width="200"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                                Source="/SicUI;component/Resources/images/logo.png" />
+                            <StackPanel
+                                Margin="10,0,0,27"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"
+                                Orientation="Horizontal">
+                                <TextBlock
+                                    Padding="5,0"
+                                    FontSize="13"
+                                    Foreground="white"
+                                    Text="Time:" />
+                                <TextBlock
+                                    Padding="5,0"
+                                    FontSize="13"
+                                    Foreground="white"
+                                    Text="{Binding RunTime}" />
+                            </StackPanel>
+                            <StackPanel
+                                Margin="10,0,0,5"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"
+                                Orientation="Horizontal">
+                                <TextBlock
+                                    Padding="5,0"
+                                    FontSize="13"
+                                    Foreground="white"
+                                    Text="Ver:" />
+                                <TextBlock
+                                    Padding="5,0"
+                                    FontSize="13"
+                                    Foreground="white"
+                                    Text="{Binding SoftwareVersion}" />
+                            </StackPanel>
+                            <Grid
+                                Grid.Column="1"
+                                Margin="10,8,20,8"
+                                ColumnSpan="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="88" />
+                                    <ColumnDefinition MinWidth="65" />
+                                    <ColumnDefinition Width="88" />
+                                    <ColumnDefinition MinWidth="65" />
+                                    <ColumnDefinition Width="88" />
+                                    <ColumnDefinition MinWidth="65" />
+                                    <ColumnDefinition Width="88" />
+                                    <ColumnDefinition MinWidth="65" />
+                                    <ColumnDefinition Width="88" />
+                                    <ColumnDefinition MinWidth="65" />
+                                    <ColumnDefinition Width="88" />
+                                    <ColumnDefinition MinWidth="65" />
+                                    <ColumnDefinition Width="110" />
+                                    <ColumnDefinition MinWidth="65" />
+
+                                </Grid.ColumnDefinitions>
+
+                                <Label
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    BorderBrush="{Binding IsOnlineSystem, Converter={StaticResource UnitOnlineBorderColorConverter}}"
+                                    Content="System"
+                                    Style="{DynamicResource TopLable_LeftTop}">
+                                    <Label.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="Set All Module Online" IsEnabled="{Binding IsOnlineSystem, Converter={StaticResource BoolReverseConverter}}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOnline">
+                                                            <cal:Parameter Value="System" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                            <MenuItem Header="Set All Module Offline" IsEnabled="{Binding IsOnlineSystem}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOffline">
+                                                            <cal:Parameter Value="System" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </Label.ContextMenu>
+                                </Label>
+                                <Label
+                                    Grid.Column="6"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    BorderBrush="{Binding IsOnlineLL, Converter={StaticResource UnitOnlineBorderColorConverter}}"
+                                    Content="Load"
+                                    Style="{DynamicResource TopLable}">
+                                    <Label.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="Set LoadLock Online" IsEnabled="{Binding IsOnlineLL, Converter={StaticResource BoolReverseConverter}}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOnline">
+                                                            <cal:Parameter Value="LoadLock" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                            <MenuItem Header="Set LoadLock Offline" IsEnabled="{Binding IsOnlineLL}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOffline">
+                                                            <cal:Parameter Value="LoadLock" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </Label.ContextMenu>
+                                </Label>
+                                <Label
+                                    Grid.Column="2"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    BorderBrush="{Binding IsOnlineTM, Converter={StaticResource UnitOnlineBorderColorConverter}}"
+                                    Content="TM"
+                                    Style="{DynamicResource TopLable}">
+                                    <Label.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="Set TM Online" IsEnabled="{Binding IsOnlineTM, Converter={StaticResource BoolReverseConverter}}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOnline">
+                                                            <cal:Parameter Value="TM" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                            <MenuItem Header="Set TM Offline" IsEnabled="{Binding IsOnlineTM}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOffline">
+                                                            <cal:Parameter Value="TM" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </Label.ContextMenu>
+                                </Label>
+                                <Label
+                                    Grid.Column="8"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    BorderBrush="{Binding IsOnlineAligner, Converter={StaticResource UnitOnlineBorderColorConverter}}"
+                                    Content="Aligner"
+                                    Style="{DynamicResource TopLable}">
+                                    <Label.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="Set Aligner Online" IsEnabled="{Binding IsOnlineAligner, Converter={StaticResource BoolReverseConverter}}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOnline">
+                                                            <cal:Parameter Value="Aligner" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                            <MenuItem Header="Set Aligner Offline" IsEnabled="{Binding IsOnlineAligner}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOffline">
+                                                            <cal:Parameter Value="Aligner" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </Label.ContextMenu>
+                                </Label>
+
+                                <Label
+                                    Grid.Column="10"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    BorderBrush="{Binding IsOnlineCassBL, Converter={StaticResource UnitOnlineBorderColorConverter}}"
+                                    Content="CassBL"
+                                    Style="{DynamicResource TopLable}">
+                                    <Label.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="Set CassBL Online" IsEnabled="{Binding IsOnlineCassBL, Converter={StaticResource BoolReverseConverter}}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOnline">
+                                                            <cal:Parameter Value="CassBL" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                            <MenuItem Header="Set CassBL Offline" IsEnabled="{Binding IsOnlineCassBL}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOffline">
+                                                            <cal:Parameter Value="CassBL" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </Label.ContextMenu>
+                                </Label>
+
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="8"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    BorderBrush="{Binding IsOnlineCassAL, Converter={StaticResource UnitOnlineBorderColorConverter}}"
+                                    Content="CassAL"
+                                    Style="{DynamicResource TopLable}">
+                                    <Label.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="Set CassAL Online" IsEnabled="{Binding IsOnlineCassAL, Converter={StaticResource BoolReverseConverter}}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOnline">
+                                                            <cal:Parameter Value="CassAL" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                            <MenuItem Header="Set CassAL Offline" IsEnabled="{Binding IsOnlineCassAL}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOffline">
+                                                            <cal:Parameter Value="CassAL" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </Label.ContextMenu>
+                                </Label>
+
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="10"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    BorderBrush="{Binding IsOnlineCassAR, Converter={StaticResource UnitOnlineBorderColorConverter}}"
+                                    Content="CassAR"
+                                    Style="{DynamicResource TopLable}">
+                                    <Label.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="Set CassAR Online" IsEnabled="{Binding IsOnlineCassAR, Converter={StaticResource BoolReverseConverter}}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOnline">
+                                                            <cal:Parameter Value="CassAR" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                            <MenuItem Header="Set CassAR Offline" IsEnabled="{Binding IsOnlineCassAR}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOffline">
+                                                            <cal:Parameter Value="CassAR" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </Label.ContextMenu>
+                                </Label>
+
+                                <Label
+                                    Grid.Column="12"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    BorderBrush="{Binding IsOnlineWaferRobot, Converter={StaticResource UnitOnlineBorderColorConverter}}"
+                                    Content="WaferRobot"
+                                    Style="{DynamicResource TopLable}">
+                                    <Label.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="Set WaferRobot Online" IsEnabled="{Binding IsOnlineWaferRobot, Converter={StaticResource BoolReverseConverter}}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOnline">
+                                                            <cal:Parameter Value="WaferRobot" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                            <MenuItem Header="Set WaferRobot Offline" IsEnabled="{Binding IsOnlineWaferRobot}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOffline">
+                                                            <cal:Parameter Value="WaferRobot" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </Label.ContextMenu>
+                                </Label>
+
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="12"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    BorderBrush="{Binding IsOnlineTrayRobot, Converter={StaticResource UnitOnlineBorderColorConverter}}"
+                                    Content="TrayRobot"
+                                    Style="{DynamicResource TopLable}">
+                                    <Label.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="Set TrayRobot Online" IsEnabled="{Binding IsOnlineTrayRobot, Converter={StaticResource BoolReverseConverter}}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOnline">
+                                                            <cal:Parameter Value="TrayRobot" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                            <MenuItem Header="Set TrayRobot Offline" IsEnabled="{Binding IsOnlineTrayRobot}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOffline">
+                                                            <cal:Parameter Value="TrayRobot" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </Label.ContextMenu>
+                                </Label>
+
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="4"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    BorderBrush="{Binding IsOnlineBuffer, Converter={StaticResource UnitOnlineBorderColorConverter}}"
+                                    Content="Buffer"
+                                    Style="{DynamicResource TopLable}">
+                                    <Label.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="Set Buffer Online" IsEnabled="{Binding IsOnlineBuffer, Converter={StaticResource BoolReverseConverter}}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOnline">
+                                                            <cal:Parameter Value="Buffer" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                            <MenuItem Header="Set Buffer Offline" IsEnabled="{Binding IsOnlineBuffer}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOffline">
+                                                            <cal:Parameter Value="Buffer" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </Label.ContextMenu>
+                                </Label>
+                                <Label
+                                    Grid.Column="4"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    BorderBrush="{Binding IsOnlineEFEM, Converter={StaticResource UnitOnlineBorderColorConverter}}"
+                                    Content="EFEM"
+                                    Style="{DynamicResource TopLable}">
+                                    <Label.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="Set Efem Online" IsEnabled="{Binding IsOnlineEFEM, Converter={StaticResource BoolReverseConverter}}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOnline">
+                                                            <cal:Parameter Value="EFEM" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                            <MenuItem Header="Set Buffer Offline" IsEnabled="{Binding IsOnlineEFEM}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOffline">
+                                                            <cal:Parameter Value="EFEM" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </Label.ContextMenu>
+                                </Label>
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Margin="1,1,0,1"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    BorderBrush="{Binding IsOnlinePM1, Converter={StaticResource UnitOnlineBorderColorConverter}}"
+                                    Content="PM1"
+                                    Style="{DynamicResource TopLable}"
+                                    Visibility="{Binding IsPM1Installed, Converter={StaticResource BoolVisibilityConverter}}">
+                                    <Label.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="Set PM1 Online" IsEnabled="{Binding IsOnlinePM1, Converter={StaticResource BoolReverseConverter}}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOnline">
+                                                            <cal:Parameter Value="PM1" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                            <MenuItem Header="Set PM1 Offline" IsEnabled="{Binding IsOnlinePM1}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOffline">
+                                                            <cal:Parameter Value="PM1" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </Label.ContextMenu>
+                                </Label>
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="2"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    BorderBrush="{Binding IsOnlinePM2, Converter={StaticResource UnitOnlineBorderColorConverter}}"
+                                    Content="PM2"
+                                    Style="{DynamicResource TopLable}">
+                                    <Label.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="Set PM2 Online" IsEnabled="{Binding IsOnlinePM2, Converter={StaticResource BoolReverseConverter}}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOnline">
+                                                            <cal:Parameter Value="PM2" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                            <MenuItem Header="Set PM2 Offline" IsEnabled="{Binding IsOnlinePM2}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOffline">
+                                                            <cal:Parameter Value="PM2" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </Label.ContextMenu>
+                                </Label>
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="6"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    BorderBrush="{Binding IsOnlineUnLoad, Converter={StaticResource UnitOnlineBorderColorConverter}}"
+                                    Content="UnLoad"
+                                    Style="{DynamicResource TopLable}">
+                                    <Label.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="Set UnLoad Online" IsEnabled="{Binding IsOnlineUnLoad, Converter={StaticResource BoolReverseConverter}}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOnline">
+                                                            <cal:Parameter Value="UnLoad" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                            <MenuItem Header="Set UnLoad Offline" IsEnabled="{Binding IsOnlineUnLoad}">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <cal:ActionMessage MethodName="SetModuleOffline">
+                                                            <cal:Parameter Value="UnLoad" />
+                                                        </cal:ActionMessage>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </Label.ContextMenu>
+                                </Label>
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    BorderBrush="Gray"
+                                    Content="Log"
+                                    Style="{DynamicResource TopLable_LeftBottom}" />
+
+                                <TextBox
+                                    Grid.Column="1"
+                                    VerticalContentAlignment="Center"
+                                    Background="{Binding RtStatusBackground}"
+                                    Style="{StaticResource TextBox_Top}"
+                                    Text="{Binding RtStatus}"
+                                    TextWrapping="Wrap" />
+                                <TextBox
+                                    Grid.Column="7"
+                                    VerticalContentAlignment="Center"
+                                    Background="{Binding LLStatusBackground}"
+                                    Style="{StaticResource TextBox_Top}"
+                                    Text="{Binding LLStatus}"
+                                    TextWrapping="Wrap" />
+                                <TextBox
+                                    Grid.Column="3"
+                                    VerticalContentAlignment="Center"
+                                    Background="{Binding TMStatusBackground}"
+                                    Style="{StaticResource TextBox_Top}"
+                                    Text="{Binding TMStatus}"
+                                    TextWrapping="Wrap" />
+                                <TextBox
+                                    Grid.Column="5"
+                                    VerticalContentAlignment="Center"
+                                    Background="{Binding EFEMStatusBackground}"
+                                    Style="{StaticResource TextBox_Top}"
+                                    Text="{Binding EFEMStatus}"
+                                    TextWrapping="Wrap" />
+                                <TextBox
+                                    Grid.Column="9"
+                                    VerticalContentAlignment="Center"
+                                    Background="{Binding AlignerStatusBackground}"
+                                    Style="{StaticResource TextBox_Top}"
+                                    Text="{Binding AlignerStatus}"
+                                    TextWrapping="Wrap" />
+                                <TextBox
+                                    Grid.Column="11"
+                                    VerticalContentAlignment="Center"
+                                    Background="{Binding CassBLStatusBackground}"
+                                    Style="{StaticResource TextBox_Top}"
+                                    Text="{Binding CassBLStatus}"
+                                    TextWrapping="Wrap" />
+                                <TextBox
+                                    Grid.Column="13"
+                                    VerticalContentAlignment="Center"
+                                    Background="{Binding WaferRobotStatusBackground}"
+                                    Style="{StaticResource TextBox_Top}"
+                                    Text="{Binding WaferRobotStatus}"
+                                    TextWrapping="Wrap" />
+                                <TextBox
+                                    Grid.Row="1"
+                                    Grid.Column="13"
+                                    VerticalContentAlignment="Center"
+                                    Background="{Binding TrayRobotStatusBackground}"
+                                    Style="{StaticResource TextBox_Top}"
+                                    Text="{Binding TrayRobotStatus}"
+                                    TextWrapping="Wrap" />
+                                <TextBox
+                                    Grid.Row="1"
+                                    Grid.Column="9"
+                                    VerticalContentAlignment="Center"
+                                    Background="{Binding CassALStatusBackground}"
+                                    Style="{StaticResource TextBox_Top}"
+                                    Text="{Binding CassALStatus}"
+                                    TextWrapping="Wrap" />
+                                <TextBox
+                                    Grid.Row="1"
+                                    Grid.Column="11"
+                                    VerticalContentAlignment="Center"
+                                    Background="{Binding CassARStatusBackground}"
+                                    Style="{StaticResource TextBox_Top}"
+                                    Text="{Binding CassARStatus}"
+                                    TextWrapping="Wrap" />
+                                <TextBox
+                                    Grid.Row="1"
+                                    Grid.Column="5"
+                                    VerticalContentAlignment="Center"
+                                    Background="{Binding BufferStatusBackground}"
+                                    Style="{StaticResource TextBox_Top}"
+                                    Text="{Binding BufferStatus}"
+                                    TextWrapping="Wrap" />
+                                <TextBox
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    VerticalContentAlignment="Center"
+                                    Background="{Binding PM1StatusBackground}"
+                                    Style="{StaticResource TextBox_Top}"
+                                    Text="{Binding PM1Status}"
+                                    TextWrapping="Wrap" />
+                                <TextBox
+                                    Grid.Row="1"
+                                    Grid.Column="3"
+                                    VerticalContentAlignment="Center"
+                                    Background="{Binding PM2StatusBackground}"
+                                    Style="{StaticResource TextBox_Top}"
+                                    Text="{Binding PM2Status}"
+                                    TextWrapping="Wrap" />
+                                <TextBox
+                                    Grid.Row="1"
+                                    Grid.Column="7"
+                                    VerticalContentAlignment="Center"
+                                    Background="{Binding UnLoadStatusBackground}"
+                                    Style="{StaticResource TextBox_Top}"
+                                    Text="{Binding UnLoadStatus}"
+                                    TextWrapping="Wrap" />
+
+                                <Grid
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="13">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="90" />
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="100" />
+                                    </Grid.ColumnDefinitions>
+                                    <ComboBox
+                                        Height="Auto"
+                                        VerticalContentAlignment="Center"
+                                        FontSize="15"
+                                        ItemsSource="{Binding EventLogsView}"
+                                        SelectedIndex="{Binding EventLogsView.Count, Mode=OneWay, Converter={StaticResource collectionLastIndexConverter}}"
+                                        Style="{DynamicResource Top_ComboBox}"
+                                        Visibility="{Binding AllEventsVisibility}">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <ContentControl>
+                                                    <ContentControl.Style>
+                                                        <Style TargetType="ContentControl">
+                                                            <Setter Property="Background" Value="{StaticResource MessagesInformationBackgroundBrush}" />
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding Level}" Value="Alarm">
+                                                                    <Setter Property="Foreground" Value="{StaticResource MessagesErrorForegroundBrush}" />
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding Level}" Value="Warning">
+                                                                    <Setter Property="Foreground" Value="{StaticResource MessagesWarningForegroundBrush}" />
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding Level}" Value="Information">
+                                                                    <Setter Property="Foreground" Value="{StaticResource MessagesInformationForegroundBrush}" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </ContentControl.Style>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="100" />
+                                                            <ColumnDefinition Width="110" />
+                                                            <ColumnDefinition Width="0" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock
+                                                            Grid.Column="0"
+                                                            Margin="8,0,0,0"
+                                                            Text="{Binding OccuringTime, Converter={StaticResource dateTimeToTextConverter}}" />
+                                                        <TextBlock
+                                                            Grid.Column="2"
+                                                            Margin="8,0,0,0"
+                                                            Text="{Binding Id}" />
+                                                        <TextBlock
+                                                            Grid.Column="1"
+                                                            Margin="8,0,0,0"
+                                                            Text="{Binding Source}" />
+                                                        <TextBlock
+                                                            Grid.Column="3"
+                                                            Margin="8,0,0,0"
+                                                            Text="{Binding Description}" />
+                                                    </Grid>
+                                                </ContentControl>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                    <!--<ComboBox Style="{DynamicResource Top_ComboBox}" ItemsSource="{Binding WarnEventLogList}" Visibility="{Binding WarnEventsVisibility}" SelectedIndex="{Binding EventLogList.Count,Mode=OneWay,Converter={StaticResource collectionLastIndexConverter}}" VerticalContentAlignment="Center" FontSize="15" Height="Auto" SelectionChanged="ComboBox_SelectionChanged">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <ContentControl>
+                                                    <ContentControl.Style>
+                                                        <Style TargetType="ContentControl">
+                                                            <Setter Property="Background" Value="{StaticResource MessagesInformationBackgroundBrush}"/>
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding Level}" Value="Alarm">
+                                                                    <Setter Property="Foreground" Value="{StaticResource MessagesErrorForegroundBrush}"/>
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding Level}" Value="Warning">
+                                                                    <Setter Property="Foreground" Value="{StaticResource MessagesWarningForegroundBrush}"/>
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding Level}" Value="Information">
+                                                                    <Setter Property="Foreground" Value="{StaticResource MessagesInformationForegroundBrush}"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </ContentControl.Style>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="100"/>
+                                                            <ColumnDefinition Width="110"/>
+                                                            <ColumnDefinition Width="0"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock Margin="2,0,0,0" Grid.Column="0" Text="{Binding OccuringTime, Converter={StaticResource dateTimeToTextConverter}}" />
+                                                        <TextBlock Grid.Column="2" Text="{Binding Id}" Margin="8,0,0,0"/>
+                                                        <TextBlock Grid.Column="1" Text="{Binding Source}" Margin="8,0,0,0" />
+                                                        <TextBlock Grid.Column="3" Text="{Binding Description}" Margin="2,0,0,0"/>
+                                                    </Grid>
+                                                </ContentControl>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>-->
+                                    <Label
+                                        Grid.Column="1"
+                                        HorizontalContentAlignment="Center"
+                                        VerticalContentAlignment="Center"
+                                        Style="{DynamicResource TopLable_RightBottom}">
+                                        <CheckBox
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Content="Alarm"
+                                            FontFamily="Arial"
+                                            FontSize="16"
+                                            Foreground="{DynamicResource FG_Black}"
+                                            IsChecked="{Binding IsShowAlarmEventOnly, Delay=10}">
+                                            <!--<i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="Checked">
+                                                    <cal:ActionMessage MethodName="ShowAlarmEvents">
+                                                    </cal:ActionMessage>
+                                                </i:EventTrigger>
+                                                <i:EventTrigger EventName="Unchecked">
+                                                    <cal:ActionMessage MethodName="ShowAllEvents">
+                                                    </cal:ActionMessage>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>-->
+                                        </CheckBox>
+                                    </Label>
+
+
+                                    <Button
+                                        Grid.Column="2"
+                                        Width="90"
+                                        Height="30"
+                                        Margin="0"
+                                        Content="Reset"
+                                        Style="{DynamicResource TopButton}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <cal:ActionMessage MethodName="Reset" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+                                    <Button
+                                        Grid.Column="3"
+                                        Width="90"
+                                        Height="30"
+                                        Margin="0"
+                                        Content="Buzzer Off"
+                                        Style="{DynamicResource TopButton}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <cal:ActionMessage MethodName="BuzzerOff" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+
+                                </Grid>
+                            </Grid>
+                            <Grid
+                                Grid.Column="2"
+                                Margin="28,10"
+                                IsEnabled="{Binding IsPermission}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+
+
+                            </Grid>
+                            <Label
+                                Grid.Column="3"
+                                Width="50"
+                                Margin="0,5"
+                                VerticalAlignment="Stretch"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                Style="{DynamicResource TopLable_SignalTower}">
+                                <Viewbox Width="45" Height="80">
+                                    <deviceControl:AITSignalTower
+                                        Width="45"
+                                        Height="110"
+                                        DeviceData="{Binding SignalTowerData}" />
+                                </Viewbox>
+                            </Label>
+                            <Grid Grid.Column="4" Margin="5,10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Border
+                                    Margin="2,4"
+                                    Background="{DynamicResource TopFrame_UserInfoBG}"
+                                    BorderBrush="{DynamicResource TopFrame_UserInfoBD}"
+                                    BorderThickness="1"
+                                    CornerRadius="5"
+                                    SnapsToDevicePixels="True">
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontFamily="Arial"
+                                        FontSize="16"
+                                        Foreground="{DynamicResource TopFrame_TextColor}"
+                                        Text="{Binding User.LoginName}"
+                                        TextWrapping="NoWrap" />
+                                </Border>
+                                <Button
+                                    Grid.Row="1"
+                                    Margin="2,4"
+                                    Content="Logout"
+                                    Style="{DynamicResource Logout_Button}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <cal:ActionMessage MethodName="Logout" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </Grid>
+                <Grid Grid.Row="1" Background="{DynamicResource MainArea_BG}">
+                    <Rectangle
+                        Margin="20,8"
+                        Fill="{DynamicResource MainArea_InnerBG}"
+                        RadiusX="5"
+                        RadiusY="5">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <Rectangle.Effect>
+                            <BlurEffect Radius="40" />
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <ContentControl
+                        x:Name="ActiveItem"
+                        Margin="10"
+                        cal:View.Context="{Binding Context}"
+                        cal:View.Model="{Binding ActiveItem}" />
+                </Grid>
+                <Border
+                    x:Name="Sub_Menu_Bar"
+                    Grid.Row="2"
+                    Style="{DynamicResource Sub_Menu_BarStyle}">
+                    <Menu
+                        Grid.Row="0"
+                        Margin="3,0"
+                        Background="{x:Null}"
+                        ItemContainerStyle="{DynamicResource BottomSubMenu}"
+                        ItemsSource="{Binding Path=SubMenuItems}">
+                        <Menu.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Margin="1" Text="{Binding Path=ResKey}" />
+                            </DataTemplate>
+                        </Menu.ItemTemplate>
+                    </Menu>
+                </Border>
+                <Border
+                    x:Name="Bottom_Frame"
+                    Grid.Row="3"
+                    Style="{DynamicResource Bottom_FrameStyle}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <!--<TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="LOGO" VerticalAlignment="Center" FontFamily="Arial" Foreground="White" FontSize="50" FontWeight="Bold" Margin="9,10,1743,2" FontStyle="Italic" RenderTransformOrigin="-5.298,-0.284"/>-->
+                        <!--<Image Source="/SicUI;component/Themes/images/parts/logo1.png" Margin="10,0,0,0"></Image>-->
+                        <Menu
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="10,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Background="{x:Null}"
+                            ItemContainerStyle="{DynamicResource MainMenu}"
+                            ItemsSource="{Binding Path=MenuItems}">
+                            <Menu.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Margin="1" Text="{Binding Path=ResKey}" />
+                                </DataTemplate>
+                            </Menu.ItemTemplate>
+                        </Menu>
+                    </Grid>
+                </Border>
+                <Grid.Style>
+                    <Style>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsLogin}" Value="False">
+                                <Setter Property="Grid.Visibility" Value="Collapsed" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+            </Grid>
+        </Border>
+    </Grid>
+
+</wnd:CustomWnd>

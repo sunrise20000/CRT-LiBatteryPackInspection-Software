@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="SicUI.Controls.Parts.Door"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SicUI.Controls.Parts"
+			 xmlns:common="clr-namespace:Aitex.Sorter.Common;assembly=MECF.Framework.Common"
+             mc:Ignorable="d" 
+              d:DesignHeight="11" d:DesignWidth="94">
+	<Border BorderThickness="0" x:Name="root">
+		<Image x:Name="image" Width="94" Height="11">
+			<Image.Resources>
+				<Style TargetType="Image" >
+					<Style.Triggers>
+						<DataTrigger Binding="{Binding State}" Value="{x:Static common:FoupDoorState.Unknown}">
+                            <Setter Property="Source" Value="/SicUI;component/Themes/images/parts/doorunknown.png" />
+						</DataTrigger>
+						<DataTrigger Binding="{Binding State}" Value="{x:Static common:FoupDoorState.Open}">
+                            <Setter Property="Source" Value="/SicUI;component/Themes/images/parts/dooropen.png" />
+						</DataTrigger>
+						<DataTrigger Binding="{Binding State}" Value="{x:Static common:FoupDoorState.Close}">
+                            <Setter Property="Source" Value="/SicUI;component/Themes/images/parts/doorclose.png" />
+						</DataTrigger>
+					</Style.Triggers>
+				</Style>
+			</Image.Resources>
+		</Image>
+	</Border>
+</UserControl>

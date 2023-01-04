@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DC5FD3DC-4CF4-4484-9EF9-1B878B25A6D5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SicPM</RootNamespace>
+    <AssemblyName>SicPM</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TwinCAT.Ads, Version=4.2.169.0, Culture=neutral, PublicKeyToken=180016cd49e5e8c3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\dlls\TwinCAT.Ads.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Devices\AdsIoProvider.cs" />
+    <Compile Include="Devices\IoBottomSection.cs" />
+    <Compile Include="Devices\IoChamberMoveBody.cs" />
+    <Compile Include="Devices\IoConfinementRing.cs" />
+    <Compile Include="Devices\IoGasConnector.cs" />
+    <Compile Include="Devices\IoHeartBeat.cs" />
+    <Compile Include="Devices\IoHeat.cs" />
+    <Compile Include="Devices\IoInterLock.cs" />
+    <Compile Include="Devices\IoOmronTemp.cs" />
+    <Compile Include="Devices\DoSensor.cs" />
+    <Compile Include="Devices\IoPTOffsetAndK.cs" />
+    <Compile Include="Devices\IoUPS.cs" />
+    <Compile Include="Devices\IoSCR.cs" />
+    <Compile Include="Devices\IoTC.cs" />
+    <Compile Include="Devices\IoTestDevice.cs" />
+    <Compile Include="Devices\SicAETemp.cs" />
+    <Compile Include="PmDevices\DicMode.cs" />
+    <Compile Include="PmDevices\IoV99.cs" />
+    <Compile Include="PmDevices\IoPurgeArH2Switch.cs" />
+    <Compile Include="PmDevices\IoSHArH2Switch.cs" />
+    <Compile Include="PmDevices\IoN2HighDoping.cs" />
+    <Compile Include="PmDevices\IoN2Dilution.cs" />
+    <Compile Include="PmDevices\IoCPush.cs" />
+    <Compile Include="PmDevices\IoHCl.cs" />
+    <Compile Include="PmDevices\IoDopePush.cs" />
+    <Compile Include="PmDevices\IoC2H4.cs" />
+    <Compile Include="PmDevices\IoSiPush.cs" />
+    <Compile Include="PmDevices\IoSiH4.cs" />
+    <Compile Include="PmDevices\IoTMA.cs" />
+    <Compile Include="PmDevices\IoTCS.cs" />
+    <Compile Include="Devices\IoLid.cs" />
+    <Compile Include="Devices\IoLidSwing.cs" />
+    <Compile Include="Devices\IoPSU.cs" />
+    <Compile Include="Devices\IoMFC.cs" />
+    <Compile Include="Devices\IoPressure.cs" />
+    <Compile Include="Devices\IoPump.cs" />
+    <Compile Include="Devices\IoSensor.cs" />
+    <Compile Include="Devices\IoSignalTower.cs" />
+    <Compile Include="Devices\IoTempMeter.cs" />
+    <Compile Include="Devices\IoTrigger.cs" />
+    <Compile Include="Devices\IoWaterFlow.cs" />
+    <Compile Include="Devices\SicAds.cs" />
+    <Compile Include="Devices\SicServo.cs" />
+    <Compile Include="Devices\SiemensIoProvider.cs" />
+    <Compile Include="Devices\TcAds.cs" />
+    <Compile Include="PMModule.cs" />
+    <Compile Include="PMModuleBase.cs" />
+    <Compile Include="PMModuleDevice.cs" />
+    <Compile Include="PMModuleInterlock.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecipeExecutions\CleanRecipe.cs" />
+    <Compile Include="RecipeExecutions\Fdc.cs" />
+    <Compile Include="RecipeExecutions\IRecipeDBCallback.cs" />
+    <Compile Include="RecipeExecutions\IRecipeExecutor.cs" />
+    <Compile Include="RecipeExecutions\PostProcess.cs" />
+    <Compile Include="RecipeExecutions\PreProcess.cs" />
+    <Compile Include="RecipeExecutions\Process.cs" />
+    <Compile Include="RecipeExecutions\ProcessCalculate.cs" />
+    <Compile Include="RecipeExecutions\RecipeDBCallback.cs" />
+    <Compile Include="RecipeExecutions\RecipeEndDataItem.cs" />
+    <Compile Include="RecipeExecutions\RecipeHead.cs" />
+    <Compile Include="RecipeExecutions\RecipeParser.cs" />
+    <Compile Include="RecipeExecutions\RecipeRunningInfo.cs" />
+    <Compile Include="RecipeExecutions\RecipeStep.cs" />
+    <Compile Include="RecipeExecutions\SicRecipeFileContext.cs" />
+    <Compile Include="RecipeRoutine\PMMacroRoutine.cs" />
+    <Compile Include="RecipeRoutine\PostPMMacroRoutine.cs" />
+    <Compile Include="RecipeRoutine\PrePMMacroRoutine.cs" />
+    <Compile Include="RecipeRoutine\RecipeParser.cs" />
+    <Compile Include="Routines\PMBaseRoutine.cs" />
+    <Compile Include="Routines\PMChamberMoveBodyRoutine.cs" />
+    <Compile Include="Routines\PMExchangeMoRoutine.cs" />
+    <Compile Include="Routines\PMHomeRoutine.cs" />
+    <Compile Include="Routines\PMLeakCheckRoutine.cs" />
+    <Compile Include="Routines\PMButttomSectionMoveRoutine.cs" />
+    <Compile Include="Routines\PMCleanRoutine.cs" />
+    <Compile Include="Routines\PMProcessAbortRoutine.cs" />
+    <Compile Include="Routines\PMPurgeRoutine.cs" />
+    <Compile Include="Routines\PMPcCalibrationRoutine.cs" />
+    <Compile Include="Routines\PMPostTransferRoutine.cs" />
+    <Compile Include="Routines\PMPrepareTransferRoutine.cs" />
+    <Compile Include="Routines\PMProcessRoutine.cs" />
+    <Compile Include="Routines\PMPumpRoutine.cs" />
+    <Compile Include="Routines\PMServoToPressure.cs" />
+    <Compile Include="Routines\PMStopHeatEnableRoutine.cs" />
+    <Compile Include="Routines\PMToIsolationRoutine.cs" />
+    <Compile Include="Routines\PMToAtmIdleRoutine.cs" />
+    <Compile Include="Routines\PMToProcessIdleRoutine.cs" />
+    <Compile Include="Routines\PMVacIdleRoutine.cs" />
+    <Compile Include="Routines\PMVentRoutine.cs" />
+    <Compile Include="Utilities\UnitAlarmItem.cs" />
+    <Compile Include="Utilities\XmlConfig.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\Recipe\Sic\Process\RecipeFormat.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\_ioDefinePM.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\DeviceModelPM.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\FrameworkLocal\RTCore\RTCore.csproj">
+      <Project>{bcbd839a-c9a0-4be7-98ca-b0a88ad38e5a}</Project>
+      <Name>RTCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FrameworkLocal\RTEquipmentLibrary\RTEquipmentLibrary.csproj">
+      <Project>{090a1e9c-1087-4c8a-b4e0-ff074459e071}</Project>
+      <Name>RTEquipmentLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MECF.Framework.Common\MECF.Framework.Common.csproj">
+      <Project>{efad063f-fa97-42b7-87f8-8279eba30d34}</Project>
+      <Name>MECF.Framework.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\Recipe\Sic\Content\RecipeFormat.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Config\interlockPM.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Config\Recipe\Sic\Clean\RecipeFormat.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\Recipe\Sic\Routine\RecipeFormat.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

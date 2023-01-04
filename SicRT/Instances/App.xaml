@@ -1,0 +1,17 @@
+﻿<Application
+    x:Class="SicRT.Instances.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    ShutdownMode="OnExplicitShutdown">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/MECF.Framework.RT.Core;component/Resources/LocalResource.xaml" />
+                <ResourceDictionary Source="/MECF.Framework.UI.Core;component/Resources/Language/StringResources.zh-CN.xaml" />
+                <ResourceDictionary Source="/MECF.Framework.UI.Core;component/Resources/Language/StringResources.en-US.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>

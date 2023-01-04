@@ -1,0 +1,27 @@
+﻿<UserControl
+    x:Class="Aitex.Core.UI.Control.PipeControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Width="20"
+    Height="20">
+    <Grid Name="grid">
+        <!--<Grid.ContextMenu>
+
+        <ContextMenu>
+                <MenuItem Header="Gas On" Click="GasOn" />
+                <MenuItem Header="Gas Off" Click="GasOff" />
+            </ContextMenu>
+        </Grid.ContextMenu>-->
+        <!--<Line X1="0" Y1="10" X2="20" Y2="10" Stroke="Gray" StrokeThickness="1" Name="Line1Border" StrokeStartLineCap="Round" StrokeEndLineCap="Round" />-->
+        <Line
+            Name="Line1Center"
+            Stroke="Aqua"
+            StrokeEndLineCap="Round"
+            StrokeStartLineCap="Round"
+            StrokeThickness="1"
+            X1="0"
+            X2="20"
+            Y1="10"
+            Y2="10" />
+    </Grid>
+</UserControl>

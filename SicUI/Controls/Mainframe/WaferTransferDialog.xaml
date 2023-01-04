@@ -1,0 +1,62 @@
+﻿<Window x:Class="SicUI.Controls.Parts.WaferTransferDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SicUI.Controls.Parts"
+        mc:Ignorable="d"
+        WindowStyle="SingleBorderWindow" ResizeMode="NoResize" ShowInTaskbar="False"
+        Title="Transfer Option" Height="450" Width="380" WindowStartupLocation="CenterOwner" SizeToContent="Height">
+	<Grid VerticalAlignment="Center" x:Name="grid">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="40" />
+			<RowDefinition Height="40" />
+			<RowDefinition Height="40" />
+			<RowDefinition Height="40" />
+			<RowDefinition Height="40" />
+			<RowDefinition Height="40" />
+			<RowDefinition Height="40" />
+			<RowDefinition Height="40" />
+			<RowDefinition Height="40" />
+			<RowDefinition Height="auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<Label Grid.Row="0" Grid.Column="0" Content="Source Chamber" />
+		<Label x:Name="lbSource" Grid.Row="0" Grid.Column="1" Content="" />
+
+		<Label Grid.Row="1" Grid.Column="0" Content="Source Slot" />
+		<Label x:Name="lbSourceSlot" Grid.Row="1" Grid.Column="1" Content="" />
+
+		<Label Grid.Row="2" Grid.Column="0" Content="Dest Chamber" />
+		<Label x:Name="lbDest" Grid.Row="2" Grid.Column="1" Content="" />
+
+		<Label Grid.Row="3" Grid.Column="0" Content="Dest Slot" />
+		<Label x:Name="lblDestSlot" Grid.Row="3" Grid.Column="1" Content="" />
+
+		<Label Grid.Row="4" Grid.Column="0" Content="Aligner" />
+		<CheckBox Grid.Row="4" x:Name="chkAligner" VerticalContentAlignment="Center" Grid.Column="1" />
+
+		<Label Grid.Row="5" Grid.Column="0" Content="Read Laser Marker" />
+		<CheckBox Grid.Row="5" x:Name="chkReadID" VerticalContentAlignment="Center" Grid.Column="1" />
+
+		<Label Grid.Row="6" Grid.Column="0" Content="Read T7 Code" />
+		<CheckBox Grid.Row="6" x:Name="chkReadID2" VerticalContentAlignment="Center" Grid.Column="1" />
+
+		<Label Grid.Row="7" Grid.Column="0" Content="Blade" />
+		<WrapPanel Grid.Row="7" Grid.Column="1" VerticalAlignment="Center">
+			<RadioButton x:Name="chkBlade1" Content="1" IsChecked="True" />
+			<RadioButton x:Name="chkBlade2" Margin="8,0" Content="2" />
+		</WrapPanel>
+
+		<Label Grid.Row="8" Grid.Column="0" Content="Aligner Angle" />
+		<TextBox Grid.Row="8" x:Name="tbAngle" Grid.Column="1" Text="0" Height="30" Margin="4" />
+
+		<Button x:Name="btnOK" Grid.Row="9" Grid.Column="0" Content="OK" Click="btnOK_Click" />
+		<Button x:Name="btnCancel" Grid.Row="9" Grid.Column="1" Content="Cancel" Click="btnCancel_Click" />
+	</Grid>
+</Window>

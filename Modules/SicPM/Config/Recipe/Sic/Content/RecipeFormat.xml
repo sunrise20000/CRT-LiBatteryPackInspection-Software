@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Aitex>
+   <TableRecipeFormat RecipeChamberType="Sic" RecipeVersion="1.0">
+     <Catalog DisplayName="Operation">
+       <Group DisplayName="Overview">
+         <Content DisplayName="Operation" Default="false" />
+         <Content DisplayName="RunningMode" Default="false" />
+       </Group>
+     </Catalog>
+
+     <Catalog DisplayName="PM1">
+       <Group DisplayName="Main">
+         <Content DisplayName="ReactorStatus" Default="false" />
+         <Content DisplayName="ReactorService" Default="false" />
+       </Group>
+       <Group DisplayName="Process">
+         <Content DisplayName="Steps" Default="false" />
+         <Content DisplayName="MfcValueVisibility" Default="true" />
+         <Content DisplayName="MfcValueDisturbance" Default="true" />
+         <Content DisplayName="ProcessMonitorWindow" Default="true" />
+       </Group>
+     </Catalog>
+
+     <Catalog DisplayName="Platform">
+       <Group DisplayName="Mainframe">
+         <Content DisplayName="PM1" Default="false" />
+         <Content DisplayName="Buffer" Default="false" />
+         <Content DisplayName="LL" Default="false" />
+         <Content DisplayName="TM" Default="false" />
+         <Content DisplayName="PreHeat" Default="false" />
+       </Group>
+     </Catalog>
+
+     <Catalog DisplayName="Recipe">
+       <Group DisplayName="Behaviour">
+         <Content DisplayName="AllowEditCellAccessPerm" Default="false" />
+         <Content DisplayName="ShowValuesInRecipeEditor" Default="false" />
+         <Content DisplayName="ShowValueInProcessView" Default="false" />
+         <Content DisplayName="AllowSaveInProcessView" Default="false" />
+         <Content DisplayName="AllowRipInProcessView" Default="false" />
+       </Group>
+     </Catalog>
+     
+  </TableRecipeFormat>
+</Aitex>

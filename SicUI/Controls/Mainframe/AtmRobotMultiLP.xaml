@@ -1,0 +1,75 @@
+﻿<UserControl
+    x:Class="SicUI.Controls.M2C4Parts.AtmRobotMultiLP"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Common="clr-namespace:SicUI.Controls.Common"
+    xmlns:controls="clr-namespace:SicUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SicUI.Controls.M2C4Parts"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="38"
+    d:DesignWidth="416"
+    mc:Ignorable="d">
+    <Viewbox Stretch="Uniform">
+        <Canvas
+            x:Name="root"
+            Width="416"
+            Height="38">
+            <!--<Canvas.ContextMenu>
+                <ContextMenu ItemsSource="{Binding Menu}" />
+            </Canvas.ContextMenu>-->
+            <Image
+                Width="75"
+                Height="80"
+                Margin="-20,-24"
+                Source="Images/AtmRobotMultiLP/dock.png"
+                Visibility="{Binding ShowDock, Converter={StaticResource boolVisibilityConverter}}" />
+            <!--<Image Width="38" Height="38" Source="Images/AtmRobotMultiLP/robotDock.png" />-->
+            <Common:AxisCanvas
+                x:Name="canvas1"
+                Canvas.Left="10"
+                Canvas.Top="10"
+                Width="68"
+                Height="21">
+                <Image Source="Images/AtmRobotMultiLP/dq01.png" />
+                <Common:AxisCanvas
+                    x:Name="canvas2"
+                    Canvas.Left="36"
+                    Width="46"
+                    Height="21">
+                    <Image Source="Images/AtmRobotMultiLP/dq01.png" />
+                    <Common:AxisCanvas
+                        x:Name="canvas3"
+                        Canvas.Left="36"
+                        Canvas.Top="-8"
+                        Width="80"
+                        Height="38">
+                        <Image Source="Images/AtmRobotMultiLP/dq02.png" />
+                        <!--<Image Source="Images/pm2.png" Canvas.Left="3" Canvas.Top="-41" Visibility="{Binding IsArmWater}"/>-->
+                        <!--<Image Source="Images/pm2.png" Visibility="{Binding HasWafer}" Canvas.Top="-40" Canvas.Left="27" />-->
+
+                        <Image
+                            Canvas.Left="8"
+                            Canvas.Top="-17"
+                            Width="70"
+                            Source="Images/pm52.png"
+                            Visibility="{Binding HasTray}" />
+                        <controls:WaferCtrl
+                            Canvas.Left="22"
+                            Canvas.Top="-3"
+                            Width="42"
+                            Height="42"
+                            WaferData="{Binding Wafer1}" />
+
+                    </Common:AxisCanvas>
+                </Common:AxisCanvas>
+            </Common:AxisCanvas>
+            <Canvas.RenderTransform>
+                <TransformGroup>
+                    <RotateTransform Angle="{Binding RotateAngle}" CenterY="30" />
+                    <TranslateTransform x:Name="translate" X="{Binding TranslateX}" />
+                </TransformGroup>
+            </Canvas.RenderTransform>
+        </Canvas>
+    </Viewbox>
+</UserControl>

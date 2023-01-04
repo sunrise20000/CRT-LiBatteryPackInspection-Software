@@ -1,0 +1,1017 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{290FE38F-45F9-408C-B25B-C899B467E3F8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SicUI</RootNamespace>
+    <AssemblyName>SicUI</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NET,SHOW_SPLASH_SCREEN</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Themes\MyLogoNormal.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommandLine, Version=2.9.1.0, Culture=neutral, PublicKeyToken=5a870481e358d379, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\dlls\CommandLine.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml">
+      <HintPath>..\ThirdParty\dlls\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelLibrary">
+      <HintPath>..\ThirdParty\dlls\ExcelLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\ThirdParty\dlls\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors">
+      <HintPath>..\ThirdParty\dlls\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf">
+      <HintPath>..\ThirdParty\dlls\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.DwayneNeed">
+      <HintPath>..\ThirdParty\dlls\Microsoft.DwayneNeed.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.DwayneNeed.Win32">
+      <HintPath>..\ThirdParty\dlls\Microsoft.DwayneNeed.Win32.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Drawing, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\ThirdParty\dlls\Microsoft.Expression.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="presentationframework.aero2" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="SciChart.Charting, Version=6.0.1.12982, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\dlls\SciCart\SciChart.Charting.dll</HintPath>
+    </Reference>
+    <Reference Include="SciChart.Core, Version=6.0.1.12982, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\dlls\SciCart\SciChart.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SciChart.Data, Version=6.0.1.12982, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\dlls\SciCart\SciChart.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="SciChart.Drawing, Version=6.0.1.12982, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\dlls\SciCart\SciChart.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\ThirdParty\dlls\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WPFToolkit">
+      <HintPath>..\ThirdParty\dlls\WPFToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=2.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\dlls\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero">
+      <HintPath>..\ThirdParty\dlls\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdParty\dlls\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Controls\AITPump.xaml.cs">
+      <DependentUpon>AITPump.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AnalogControl.xaml.cs">
+      <DependentUpon>AnalogControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AnalogControl2.xaml.cs">
+      <DependentUpon>AnalogControl2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BodyBottom.xaml.cs">
+      <DependentUpon>BodyBottom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BodyLid.xaml.cs">
+      <DependentUpon>BodyLid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ChooseDialogBoxView.xaml.cs">
+      <DependentUpon>ChooseDialogBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ChooseDialogBoxViewModel.cs" />
+    <Compile Include="Controls\Common\AxisBorder.cs" />
+    <Compile Include="Controls\Common\BodyMovePosition.cs" />
+    <Compile Include="Controls\Common\RobotConstant.cs" />
+    <Compile Include="Controls\Dialogs\YesNoDialogBoxViewModel.cs" />
+    <Compile Include="Controls\Dialogs\YesNoDialogBoxView.xaml.cs">
+      <DependentUpon>YesNoDialogBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Mainframe\EFEMControl.xaml.cs">
+      <DependentUpon>EFEMControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Mainframe\M2C4EFEMView.xaml.cs">
+      <DependentUpon>M2C4EFEMView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Mainframe\RobotEfemTray.xaml.cs">
+      <DependentUpon>RobotEfemTray.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Mainframe\RobotEfemWafer.xaml.cs">
+      <DependentUpon>RobotEfemWafer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MoveBody.xaml.cs">
+      <DependentUpon>MoveBody.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\InputDialogBox.xaml.cs">
+      <DependentUpon>InputDialogBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Mainframe\AtmRobotMultiLP.xaml.cs">
+      <DependentUpon>AtmRobotMultiLP.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Mainframe\M2C4EFEMView2.xaml.cs">
+      <DependentUpon>M2C4EFEMView2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Common\AnimationHelper.cs" />
+    <Compile Include="Controls\Common\AnimationQueue.cs" />
+    <Compile Include="Controls\Common\AxisCanvas.cs" />
+    <Compile Include="Controls\Common\RelayCommand.cs" />
+    <Compile Include="Controls\Common\RobotMoveInfo.cs" />
+    <Compile Include="Controls\Common\RobotPosition.cs" />
+    <Compile Include="Controls\Common\ViewModelControl.cs" />
+    <Compile Include="Controls\Door.xaml.cs">
+      <DependentUpon>Door.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Mainframe\LoadLock.xaml.cs">
+      <DependentUpon>LoadLock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Reactor.xaml.cs">
+      <DependentUpon>Reactor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RecipeProcess.xaml.cs">
+      <DependentUpon>RecipeProcess.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ValveBig.xaml.cs">
+      <DependentUpon>ValveBig.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WaferAssociationUnit.xaml.cs">
+      <DependentUpon>WaferAssociationUnit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WaferAssociationUnitLite.xaml.cs">
+      <DependentUpon>WaferAssociationUnitLite.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converter\BoolVisibilityConverter.cs" />
+    <Compile Include="Models\Maintenances\RuntimeView.xaml.cs">
+      <DependentUpon>RuntimeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Maintenances\RuntimeViewModel.cs" />
+    <Compile Include="Models\Maintenances\TM\DeviceView.xaml.cs">
+      <DependentUpon>DeviceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Maintenances\TM\DeviceViewModel.cs" />
+    <Compile Include="Models\Maintenances\TM\EFEM2View.xaml.cs">
+      <DependentUpon>EFEM2View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Maintenances\TM\EFEM2ViewModel.cs" />
+    <Compile Include="Models\Maintenances\TM\EFEMView.xaml.cs">
+      <DependentUpon>EFEMView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Maintenances\TM\EFEMViewModel.cs" />
+    <Compile Include="Models\Maintenances\TM\PurgeDialogView.xaml.cs">
+      <DependentUpon>PurgeDialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Maintenances\TM\PurgeDialogViewModel.cs" />
+    <Compile Include="Models\Maintenances\TM\ServoStates.cs" />
+    <Compile Include="Models\Maintenances\TM\TMProvider.cs" />
+    <Compile Include="Models\Maintenances\TM\TMView.xaml.cs">
+      <DependentUpon>TMView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Maintenances\TM\TMViewModel.cs" />
+    <Compile Include="Models\Operations\Overviews\CassAWaferAmountValidationRule.cs" />
+    <Compile Include="Models\Operations\Overviews\OverViewView.xaml.cs">
+      <DependentUpon>OverViewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Operations\Overviews\OverViewViewModel.cs" />
+    <Compile Include="Models\PMs\Charting\ChartingSelectDataView.xaml.cs">
+      <DependentUpon>ChartingSelectDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PMs\Charting\ChartingSelectDataViewModel.cs" />
+    <Compile Include="Models\PMs\Charting\ChartingTemplateView.xaml.cs">
+      <DependentUpon>ChartingTemplateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PMs\Charting\ChartingTemplateViewModel.cs" />
+    <Compile Include="Models\PMs\Charting\ChartDataLineX.cs" />
+    <Compile Include="Models\PMs\ContinueSelectDialogView.xaml.cs">
+      <DependentUpon>ContinueSelectDialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PMs\InverseBoolConverter.cs" />
+    <Compile Include="Models\PMs\PMAlarmView.xaml.cs">
+      <DependentUpon>PMAlarmView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PMs\PMAlarmViewModel.cs" />
+    <Compile Include="Models\PMs\Charting\PMChartingView.xaml.cs">
+      <DependentUpon>PMChartingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PMs\Charting\PMChartingViewModel.cs" />
+    <Compile Include="Models\PMs\PMCommMonitorView.xaml.cs">
+      <DependentUpon>PMCommMonitorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PMs\PMCommMonitorViewModel.cs" />
+    <Compile Include="Models\PMs\PMHeaterView.xaml.cs">
+      <DependentUpon>PMHeaterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PMs\PMHeaterViewModel.cs" />
+    <Compile Include="Models\PMs\PMLeakCheckView.xaml.cs">
+      <DependentUpon>PMLeakCheckView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PMs\PMLeakCheckViewModel.cs" />
+    <Compile Include="Models\PMs\PMMfcDynamicFlowView.xaml.cs">
+      <DependentUpon>PMMfcDynamicFlowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PMs\PMMfcDynamicFlowViewModel.cs" />
+    <Compile Include="Models\PMs\PMMotionView.xaml.cs">
+      <DependentUpon>PMMotionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PMs\PMLinkedDeviceView.xaml.cs">
+      <DependentUpon>PMLinkedDeviceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PMs\PMMotionViewModel.cs" />
+    <Compile Include="Models\PMs\PMLinkedDeviceViewModel.cs" />
+    <Compile Include="Controls\Mainframe\Slot.xaml.cs">
+      <DependentUpon>Slot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SlitDoor.xaml.cs">
+      <DependentUpon>SlitDoor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Tray.xaml.cs">
+      <DependentUpon>Tray.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WaferCtrl.xaml.cs">
+      <DependentUpon>WaferCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Mainframe\Chamber.xaml.cs">
+      <DependentUpon>Chamber.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Mainframe\Door.xaml.cs">
+      <DependentUpon>Door.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Mainframe\MFCView.xaml.cs">
+      <DependentUpon>MFCView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Mainframe\MFModel.cs" />
+    <Compile Include="Controls\Slot.xaml.cs">
+      <DependentUpon>Slot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Mainframe\Wafer.xaml.cs">
+      <DependentUpon>Wafer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Mainframe\WaferTransferDialog.xaml.cs">
+      <DependentUpon>WaferTransferDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converter\WaferColorConverter.cs" />
+    <Compile Include="Converter\WaferConverter.cs" />
+    <Compile Include="Converter\WaferDropConverter.cs" />
+    <Compile Include="Converter\WaferStatusConverter.cs" />
+    <Compile Include="Dialog\ItemsSelectDialogView.xaml.cs">
+      <DependentUpon>ItemsSelectDialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\ItemsSelectDialogViewModel.cs" />
+    <Compile Include="Models\LocalUIViewModelBase.cs" />
+    <Compile Include="Models\Maintenances\LeakCheck\TMLeakCheckView.xaml.cs">
+      <DependentUpon>TMLeakCheckView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Maintenances\LeakCheck\TMLeakCheckViewModel.cs" />
+    <Compile Include="MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClientApp.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="MainViewModel.cs" />
+    <Compile Include="Models\RecipeEditors\Converters\IsCellAccessPermEditModeToButtonContent.cs" />
+    <Compile Include="Models\RecipeEditors\Converters\IsCellAccessPermEditModeToDgSelectionMode.cs" />
+    <Compile Include="Models\RecipeEditors\Converters\IsCellAccessPermEditModeToDgSelectionUnit.cs" />
+    <Compile Include="Models\RecipeEditors\Converters\IsDgSelectionCountEqualsOneConverter.cs" />
+    <Compile Include="Models\RecipeEditors\Converters\IsHighlightedToBorderBrush.cs" />
+    <Compile Include="Models\RecipeEditors\Converters\IsHighlightedToBorderThickness.cs" />
+    <Compile Include="Models\RecipeEditors\Converters\ParamValueDisplayConverter.cs" />
+    <Compile Include="Models\RecipeEditors\Converters\RecipeErrorsCountToBadgeConverter.cs" />
+    <Compile Include="Models\RecipeEditors\Converters\SelectedRecipeStepsToListConverter.cs" />
+    <Compile Include="Models\RecipeEditors\Converters\StepNoToCxtMenuTitleConverter.cs" />
+    <Compile Include="Models\RecipeEditors\Converters\IsSavedToNameMarkVisibilityConverter.cs" />
+    <Compile Include="Models\RecipeEditors\Converters\ParamToCellTooltipConverter.cs" />
+    <Compile Include="Models\RecipeEditors\RecipeCellAccessPermissionWhitelistInfo.cs" />
+    <Compile Include="Models\RecipeEditors\RecipeEditorValidationDetailWindow.xaml.cs">
+      <DependentUpon>RecipeEditorValidationDetailWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecipeEditors\RoutineConfigView.xaml.cs">
+      <DependentUpon>RoutineConfigView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecipeEditors\RoutineConfigViewModel.cs" />
+    <Compile Include="ProcessMonitorViewModel.cs" />
+    <Compile Include="RtIpAddressInput.xaml.cs">
+      <DependentUpon>RtIpAddressInput.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ShowMonitorWinEvent.cs" />
+    <Compile Include="Splash.xaml.cs">
+      <DependentUpon>Splash.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StartupArguments.cs" />
+    <Compile Include="ProcessMonitorView.xaml.cs">
+      <DependentUpon>ProcessMonitorView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Controls\AITPump.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AnalogControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\AnalogControl2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\BodyBottom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\BodyLid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ChooseDialogBoxView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Dialogs\YesNoDialogBoxView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Mainframe\EFEMControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Mainframe\M2C4EFEMView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Mainframe\RobotEfemTray.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Mainframe\RobotEfemWafer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MoveBody.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\InputDialogBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Mainframe\AtmRobotMultiLP.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Mainframe\M2C4EFEMView2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Door.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Mainframe\LoadLock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Reactor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\RecipeProcess.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ValveBig.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\WaferAssociationUnit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\WaferAssociationUnitLite.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Models\Maintenances\RuntimeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Models\Maintenances\TM\DeviceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Models\Maintenances\TM\EFEM2View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Models\Maintenances\TM\EFEMView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Models\Maintenances\TM\PurgeDialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Models\Maintenances\TM\TMView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Models\Operations\Overviews\OverViewView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Models\PMs\Charting\ChartingSelectDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Models\PMs\Charting\ChartingTemplateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Models\PMs\ContinueSelectDialogView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Models\PMs\PMAlarmView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Models\PMs\Charting\PMChartingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Models\PMs\PMCommMonitorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Models\PMs\PMHeaterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Models\PMs\PMLeakCheckView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Models\PMs\PMMfcDynamicFlowView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Models\PMs\PMMotionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Models\PMs\PMLinkedDeviceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Mainframe\Slot.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SlitDoor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Tray.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\WaferCtrl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Mainframe\Chamber.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Mainframe\Door.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Mainframe\MFCView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Slot.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Mainframe\Wafer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Mainframe\WaferTransferDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialog\ItemsSelectDialogView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Models\Maintenances\LeakCheck\TMLeakCheckView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Models\PMs\PMOperationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Models\PMs\PMProcessView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Models\PMs\PMServoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Models\RecipeEditors\RecipeEditorValidationDetailWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Models\RecipeEditors\RecipeEditorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Models\RecipeEditors\RoutineConfigView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RtIpAddressInput.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Splash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Button.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Styles\ComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Styles\DataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Styles\GroupBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Styles\ListBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Styles\Listview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Styles\MenuItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Styles\Scrollbar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Styles\Skin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Styles\Tab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Styles\TextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Styles\TreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ProcessMonitorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\PMs\PMOperationView.xaml.cs">
+      <DependentUpon>PMOperationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PMs\PMOperationViewModel.cs" />
+    <Compile Include="Models\PMs\PMProcessView.xaml.cs">
+      <DependentUpon>PMProcessView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PMs\PMProcessViewModel.cs" />
+    <Compile Include="Models\PMs\PMServoView.xaml.cs">
+      <DependentUpon>PMServoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PMs\PMServoViewModel.cs" />
+    <Compile Include="Models\RecipeEditors\RecipeEditorView.xaml.cs">
+      <DependentUpon>RecipeEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecipeEditors\RecipeEditorViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <Resource Include="Themes\Font\iconfont.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FrameworkLocal\RTEquipmentLibrary\RTEquipmentLibrary.csproj">
+      <Project>{090a1e9c-1087-4c8a-b4e0-ff074459e071}</Project>
+      <Name>RTEquipmentLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FrameworkLocal\UIClient\UIClient.csproj">
+      <Project>{a40b734c-f2ec-453c-a5fb-70cd46452bf1}</Project>
+      <Name>UIClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FrameworkLocal\UICore\UICore.csproj">
+      <Project>{2c9e1df3-1aba-4972-be60-41dd9b3c47a7}</Project>
+      <Name>UICore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MECF.Framework.Common\MECF.Framework.Common.csproj">
+      <Project>{efad063f-fa97-42b7-87f8-8279eba30d34}</Project>
+      <Name>MECF.Framework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sicentury.Core\Sicentury.Core.csproj">
+      <Project>{A78B3F87-4601-43F7-A941-EDB339CE35A9}</Project>
+      <Name>Sicentury.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Styles\Folder_Close.png" />
+    <Resource Include="Styles\Folder_Open.png" />
+    <Resource Include="Styles\Folder_Unable.png" />
+    <Resource Include="Themes\Images\parts\atmrobot\arm1.png" />
+    <Resource Include="Themes\Images\parts\atmrobot\arm2.png" />
+    <Resource Include="Themes\Images\parts\atmrobot\dock.png" />
+    <Resource Include="Themes\Images\parts\atmrobot\hand.png" />
+    <Resource Include="Themes\Images\parts\chamber.png" />
+    <Resource Include="Themes\Images\parts\doorclose.png" />
+    <Resource Include="Themes\Images\parts\dooropen.png" />
+    <Resource Include="Themes\Images\parts\doorunknown.png" />
+    <Resource Include="Themes\Images\parts\loadlock.png" />
+    <Resource Include="Themes\Images\parts\loadport.png" />
+    <Resource Include="Themes\Images\parts\tm.png" />
+    <Resource Include="Themes\Images\parts\tmdock.png" />
+    <Resource Include="Themes\Images\parts\vtmrobot\arm1.png" />
+    <Resource Include="Themes\Images\parts\vtmrobot\arm2.png" />
+    <Resource Include="Themes\Images\parts\vtmrobot\dock.png" />
+    <Resource Include="Themes\Images\parts\vtmrobot\hand.png" />
+    <Resource Include="Themes\Images\parts\wafer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Themes\Images\parts\atmrobot\image02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\Menu.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Themes\Images\parts\image15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Themes\Images\parts\image17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Themes\Images\parts\image16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Themes\Images\parts\image19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Themes\Images\parts\image18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Themes\Images\parts\image20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Themes\Images\parts\lpbg.png" />
+    <Resource Include="Themes\Images\parts\tmbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Themes\MyLogoNormal.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Mainframe\Images\doorclose.png" />
+    <Resource Include="Controls\Mainframe\Images\dooropen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\showerhead.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\chamber.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\sourceEmpty.png" />
+    <Resource Include="Resources\Images\sourceH.png" />
+    <Resource Include="Resources\Images\sourceHH.png" />
+    <Resource Include="Resources\Images\sourceL.png" />
+    <Resource Include="Resources\Images\sourceLL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\chamber1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Mainframe\Images\pmbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Mainframe\Images\joint.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Mainframe\Images\joint1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\bg1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Mainframe\Images\tmbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Mainframe\Images\pmbg1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Mainframe\Images\waferbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Mainframe\Images\pm2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Mainframe\Images\tm2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Mainframe\Images\tm3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Mainframe\Images\pm3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Mainframe\Images\bw.png" />
+    <Resource Include="Controls\Mainframe\Images\l.png" />
+    <Resource Include="Controls\Mainframe\Images\r.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Mainframe\Images\cassetteempty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Mainframe\Images\pm52.png" />
+    <Resource Include="Controls\Mainframe\Images\pm53.png" />
+    <Resource Include="Controls\Mainframe\Images\pmbg51.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Mainframe\Images\pm32.png" />
+    <Resource Include="Controls\Mainframe\Images\pm33.png" />
+    <Resource Include="Controls\Mainframe\Images\pm42.png" />
+    <Resource Include="Controls\Mainframe\Images\pm43.png" />
+    <Resource Include="Controls\Mainframe\Images\pm62.png" />
+    <Resource Include="Controls\Mainframe\Images\pm63.png" />
+    <Resource Include="Controls\Mainframe\Images\pmbg31.png" />
+    <Resource Include="Controls\Mainframe\Images\pmbg41.png" />
+    <Resource Include="Controls\Mainframe\Images\pmbg61.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Mainframe\Images\pmbg21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Mainframe\Images\pmbg11.png" />
+    <Resource Include="Controls\Mainframe\Images\tm12.png" />
+    <Resource Include="Controls\Mainframe\Images\tm13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Mainframe\Images\pm22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Mainframe\Images\Top.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Mainframe\Images\ConfinementRing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Themes\Images\parts\bodymove\Bottom.png" />
+    <Resource Include="Themes\Images\parts\bodymove\Bottom2.png" />
+    <Resource Include="Themes\Images\parts\bodymove\bottom3.png" />
+    <Resource Include="Themes\Images\parts\bodymove\bottom3f.png" />
+    <Resource Include="Themes\Images\parts\bodymove\bottom4.png" />
+    <Resource Include="Themes\Images\parts\bodymove\bottom4f.png" />
+    <Resource Include="Themes\Images\parts\bodymove\ht1.png" />
+    <Resource Include="Themes\Images\parts\bodymove\ht2.png" />
+    <Resource Include="Themes\Images\parts\bodymove\hx.png" />
+    <Resource Include="Themes\Images\parts\bodymove\hx0.png" />
+    <Resource Include="Themes\Images\parts\bodymove\hx1.png" />
+    <Resource Include="Themes\Images\parts\bodymove\hx2.png" />
+    <Resource Include="Themes\Images\parts\bodymove\hx3.png" />
+    <Resource Include="Themes\Images\parts\bodymove\hx4.png" />
+    <Resource Include="Themes\Images\parts\bodymove\khl.png" />
+    <Resource Include="Themes\Images\parts\bodymove\khl2.png" />
+    <Resource Include="Themes\Images\parts\bodymove\khr.png" />
+    <Resource Include="Themes\Images\parts\bodymove\khr2.png" />
+    <Resource Include="Themes\Images\parts\p0.png" />
+    <Resource Include="Themes\Images\parts\p2.png" />
+    <Resource Include="Themes\Images\parts\p3.png" />
+    <Resource Include="Themes\Images\parts\p4.png" />
+    <Resource Include="Themes\Images\parts\p5.png" />
+    <Resource Include="Themes\Images\parts\bodymove\Showerhead2.png" />
+    <Resource Include="Themes\Images\parts\bodymove\Showerhead.png" />
+    <Resource Include="Themes\Images\parts\bodymove\Top.png" />
+    <Resource Include="Themes\Images\parts\bodymove\Top2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Themes\Images\parts\bodymove\Fixed.png" />
+    <Resource Include="Themes\Images\parts\bodymove\Fixed2.png" />
+    <Resource Include="Themes\Images\parts\bodymove\Middle.png" />
+    <Resource Include="Themes\Images\parts\bodymove\Middle2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Mainframe\Images\AtmRobotMultiLP\dock.png" />
+    <Resource Include="Controls\Mainframe\Images\AtmRobotMultiLP\robotArm4.png" />
+    <Resource Include="Controls\Mainframe\Images\AtmRobotMultiLP\robotArm5.png" />
+    <Resource Include="Controls\Mainframe\Images\AtmRobotMultiLP\robotDock.png" />
+    <Resource Include="Controls\Mainframe\Images\AtmRobotMultiLP\robotHand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Mainframe\Images\AtmRobotMultiLP\dq01.png" />
+    <Resource Include="Controls\Mainframe\Images\AtmRobotMultiLP\dq02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Mainframe\Images\Alinger.png" />
+    <Resource Include="Controls\Mainframe\Images\Layout07.png" />
+    <Resource Include="Controls\Mainframe\Images\Layout08.png" />
+    <Resource Include="Controls\Mainframe\Images\pm1.png" />
+    <Resource Include="Controls\Mainframe\Images\tm.png" />
+    <Resource Include="Controls\Mainframe\Images\tm1.png" />
+    <Resource Include="Controls\Mainframe\Images\wf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\Mainframe\Images\Layout09.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\RtIpAddressSetting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RtIpAddressSetting.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\recipeEditorNewStep.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\recipeEditorCopy.png" />
+    <Resource Include="Resources\Images\recipeEditorDelete.png" />
+    <Resource Include="Resources\Images\recipeEditorInsertLeft.png" />
+    <Resource Include="Resources\Images\recipeEditorInsertRight.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>REM 输出到安装目录，供安装打包使用
+
+if exist "$(ProjectDir)..\SicSetup\Packages\SicUI" rd "$(ProjectDir)..\SicSetup\Packages\SicUI"  /s /q
+md "$(ProjectDir)..\SicSetup\Packages\SicUI\" 
+
+echo 复制文件到安装目录，"$(ProjectDir)..\SicSetup\Packages\SicUI\" 
+xcopy /e "$(TargetDir)*.*" "$(ProjectDir)..\SicSetup\Packages\SicUI\" /q
+
+REM 配置文件Copy
+del "$(ProjectDir)..\SicSetup\Packages\SicUI\*.pdb"
+del "$(ProjectDir)..\SicSetup\Packages\SicUI\*.old"
+
+if exist "$(ProjectDir)..\SicSetup\Packages\SicUI\Logs" rd "$(ProjectDir)..\SicSetup\Packages\SicUI\Logs"  /s /q
+if exist "$(ProjectDir)..\SicSetup\Packages\SicUI\PresetGroups" rd "$(ProjectDir)..\SicSetup\Packages\SicUI\PresetGroups"  /s /q</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

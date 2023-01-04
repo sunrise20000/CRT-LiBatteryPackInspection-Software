@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<IoProviders system="Sic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  >
+  <!--<IoProvider load_condition="0" module="PM1" name="io" map_module="PM1" map_file="_ioDefinePM.xml" class="MECF.Framework.RT.Core.IoProviders.MCProtocolPlc" assembly="MECF.Framework.RT.Core">
+    <Parameter ip="127.0.0.1" port="6831" network_id="1" station_id="1"></Parameter>
+    <Blocks>
+      <Block type="di" offset="0" size="640" value_type=""></Block>
+      <Block type="do" offset="0" size="640" value_type=""></Block>
+      <Block type="ai" offset="0" size="640" value_type="float"></Block>
+      <Block type="ao" offset="0" size="640" value_type="float"></Block>
+    </Blocks>
+  </IoProvider>
+  <IoProvider load_condition="0" module="PM2" name="io" map_module="PM2" map_file="_ioDefinePM.xml" class="MECF.Framework.RT.Core.IoProviders.MCProtocolPlc" assembly="MECF.Framework.RT.Core">
+    <Parameter ip="127.0.0.1" port="6832" network_id="1" station_id="1"></Parameter>
+    <Blocks>
+      <Block type="di" offset="0" size="640" value_type=""></Block>
+      <Block type="do" offset="0" size="640" value_type=""></Block>
+      <Block type="ai" offset="0" size="640" value_type="float"></Block>
+      <Block type="ao" offset="0" size="640" value_type="float"></Block>
+    </Blocks>
+  </IoProvider>-->
+		
+		<IoProvider load_condition="0" module="TM" name="io" map_module="TM" map_file="IODefinePlatform.xml" class="MECF.Framework.RT.Core.IoProviders.MCProtocolPlc" assembly="MECF.Framework.RT.Core">
+				<Parameter ip="127.0.0.1" port="6833" network_id="1" station_id="1"></Parameter>
+				<Blocks>
+						<Block type="di" offset="0" size="640" value_type=""></Block>
+						<Block type="do" offset="0" size="640" value_type=""></Block>
+						<Block type="ai" offset="0" size="640" value_type="float"></Block>
+					  <Block type="ao" offset="0" size="640" value_type="float"></Block>
+				</Blocks>
+		</IoProvider>
+
+		<IoProvider load_condition="0" module="PM1" name="io"  map_module="PM1" map_file="_ioDefinePM.xml" class="SicPM.Devices.AdsIoProvider" assembly="SicPM"  >
+				<Parameter diVariable="GVL_IO.PM1_DI_G"  doVariable="GVL_IO.PM1_DO_G"  aiVariable="GVL_IO.PM1_AI_G"  aoVariable="GVL_IO.PM1_AO_G"  ></Parameter>
+				<Blocks>
+						<Block type="di" offset="0" size="640" value_type=""></Block>
+						<Block type="do" offset="0" size="640" value_type=""></Block>
+						<Block type="ai" offset="0" size="640" value_type="float"></Block>
+						<Block type="ao" offset="0" size="640" value_type="float"></Block>
+				</Blocks>
+		</IoProvider>
+		
+	
+		<IoProvider load_condition="0" module="PM2" name="io" map_module="PM2" map_file="_ioDefinePM.xml"  class="SicPM.Devices.AdsIoProvider" assembly="SicPM"  >
+				<Parameter  diVariable="GVL_IO.PM2_DI_G"  doVariable="GVL_IO.PM2_DO_G"  aiVariable="GVL_IO.PM2_AI_G"  aoVariable="GVL_IO.PM2_AO_G" ></Parameter>
+				<Blocks>
+						<Block type="di" offset="0" size="640" value_type=""></Block>
+						<Block type="do" offset="0" size="640" value_type=""></Block>
+						<Block type="ai" offset="0" size="640" value_type="float"></Block>
+						<Block type="ao" offset="0" size="640" value_type="float"></Block>
+				</Blocks>
+		</IoProvider>
+
+  
+  
+  
+		<IoProvider load_condition="1" module="TM" name="io"  map_module="TM" map_file="IODefinePlatform.xml" class="Mainframe.Devices.SiemensIoProvider" assembly="Mainframe"  >
+			<Parameter ip="192.168.1.102" port="102" plcType="4" diVariable="DB100.DBB100"  doVariable="DB100.DBB128"  aiVariable="DB100.DBD148"  aoVariable="DB100.DBD216"
+                 diLength="28" doLength="20" aiLength="68" aoLength="68" ></Parameter>
+			<Blocks>
+				<Block type="di" offset="0" size="640" value_type=""></Block>
+				<Block type="do" offset="0" size="640" value_type=""></Block>
+				<Block type="ai" offset="0" size="640" value_type="float"></Block>
+				<Block type="ao" offset="0" size="640" value_type="float"></Block>
+			</Blocks>
+		</IoProvider>
+
+		<IoProvider load_condition="1" module="PM1" name="io"  map_module="PM1" map_file="_ioDefinePM.xml" class="SicPM.Devices.SiemensIoProvider" assembly="SicPM"  >
+				<Parameter ip="192.168.1.105" port="102" plcType="4" diVariable="DB100.DBB100"  doVariable="DB100.DBB152"  aiVariable="DB100.DBD184"  aoVariable="DB100.DBD908"  
+                   diLength="62" doLength="32" aiLength="1848" aoLength="1524" ></Parameter>
+				<Blocks>
+						<Block type="di" offset="0" size="640" value_type=""></Block>
+						<Block type="do" offset="0" size="640" value_type=""></Block>
+						<Block type="ai" offset="0" size="640" value_type="float"></Block>
+						<Block type="ao" offset="0" size="640" value_type="float"></Block>
+				</Blocks>
+		</IoProvider>
+		
+		<IoProvider load_condition="1" module="PM2" name="io" map_module="PM2" map_file="_ioDefinePM.xml"  class="SicPM.Devices.AdsIoProvider" assembly="SicPM"  >
+      		<Parameter ip="192.168.1.205" port="102" plcType="4" diVariable="DB100.DBB100"  doVariable="DB100.DBB152"  aiVariable="DB100.DBD184"  aoVariable="DB100.DBD908"
+                 diLength="62" doLength="32" aiLength="724" aoLength="724" ></Parameter>
+				<Blocks>
+          <Block type="di" offset="0" size="640" value_type=""></Block>
+          <Block type="do" offset="0" size="640" value_type=""></Block>
+          <Block type="ai" offset="0" size="640" value_type="float"></Block>
+          <Block type="ao" offset="0" size="640" value_type="float"></Block>
+				</Blocks>
+		</IoProvider>
+
+
+	<!--<IoProvider load_condition="1" module="PM1" name="io" map_module="PM1" map_file="_ioDefinePM.xml" class="MECF.Framework.RT.Core.IoProviders.VirtualIoProvider" assembly="MECF.Framework.RT.Core">
+		<Parameter />
+		<Blocks>
+			<Block type="di" offset="0" size="640" value_type=""></Block>
+			<Block type="do" offset="0" size="640" value_type=""></Block>
+			<Block type="ai" offset="0" size="640" value_type="float"></Block>
+			<Block type="ao" offset="0" size="640" value_type="float"></Block>
+		</Blocks>
+	</IoProvider>-->
+	
+</IoProviders>

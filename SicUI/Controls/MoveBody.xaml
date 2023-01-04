@@ -1,0 +1,48 @@
+﻿<UserControl
+    x:Class="SicUI.Controls.MoveBody"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lid="clr-namespace:SicUI.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="666"
+    d:DesignWidth="666"
+    mc:Ignorable="d">
+    <Canvas>
+        <!--<lid:BodyBottom  MovingSectionUp="{Binding BottomSectionUpSetpoint}" MovingSectionDown="{Binding BottomSectionDownSetpoint}"
+                         SectionDownFeedBack="{Binding IsBottomSectionDown}" SectionUpFeedBack="{Binding IsBottomSectionUp}"
+                            MovingRingUp="{Binding RingUpSetpoint}" MovingRingDown ="{Binding RingDownSetpoint}"
+                            RingUpFeedBack="{Binding IsConfinementRingUp}" RingDownFeedBack="{Binding IsConfinementRingDown}"
+                            TightenBotton="{Binding IsBottomLidTighten}" SwingLockBotton="{Binding IsBottomLidSwingLock}"
+                            SectionUpTime="{Binding TimeSectionUp}" SwingTime ="{Binding TimeSwing}" RingTime="{Binding TimeRingUp}"/>-->
+        <lid:BodyBottom
+            MovingRingDown="{Binding RingDownSetpoint}"
+            MovingRingUp="{Binding RingUpSetpoint}"
+            RingDownFeedBack="{Binding IsConfinementRingDown}"
+            RingTime="{Binding TimeRingUp}"
+            RingUpFeedBack="{Binding IsConfinementRingUp}" />
+
+        <lid:BodyLid
+            Canvas.Left="0"
+            Canvas.Top="50"
+            ChamberBodyGroup="{Binding SelectedMoveBodyGroup}"
+            ChamberIsDown="{Binding IsChamMoveBodyDown}"
+            ChamberIsEnd="{Binding IsChamMoveBodyEnd}"
+            ChamberIsFront="{Binding IsChamMoveBodyFront}"
+            ChamberIsUp="{Binding IsChamMoveBodyUp}"
+            ChamberIsUpLeach="{Binding IsChamMoveBodyUpLatch}"
+            MovingDown="{Binding DownSetpoint}"
+            MovingEnd="{Binding BackwardSetpoint}"
+            MovingEndTime="{Binding TimeMoveEnd}"
+            MovingFront="{Binding ForwardSetpoint}"
+            MovingSwingTime="{Binding TimeSwing}"
+            MovingUp="{Binding UpSetpoint}"
+            MovingUpTime="{Binding TimeMoveUp}"
+            SwingLockMiddle="{Binding IsMiddleLidSwingLock}"
+            SwingLockSH="{Binding IsSHLidSwingLock}"
+            TightenMiddle="{Binding IsMiddleLidTighten}"
+            TightenSH="{Binding IsSHLidTighten}" />
+
+
+    </Canvas>
+</UserControl>

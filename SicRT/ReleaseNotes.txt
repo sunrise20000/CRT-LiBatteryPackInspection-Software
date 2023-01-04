@@ -1,0 +1,423 @@
+
+待修复问题：
+
+
+
+
+---------------------------------------------------------------------------------
+
+					Sic 系统更新历史记录
+
+---------------------------------------------------------------------------------
+
+Sic04  2023-01-04 Version 1.0.6.66
+1.修正PM Purge时无法将蝶阀设置到位置模式的问题。
+2.PSU校准系数强制为1000.
+
+
+
+Sic04  2023-01-03 Version 1.0.6.65
+1.修正潜在的LoadLock大气闸板阀打开时没有执行Vent的问题。
+
+
+
+Sic04  2022-12-31 Version 1.0.6.64
+1.修正UnLoad未分离，TM将盘取回Buffer的问题。
+
+
+
+Sic04  2022-12-29 Version 1.0.6.63
+1.UnLoad分离时增加延时，确保气缸运行到位。
+
+
+
+Sic04  2022-12-28 Version 1.0.6.62
+1.优化自动传盘流程。
+2.修正PM PurgeRoutine在Vent时超时时间无效的问题。
+3.调整PM PostTransferRoutine中开启磁流体和升起隔热罩的顺序。
+4.取消PSU校准功能。
+5.PM在ProcessIdle时，允许设置磁流体转速。
+6.修正Sequence编辑器中新增、删除、重命名后文件列表未刷新的问题。
+7.调整CCD拍照和翘曲测试的流程。
+
+
+
+
+Sic04  2022-12-26 Version 1.0.6.61
+1.优化仅有一个Tray盘时的自动传盘逻辑。
+2.修正UnLoad可能同时启动Purge和打开ATM闸板阀的问题。
+
+
+
+Sic04  2022-12-23 Version 1.0.5.60
+1.修正LoadLock、UnLoad在大气侧取放盘时，可能同时Vent和Pump的问题。
+
+
+
+Sic04  2022-12-23 Version 1.0.5.59
+1.修正TM往LoadLock传盘时Wafer仍停留在TMRobot上的问题。
+2.修正TM往LoadLock传盘时，如果LockLock在大气压力下会报错的问题。
+
+
+
+Sic04  2022-12-22 Version 1.0.5.58
+1.PM运行PreProcess时，先使能磁流体，再升隔热罩。
+
+
+
+Sic04  2022-12-22 Version 1.0.5.57
+1.修正Sequence新增和删除文件后，文件树没有刷新的问题。
+
+
+
+Sic04  2022-12-22 Version 1.0.5.56
+1.修正Recipe删除时，没有删除与之关联的Cell访问白名单的问题。
+2.修正RecipeEditor Cell-Perm按钮的使能状态。
+
+
+
+Sic04  2022-12-20 Version 1.0.5.55
+1.修正传盘逻辑，当Sequence配置为PM后无Buffer时，WaferRobot反复从Aligner上取放Wafer的问题。
+2.新增Recipe导入导出功能。
+3.修正WaferRobot和TrayRobot需要通过EFEM复位和Home的问题，现两个机械臂的控制逻辑独立于EFEM。
+4.修正当Recipe保存在数据库时，Sequence中选择Recipe时无法从数据库同步Recipe列表的问题。
+5.修正LoadLock快抽阀被意外关闭的问题。
+6.修正TMView中的阀门控制没有绑定到对应Module的Online/Offline状态的问题。
+
+
+
+Sic04  2022-12-15 Version 1.0.5.2
+1.修正Recipe中的比例值校验的问题。
+
+
+
+Sic04  2022-12-15 Version 1.0.5.1
+1.修正Recipe中的比例值不能输入小数的问题。
+
+
+
+Sic04  2022-12-12 Version 1.0.5.0
+1.启用磁流体转速为0，则关闭磁流体Enable功能
+
+
+Sic04  2022-12-12 Version 1.0.4.51
+1.修正当DataLog中某些数据无法查询的问题。
+
+
+
+Sic04  2022-12-12 Version 1.0.4.50
+1.修正当Recipe行设置为None时，保存Recipe后，该行的参数会变为默认值的问题。
+
+
+
+Sic04  2022-12-09 Version 1.0.4.49
+1.修正自动流程中PM完成后无法往UnLoad传盘的问题。
+2.调整主界面各个模块的状态的字体。
+
+
+
+Sic04  2022-12-09 Version 1.0.4.48
+1.修正自动传盘时，如果只有一个Tray盘可用，则会卡在UnLoad的问题。
+2.修正PMProcessView页面无法加载Recipe的问题。
+
+
+
+Sic04  2022-12-08 Version 1.0.4.47
+1.MFC显示值支持加入扰动，扰动幅度可在权限中配置。
+2.增加ProcessMonitor窗口权限控制
+3.Overview界面增加磁流体转速和当前工艺步骤显示。
+
+
+
+Sic04  2022-12-08 Version 1.0.3.46
+1.修正Recipe步骤运行于Power温度模式时，当温度到达设定值时，是否跳步的判断条件。
+
+
+
+Sic04  2022-12-08 Version 1.0.3.45
+1.新增系统配置PM.PM1.Heater.ForceDisableInnerHeater，允许用户强制禁用InnerHeater。
+2.新增系统配置PM.PM1.Heater.Recipe.ForceSkipPowerModeStep，允许Recipe在Power模式加温时，温度到达设定值后强制跳步。
+3.修正一些问题。
+
+
+
+Sic04  2022-12-08 Version 1.0.3.44
+1.PMProcessView中新增Recipe滚动到当前步骤功能，以及完成工艺的步骤变灰并不可编辑。
+2.新增自动模式下模块离线超时提醒功能。
+3.修正软件升级后Recipe相关的一些权限失效的问题。
+4.修正和优化一些传盘问题。
+
+
+
+Sic04  2022-12-07 Version 1.0.3.43
+1.下述Routine中强制打开压力伺服，并禁用PID调节：TMServoRoutine、TMSlitValveRoutine
+2.隐藏系统配置中的一些参数。
+
+
+
+Sic04  2022-12-07 Version 1.0.3.42
+1.优化自动传盘逻辑，仅在其它腔准备好后TMRobot才拿盘。
+2.修正MFC5无法弹出右键菜单的问题。
+
+
+
+Sic04  2022-12-06 Version 1.0.3.41
+1.Recipe相关优化，支持隐藏参数值、在线更新工艺Recipe、控制权限精确至单元格。
+2.Recipe支持数据库保存。
+3.优化和修改ProcessMonitor窗口的一些问题。
+
+
+
+Sic04  2022-11-26 Version 1.0.2.40
+1.新增TrayRobot、WaferRobot取放盘完成并关闭Vent后延时，以避免DI状态未及时刷新导致的后续操作Interlock出发报警问题。
+2.修正TM Purge时可能充气到ATM的问题。
+
+
+
+Sic04  2022-11-26 Version 1.0.2.39
+1.新增Load、UnLoad从大气侧取放盘时持续vent的功能。
+2.修正PM腔Purge循环数配置项丢失的问题。
+
+
+
+Sic04  2022-11-25 Version 1.0.2.38
+1.修改配置，允许修改单个Wafer的Recipe
+2.新增修改Wafer ID的功能
+3.新增Job List中显示Wafer ID的功能
+
+
+
+Sic04  2022-11-25 Version 1.0.2.37
+1.HiwinAligner优化；
+
+
+
+Sic04  2022-11-24 Version 1.0.2.36
+1.优化和修正AutoTransfer流程中的一些问题。
+
+
+
+Sic04  2022-11-23 Version 1.0.2.35
+1.优化和修正AutoTransfer流程中的一些问题。
+2.修正UnLoadBaseRoutine的SlowPump()函数错误锁定Pump2的问题。
+3.优化UnLoad腔CoolingAndPurge流程。
+
+
+
+Sic04  2022-11-23 Version 1.0.2.34
+1.自动传盘和Purge流程优化。
+
+
+Sic04  2022-11-21 Version 1.0.1.33
+1.修正Load组合完以后未关闭闸板阀的问题。
+
+
+
+Sic04  2022-11-21 Version 1.0.1.32
+1.取消TM Purge。
+
+
+
+Sic04  2022-11-19 Version 1.0.1.31
+1.HiwinAligner 驱动优化；
+
+
+
+Sic04  2022-11-18 Version 1.0.1.30
+1.修正LoadLockPumpRoutine中未在正确位置锁定Pump2的问题。
+2.增加Pump2锁定信息打印。
+
+
+
+
+Sic04  2022-11-18 Version 1.0.1.29
+1.修正Aligner通讯超时问题。
+2.优化传盘逻辑，增加Pump2的锁定机制，现在Load和Unload腔可以同时进行某些操作，提高效率。
+3.根据客户要求优化Load/UnLoad吹扫逻辑，现在Load可以根据Tray的来源决定是否单独吹扫Wafer；UnLoad增加取Wafer前后的吹扫，并且可配置各个时机吹扫的循环次数。
+4.Buffer闸板阀保持常开，TMRobot增加Purge动作。
+5.其它一些列优化，包括客户需求更改。
+
+
+
+Sic04  2022-11-02 Version 1.0.0.28
+1.修改Load和Unload PrepareTransfer次数可配置
+2.修改UPS1Enable和UPS2Enable报警电平
+
+
+
+Sic04  2022-11-01 Version 1.0.0.27
+1.更新Alarm配置清单。
+
+
+
+Sic04  2022-11-01 Version 1.0.0.26
+1.恢复Unload腔SlowPump时的Interlock。
+2.Unload腔SlowPump时如果触发Interlock，输出Warning信息，而不是Alarm信息。
+
+
+
+Sic04  2022-10-30 Version 1.0.0.25
+1.PMProcessAbortRoutine中Mfc开始Ramp后，等待设定的时间。
+
+
+
+Sic04  2022-10-28 Version 1.0.0.23
+1.添加AE读取温度间隔时间配置项。
+
+
+
+
+Sic04  2022-10-28 Version 1.0.0.22
+1.修正PM气体总流量统计。
+2.修正基恩士相机无法设置图片文件名的问题。
+
+
+
+
+Sic04  2022-10-26 Version 1.0.0.21
+1.修正RecipeStep复制时比例值未被复制的问题。
+
+
+
+Sic04  2022-10-25 Version 1.0.0.20
+1.调整Overview中Tray视图的位置，将其显式放置在窗口右侧。（Issue 3）
+2.修改Alter Info对话框的显示内容，可根据Wafer、Tray的类型动态显示或隐藏设置项。（Issue 4）
+3.Overview界面增加Monitor窗口显示按钮。（Issue 5）
+4.移除PM中的Alarm试图。（Issue 9）
+5.增加PM运行ToProcessIdle、ToVacIdle、ToATMIdle流程时的Interlock限制。（Issue 11）
+
+
+
+Sic04  2022-10-21 Version 1.0.0.19
+1.取消磁流体转速为0时Disable的功能。
+2.恢复Unload腔执行SlowPump时，如果Interlock不满足，产生Alarm，而不是Warning。
+3.删除TM/Interlock/DO-62的DI-8限制条件。
+
+
+
+
+Sic04  2022-10-21 Version 1.0.0.18
+1.修正打开Recipe Validation Errors窗口时界面卡死的问题。
+
+
+
+
+Sic04  2022-10-19 Version 1.0.0.17
+1.修正PMProcessView界面中Recipe显示问题。
+2.PM Process监控窗口更改为内容随窗口缩放大小。
+3.调整PM Process监控窗口表格线条。
+
+
+
+
+Sic04  2022-10-18 Version 1.0.0.16
+1.PM Rotation取消ServoReady信号检查
+2.PM Rotation转速为0后Disable,大于0后再Enable
+
+
+
+Sic04  2022-10-18 Version 1.0.0.15
+1.修正AETemp对象Reset()方法中读取EnableLog设置时使用的配置名称。
+2.LoadLockGroupRoutine的Monitor方法中先执行TryResetServo()以重置伺服驱动器。
+3.修改process退出时的输出信息，增加当前Recipe的Step已消耗的时长。
+
+
+
+Sic04  2022-10-18 Version 1.0.0.14
+1.Unload腔执行SlowPump时DO-62（DO_UnloadSlowPump）互锁报警更改为警告。。
+2.PM IO恢复DI-345，并移除DO-240
+3.PM的Interlock配置中DI-4更改为DI-345.
+
+
+
+
+Sic04  2022-10-18 Version 1.0.0.13
+1.PM气路图中V27后的泄压阀压力显示改为70mbar。
+2.PM Interlock增加DI-84\85\86\87限制。
+3.修改系统设置中的一些错误描述。
+4.修改系统设置中MFC32的最大值和默认值。
+5.PMMotion界面中恢复隔热罩Jog功能。
+6.Recipe Editor中始终使能Refresh列表按钮。
+
+
+Sic04  2022-10-17 Version 1.0.0.12
+1.修正AETemp设备未添加的问题！
+
+
+
+Sic04  2022-10-15 Version 1.0.0.11
+1.修正RecipeEditor中无法保存Ratio类数据的问题。
+
+
+
+Sic04  2022-10-14 Version 1.0.0.10
+1.LoadLockGroupRoutine.cs增加自动复位伺服功能。
+2.修正DataView中如果更改了Factor和Offset，重新查询后Factor和Offset失效的问题。
+
+
+
+Sic04  2022-10-13 Version 1.0.0.9
+1.PMInterlock中恢复DI-4限制。
+2.新增软点DO-240。
+3.新增系统配置项PM.PressureAboveATMSW。
+4.DO-240绑定到PT1压力值，当PT1压力超过设定值时，认为PM腔已超过大气压，则DO-240输出1。
+
+
+
+Sic04  2022-10-11 Version 1.0.0.8
+1.优化AE连接超时问题。
+2.修正TMLeakCheckHistory中条目重复的问题。
+3.PMInterlock中移除DI-4限制。
+
+
+Sic04  2022-10-10 Version 1.0.0.7
+1.从PMMotionView界面中ConfinementRing卡片中删除任意距离上升下降功能。
+
+
+
+Sic04  2022-10-10 Version 1.0.0.6
+
+1.增加下述虚拟DO用于产生报警输出给PLC：DO_TC1PyroWarnMaxDiff、DO_TC1AeTempRaisingFast、DO_TC2PyroWarnMaxDiff、DO_TC2AeTempRaisingFast。
+2.修正RecipeFormat.xml中列61和64的编号显示错误。
+3.Interlock配置中移除DI-40限制。
+
+
+
+Sic04  2022-10-09 Version 1.0.0.5
+
+1.系统设置中的LidEnableOpenAfterHeatDisbaleMinuts的单位更改为分钟。
+2.系统Init和Reset时，重置PMInterlock，以使DO-192输出高电平以取消报警。
+
+
+
+Sic04  2022-09-30 Version 1.0.0.4
+
+1.修正Pick/Place Tray报错时显示的Slot编号比实际编号小1的问题。
+2.EFEM模组中的Wafer Robot和Tray Robot在Init状态下也可单独进行Home，而不会被锁定。
+3.修正TrayRobot Routine中的一些信息。
+
+
+
+Sic04  2022-09-28 Version 1.0.0.3
+
+1.DI-32、DI-39、DI-40报警类型更改为Warning。
+
+
+
+Sic04  2022-09-27 Version 1.0.0.2
+
+1.删除AO-90、AO-91.
+
+
+
+Sic04  2022-09-26 Version 1.0.0.1
+
+1.修正切换页面时，Sequence Editor报“未保存”对话框的问题。
+2.Recipe Editor和Sequence Editor中屏蔽PM2，仅保留PM1。
+
+
+
+Sic04  2022-09-14 Version 1.0.0.0
+
+1.从最新的Sic02 version 1.1.8.4 移植
+2.更新IO表。

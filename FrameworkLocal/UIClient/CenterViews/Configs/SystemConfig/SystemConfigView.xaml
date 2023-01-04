@@ -1,0 +1,495 @@
+﻿<UserControl
+    x:Class="MECF.Framework.UI.Client.CenterViews.Configs.SystemConfig.SystemConfigView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:OpenSEMI.Ctrlib.Controls"
+    xmlns:converter="clr-namespace:MECF.Framework.UI.Client.Ctrlib.Converter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:micro="clr-namespace:Caliburn.Micro"
+    xmlns:systemConfig="clr-namespace:MECF.Framework.UI.Client.CenterViews.Configs.SystemConfig"
+    d:DesignHeight="1024"
+    d:DesignWidth="1900"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <converter:Null2Bool x:Key="Null2Bool" />
+        <converter:Bool2Not x:Key="Bool2Not" />
+        <converter:Float2String x:Key="Float2String" />
+        <converter:String2Double x:Key="String2Double" />
+        <converter:BoolCollapsedConverter x:Key="BoolVisibility" />
+
+        <HierarchicalDataTemplate
+            x:Key="ConfigNodeTemplate"
+            DataType="{x:Type systemConfig:ConfigNode}"
+            ItemsSource="{Binding SubNodes}">
+            <TextBlock VerticalAlignment="Center" Text="{Binding Display}" />
+        </HierarchicalDataTemplate>
+
+        <systemConfig:ConfigValueTemplateSelector x:Key="ConfigValueTemplateSelector">
+            <systemConfig:ConfigValueTemplateSelector.BoolTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="10,0" Orientation="Horizontal">
+                        <RadioButton
+                            VerticalAlignment="Center"
+                            Content="Yes"
+                            IsChecked="{Binding BoolValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <RadioButton
+                            Margin="10,0,0,0"
+                            VerticalAlignment="Center"
+                            Content="No"
+                            IsChecked="{Binding BoolValue, Mode=TwoWay, Converter={StaticResource Bool2Not}, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                </DataTemplate>
+            </systemConfig:ConfigValueTemplateSelector.BoolTemplate>
+
+            <systemConfig:ConfigValueTemplateSelector.StringTemplate>
+                <DataTemplate>
+                    <Grid Width="120">
+                        <controls:TextBoxEx
+                            Width="120"
+                            HorizontalAlignment="Stretch"
+                            Text="{Binding StringValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            TextSaved="{Binding TextSaved, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </Grid>
+                </DataTemplate>
+            </systemConfig:ConfigValueTemplateSelector.StringTemplate>
+
+            <systemConfig:ConfigValueTemplateSelector.NumbericTemplate>
+                <DataTemplate>
+                    <Grid Width="120">
+                        <TextBox
+                            Width="120"
+                            HorizontalAlignment="Stretch"
+                            Text="{Binding CurValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            <TextBox.Style>
+                                <Style TargetType="TextBox">
+                                    <Setter Property="ToolTip" Value="{x:Null}" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RangeFrom, Converter={StaticResource Null2Bool}}" Value="False">
+                                            <Setter Property="ToolTip">
+                                                <Setter.Value>
+                                                    <TextBlock>
+                                                        <Run Text="Range: " />
+                                                        <Run Text="{Binding Max}" />
+                                                        <Run Text="~" />
+                                                        <Run Text="{Binding Min}" />
+                                                        <Run Text="{Binding Double}" />
+                                                    </TextBlock>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <!--<Setter Property="MinValue" Value="{Binding RangeFrom, Converter={StaticResource String2Double}}"/>
+                                            <Setter Property="MaxValue" Value="{Binding RangeTo, Converter={StaticResource String2Double}}"/>-->
+                                        </DataTrigger>
+
+                                        <!--<DataTrigger Binding="{Binding Type}" Value="Int">
+                                            <Setter Property="EditBoxMode" Value="SignInteger"/>
+                                        </DataTrigger>
+
+                                        <DataTrigger Binding="{Binding Type}" Value="Float">
+                                            <Setter Property="EditBoxMode" Value="Decimal"/>
+                                        </DataTrigger>-->
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBox.Style>
+                        </TextBox>
+                    </Grid>
+                </DataTemplate>
+            </systemConfig:ConfigValueTemplateSelector.NumbericTemplate>
+
+            <systemConfig:ConfigValueTemplateSelector.SelectionTemplate>
+                <DataTemplate>
+                    <Grid Width="120">
+                        <ComboBox
+                            Width="120"
+                            HorizontalAlignment="Center"
+                            ItemsSource="{Binding Options}"
+                            SelectedValue="{Binding StringValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock VerticalAlignment="Center" Text="{Binding}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </Grid>
+                </DataTemplate>
+            </systemConfig:ConfigValueTemplateSelector.SelectionTemplate>
+        </systemConfig:ConfigValueTemplateSelector>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="320" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal">
+                <Button
+                    Width="120"
+                    Height="25"
+                    Click="BtnCollapseAll"
+                    Content="-- Collapse All">
+                    <!--<i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <micro:ActionMessage MethodName="CollapseAll">
+                            </micro:ActionMessage>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>-->
+                </Button>
+
+                <Button
+                    Width="120"
+                    Height="25"
+                    Margin="5,0,0,0"
+                    Click="BtnExpandAll"
+                    Content="++ Expand All">
+                    <!--<i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <micro:ActionMessage MethodName="ExpandAll">
+                            </micro:ActionMessage>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>-->
+                </Button>
+            </StackPanel>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="40" />
+                </Grid.ColumnDefinitions>
+
+                <controls:TextBoxEx
+                    HorizontalAlignment="Stretch"
+                    AllowBackgroundChange="False"
+                    Text="{Binding Path=CurrentCriteria, UpdateSourceTrigger=PropertyChanged}" />
+                <Button
+                    Grid.Column="1"
+                    Width="30"
+                    Height="30"
+                    Margin="0"
+                    Padding="0">
+                    <Button.Content>
+                        <Path
+                            Width="15"
+                            Height="15"
+                            Margin="0,3"
+                            Data="M5.5,0 L8.5,0 8.5,5.5 14,5.5 14,8.5 8.5,8.5 8.5,14 5.5,14 5.5,8.5 0,8.5 0,5.5 5.5,5.5 z"
+                            Fill="Black"
+                            RenderTransformOrigin="0.5,0.5"
+                            Stretch="Fill"
+                            StrokeThickness="3">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform />
+                                    <SkewTransform />
+                                    <RotateTransform Angle="45" />
+                                    <TranslateTransform />
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </Button.Content>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <micro:ActionMessage MethodName="ClearFilter" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+
+            </Grid>
+
+            <Border
+                Grid.Row="2"
+                Padding="5,1"
+                Background="{DynamicResource Table_BG_Content}"
+                BorderBrush="{DynamicResource Table_BD}"
+                BorderThickness="1">
+                <TreeView
+                    x:Name="PART_TREE"
+                    Height="{Binding Path=ActualHeight, ElementName=PART_BORDER, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                    Margin="5"
+                    ItemTemplate="{StaticResource ConfigNodeTemplate}"
+                    ItemsSource="{Binding ConfigNodes}"
+                    VirtualizingPanel.IsVirtualizing="True"
+                    VirtualizingPanel.VirtualizationMode="Recycling">
+                    <!--  Height should add for VirtualizingPanel, otherwise the App will be slow  -->
+                    <TreeView.ItemContainerStyle>
+                        <Style BasedOn="{StaticResource ResourceKey={x:Type TreeViewItem}}" TargetType="{x:Type TreeViewItem}">
+                            <Setter Property="IsExpanded" Value="{Binding IsExpanded}" />
+                            <Setter Property="Visibility" Value="{Binding Path=IsMatch, Mode=OneWay, Converter={StaticResource ResourceKey=BoolVisibility}}" />
+                        </Style>
+                    </TreeView.ItemContainerStyle>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectedItemChanged">
+                            <i:InvokeCommandAction Command="{Binding TreeViewSelectedItemChangedCmd}" CommandParameter="{Binding Path=SelectedItem, ElementName=PART_TREE}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TreeView>
+
+            </Border>
+
+        </Grid>
+
+
+        <GridSplitter
+            Grid.Column="1"
+            Width="5"
+            HorizontalAlignment="Left"
+            Background="Transparent" />
+
+        <Grid
+            Grid.Column="1"
+            Margin="10,0,0,0"
+            IsEnabled="{Binding IsPermission}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <Button
+                    Width="80"
+                    Height="25"
+                    Content="Reload">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <micro:ActionMessage MethodName="Reload" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+
+                <Button
+                    Width="80"
+                    Height="25"
+                    Margin="5,0,0,0"
+                    Content="Save All">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <micro:ActionMessage MethodName="SaveAll" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </StackPanel>
+
+            <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto">
+                <DataGrid
+                    Grid.Row="1"
+                    Margin="0,5,0,0"
+                    HorizontalAlignment="Left"
+                    AutoGenerateColumns="False"
+                    CanUserAddRows="False"
+                    HorizontalScrollBarVisibility="Auto"
+                    ItemsSource="{Binding ConfigItems}"
+                    RowHeaderWidth="0"
+                    RowHeight="30"
+                    VirtualizingPanel.IsVirtualizing="True"
+                    VirtualizingPanel.VirtualizationMode="Recycling">
+
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn
+                            Width="Auto"
+                            MinWidth="120"
+                            Header="Name">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        Margin="5,0"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        FontFamily="Arial"
+                                        FontSize="14"
+                                        Foreground="{DynamicResource FG_Black}"
+                                        Text="{Binding Name}"
+                                        TextWrapping="Wrap">
+                                        <TextBlock.ToolTip>
+                                            <ToolTip>
+                                                <ToolTip.Content>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="25" />
+                                                            <RowDefinition Height="25" />
+                                                            <RowDefinition Height="25" />
+                                                            <RowDefinition Height="25" />
+                                                        </Grid.RowDefinitions>
+                                                        <TextBlock
+                                                            Grid.Row="0"
+                                                            Grid.Column="0"
+                                                            VerticalAlignment="Center"
+                                                            Text="Name" />
+                                                        <TextBlock
+                                                            Grid.Row="0"
+                                                            Grid.Column="1"
+                                                            VerticalAlignment="Center"
+                                                            Text="{Binding Name}"
+                                                            TextWrapping="Wrap" />
+                                                        <TextBlock
+                                                            Grid.Row="1"
+                                                            Grid.Column="0"
+                                                            VerticalAlignment="Center"
+                                                            Text="Type" />
+                                                        <TextBlock
+                                                            Grid.Row="1"
+                                                            Grid.Column="1"
+                                                            VerticalAlignment="Center"
+                                                            Text="{Binding Type}"
+                                                            TextWrapping="Wrap" />
+                                                        <TextBlock
+                                                            Grid.Row="2"
+                                                            Grid.Column="0"
+                                                            VerticalAlignment="Center"
+                                                            Text="Default Value" />
+                                                        <TextBlock
+                                                            Grid.Row="2"
+                                                            Grid.Column="1"
+                                                            VerticalAlignment="Center"
+                                                            Text="{Binding DefaultValue}"
+                                                            TextWrapping="Wrap" />
+                                                        <TextBlock
+                                                            Grid.Row="3"
+                                                            Grid.Column="0"
+                                                            VerticalAlignment="Center"
+                                                            Text="Description" />
+                                                        <TextBlock
+                                                            Grid.Row="3"
+                                                            Grid.Column="1"
+                                                            VerticalAlignment="Center"
+                                                            Text="{Binding Description}"
+                                                            TextWrapping="Wrap" />
+                                                    </Grid>
+                                                </ToolTip.Content>
+                                            </ToolTip>
+                                        </TextBlock.ToolTip>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn
+                            Width="Auto"
+                            MinWidth="160"
+                            Header="Description">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        Margin="5,0"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        FontFamily="Arial"
+                                        FontSize="14"
+                                        Foreground="{DynamicResource FG_Black}"
+                                        Text="{Binding Display}"
+                                        TextWrapping="Wrap"
+                                        ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn MinWidth="120" Header="Unit">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        Margin="5,0"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        FontFamily="Arial"
+                                        FontSize="14"
+                                        Foreground="{DynamicResource FG_Black}"
+                                        Text="{Binding Unit}"
+                                        ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn MinWidth="120" Header="Min">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        Margin="5,0"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        FontFamily="Arial"
+                                        FontSize="14"
+                                        Foreground="{DynamicResource FG_Black}"
+                                        Text="{Binding Min, Converter={StaticResource Float2String}}"
+                                        ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn MinWidth="120" Header="Max">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        Margin="5,0"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        FontFamily="Arial"
+                                        FontSize="14"
+                                        Foreground="{DynamicResource FG_Black}"
+                                        Text="{Binding Max, Converter={StaticResource Float2String}}"
+                                        ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn MinWidth="120" Header="Value">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        Margin="5,0"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        FontFamily="Arial"
+                                        FontSize="14"
+                                        Foreground="{DynamicResource FG_Black}"
+                                        Text="{Binding CurrentValue}"
+                                        ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn
+                            MinWidth="100"
+                            CellTemplateSelector="{StaticResource ConfigValueTemplateSelector}"
+                            Header="Setpoint" />
+
+                        <DataGridTemplateColumn MinWidth="120">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button
+                                        Width="60"
+                                        Height="25"
+                                        Content="Set"
+                                        FontSize="12">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <micro:ActionMessage MethodName="SetValue">
+                                                    <micro:Parameter Value="{Binding}" />
+                                                </micro:ActionMessage>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ScrollViewer>
+
+        </Grid>
+
+    </Grid>
+</UserControl>

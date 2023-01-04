@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" ?>
+<Interlock xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<VersionID Name="v20220628"/>
+	<Action do="TM.DO_LoadSlowPump" value="true" tip="" tip.zh-CN="" tip.en-US="DO-0">
+		<Limit di="TM.DI_LoadDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-0"/>
+		<Limit di="TM.DI_LoadLSideDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-24"/>
+		<Limit di="TM.DI_LoadRSideDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-26"/>
+		<Limit di="TM.DI_TMDryPump2Alarm" value="true" tip="" tip.zh-CN="" tip.en-US="DI-78"/>
+		<Limit di="TM.DI_TMDryPump2Running" value="true" tip="" tip.zh-CN="" tip.en-US="DI-79"/>
+		<Limit di="TM.DI_UnloadFastPumpFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-157"/>
+		<Limit di="TM.DI_UnloadSlowPumpFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-158"/>
+		<Limit di="TM.DI_LoadVentFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-101"/>
+		<Limit di="TM.DI_LoadLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-13"/>
+	</Action>
+	<Action do="TM.DO_LoadFastPump" value="true" tip="" tip.zh-CN="" tip.en-US="DO-1">
+		<Limit di="TM.DI_LoadDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-0"/>
+		<Limit di="TM.DI_LoadLSideDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-24"/>
+		<Limit di="TM.DI_LoadRSideDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-26"/>
+		<Limit di="TM.DI_TMDryPump2Alarm" value="true" tip="" tip.zh-CN="" tip.en-US="DI-78"/>
+		<Limit di="TM.DI_TMDryPump2Running" value="true" tip="" tip.zh-CN="" tip.en-US="DI-79"/>
+		<Limit di="TM.DI_UnloadFastPumpFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-157"/>
+		<Limit di="TM.DI_UnloadSlowPumpFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-158"/>
+		<Limit di="TM.DI_LoadVentFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-101"/>
+		<Limit di="TM.DI_LoadLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-13"/>
+	</Action>
+	<Action do="TM.DO_LoadVent" value="true" tip="" tip.zh-CN="" tip.en-US="DO-5">
+		<Limit di="TM.DI_LoadDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-0"/>
+		<Limit di="TM.DI_LoadFastPumpFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-97"/>
+		<Limit di="TM.DI_TMLoadBanlanceFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-104"/>
+		<Limit di="TM.DI_LoadLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-13"/>
+	</Action>
+	<Action do="TM.DO_TMSlowPump" value="true" tip="" tip.zh-CN="" tip.en-US="DO-2">
+		<Limit di="TM.DI_LoadDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-0"/>
+		<Limit di="TM.DI_UnloadStationDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-2"/>
+		<Limit di="TM.DI_ReactorADoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-4"/>
+		<Limit di="TM.DI_ReactorBDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-6"/>
+		<Limit di="TM.DI_UnloadSubStationDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-8"/>
+		<Limit di="TM.DI_TMDryPump1Alarm" value="true" tip="" tip.zh-CN="" tip.en-US="DI-43"/>
+		<Limit di="TM.DI_TMDryPump1Running" value="true" tip="" tip.zh-CN="" tip.en-US="DI-44"/>
+		<Limit di="TM.DI_TMLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-12"/>
+		<Limit di="TM.DI_BufferStationLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-15"/>
+	</Action>
+	<Action do="TM.DO_TMFastPump" value="true" tip="" tip.zh-CN="" tip.en-US="DO-3">
+		<Limit di="TM.DI_LoadDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-0"/>
+		<Limit di="TM.DI_UnloadStationDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-2"/>
+		<Limit di="TM.DI_ReactorADoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-4"/>
+		<Limit di="TM.DI_ReactorBDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-6"/>
+		<Limit di="TM.DI_UnloadSubStationDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-8"/>
+		<Limit di="TM.DI_TMDryPump1Alarm" value="true" tip="" tip.zh-CN="" tip.en-US="DI-43"/>
+		<Limit di="TM.DI_TMDryPump1Running" value="true" tip="" tip.zh-CN="" tip.en-US="DI-44"/>
+		<Limit di="TM.DI_TMLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-12"/>
+		<Limit di="TM.DI_BufferStationLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-15"/>
+	</Action>
+	<Action do="TM.DO_TMVent" value="true" tip="" tip.zh-CN="" tip.en-US="DO-6">
+		<Limit di="TM.DI_TMLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-12"/>
+		<Limit di="TM.DI_BufferStationLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-15"/>
+	</Action>
+	<Action do="TM.DO_BufferVent" value="true" tip="" tip.zh-CN="" tip.en-US="DO-4">
+		<Limit di="TM.DI_TMLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-12"/>
+		<Limit di="TM.DI_BufferStationLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-15"/>
+	</Action>
+	<Action do="TM.DO_UnloadSlowPump" value="true" tip="" tip.zh-CN="" tip.en-US="DO-62">
+		<Limit di="TM.DI_UnloadStationDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-2"/>
+		<Limit di="TM.DI_UnloadSubStationDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-8"/>
+		<Limit di="TM.DI_TMDryPump2Alarm" value="true" tip="" tip.zh-CN="" tip.en-US="DI-78"/>
+		<Limit di="TM.DI_TMDryPump2Running" value="true" tip="" tip.zh-CN="" tip.en-US="DI-79"/>
+		<Limit di="TM.DI_LoadSlowPumpFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-96"/>
+		<Limit di="TM.DI_LoadFastPumpFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-97"/>
+		<Limit di="TM.DI_UnloadVentFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-103"/>
+		<Limit di="TM.DI_UnloadStationLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-14"/>
+	</Action>
+	<Action do="TM.DO_UnloadFastPump" value="true" tip="" tip.zh-CN="" tip.en-US="DO-61">
+		<Limit di="TM.DI_UnloadStationDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-2"/>
+		<Limit di="TM.DI_UnloadSubStationDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-8"/>
+		<Limit di="TM.DI_TMDryPump2Alarm" value="true" tip="" tip.zh-CN="" tip.en-US="DI-78"/>
+		<Limit di="TM.DI_TMDryPump2Running" value="true" tip="" tip.zh-CN="" tip.en-US="DI-79"/>
+		<Limit di="TM.DI_LoadSlowPumpFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-96"/>
+		<Limit di="TM.DI_LoadFastPumpFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-97"/>
+		<Limit di="TM.DI_UnloadVentFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-103"/>
+		<Limit di="TM.DI_UnloadStationLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-14"/>
+	</Action>
+	<Action do="TM.DO_UnloadVent" value="true" tip="" tip.zh-CN="" tip.en-US="DO-7">
+		<Limit di="TM.DI_UnloadStationDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-2"/>
+		<Limit di="TM.DI_UnloadFastPumpFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-157"/>
+		<Limit di="TM.DI_TMToUnloadBanlanceFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-113"/>
+		<Limit di="TM.DI_UnloadStationLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-14"/>
+	</Action>
+	<Action do="TM.DO_TMCyclePurgeRoutineRunning" value="true" tip="" tip.zh-CN="" tip.en-US="DO-89">
+		<Limit di="TM.DI_LoadDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-0"/>
+		<Limit di="TM.DI_UnloadStationDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-2"/>
+		<Limit di="TM.DI_ReactorADoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-4"/>
+		<Limit di="TM.DI_ReactorBDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-6"/>
+		<Limit di="TM.DI_TMDryPump1Running" value="true" tip="" tip.zh-CN="" tip.en-US="DI-44"/>
+		<Limit di="TM.DI_TMLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-12"/>
+		<Limit di="TM.DI_BufferStationLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-15"/>
+	</Action>
+	<Action do="TM.DO_TMLeakCheckRoutineRunning" value="true" tip="" tip.zh-CN="" tip.en-US="DO-90">
+		<Limit di="TM.DI_LoadDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-0"/>
+		<Limit di="TM.DI_UnloadStationDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-2"/>
+		<Limit di="TM.DI_ReactorADoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-4"/>
+		<Limit di="TM.DI_ReactorBDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-6"/>
+		<Limit di="TM.DI_TMDryPump1Running" value="true" tip="" tip.zh-CN="" tip.en-US="DI-44"/>
+		<Limit di="TM.DI_TMLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-12"/>
+		<Limit di="TM.DI_BufferStationLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-15"/>
+	</Action>
+	<Action do="TM.DO_TMPumpDownRoutineRunning" value="true" tip="" tip.zh-CN="" tip.en-US="DO-91">
+		<Limit di="TM.DI_LoadDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-0"/>
+		<Limit di="TM.DI_UnloadStationDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-2"/>
+		<Limit di="TM.DI_ReactorADoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-4"/>
+		<Limit di="TM.DI_ReactorBDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-6"/>
+		<Limit di="TM.DI_TMDryPump1Running" value="true" tip="" tip.zh-CN="" tip.en-US="DI-44"/>
+		<Limit di="TM.DI_TMLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-12"/>
+		<Limit di="TM.DI_BufferStationLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-15"/>
+	</Action>
+	<Action do="TM.DO_TMServoPressRoutineRunning" value="true" tip="" tip.zh-CN="" tip.en-US="DO-92">
+		<Limit di="TM.DI_LoadDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-0"/>
+		<Limit di="TM.DI_UnloadStationDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-2"/>
+		<Limit di="TM.DI_ReactorADoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-4"/>
+		<Limit di="TM.DI_ReactorBDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-6"/>
+		<Limit di="TM.DI_TMDryPump1Running" value="true" tip="" tip.zh-CN="" tip.en-US="DI-44"/>
+		<Limit di="TM.DI_TMLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-12"/>
+		<Limit di="TM.DI_BufferStationLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-15"/>
+	</Action>
+	<Action do="TM.DO_TMVentUpRoutineRunning" value="true" tip="" tip.zh-CN="" tip.en-US="DO-93">
+		<Limit di="TM.DI_LoadDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-0"/>
+		<Limit di="TM.DI_UnloadStationDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-2"/>
+		<Limit di="TM.DI_ReactorADoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-4"/>
+		<Limit di="TM.DI_ReactorBDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-6"/>
+		<Limit di="TM.DI_TMDryPump1Running" value="true" tip="" tip.zh-CN="" tip.en-US="DI-44"/>
+		<Limit di="TM.DI_TMLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-12"/>
+		<Limit di="TM.DI_BufferStationLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-15"/>
+	</Action>
+	<Action do="TM.DO_LoadCyclePurgeRoutineRunning" value="true" tip="" tip.zh-CN="" tip.en-US="DO-94">
+		<Limit di="TM.DI_LoadDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-0"/>
+		<Limit di="TM.DI_LoadLSideDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-24"/>
+		<Limit di="TM.DI_LoadRSideDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-26"/>
+		<Limit di="TM.DI_TMDryPump2Running" value="true" tip="" tip.zh-CN="" tip.en-US="DI-79"/>
+		<Limit di="TM.DI_UnloadFastPumpFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-157"/>
+		<Limit di="TM.DI_UnloadSlowPumpFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-158"/>
+		<Limit di="TM.DI_TMLoadBanlanceFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-104"/>
+		<Limit di="TM.DI_LoadLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-13"/>
+	</Action>
+	<Action do="TM.DO_LoadLeakCheckRoutineRunning" value="true" tip="" tip.zh-CN="" tip.en-US="DO-95">
+		<Limit di="TM.DI_LoadDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-0"/>
+		<Limit di="TM.DI_LoadLSideDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-24"/>
+		<Limit di="TM.DI_LoadRSideDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-26"/>
+		<Limit di="TM.DI_TMDryPump2Running" value="true" tip="" tip.zh-CN="" tip.en-US="DI-79"/>
+		<Limit di="TM.DI_UnloadFastPumpFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-157"/>
+		<Limit di="TM.DI_UnloadSlowPumpFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-158"/>
+		<Limit di="TM.DI_TMLoadBanlanceFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-104"/>
+		<Limit di="TM.DI_LoadLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-13"/>
+	</Action>
+	<Action do="TM.DO_LoadPumpDownRoutineRunning" value="true" tip="" tip.zh-CN="" tip.en-US="DO-96">
+		<Limit di="TM.DI_LoadDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-0"/>
+		<Limit di="TM.DI_LoadLSideDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-24"/>
+		<Limit di="TM.DI_LoadRSideDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-26"/>
+		<Limit di="TM.DI_TMDryPump2Running" value="true" tip="" tip.zh-CN="" tip.en-US="DI-79"/>
+		<Limit di="TM.DI_UnloadFastPumpFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-157"/>
+		<Limit di="TM.DI_UnloadSlowPumpFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-158"/>
+		<Limit di="TM.DI_TMLoadBanlanceFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-104"/>
+		<Limit di="TM.DI_LoadLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-13"/>
+	</Action>
+	<Action do="TM.DO_LoadVentUpRoutineRunning" value="true" tip="" tip.zh-CN="" tip.en-US="DO-97">
+		<Limit di="TM.DI_LoadDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-0"/>
+		<Limit di="TM.DI_LoadLSideDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-24"/>
+		<Limit di="TM.DI_LoadRSideDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-26"/>
+		<Limit di="TM.DI_TMDryPump2Running" value="true" tip="" tip.zh-CN="" tip.en-US="DI-79"/>
+		<Limit di="TM.DI_TMLoadBanlanceFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-104"/>
+		<Limit di="TM.DI_LoadLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-13"/>
+	</Action>
+	<Action do="TM.DO_UnLoadCyclePurgeRoutineRunning" value="true" tip="" tip.zh-CN="" tip.en-US="DO-98">
+		<Limit di="TM.DI_UnloadStationDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-2"/>
+		<Limit di="TM.DI_UnloadSubStationDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-8"/>
+		<Limit di="TM.DI_TMDryPump2Running" value="true" tip="" tip.zh-CN="" tip.en-US="DI-79"/>
+		<Limit di="TM.DI_LoadSlowPumpFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-96"/>
+		<Limit di="TM.DI_LoadFastPumpFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-97"/>
+		<Limit di="TM.DI_TMToUnloadBanlanceFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-113"/>
+		<Limit di="TM.DI_UnloadStationLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-14"/>
+	</Action>
+	<Action do="TM.DO_UnLoadLeakCheckRoutineRunning" value="true" tip="" tip.zh-CN="" tip.en-US="DO-99">
+		<Limit di="TM.DI_UnloadStationDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-2"/>
+		<Limit di="TM.DI_UnloadSubStationDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-8"/>
+		<Limit di="TM.DI_TMDryPump2Running" value="true" tip="" tip.zh-CN="" tip.en-US="DI-79"/>
+		<Limit di="TM.DI_LoadSlowPumpFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-96"/>
+		<Limit di="TM.DI_LoadFastPumpFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-97"/>
+		<Limit di="TM.DI_TMToUnloadBanlanceFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-113"/>
+		<Limit di="TM.DI_UnloadStationLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-14"/>
+	</Action>
+	<Action do="TM.DO_UnLoadPumpDownRoutineRunning" value="true" tip="" tip.zh-CN="" tip.en-US="DO-100">
+		<Limit di="TM.DI_UnloadStationDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-2"/>
+		<Limit di="TM.DI_UnloadSubStationDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-8"/>
+		<Limit di="TM.DI_TMDryPump2Running" value="true" tip="" tip.zh-CN="" tip.en-US="DI-79"/>
+		<Limit di="TM.DI_LoadSlowPumpFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-96"/>
+		<Limit di="TM.DI_LoadFastPumpFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-97"/>
+		<Limit di="TM.DI_TMToUnloadBanlanceFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-113"/>
+		<Limit di="TM.DI_UnloadStationLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-14"/>
+	</Action>
+	<Action do="TM.DO_UnLoadVentUpRoutineRunning" value="true" tip="" tip.zh-CN="" tip.en-US="DO-101">
+		<Limit di="TM.DI_UnloadStationDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-2"/>
+		<Limit di="TM.DI_UnloadSubStationDoorClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-8"/>
+		<Limit di="TM.DI_TMDryPump2Running" value="true" tip="" tip.zh-CN="" tip.en-US="DI-79"/>
+		<Limit di="TM.DI_TMToUnloadBanlanceFB" value="false" tip="" tip.zh-CN="" tip.en-US="DI-113"/>
+		<Limit di="TM.DI_UnloadStationLidClosed" value="true" tip="" tip.zh-CN="" tip.en-US="DI-14"/>
+	</Action>
+	<Action do="TM.DO_LoadDoorClose" value="true" tip="" tip.zh-CN="" tip.en-US="DO-9">
+		<Limit do="TM.DO_VacRobotExtenLoadEnable" value="false" tip="" tip.zh-CN="" tip.en-US="DO-19"/>
+	</Action>
+	<Action do="TM.DO_UnloadStationDoorClose" value="true" tip="" tip.zh-CN="" tip.en-US="DO-11">
+		<Limit do="TM.DO_VacRobotExtendUnloadEnable" value="false" tip="" tip.zh-CN="" tip.en-US="DO-20"/>
+	</Action>
+	<Action do="TM.DO_RectorADoorClose" value="true" tip="" tip.zh-CN="" tip.en-US="DO-13">
+		<Limit do="TM.DO_VacRobotExtendPMAEnable" value="false" tip="" tip.zh-CN="" tip.en-US="DO-21"/>
+	</Action>
+	<Action do="TM.DO_RectorBDoorClose" value="true" tip="" tip.zh-CN="" tip.en-US="DO-15">
+		<Limit do="TM.DO_VacRobotExtendPMBEnable" value="false" tip="" tip.zh-CN="" tip.en-US="DO-22"/>
+	</Action>
+	<Action do="TM.DO_BufferStationDoorClose" value="true" tip="" tip.zh-CN="" tip.en-US="DO-33">
+		<Limit do="TM.DO_VacRobotExtendBufferEnable" value="false" tip="" tip.zh-CN="" tip.en-US="DO-23"/>
+	</Action>
+	<Action do="TM.DO_UnloadSubStationDoorClose" value="true" tip="" tip.zh-CN="" tip.en-US="DO-31">
+		<Limit do="TM.DO_ATMRobotExtendUnloadEnable" value="false" tip="" tip.zh-CN="" tip.en-US="DO-24"/>
+		<Limit di="TM.DI_UnloadStationGateINTK" value="false" tip="" tip.zh-CN="" tip.en-US="DI-41"/>		
+	</Action>
+	<Action do="TM.DO_LoadLSideDoorClose" value="true" tip="" tip.zh-CN="" tip.en-US="DO-27">
+		<Limit do="TM.DO_ATMRobotExtendLoaLSideEnable" value="false" tip="" tip.zh-CN="" tip.en-US="DO-25"/>
+		<Limit di="TM.DI_LoadLeftGateINTK" value="false" tip="" tip.zh-CN="" tip.en-US="DI-33"/>
+	</Action>
+	<Action do="TM.DO_LoadRSideDoorClose" value="true" tip="" tip.zh-CN="" tip.en-US="DO-29">
+		<Limit do="TM.DO_ATMRobotExtendLoaRSideEnable" value="false" tip="" tip.zh-CN="" tip.en-US="DO-26"/>
+		<Limit di="TM.DI_LoadRightGateINTK" value="false" tip="" tip.zh-CN="" tip.en-US="DI-34"/>
+	</Action>
+	<Action do="TM.DO_LoadLSideDoorOpen" value="true" tip="" tip.zh-CN="" tip.en-US="DO-28">
+		<Limit di="TM.DI_LoadPressureATM" value="true" tip="" tip.zh-CN="" tip.en-US="DI-90"/>
+	</Action>
+	<Action do="TM.DO_LoadRSideDoorOpen" value="true" tip="" tip.zh-CN="" tip.en-US="DO-30">
+		<Limit di="TM.DI_LoadPressureATM" value="true" tip="" tip.zh-CN="" tip.en-US="DI-90"/>
+	</Action>
+	
+	<Action do="TM.DO_VacRobotExtenLoadEnable" value="true" tip="" tip.zh-CN="" tip.en-US="DO-19">
+		<Limit di="TM.DI_LoadDoorOpened" value="true" tip="" tip.zh-CN="" tip.en-US="DI-1"/>
+		<Limit di="TM.DI_LoadLifterCYDown" value="true" tip="" tip.zh-CN="" tip.en-US="DI-65"/>
+    <Limit di="TM.DI_LoadTrayCYOpend" value="true" tip="" tip.zh-CN="" tip.en-US="DI-69"/>
+	</Action>
+	<Action do="TM.DO_VacRobotExtendUnloadEnable" value="true" tip="" tip.zh-CN="" tip.en-US="DO-20">
+		<Limit di="TM.DI_UnloadStationDoorOpened" value="true" tip="" tip.zh-CN="" tip.en-US="DI-3"/>
+		<Limit di="TM.DI_UnloadStationLifterCYDown" value="true" tip="" tip.zh-CN="" tip.en-US="DI-75"/>
+	</Action>
+	<Action do="TM.DO_VacRobotExtendPMAEnable" value="true" tip="" tip.zh-CN="" tip.en-US="DO-21">
+		<Limit di="TM.DI_ReactorADoorOpened" value="true" tip="" tip.zh-CN="" tip.en-US="DI-5"/>
+	</Action>
+	<Action do="TM.DO_VacRobotExtendPMBEnable" value="true" tip="" tip.zh-CN="" tip.en-US="DO-22">
+		<Limit di="TM.DI_ReactorBDoorOpened" value="true" tip="" tip.zh-CN="" tip.en-US="DI-7"/>
+	</Action>
+	<Action do="TM.DO_VacRobotExtendBufferEnable" value="true" tip="" tip.zh-CN="" tip.en-US="DO-23">
+		<Limit di="TM.DI_BufferStationDoorOpened" value="true" tip="" tip.zh-CN="" tip.en-US="DI-11"/>
+	</Action>
+	<Action do="TM.DO_ATMRobotExtendUnloadEnable" value="true" tip="" tip.zh-CN="" tip.en-US="DO-24">
+		<Limit di="TM.DI_UnloadSubStationDoorOpened" value="true" tip="" tip.zh-CN="" tip.en-US="DI-9"/>
+	</Action>
+	<Action do="TM.DO_ATMRobotExtendLoaLSideEnable" value="true" tip="" tip.zh-CN="" tip.en-US="DO-25">
+		<Limit di="TM.DI_LoadPressureATM" value="true" tip="" tip.zh-CN="" tip.en-US="DI-90"/>
+		<Limit di="TM.DI_LoadLSideDoorOpened" value="true" tip="" tip.zh-CN="" tip.en-US="DI-25"/>
+    <Limit di="TM.DI_LoadTrayCYOpend" value="true" tip="" tip.zh-CN="" tip.en-US="DI-69"/>
+	</Action>
+	<Action do="TM.DO_ATMRobotExtendLoaRSideEnable" value="true" tip="" tip.zh-CN="" tip.en-US="DO-26">
+		<Limit di="TM.DI_LoadPressureATM" value="true" tip="" tip.zh-CN="" tip.en-US="DI-90"/>
+		<Limit di="TM.DI_LoadRSideDoorOpened" value="true" tip="" tip.zh-CN="" tip.en-US="DI-27"/>
+    <Limit di="TM.DI_LoadLifterCYDown" value="true" tip="" tip.zh-CN="" tip.en-US="DI-65"/>
+    <Limit di="TM.DI_LoadTrayCYOpend" value="true" tip="" tip.zh-CN="" tip.en-US="DI-69"/>
+	</Action>
+</Interlock>
