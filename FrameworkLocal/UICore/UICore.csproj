@@ -153,6 +153,9 @@
     <Compile Include="CommonControl\AITScStringRow.xaml.cs">
       <DependentUpon>AITScStringRow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\LiBattaryPack.xaml.cs">
+      <DependentUpon>LiBattaryPack.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\CheckValue2.xaml.cs">
       <DependentUpon>CheckValue2.xaml</DependentUpon>
     </Compile>
@@ -528,6 +531,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Control\LiBattaryPack.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\CheckValue2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -861,6 +868,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExtendedControls\ObjectInTreeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\batt.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -1285,6 +1296,11 @@
       <Project>{efad063f-fa97-42b7-87f8-8279eba30d34}</Project>
       <Name>MECF.Framework.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Battery\Batt_Side1.png" />
+    <Resource Include="Resources\Battery\Batt_Side2.png" />
+    <Resource Include="Resources\Battery\Batt_Top.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -207,14 +207,14 @@ namespace SicUI.Client
                             }
 
 
-                            if (!EventClient.Instance.ConnectRT())
-                            {
-                                _splashScreen?.Complete();
-                                MessageBox.Show("Can not connect with RT, launch RT first", "Error",
-                                    MessageBoxButton.OK, MessageBoxImage.Error);
-                                Environment.Exit(0);
-                                return;
-                            }
+                            //if (!EventClient.Instance.ConnectRT())
+                            //{
+                            //    _splashScreen?.Complete();
+                            //    MessageBox.Show("Can not connect with RT, launch RT first", "Error",
+                            //        MessageBoxButton.OK, MessageBoxImage.Error);
+                            //    Environment.Exit(0);
+                            //    return;
+                            //}
                         }
                         catch (Exception ex)
                         {
@@ -238,7 +238,7 @@ namespace SicUI.Client
                             { nameof(MainView.SplashScreen), _splashScreen }
                         };
 
-                        DisplayRootViewFor<MainViewModel>(dictArguments);
+                        DisplayRootViewFor<TestWinViewModel>(dictArguments);
 
                         base.OnStartup(sender, e);
                     }
@@ -290,7 +290,7 @@ namespace SicUI.Client
             _container.Singleton<IWindowManager, WindowManager>();
             //container.Singleton<IPublisher, Publisher>();
 
-            _container.PerRequest<MainViewModel>();
+            _container.PerRequest<TestWinViewModel>();
         }
 
         protected override object GetInstance(Type service, string key)

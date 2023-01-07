@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrameworkLocal", "FrameworkLocal", "{788A2513-3E85-4D83-A68E-11D2B793A363}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UICore", "FrameworkLocal\UICore\UICore.csproj", "{2C9E1DF3-1ABA-4972-BE60-41DD9B3C47A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MECF.Framework.Common", "MECF.Framework.Common\MECF.Framework.Common.csproj", "{EFAD063F-FA97-42B7-87F8-8279EBA30D34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserControlDev", "UserControlDev\UserControlDev.csproj", "{6A27C8C3-1565-41CC-83A9-179EB088D0D7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C9E1DF3-1ABA-4972-BE60-41DD9B3C47A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C9E1DF3-1ABA-4972-BE60-41DD9B3C47A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C9E1DF3-1ABA-4972-BE60-41DD9B3C47A7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2C9E1DF3-1ABA-4972-BE60-41DD9B3C47A7}.Debug|x86.Build.0 = Debug|Any CPU
+		{2C9E1DF3-1ABA-4972-BE60-41DD9B3C47A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C9E1DF3-1ABA-4972-BE60-41DD9B3C47A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C9E1DF3-1ABA-4972-BE60-41DD9B3C47A7}.Release|x86.ActiveCfg = Release|Any CPU
+		{2C9E1DF3-1ABA-4972-BE60-41DD9B3C47A7}.Release|x86.Build.0 = Release|Any CPU
+		{EFAD063F-FA97-42B7-87F8-8279EBA30D34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFAD063F-FA97-42B7-87F8-8279EBA30D34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFAD063F-FA97-42B7-87F8-8279EBA30D34}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EFAD063F-FA97-42B7-87F8-8279EBA30D34}.Debug|x86.Build.0 = Debug|Any CPU
+		{EFAD063F-FA97-42B7-87F8-8279EBA30D34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFAD063F-FA97-42B7-87F8-8279EBA30D34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFAD063F-FA97-42B7-87F8-8279EBA30D34}.Release|x86.ActiveCfg = Release|Any CPU
+		{EFAD063F-FA97-42B7-87F8-8279EBA30D34}.Release|x86.Build.0 = Release|Any CPU
+		{6A27C8C3-1565-41CC-83A9-179EB088D0D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A27C8C3-1565-41CC-83A9-179EB088D0D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A27C8C3-1565-41CC-83A9-179EB088D0D7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6A27C8C3-1565-41CC-83A9-179EB088D0D7}.Debug|x86.Build.0 = Debug|Any CPU
+		{6A27C8C3-1565-41CC-83A9-179EB088D0D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A27C8C3-1565-41CC-83A9-179EB088D0D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A27C8C3-1565-41CC-83A9-179EB088D0D7}.Release|x86.ActiveCfg = Release|Any CPU
+		{6A27C8C3-1565-41CC-83A9-179EB088D0D7}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2C9E1DF3-1ABA-4972-BE60-41DD9B3C47A7} = {788A2513-3E85-4D83-A68E-11D2B793A363}
+		{EFAD063F-FA97-42B7-87F8-8279EBA30D34} = {788A2513-3E85-4D83-A68E-11D2B793A363}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {49F07864-CB9F-43CB-97F1-FED8C84760FE}
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN2019 - Subversion Support for Visual Studio
+	EndGlobalSection
+EndGlobal

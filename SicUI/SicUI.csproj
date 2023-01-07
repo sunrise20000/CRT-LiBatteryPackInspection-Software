@@ -249,7 +249,6 @@
       <DependentUpon>TMView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Maintenances\TM\TMViewModel.cs" />
-    <Compile Include="Models\Operations\Overviews\CassAWaferAmountValidationRule.cs" />
     <Compile Include="Models\Operations\Overviews\OverViewView.xaml.cs">
       <DependentUpon>OverViewView.xaml</DependentUpon>
     </Compile>
@@ -385,6 +384,10 @@
     <Compile Include="ProcessMonitorView.xaml.cs">
       <DependentUpon>ProcessMonitorView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TestWinView.xaml.cs">
+      <DependentUpon>TestWinView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TestWinViewModel.cs" />
     <Page Include="Controls\AITPump.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -677,6 +680,10 @@
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
+    <Page Include="TestWinView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -731,14 +738,6 @@
     <Resource Include="Themes\Font\iconfont.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FrameworkLocal\RTEquipmentLibrary\RTEquipmentLibrary.csproj">
-      <Project>{090a1e9c-1087-4c8a-b4e0-ff074459e071}</Project>
-      <Name>RTEquipmentLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FrameworkLocal\UIClient\UIClient.csproj">
-      <Project>{a40b734c-f2ec-453c-a5fb-70cd46452bf1}</Project>
-      <Name>UIClient</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FrameworkLocal\UICore\UICore.csproj">
       <Project>{2c9e1df3-1aba-4972-be60-41dd9b3c47a7}</Project>
       <Name>UICore</Name>
@@ -746,10 +745,6 @@
     <ProjectReference Include="..\MECF.Framework.Common\MECF.Framework.Common.csproj">
       <Project>{efad063f-fa97-42b7-87f8-8279eba30d34}</Project>
       <Name>MECF.Framework.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sicentury.Core\Sicentury.Core.csproj">
-      <Project>{A78B3F87-4601-43F7-A941-EDB339CE35A9}</Project>
-      <Name>Sicentury.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -985,7 +980,9 @@
     <Resource Include="Resources\Images\recipeEditorInsertLeft.png" />
     <Resource Include="Resources\Images\recipeEditorInsertRight.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Image1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
