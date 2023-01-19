@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:UserControlDev"
         xmlns:Control="clr-namespace:MECF.Framework.UI.Core.Control;assembly=MECF.Framework.UI.Core" xmlns:lps="clr-namespace:MECF.Framework.UI.Core.LogicParts;assembly=MECF.Framework.UI.Core" x:Class="UserControlDev.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="759" Width="1040">
     <Grid>
 
         <Control:LiBatteryPack 
@@ -21,5 +21,6 @@
         <lps:LiBattMoverTopView
             HorizontalAlignment="Left" Margin="296,264,0,0" VerticalAlignment="Top" Height="147" Width="444"/>
 
+        <lps:YamahaRobot HorizontalAlignment="Left" VerticalAlignment="Top" Height="529" Width="283" Margin="676,92,0,0"/>
     </Grid>
 </Window>
