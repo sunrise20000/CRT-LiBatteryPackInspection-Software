@@ -3,15 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converer="clr-namespace:MECF.Framework.UI.Core.Converters"
              xmlns:local="clr-namespace:MECF.Framework.UI.Core.Control"
              mc:Ignorable="d" d:Height="44" d:Width="142"
              SnapsToDevicePixels="True">
     <UserControl.Resources>
+        <converer:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+     
+        
+        <!--电池图片样式-->
         <Style TargetType="Image">
             <Setter Property="Stretch" Value="None"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Visibility" 
+                    Value="{Binding IsShowBattery, RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
         </Style>
+
+        <!--电池高亮边框样式-->
         <Style TargetType="Path">
             <Setter Property="Stroke" Value="#00f05923"/>
             <Setter Property="Fill" Value="Transparent"/>
@@ -48,7 +57,6 @@
         <!-- #region Top View -->
         <Canvas x:Name="cavTopView" Visibility="Visible">
             <Image Source="/MECF.Framework.UI.Core;component/Resources/Battery/Batt_Top.png" />
-
 
             <Path 
               Data="F1 M 2557.233,658.071 L 2462.410,658.071 C 2461.716,658.071 2461.154,658.634 2461.154,659.328 L 2461.154,680.990 C 2461.154,681.684 2461.716,682.246 2462.410,682.246 L 2557.233,682.246 C 2557.927,682.246 2558.490,681.684 2558.490,680.990 L 2558.490,659.328 C 2558.490,658.634 2557.927,658.071 2557.233,658.071 Z" 

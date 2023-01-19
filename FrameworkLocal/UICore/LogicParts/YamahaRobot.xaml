@@ -67,7 +67,7 @@
                                 </TransformGroup>
                             </Canvas.RenderTransform>
                             <Image Source="/MECF.Framework.UI.Core;component/Resources/Robot/gripper.png" HorizontalAlignment="Left" VerticalAlignment="Top" d:IsLocked="True"/>
-                            <Control:LiBatteryPack Canvas.Left="16" Canvas.Top="12"/>
+                            <Control:LiBatteryPack Canvas.Left="16" Canvas.Top="12" IsShowBattery="True"/>
                         </Canvas>
                         
                     </Canvas>

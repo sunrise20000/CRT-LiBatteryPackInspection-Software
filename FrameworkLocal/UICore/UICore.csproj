@@ -316,6 +316,7 @@
     <Compile Include="Control\ValveRound.xaml.cs">
       <DependentUpon>ValveRound.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\BoolSensorConverter.cs" />
     <Compile Include="Converters\CenterBorderGapMaskConverter.cs" />
     <Compile Include="Converters\ColorToBrushConverter.cs" />
