@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UserControlDev"
-        xmlns:Control="clr-namespace:MECF.Framework.UI.Core.Control;assembly=MECF.Framework.UI.Core" x:Class="UserControlDev.MainWindow"
+        xmlns:Control="clr-namespace:MECF.Framework.UI.Core.Control;assembly=MECF.Framework.UI.Core" xmlns:lps="clr-namespace:MECF.Framework.UI.Core.LogicParts;assembly=MECF.Framework.UI.Core" x:Class="UserControlDev.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -17,6 +17,9 @@
             HorizontalAlignment="Left" Margin="112,56,0,0" VerticalAlignment="Top" Height="129" Width="165"/>
         <Control:LiBatteryPack
             HorizontalAlignment="Left" Margin="112,238,0,0" VerticalAlignment="Top" Height="52" Width="148"/>
+
+        <lps:LiBattMoverTopView
+            HorizontalAlignment="Left" Margin="296,264,0,0" VerticalAlignment="Top" Height="147" Width="444"/>
 
     </Grid>
 </Window>

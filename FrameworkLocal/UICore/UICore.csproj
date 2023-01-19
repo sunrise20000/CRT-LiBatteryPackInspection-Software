@@ -422,6 +422,9 @@
     </Compile>
     <Compile Include="ExtendedControls\ObjectTreeNode.cs" />
     <Compile Include="ExtendedControls\TreeViewHelper.cs" />
+    <Compile Include="LogicParts\LiBattMoverTopView.xaml.cs">
+      <DependentUpon>LiBattMoverTopView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -871,6 +874,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="LogicParts\LiBattMoverTopView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resources\batt.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1301,6 +1308,11 @@
     <Resource Include="Resources\Battery\Batt_Side1.png" />
     <Resource Include="Resources\Battery\Batt_Side2.png" />
     <Resource Include="Resources\Battery\Batt_Top.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Motors\LinearMotor_Mover_Horizontal.png" />
+    <Resource Include="Resources\Motors\LinearMotor_Stator_Horizontal.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
