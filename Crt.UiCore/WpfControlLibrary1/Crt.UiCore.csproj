@@ -56,10 +56,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\YamahaRobot.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="Controls\YamahaRobot600.xaml.cs">
       <DependentUpon>YamahaRobot600.xaml</DependentUpon>
     </Compile>
@@ -69,9 +65,6 @@
     </Compile>
     <Compile Include="Controls\LiBattMoverTopView.xaml.cs">
       <DependentUpon>LiBattMoverTopView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\YamahaRobot.xaml.cs">
-      <DependentUpon>YamahaRobot.xaml</DependentUpon>
     </Compile>
     <Page Include="Controls\YamahaRobot600.xaml">
       <SubType>Designer</SubType>

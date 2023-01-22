@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:UserControlDev" xmlns:Controls="clr-namespace:Crt.UiCore.Controls;assembly=Crt.UiCore"
+        xmlns:local="clr-namespace:UserControlDev" 
+    xmlns:Controls="clr-namespace:Crt.UiCore.Controls;assembly=Crt.UiCore"
     x:Class="UserControlDev.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="759" Width="1040">
@@ -21,7 +22,7 @@
         <Controls:LiBattMoverTopView
             HorizontalAlignment="Left" Margin="296,264,0,0" VerticalAlignment="Top" Height="147" Width="444"/>
 
-        <Controls:YamahaRobot x:Name="robotYamaha" HorizontalAlignment="Left" VerticalAlignment="Top" Height="246" Width="283" Margin="676,92,0,0" CurrentPosition="FeederA"/>
+        <Controls:YamahaRobot600 x:Name="robotYamaha" HorizontalAlignment="Left" VerticalAlignment="Top" Height="246" Width="283" Margin="676,92,0,0" CurrentPosition="FeederA"/>
         <Button Content="To System" HorizontalAlignment="Left" Margin="736,550,0,0" VerticalAlignment="Top" Click="Button_Click"/>
         <Button Content="To Feeder A" HorizontalAlignment="Left" Margin="830,550,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
     </Grid>
