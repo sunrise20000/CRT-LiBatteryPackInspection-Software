@@ -18,6 +18,8 @@ namespace UserControlDev
             // Yamaha机械手动画测试
             Task.Run(async () =>
             {
+
+                return Task.CompletedTask;
                 await Task.Delay(1000);
 
                 while (true)
@@ -80,23 +82,24 @@ namespace UserControlDev
             // 直线电机机械手动画测试
             Task.Run(async () =>
             {
+                return Task.CompletedTask;
                 await Task.Delay(1000);
 
                 while (true)
                 {
                     try
                     {
-                        Debug.WriteLine($"Move to {YamahaRobot600.Positions.Standby}");
+                        Debug.WriteLine($"Move to {LiBattMoverTopView.Positions.Standby}");
                         Invoke(() =>
                         {
-                            LinearMotor.CurrentPosition = (int)YamahaRobot600.Positions.Standby;
+                            LinearMotor.CurrentPosition = (int)LiBattMoverTopView.Positions.Standby;
                             LinearMotor.HasBattery = false;
                         });
 
                         await Task.Delay(500);
 
                         Debug.WriteLine($"Move to {LiBattMoverTopView.Positions.Standby}");
-                        Invoke(() => LinearMotor.CurrentPosition = (int)YamahaRobot600.Positions.Standby);
+                        Invoke(() => LinearMotor.CurrentPosition = (int)LiBattMoverTopView.Positions.Standby);
                         await Task.Delay(500);
                         Invoke(() => LinearMotor.HasBattery = true);
                         await Task.Delay(500);
@@ -105,6 +108,40 @@ namespace UserControlDev
                         Invoke(() => LinearMotor.CurrentPosition = (int)LiBattMoverTopView.Positions.End);
                         await Task.Delay(500);
                         Invoke(() => LinearMotor.HasBattery = false);
+                        await Task.Delay(500);
+
+
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
+                    }
+                }
+            });
+
+            // Feeder动画测试
+            Task.Run(async () =>
+            {
+                await Task.Delay(1000);
+
+                while (true)
+                {
+                    try
+                    {
+                        Debug.WriteLine($"Move to {Feeder.Positions.Standby}");
+                        Invoke(() =>
+                        {
+                            Feeder.CurrentPosition = (int)Feeder.Positions.Standby;
+                            Feeder.HasBattery = false;
+                        });
+
+                        await Task.Delay(500);
+
+                        Debug.WriteLine($"Move to {Feeder.Positions.End}");
+                        Invoke(() => Feeder.CurrentPosition = (int)Feeder.Positions.End);
+                        await Task.Delay(500);
+                        Invoke(() => Feeder.HasBattery = true);
                         await Task.Delay(500);
 
 

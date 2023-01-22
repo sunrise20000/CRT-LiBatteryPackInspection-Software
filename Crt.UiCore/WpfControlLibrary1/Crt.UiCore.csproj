@@ -48,6 +48,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\Feeder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\LiBattaryPack.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -57,6 +61,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="Controls\BatteryCarrierBase.cs" />
+    <Compile Include="Controls\Feeder.xaml.cs">
+      <DependentUpon>Feeder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\YamahaRobot600.xaml.cs">
       <DependentUpon>YamahaRobot600.xaml</DependentUpon>
     </Compile>
@@ -107,6 +114,9 @@
     <Resource Include="Resources\Robot\yamaha_scara_arm1.png" />
     <Resource Include="Resources\Robot\yamaha_scara_arm2.png" />
     <Resource Include="Resources\Robot\yamaha_scara_base.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Common\Feeder.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
