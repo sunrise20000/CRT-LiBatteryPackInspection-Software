@@ -5,10 +5,9 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
 
-namespace MECF.Framework.UI.Core.LogicParts
+namespace Crt.UiCore.Controls
 {
     /// <summary>
     /// Interaction logic for YamahaRobot.xaml
@@ -35,7 +34,7 @@ namespace MECF.Framework.UI.Core.LogicParts
         {
             InitializeComponent();
 
-            var isDesignMode = DesignerProperties.GetIsInDesignMode(this);
+           /* var isDesignMode = DesignerProperties.GetIsInDesignMode(this);
             if (isDesignMode)
                 return;
 
@@ -55,7 +54,7 @@ namespace MECF.Framework.UI.Core.LogicParts
 
             AnimationBusy = false;
             
-            StoryboardMonitor();
+            StoryboardMonitor();*/
         }
 
         #region Properties

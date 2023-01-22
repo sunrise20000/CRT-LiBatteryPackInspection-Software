@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="Crt.UiCore.Controls.LiBattMoverTopView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Crt.UiCore.Controls"
+             mc:Ignorable="d" d:Height="158" d:Width="425">
+    <UserControl.Resources>
+        <Style TargetType="Image">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Stretch" Value="None"/>
+        </Style>
+        <Storyboard x:Key="ScanningStoryBoard">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="canvas" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                <EasingDoubleKeyFrame KeyTime="00:00:01.0000000" Value="-207">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <Grid>
+        <Canvas>
+            <Image Source="/Crt.UiCore;component/Resources/Motors/LinearMotor_Stator_Horizontal.png" />
+            <Canvas x:Name="canBattInPos" Visibility="Hidden" Width="271" Height="185" Canvas.Left="-46" Canvas.Top="-20.963" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Canvas.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Canvas.RenderTransform>
+                <Image x:Name="image1" Source="/Crt.UiCore;component/Resources/Motors/LinearMotor_Mover_Horizontal.png" RenderTransformOrigin="0.5,0.5"/>
+
+                <local:LiBatteryPack x:Name="liBatteryPack1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="48" Width="146" RenderTransformOrigin="0.5,0.5" Canvas.Left="81.8" Canvas.Top="79.75"/>
+
+            </Canvas>
+            <Canvas x:Name="canBattAnimation" Width="271" HorizontalAlignment="Left" Height="185" VerticalAlignment="Center" Canvas.Left="162.2" Canvas.Top="-20.963" RenderTransformOrigin="0.5,0.5">
+                <Canvas.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Canvas.RenderTransform>
+                <Image x:Name="image" Source="/Crt.UiCore;component/Resources/Motors/LinearMotor_Mover_Horizontal.png" RenderTransformOrigin="0.5,0.5"/>
+
+                <local:LiBatteryPack x:Name="liBatteryPack" HorizontalAlignment="Center" VerticalAlignment="Center" Height="48" Width="146" RenderTransformOrigin="0.5,0.5" Canvas.Left="81.8" Canvas.Top="79.75"/>
+
+            </Canvas>
+        </Canvas>
+    </Grid>
+</UserControl>

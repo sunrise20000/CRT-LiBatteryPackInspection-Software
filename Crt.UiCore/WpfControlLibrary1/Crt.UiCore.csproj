@@ -4,20 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6A27C8C3-1565-41CC-83A9-179EB088D0D7}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>UserControlDev</RootNamespace>
-    <AssemblyName>UserControlDev</AssemblyName>
+    <ProjectGuid>{F361E446-2401-4A33-83B7-250E25DD2E74}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>Crt.UiCore</RootNamespace>
+    <AssemblyName>Crt.UiCore</AssemblyName>
     <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -27,7 +24,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -50,27 +46,37 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WPFToolkit">
-      <HintPath>..\ThirdParty\dlls\WPFToolkit.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Controls\LiBattaryPack.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
+    <Page Include="Controls\LiBattMoverTopView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\YamahaRobot.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Controls\YamahaRobot600.xaml.cs">
+      <DependentUpon>YamahaRobot600.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Controls\LiBattaryPack.xaml.cs">
+      <DependentUpon>LiBattaryPack.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\LiBattMoverTopView.xaml.cs">
+      <DependentUpon>LiBattMoverTopView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\YamahaRobot.xaml.cs">
+      <DependentUpon>YamahaRobot.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Controls\YamahaRobot600.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -96,13 +102,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <Resource Include="Resources\Battery\Batt_Side1.png" />
+    <Resource Include="Resources\Battery\Batt_Side2.png" />
+    <Resource Include="Resources\Battery\Batt_Top.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Crt.UiCore\WpfControlLibrary1\Crt.UiCore.csproj">
-      <Project>{f361e446-2401-4a33-83b7-250e25dd2e74}</Project>
-      <Name>Crt.UiCore</Name>
-    </ProjectReference>
+    <Resource Include="Resources\Motors\LinearMotor_Mover_Horizontal.png" />
+    <Resource Include="Resources\Motors\LinearMotor_Stator_Horizontal.png" />
+    <Resource Include="Resources\Robot\gripper.png" />
+    <Resource Include="Resources\Robot\yamaha_scara_arm1.png" />
+    <Resource Include="Resources\Robot\yamaha_scara_arm2.png" />
+    <Resource Include="Resources\Robot\yamaha_scara_base.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
