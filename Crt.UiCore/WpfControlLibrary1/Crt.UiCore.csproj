@@ -56,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Controls\BatteryCarrierBase.cs" />
     <Compile Include="Controls\YamahaRobot600.xaml.cs">
       <DependentUpon>YamahaRobot600.xaml</DependentUpon>
     </Compile>

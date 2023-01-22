@@ -4,26 +4,25 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UserControlDev" 
-    xmlns:Controls="clr-namespace:Crt.UiCore.Controls;assembly=Crt.UiCore"
-    x:Class="UserControlDev.MainWindow"
+        xmlns:controls="clr-namespace:Crt.UiCore.Controls;assembly=Crt.UiCore"
+        x:Class="UserControlDev.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="759" Width="1040">
     <Grid>
 
-        <Controls:LiBatteryPack 
+        <controls:LiBatteryPack 
             View="Left"
-            HorizontalAlignment="Left" Margin="316,92,0,0" VerticalAlignment="Top" Height="161" Width="126"/>
-        <Controls:LiBatteryPack 
+            HorizontalAlignment="Left" Margin="316,92,0,0" VerticalAlignment="Top" Height="161" Width="126" IsShowBattery="True"/>
+        <controls:LiBatteryPack 
             View="Front"
-            HorizontalAlignment="Left" Margin="112,56,0,0" VerticalAlignment="Top" Height="129" Width="165"/>
-        <Controls:LiBatteryPack
-            HorizontalAlignment="Left" Margin="112,238,0,0" VerticalAlignment="Top" Height="52" Width="148"/>
+            HorizontalAlignment="Left" Margin="537,44,0,0" VerticalAlignment="Top" Height="128" Width="165" IsShowBattery="True"/>
+        <controls:LiBatteryPack
+            HorizontalAlignment="Left" Margin="734,82,0,0" VerticalAlignment="Top" Height="52" Width="148" IsShowBattery="True"/>
 
-        <Controls:LiBattMoverTopView
-            HorizontalAlignment="Left" Margin="296,264,0,0" VerticalAlignment="Top" Height="147" Width="444"/>
 
-        <Controls:YamahaRobot600 x:Name="robotYamaha" HorizontalAlignment="Left" VerticalAlignment="Top" Height="246" Width="283" Margin="676,92,0,0" CurrentPosition="FeederA"/>
-        <Button Content="To System" HorizontalAlignment="Left" Margin="736,550,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <Button Content="To Feeder A" HorizontalAlignment="Left" Margin="830,550,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+        <controls:LiBattMoverTopView x:Name="LinearMotor"
+            HorizontalAlignment="Left" Margin="355,0,0,0" VerticalAlignment="Center" Height="94" Width="364"/>
+
+        <controls:YamahaRobot600 x:Name="RobotYamaha" HorizontalAlignment="Left" VerticalAlignment="Top" Height="246" Width="283" CurrentPosition="0" Margin="96,141,0,0"/>
     </Grid>
 </Window>
