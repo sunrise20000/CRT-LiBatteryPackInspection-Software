@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<ProjectGuidesConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ProjectItemGuides>
+    <ProjectItemGuide TargetFile="Controls\YamahaRobot600.xaml">
+      <GuideModels>
+        <GuideModel>
+          <Guides>
+            <Guide Alignment="Top" Position="118" />
+          </Guides>
+        </GuideModel>
+      </GuideModels>
+    </ProjectItemGuide>
+    <ProjectItemGuide TargetFile="Controls\YamahaRobot800.xaml">
+      <GuideModels>
+        <GuideModel>
+          <Guides>
+            <Guide Alignment="Top" Position="225" />
+            <Guide Alignment="Top" Position="355" />
+            <Guide Alignment="Top" Position="156" />
+            <Guide Alignment="Left" Position="38" />
+            <Guide Alignment="Left" Position="26" />
+            <Guide Alignment="Left" Position="26" />
+            <Guide Alignment="Left" Position="-212" />
+          </Guides>
+        </GuideModel>
+      </GuideModels>
+    </ProjectItemGuide>
+  </ProjectItemGuides>
+</ProjectGuidesConfiguration>

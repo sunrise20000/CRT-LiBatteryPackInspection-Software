@@ -56,7 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\LiBattMoverTopView.xaml">
+    <Page Include="Controls\LinearMotor.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -64,19 +64,21 @@
     <Compile Include="Controls\Feeder.xaml.cs">
       <DependentUpon>Feeder.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\YamahaRobot600.xaml.cs">
-      <DependentUpon>YamahaRobot600.xaml</DependentUpon>
+    <Compile Include="Controls\YamahaRobot800.xaml.cs">
+      <DependentUpon>YamahaRobot800.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\InverseBooleanConverter.cs" />
+    <Compile Include="Converters\InverseBooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Controls\LiBattaryPack.xaml.cs">
       <DependentUpon>LiBattaryPack.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\LiBattMoverTopView.xaml.cs">
-      <DependentUpon>LiBattMoverTopView.xaml</DependentUpon>
+    <Compile Include="Controls\LinearMotor.xaml.cs">
+      <DependentUpon>LinearMotor.xaml</DependentUpon>
     </Compile>
-    <Page Include="Controls\YamahaRobot600.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Controls\YamahaRobot800.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -97,26 +99,37 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Design\projectGuides.guides" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Battery\Batt_Side1.png" />
-    <Resource Include="Resources\Battery\Batt_Side2.png" />
-    <Resource Include="Resources\Battery\Batt_Top.png" />
+    <Resource Include="Resources\Battery\BatteryPackFront90View.png" />
+    <Resource Include="Resources\Battery\BatteryPackFrontView.png" />
+    <Resource Include="Resources\Battery\BatteryPackTopView.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Motors\LinearMotor_Mover_Horizontal.png" />
-    <Resource Include="Resources\Motors\LinearMotor_Stator_Horizontal.png" />
-    <Resource Include="Resources\Robot\gripper.png" />
-    <Resource Include="Resources\Robot\yamaha_scara_arm1.png" />
-    <Resource Include="Resources\Robot\yamaha_scara_arm2.png" />
-    <Resource Include="Resources\Robot\yamaha_scara_base.png" />
+    <Resource Include="Resources\Common\GripperBlackNarrow.png" />
+    <Resource Include="Resources\Common\GripperBlackWide.png" />
+    <Resource Include="Resources\Common\GripperWhiteNarrow.png" />
+    <Resource Include="Resources\Common\GripperWhiteWide.png" />
+    <Resource Include="Resources\Common\transporter_gripper_fixture.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Common\Feeder.png" />
+    <Resource Include="Resources\Common\BatteryRotationStageBase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Motors\LinearMotor.png" />
+    <Resource Include="Resources\Motors\NGTransporter.png" />
+    <Resource Include="Resources\Motors\transporter_s1_to_s2_x.png" />
+    <Resource Include="Resources\Motors\transporter_s1_to_s2_y.png" />
+    <Resource Include="Resources\Motors\transporter_s2_to_s3_x.png" />
+    <Resource Include="Resources\Motors\transporter_s2_to_s3_y.png" />
+    <Resource Include="Resources\Robot\yamaha_robot_arm1.png" />
+    <Resource Include="Resources\Robot\yamaha_robot_arm2.png" />
+    <Resource Include="Resources\Robot\yamaha_robot_base.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

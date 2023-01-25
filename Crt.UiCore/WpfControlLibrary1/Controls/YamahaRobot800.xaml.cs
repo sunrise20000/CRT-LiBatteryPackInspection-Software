@@ -12,7 +12,7 @@ namespace Crt.UiCore.Controls
     /// <summary>
     /// Interaction logic for YamahaRobot600.xaml
     /// </summary>
-    public partial class YamahaRobot600 : BatteryCarrierBase
+    public partial class YamahaRobot800 : BatteryCarrierBase
     {
         public enum Positions
         {
@@ -29,15 +29,11 @@ namespace Crt.UiCore.Controls
 
         #endregion
 
-        public YamahaRobot600()
+        public YamahaRobot800()
         {
             InitializeComponent();
         }
 
-
-        #region Dependency Properties
-        
-        #endregion
 
         #region Methods
 
@@ -47,18 +43,12 @@ namespace Crt.UiCore.Controls
             Storyboards = new Dictionary<int, Storyboard>
             {
                 { (int)Positions.Standby, FindResource("ToStandbyStoryboard") as Storyboard },
-                { (int)Positions.FeederA, FindResource("ToFeederBStoryboard") as Storyboard },
-                { (int)Positions.FeederB, FindResource("ToFeederAStoryboard") as Storyboard },
-                { (int)Positions.Station1A, FindResource("ToStation1BStoryboard") as Storyboard },
-                { (int)Positions.Station1B, FindResource("ToStation1AStoryboard") as Storyboard }
+                { (int)Positions.FeederA, FindResource("ToFeederAStoryboard") as Storyboard },
+                { (int)Positions.FeederB, FindResource("ToFeederBStoryboard") as Storyboard },
+                { (int)Positions.Station1A, FindResource("ToStation1AStoryboard") as Storyboard },
+                { (int)Positions.Station1B, FindResource("ToStation1BStoryboard") as Storyboard }
             };
         }
-
-        #endregion
-
-        #region Events
-
-       
 
         #endregion
     }

@@ -11,7 +11,7 @@ namespace Crt.UiCore.Controls
         {
             Top,
             Front,
-            Left
+            Front90
         }
 
         #endregion
@@ -19,6 +19,8 @@ namespace Crt.UiCore.Controls
         public LiBatteryPack()
         {
             InitializeComponent();
+
+            rootGrid.DataContext = this;
         }
 
         #region DependencyProperties
@@ -30,26 +32,26 @@ namespace Crt.UiCore.Controls
         {
             if (d is LiBatteryPack uc)
             {
-                uc.cavTopView.Visibility = Visibility.Hidden;
-                uc.cavSide1View.Visibility = Visibility.Hidden;
-                uc.cavSide2View.Visibility = Visibility.Hidden;
+                uc.TopView.Visibility = Visibility.Hidden;
+                uc.FrontView.Visibility = Visibility.Hidden;
+                uc.Front90View.Visibility = Visibility.Hidden;
 
                 switch (uc.View)
                 {
                     case Views.Top:
-                        uc.cavTopView.Visibility = Visibility.Visible;
+                        uc.TopView.Visibility = Visibility.Visible;
                         break;
 
                     case Views.Front:
-                        uc.cavSide1View.Visibility = Visibility.Visible;
+                        uc.FrontView.Visibility = Visibility.Visible;
                         break;
 
-                    case Views.Left:
-                        uc.cavSide2View.Visibility = Visibility.Visible;
+                    case Views.Front90:
+                        uc.Front90View.Visibility = Visibility.Visible;
                         break;
 
                     default:
-                        uc.cavTopView.Visibility = Visibility.Visible;
+                        uc.TopView.Visibility = Visibility.Visible;
                         break;
 
                 }
@@ -69,10 +71,25 @@ namespace Crt.UiCore.Controls
         public static readonly DependencyProperty IsShowBatteryProperty = DependencyProperty.Register(
             nameof(IsShowBattery), typeof(bool), typeof(LiBatteryPack), new PropertyMetadata(default(bool)));
 
+        /// <summary>
+        /// 设置或返回是否显示电池图标。
+        /// </summary>
         public bool IsShowBattery
         {
             get => (bool)GetValue(IsShowBatteryProperty);
             set => SetValue(IsShowBatteryProperty, value);
+        }
+
+        public static readonly DependencyProperty AllowSelectedProperty = DependencyProperty.Register(
+            nameof(AllowSelected), typeof(bool), typeof(LiBatteryPack), new PropertyMetadata(true));
+
+        /// <summary>
+        /// 设置或返回是否电池允许被选中。
+        /// </summary>
+        public bool AllowSelected
+        {
+            get => (bool)GetValue(AllowSelectedProperty);
+            set => SetValue(AllowSelectedProperty, value);
         }
         
         #endregion

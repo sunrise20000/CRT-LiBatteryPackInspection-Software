@@ -34,7 +34,9 @@
     <Canvas>
         <Image Source="/Crt.UiCore;component/Resources/Common/Feeder.png" Stretch="None"/>
 
-        <local:LiBatteryPack x:Name="liBatteryPack" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="153,8,0,0" RenderTransformOrigin="0.5,0.5" >
+        <local:LiBatteryPack x:Name="liBatteryPack" 
+                             AllowSelected="False"
+                             HorizontalAlignment="Left" VerticalAlignment="Top" Margin="153,8,0,0" RenderTransformOrigin="0.5,0.5" >
             <local:LiBatteryPack.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

@@ -5,12 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:converter="clr-namespace:Crt.UiCore.Converters"
              xmlns:local="clr-namespace:Crt.UiCore.Controls"
-             mc:Ignorable="d" d:Height="44" d:Width="142"
+             mc:Ignorable="d" d:Height="28" d:Width="88"
              SnapsToDevicePixels="True">
     <UserControl.Resources>
         <converter:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
-     
-        
+        <converter:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+
+
         <!--电池图片样式-->
         <Style TargetType="Image">
             <Setter Property="Stretch" Value="None"/>
@@ -22,6 +23,7 @@
 
         <!--电池高亮边框样式-->
         <Style TargetType="Path">
+            <Setter Property="IsEnabled" Value="{Binding AllowSelected, RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}}"/>
             <Setter Property="Stroke" Value="#00f05923"/>
             <Setter Property="Fill" Value="Transparent"/>
             <Setter Property="StrokeThickness" Value="1.0"/>
@@ -53,14 +55,21 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    <Grid>
+    <Grid x:Name="rootGrid" Tag="{Binding RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}}">
+        <Grid.ContextMenu>
+            <ContextMenu DataContext="{Binding Path=PlacementTarget.Tag, RelativeSource={RelativeSource Self}}">
+                <MenuItem Header="Create Battery" IsEnabled="{Binding IsShowBattery, Converter={StaticResource InverseBooleanConverter}}"/>
+                <MenuItem Header="Delete Battery" IsEnabled="{Binding IsShowBattery}"/>
+                <MenuItem Header="Alert Info." IsEnabled="{Binding IsShowBattery}"/>
+            </ContextMenu>
+        </Grid.ContextMenu>
         <!-- #region Top View -->
-        <Canvas x:Name="cavTopView" Visibility="Visible">
-            <Image Source="/Crt.UiCore;component/Resources/Battery/Batt_Top.png" />
+        <Canvas x:Name="TopView" Visibility="Visible">
+            <Image Source="/Crt.UiCore;component/Resources/Battery/BatteryPackTopView.png" />
 
             <Path 
-              Data="F1 M 2557.233,658.071 L 2462.410,658.071 C 2461.716,658.071 2461.154,658.634 2461.154,659.328 L 2461.154,680.990 C 2461.154,681.684 2461.716,682.246 2462.410,682.246 L 2557.233,682.246 C 2557.927,682.246 2558.490,681.684 2558.490,680.990 L 2558.490,659.328 C 2558.490,658.634 2557.927,658.071 2557.233,658.071 Z" 
-              Canvas.Left="7" Canvas.Top="5" Height="35" Width="133">
+              Data="M59.22 0.5H2.26C1.28798 0.5 0.5 1.28798 0.5 2.26V14.51C0.5 15.482 1.28798 16.27 2.26 16.27H59.22C60.192 16.27 60.98 15.482 60.98 14.51V2.26C60.98 1.28798 60.192 0.5 59.22 0.5Z"
+            Canvas.Left="3" Canvas.Top="0" Height="22" Width="81" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center">
             </Path>
 
 
@@ -68,13 +77,12 @@
         <!-- #endregion -->
 
         <!-- #region Side1 View -->
-        <Canvas x:Name="cavSide1View" Visibility="Hidden">
-            <Image Source="/Crt.UiCore;component/Resources/Battery/Batt_Side1.png"/>
-
+        <Canvas x:Name="FrontView" Visibility="Hidden">
+            <Image Source="/Crt.UiCore;component/Resources/Battery/BatteryPackFrontView.png"/>
 
             <Path
-              Data="F1 M 2741.119,637.906 L 2734.488,637.906 L 2734.488,629.807 L 2724.219,629.807 L 2724.219,637.906 L 2665.080,637.906 L 2665.080,629.807 L 2654.810,629.807 L 2654.810,637.906 L 2646.296,637.906 C 2645.602,637.906 2645.040,638.469 2645.040,639.162 L 2645.040,698.638 C 2645.040,699.332 2645.602,699.894 2646.296,699.894 L 2741.119,699.894 C 2741.813,699.894 2742.375,699.332 2742.375,698.638 L 2742.375,639.162 C 2742.375,638.469 2741.813,637.906 2741.119,637.906 Z" 
-              Canvas.Left="15.6" Canvas.Top="16.2" Height="96"  Width="131">
+              Data="M6.97955 1.27002H6.47955V1.77002V6.31006H2.23919C1.27085 6.31006 0.5 7.10592 0.5 8.07006V44.1201C0.5 45.0842 1.27085 45.8801 2.23919 45.8801H59.3208C60.2892 45.8801 61.06 45.0842 61.06 44.1201V8.07006C61.06 7.10592 60.2892 6.31006 59.3208 6.31006H56.2311V1.77002V1.27002H55.7311H49.4466H48.9466V1.77002V6.31006H13.764V1.77002V1.27002H13.264H6.97955Z" 
+              Canvas.Left="6" Canvas.Top="7" Height="60"  Width="81">
             </Path>
 
 
@@ -82,14 +90,13 @@
         <!-- #endregion -->
 
         <!-- #region Side2 View -->
-        <Canvas x:Name="cavSide2View" Visibility="Hidden">
+        <Canvas x:Name="Front90View" Visibility="Hidden">
 
-            <Image Source="/Crt.UiCore;component/Resources/Battery/Batt_Side2.png" />
-
+            <Image Source="/Crt.UiCore;component/Resources/Battery/BatteryPackFront90View.png" />
 
             <Path
-              Data="F1 M 2897.756,621.491 L 2838.281,621.491 C 2837.587,621.491 2837.024,622.053 2837.024,622.747 L 2837.024,629.378 L 2828.926,629.378 L 2828.926,639.647 L 2837.024,639.647 L 2837.024,698.787 L 2828.926,698.787 L 2828.926,709.056 L 2837.024,709.056 L 2837.024,717.570 C 2837.024,718.264 2837.587,718.827 2838.281,718.827 L 2897.756,718.827 C 2898.450,718.827 2899.012,718.264 2899.012,717.570 L 2899.012,622.747 C 2899.012,622.053 2898.450,621.491 2897.756,621.491 Z" 
-              Canvas.Left="16.8" Canvas.Top="17" Height="131" Width="95">
+              Data="M0.5 54.5804L0.5 55.0804H1H5.53998V59.3208C5.53998 60.2892 6.33584 61.06 7.29998 61.06H43.35C44.3141 61.06 45.11 60.2892 45.11 59.3208L45.11 2.23919C45.11 1.27084 44.3141 0.5 43.35 0.5L7.29998 0.500002C6.33584 0.500002 5.53998 1.27084 5.53998 2.23919L5.54 5.32892L1 5.32892H0.5L0.5 5.82892L0.500001 12.1134L0.500001 12.6134H1H5.54L5.53998 47.796H1H0.5V48.296L0.5 54.5804Z" 
+              Canvas.Left="6" Canvas.Top="6" Height="81" Width="60">
             </Path>
 
 

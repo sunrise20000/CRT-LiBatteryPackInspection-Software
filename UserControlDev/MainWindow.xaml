@@ -11,19 +11,19 @@
     <Canvas>
 
         <controls:LiBatteryPack 
-            View="Left"
-            HorizontalAlignment="Left" Margin="316,92,0,0" VerticalAlignment="Top" Height="161" Width="126" IsShowBattery="True"/>
+            View="Top"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Width="93" IsShowBattery="True" Canvas.Left="316" Canvas.Top="92"/>
         <controls:LiBatteryPack 
             View="Front"
-            HorizontalAlignment="Left" Margin="537,44,0,0" VerticalAlignment="Top" Height="128" Width="165" IsShowBattery="True"/>
+            HorizontalAlignment="Left" VerticalAlignment="Top" Height="71" Width="94" IsShowBattery="True" Canvas.Left="537" Canvas.Top="44"/>
         <controls:LiBatteryPack
-            HorizontalAlignment="Left" Margin="734,82,0,0" VerticalAlignment="Top" Height="52" Width="148" IsShowBattery="True"/>
+            View="Front90"
+            HorizontalAlignment="Left" VerticalAlignment="Top" Height="90" Width="77" IsShowBattery="True" Canvas.Left="734" Canvas.Top="82"/>
 
 
-        <controls:LiBattMoverTopView x:Name="LinearMotor"
-            HorizontalAlignment="Left" Margin="316,264,0,0" VerticalAlignment="Top" Height="94" Width="364"/>
+        <controls:LinearMotor x:Name="LinearMotor"
+            HorizontalAlignment="Left" VerticalAlignment="Top" Height="82" Width="315" Canvas.Left="316" Canvas.Top="264" BatteryView="Front90"/>
 
-        <controls:YamahaRobot600 x:Name="RobotYamaha" HorizontalAlignment="Left" VerticalAlignment="Top" Height="246" Width="283" CurrentPosition="0" Margin="96,141,0,0"/>
+        <controls:YamahaRobot800 x:Name="RobotYamaha" HorizontalAlignment="Left" VerticalAlignment="Top" Height="246" Width="283" CurrentPosition="0" Margin="96,141,0,0"/>
 
         <controls:Feeder x:Name="Feeder" Height="63" Canvas.Left="349" Canvas.Top="422.533" Width="298" HorizontalAlignment="Left" VerticalAlignment="Top"/>
     </Canvas>

@@ -28,13 +28,12 @@ namespace Crt.UiCore.Controls
             base.OnInitialized(e);
 
 
-            var isDesignMode = DesignerProperties.GetIsInDesignMode(this);
+            /*var isDesignMode = DesignerProperties.GetIsInDesignMode(this);
             if (isDesignMode)
-                return;
+                return;*/
 
             BuildStoryboard();
-
-
+            
             foreach (var storyboard in Storyboards.Values)
             {
                 storyboard.Completed += StoryboardOnCompleted;
