@@ -132,7 +132,6 @@
     <Resource Include="Resources\Motors\transporter_s2_to_s3_x.png" />
     <Resource Include="Resources\Motors\transporter_s2_to_s3_y.png" />
     <Resource Include="Resources\Robot\yamaha_robot_arm1.png" />
-    <Resource Include="Resources\Robot\yamaha_robot_arm2.png" />
     <Resource Include="Resources\Robot\yamaha_robot_base.png" />
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +139,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Common\BatteryFlipStageBase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Robot\yamaha_robot_arm2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

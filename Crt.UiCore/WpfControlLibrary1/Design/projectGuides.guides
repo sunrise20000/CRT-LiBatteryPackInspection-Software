@@ -10,7 +10,7 @@
         </GuideModel>
       </GuideModels>
     </ProjectItemGuide>
-    <ProjectItemGuide TargetFile="Controls\YamahaRobot800.xaml">
+    <ProjectItemGuide TargetFile="Controls\YamahaRobot.xaml">
       <GuideModels>
         <GuideModel>
           <Guides>
