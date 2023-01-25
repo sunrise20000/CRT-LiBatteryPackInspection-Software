@@ -11,7 +11,7 @@ namespace Crt.UiCore.Controls
 
         public RobotArmBase()
         {
-            
+            RenderTransform = new RotateTransform();
         }
 
         #endregion
@@ -35,7 +35,7 @@ namespace Crt.UiCore.Controls
         #region DP - Rotation Angle, CenterX, CenterY
 
         public static readonly DependencyProperty AngleProperty = DependencyProperty.Register(
-            nameof(Angle), typeof(double), typeof(RobotArmBase), new PropertyMetadata(default(double)));
+            nameof(Angle), typeof(double), typeof(RobotArmBase), new PropertyMetadata(default(double),RotationCenterPropertyChanged));
 
         public double Angle
         {
@@ -43,10 +43,10 @@ namespace Crt.UiCore.Controls
             set => SetValue(AngleProperty, value);
         }
 
-        public static readonly DependencyProperty RotationCenterXProperty = DependencyProperty.Register(
+        /* public static readonly DependencyProperty RotationCenterXProperty = DependencyProperty.Register(
             nameof(RotationCenterX), typeof(double), typeof(RobotArmBase), new PropertyMetadata(default(double), RotationCenterPropertyChanged));
         
-
+       
         public double RotationCenterX
         {
             get => (double)GetValue(RotationCenterXProperty);
@@ -54,24 +54,24 @@ namespace Crt.UiCore.Controls
         }
 
         public static readonly DependencyProperty RotationCenterYProperty = DependencyProperty.Register(
-            nameof(RotationCenterY), typeof(double), typeof(RobotArmBase), new PropertyMetadata(default(double)));
+            nameof(RotationCenterY), typeof(double), typeof(RobotArmBase), new PropertyMetadata(default(double), RotationCenterPropertyChanged));
 
         public double RotationCenterY
         {
             get => (double)GetValue(RotationCenterYProperty);
             set => SetValue(RotationCenterYProperty, value);
-        }
+        }*/
 
         private static void RotationCenterPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is RobotArmBase arm)
             {
                 if(!(arm.RenderTransform is RotateTransform transform))
-                    arm.RenderTransform = new RotateTransform(arm.Angle, arm.RotationCenterX, arm.RotationCenterY);
+                    arm.RenderTransform = new RotateTransform(arm.Angle);
                 else
                 {
-                    transform.CenterX = arm.RotationCenterX;
-                    transform.CenterY = arm.RotationCenterY;
+                    //transform.CenterX = arm.RotationCenterX;
+                    //transform.CenterY = arm.RotationCenterY;
                     transform.Angle = arm.Angle;
                 }
             }
@@ -85,8 +85,7 @@ namespace Crt.UiCore.Controls
         {
             base.OnRender(dc);
             
-            if(ShowRotationCenter)
-                dc.DrawEllipse(Brushes.Black, new Pen(Brushes.White, 2), new Point(RotationCenterX, RotationCenterY), 5, 5);
+            
         }
 
         #endregion

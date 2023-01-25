@@ -7,178 +7,137 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <local:BatteryCarrierBase.Resources>
+
         <Storyboard x:Key="ToStandbyStoryboard">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Gripper" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="-68">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CubicEase EasingMode="EaseInOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Arm1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="-83">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CubicEase EasingMode="EaseInOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Arm2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="150">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CubicEase EasingMode="EaseInOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="ToFeederBStoryboard">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Gripper" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="-63">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CubicEase EasingMode="EaseInOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Arm1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="-54">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CubicEase EasingMode="EaseInOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Arm2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="117">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CubicEase EasingMode="EaseInOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Gripper" Storyboard.TargetProperty="(local:RobotArmBase.Angle)">
+                    <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="-68">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <CubicEase EasingMode="EaseInOut"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Arm1" Storyboard.TargetProperty="(local:RobotArmBase.Angle)">
+                    <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="-83">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <CubicEase EasingMode="EaseInOut"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Arm2" Storyboard.TargetProperty="(local:RobotArmBase.Angle)">
+                    <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="150">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <CubicEase EasingMode="EaseInOut"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="ToFeederBStoryboard">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Gripper" Storyboard.TargetProperty="(local:RobotArmBase.Angle)">
+                    <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="-63">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <CubicEase EasingMode="EaseInOut"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Arm1" Storyboard.TargetProperty="(local:RobotArmBase.Angle)">
+                    <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="-54">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <CubicEase EasingMode="EaseInOut"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Arm2" Storyboard.TargetProperty="(local:RobotArmBase.Angle)">
+                    <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="117">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <CubicEase EasingMode="EaseInOut"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
 
-        <Storyboard x:Key="ToFeederAStoryboard">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Gripper" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="-17">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CubicEase EasingMode="EaseInOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Arm1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="-21">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CubicEase EasingMode="EaseInOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Arm2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="38">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CubicEase EasingMode="EaseInOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
+            <Storyboard x:Key="ToFeederAStoryboard">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Gripper" Storyboard.TargetProperty="(local:RobotArmBase.Angle)">
+                    <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="-17">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <CubicEase EasingMode="EaseInOut"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Arm1" Storyboard.TargetProperty="(local:RobotArmBase.Angle)">
+                    <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="-21">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <CubicEase EasingMode="EaseInOut"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Arm2" Storyboard.TargetProperty="(local:RobotArmBase.Angle)">
+                    <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="38">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <CubicEase EasingMode="EaseInOut"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
 
-        <Storyboard x:Key="ToStation1BStoryboard">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Gripper" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="-22">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CubicEase EasingMode="EaseInOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Arm1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="78">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CubicEase EasingMode="EaseInOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Arm2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="-55">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CubicEase EasingMode="EaseInOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
+            <Storyboard x:Key="ToStation1BStoryboard">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Gripper" Storyboard.TargetProperty="(local:RobotArmBase.Angle)">
+                    <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="-22">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <CubicEase EasingMode="EaseInOut"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Arm1" Storyboard.TargetProperty="(local:RobotArmBase.Angle)">
+                    <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="78">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <CubicEase EasingMode="EaseInOut"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Arm2" Storyboard.TargetProperty="(local:RobotArmBase.Angle)">
+                    <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="-55">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <CubicEase EasingMode="EaseInOut"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
 
-        <Storyboard x:Key="ToStation1AStoryboard">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Gripper" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="-41">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CubicEase EasingMode="EaseInOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Arm1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="41">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CubicEase EasingMode="EaseInOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
+            <Storyboard x:Key="ToStation1AStoryboard">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Gripper" Storyboard.TargetProperty="(local:RobotArmBase.Angle)">
+                    <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="-41">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <CubicEase EasingMode="EaseInOut"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Arm1" Storyboard.TargetProperty="(local:RobotArmBase.Angle)">
+                    <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="41">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <CubicEase EasingMode="EaseInOut"/>
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
     </local:BatteryCarrierBase.Resources>
+
     <Canvas SnapsToDevicePixels="True">
-        <!--
-        <local:Feeder RenderTransformOrigin="0.5,0.5" Canvas.Left="-214.4" Canvas.Top="107.4" Height="65" Width="298" HorizontalAlignment="Center" VerticalAlignment="Top" d:IsLocked="True"/>
-        <local:Feeder RenderTransformOrigin="0.5,0.5" Canvas.Left="-214.4" Canvas.Top="107.4" Height="65" Width="298" HorizontalAlignment="Center" VerticalAlignment="Top" d:IsLocked="True"/>
-        <local:Feeder RenderTransformOrigin="0.5,0.5" Canvas.Left="-214.4" Canvas.Top="107.4" Height="65" Width="298" HorizontalAlignment="Center" VerticalAlignment="Top" d:IsLocked="True"/>
-        <local:Feeder RenderTransformOrigin="0.5,0.5" Canvas.Left="-214.4" Canvas.Top="107.4" Height="65" Width="298" HorizontalAlignment="Center" VerticalAlignment="Top" d:IsLocked="True"/>
-        <local:Feeder RenderTransformOrigin="0.5,0.5" Canvas.Left="-214.4" Canvas.Top="107.4" Height="65" Width="298" HorizontalAlignment="Center" VerticalAlignment="Top" d:IsLocked="True"/>
-        <local:Feeder RenderTransformOrigin="0.5,0.5" Canvas.Left="-214.4" Canvas.Top="107.4" Height="65" Width="298" HorizontalAlignment="Center" VerticalAlignment="Top" d:IsLocked="True"/>
-
-        <local:Feeder x:Name="ConveyerNG"  RenderTransformOrigin="0.5,0.5" Canvas.Left="260.2" Canvas.Top="-171.8" Height="65" Width="298" HorizontalAlignment="Left" VerticalAlignment="Top" d:IsLocked="True">
-            <local:Feeder.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </local:Feeder.RenderTransform>
-        </local:Feeder>
-
-        <local:LiBattMoverTopView x:Name="liBattMoverTopView" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Left="260.2" Canvas.Top="94.9" d:IsLocked="True"/>
-        -->
-
-
         <Canvas Name="Base" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Center" Height="99" Canvas.Top="0" Width="104">
             <Image Source="/Crt.UiCore;component/Resources/Robot/yamaha_robot_base.png" />
 
-            <Canvas Name="Arm1" Height="244.5" Width="73" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.15" Canvas.Left="16" Canvas.Top="24">
-                <Canvas.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="0"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Canvas.RenderTransform>
+            <local:RobotArmBase x:Name="Arm1" Height="244.5" Width="73" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="16" Canvas.Top="24" RenderTransformOrigin="0.5,0.15"
+                                Angle="{Binding Arm2Angle, RelativeSource={RelativeSource AncestorType=local:BatteryCarrierBase, Mode=FindAncestor}, Mode=OneWay}">
+
                 <Image Source="/Crt.UiCore;component/Resources/Robot/yamaha_robot_arm1.png"/>
 
 
-                <Canvas Name="Arm2" Height="192" Width="64" HorizontalAlignment="Left" Canvas.Left="5" VerticalAlignment="Center" Canvas.Top="179" RenderTransformOrigin="0.5,0.18">
-                    <Canvas.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform Angle="0"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Canvas.RenderTransform>
+                <local:RobotArmBase x:Name="Arm2" Height="192" Width="64" HorizontalAlignment="Left" Canvas.Left="5" VerticalAlignment="Center" Canvas.Top="179" RenderTransformOrigin="0.5,0.18"
+                                    Angle="{Binding Arm2Angle, RelativeSource={RelativeSource AncestorType=local:BatteryCarrierBase, Mode=FindAncestor}, Mode=OneWay}">
                     <Image Source="/Crt.UiCore;component/Resources/Robot/yamaha_robot_arm2.png"/>
 
-                    <Canvas Name="Gripper" Height="39" Width="108" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-56,0,0,0" RenderTransformOrigin="0.5,0.5" Canvas.Top="150" Canvas.Left="34">
-                        <Canvas.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform Angle="0"/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Canvas.RenderTransform>
-                        <Image Source="/Crt.UiCore;component/Resources/Common/GripperBlackWide.png" />
+                    <local:RobotArmBase x:Name="Gripper" Height="39" Width="108" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-56,0,0,0" RenderTransformOrigin="0.5,0.5" Canvas.Top="150" Canvas.Left="34"
+                                        Angle="{Binding GripperAngle, RelativeSource={RelativeSource AncestorType=local:BatteryCarrierBase, Mode=FindAncestor}, Mode=OneWay}">
+                    <Image Source="/Crt.UiCore;component/Resources/Common/GripperBlackWide.png" />
 
                         <local:LiBatteryPack IsShowBattery="{Binding HasBattery, RelativeSource={RelativeSource AncestorType=local:BatteryCarrierBase, Mode=FindAncestor}, Mode=OneWay}" 
                                          Height="28" Width="88" 
@@ -186,11 +145,11 @@
                                          VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="8"/>
 
 
-                    </Canvas>
+                    </local:RobotArmBase>
 
-                </Canvas>
+                </local:RobotArmBase>
 
-            </Canvas>
+            </local:RobotArmBase>
         </Canvas>
     </Canvas>
 </local:BatteryCarrierBase>
