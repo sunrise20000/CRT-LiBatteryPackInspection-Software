@@ -34,6 +34,18 @@ namespace Crt.UiCore.Controls
             InitializeComponent();
         }
 
+        #region DP - Arm1 Angle
+
+        public static readonly DependencyProperty Arm1AngleProperty = DependencyProperty.Register(
+            nameof(Arm1Angle), typeof(double), typeof(YamahaRobot800), new PropertyMetadata(default(double)));
+
+        public double Arm1Angle
+        {
+            get => (double)GetValue(Arm1AngleProperty);
+            set => SetValue(Arm1AngleProperty, value);
+        }
+
+        #endregion
 
         #region Methods
 

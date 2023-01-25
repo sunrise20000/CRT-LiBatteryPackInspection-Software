@@ -71,6 +71,7 @@
     <Compile Include="Controls\Feeder.xaml.cs">
       <DependentUpon>Feeder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\RobotArmBase.cs" />
     <Compile Include="Controls\YamahaRobot800.xaml.cs">
       <DependentUpon>YamahaRobot800.xaml</DependentUpon>
     </Compile>

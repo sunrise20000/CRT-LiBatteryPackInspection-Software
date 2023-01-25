@@ -169,7 +169,7 @@
                     </Canvas.RenderTransform>
                     <Image Source="/Crt.UiCore;component/Resources/Robot/yamaha_robot_arm2.png"/>
 
-                    <Canvas Name="Gripper" Height="39" Width="108" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-56,0,0,0" RenderTransformOrigin="0.5,0.5" Canvas.Top="150" Canvas.Left="28">
+                    <Canvas Name="Gripper" Height="39" Width="108" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-56,0,0,0" RenderTransformOrigin="0.5,0.5" Canvas.Top="150" Canvas.Left="34">
                         <Canvas.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
