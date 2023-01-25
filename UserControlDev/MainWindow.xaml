@@ -26,5 +26,6 @@
         <controls:YamahaRobot800 x:Name="RobotYamaha" HorizontalAlignment="Left" VerticalAlignment="Top" Height="246" Width="283" CurrentPosition="0" Margin="96,141,0,0"/>
 
         <controls:Feeder x:Name="Feeder" Height="63" Canvas.Left="349" Canvas.Top="422.533" Width="298" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <controls:BatteryFlipStage x:Name="FlippingStage" Height="63" Canvas.Left="705" Canvas.Top="340" Width="106" HorizontalAlignment="Left" VerticalAlignment="Top" HasBattery="True" BatteryView="Front"/>
     </Canvas>
 </Window>

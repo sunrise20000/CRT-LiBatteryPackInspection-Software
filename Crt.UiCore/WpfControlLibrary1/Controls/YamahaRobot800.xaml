@@ -180,7 +180,7 @@
                         </Canvas.RenderTransform>
                         <Image Source="/Crt.UiCore;component/Resources/Common/GripperBlackWide.png" />
 
-                        <local:LiBatteryPack IsShowBattery="True" 
+                        <local:LiBatteryPack IsShowBattery="{Binding HasBattery, RelativeSource={RelativeSource AncestorType=local:BatteryCarrierBase, Mode=FindAncestor}, Mode=OneWay}" 
                                          Height="28" Width="88" 
                                          HorizontalAlignment="Left" 
                                          VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="8"/>

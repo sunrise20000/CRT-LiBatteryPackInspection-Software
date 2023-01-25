@@ -66,7 +66,7 @@
             <Image x:Name="ImgGripperWide" Visibility="Visible" Source="/Crt.UiCore;component/Resources/Common/GripperWhiteWide.png"/>
             <Image x:Name="ImgGripperNarrow" Visibility="Hidden" Source="/Crt.UiCore;component/Resources/Common/GripperWhiteNarrow.png"/>
 
-            <local:LiBatteryPack x:Name="BatteryPack" IsShowBattery="{Binding HasBattery, RelativeSource={RelativeSource AncestorType=ContentControl, Mode=FindAncestor}, Mode=OneWay}" 
+            <local:LiBatteryPack x:Name="BatteryPack" IsShowBattery="{Binding HasBattery, RelativeSource={RelativeSource AncestorType=local:BatteryCarrierBase, Mode=FindAncestor}, Mode=OneWay}" 
                                  VerticalAlignment="Top" HorizontalAlignment="Left" Canvas.Left="8" Canvas.Top="0" Height="25" Width="86" View="Front" />
         </Canvas>
     </Canvas>

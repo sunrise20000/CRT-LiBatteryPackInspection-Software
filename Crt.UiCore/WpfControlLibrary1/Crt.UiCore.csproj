@@ -48,6 +48,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\BatteryFlipStage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Feeder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -61,6 +65,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="Controls\BatteryCarrierBase.cs" />
+    <Compile Include="Controls\BatteryFlipStage.xaml.cs">
+      <DependentUpon>BatteryFlipStage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Feeder.xaml.cs">
       <DependentUpon>Feeder.xaml</DependentUpon>
     </Compile>
@@ -118,9 +125,6 @@
     <Resource Include="Resources\Common\transporter_gripper_fixture.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Common\BatteryRotationStageBase.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Motors\LinearMotor.png" />
     <Resource Include="Resources\Motors\NGTransporter.png" />
     <Resource Include="Resources\Motors\transporter_s1_to_s2_x.png" />
@@ -133,6 +137,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Common\FeedOutConvyerBelt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Common\BatteryFlipStageBase.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

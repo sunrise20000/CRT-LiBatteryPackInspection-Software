@@ -167,6 +167,31 @@ namespace UserControlDev
                     }
                 }
             });
+            
+            // Flip Stage测试
+            Task.Run(async () =>
+            {
+                while (true)
+                {
+                    try
+                    {
+                        Invoke(()=> FlippingStage.HasBattery = true);
+                        await Task.Delay(500);
+                        Invoke(() => FlippingStage.BatteryView = BatteryFlipStage.BatteryViewTypes.Top);
+                        await Task.Delay(1000);
+                        Invoke(() => FlippingStage.BatteryView = BatteryFlipStage.BatteryViewTypes.Front);
+                        await Task.Delay(500);
+                        Invoke(() => FlippingStage.HasBattery = false);
+                        await Task.Delay(1000);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
+                    }
+                    
+                }
+            });
         }
 
         private void Invoke(Action action)

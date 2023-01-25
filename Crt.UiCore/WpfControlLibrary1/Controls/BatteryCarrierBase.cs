@@ -107,6 +107,9 @@ namespace Crt.UiCore.Controls
 
         private void StoryboardMonitor()
         {
+            if(Storyboards == null || Storyboards.Count == 0) 
+                return;
+            
             Task.Run(async () =>
             {
                 while (true)
