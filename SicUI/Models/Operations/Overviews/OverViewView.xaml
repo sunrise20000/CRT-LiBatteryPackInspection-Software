@@ -14,64 +14,25 @@
     xmlns:unitControls="clr-namespace:MECF.Framework.UI.Client.Ctrlib.UnitControls;assembly=MECF.Framework.UI.Client"
     xmlns:vr="clr-namespace:SicUI.Models.Operations.Overviews"
     xmlns:waferAssociation="clr-namespace:MECF.Framework.UI.Client.CenterViews.Operations.WaferAssociation;assembly=MECF.Framework.UI.Client" xmlns:control="clr-namespace:MECF.Framework.UI.Core.Control;assembly=MECF.Framework.UI.Core"
+    xmlns:mainframe="clr-namespace:SicUI.Controls.Mainframe"
+    xmlns:controls1="clr-namespace:Crt.UiCore.Controls;assembly=Crt.UiCore"
     d:DesignHeight="760"
     d:DesignWidth="1900"
     mc:Ignorable="d">
     <UserControl.Resources>
-        <Style x:Key="Text_Online_PM1" TargetType="{x:Type TextBlock}">
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding PM1IsOnline}" Value="True">
-                    <Setter Property="Foreground" Value="{DynamicResource FG_Green}" />
-                </DataTrigger>
-                <DataTrigger Binding="{Binding PM1IsOnline}" Value="False">
-                    <Setter Property="Foreground" Value="{DynamicResource FG_Black}" />
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="Text_Online_PM2" TargetType="{x:Type TextBlock}">
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding PM2IsOnline}" Value="True">
-                    <Setter Property="Foreground" Value="{DynamicResource FG_Green}" />
-                </DataTrigger>
-                <DataTrigger Binding="{Binding PM2IsOnline}" Value="False">
-                    <Setter Property="Foreground" Value="{DynamicResource FG_Black}" />
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="Text_Online_PM3" TargetType="{x:Type TextBlock}">
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding PM3IsOnline}" Value="True">
-                    <Setter Property="Foreground" Value="{DynamicResource FG_Green}" />
-                </DataTrigger>
-                <DataTrigger Binding="{Binding PM3IsOnline}" Value="False">
-                    <Setter Property="Foreground" Value="{DynamicResource FG_Black}" />
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="Text_Online_PM4" TargetType="{x:Type TextBlock}">
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding PM4IsOnline}" Value="True">
-                    <Setter Property="Foreground" Value="{DynamicResource FG_Green}" />
-                </DataTrigger>
-                <DataTrigger Binding="{Binding PM4IsOnline}" Value="False">
-                    <Setter Property="Foreground" Value="{DynamicResource FG_Black}" />
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
 
-
-
-
-        <Style x:Key="ColumnHeader" TargetType="DataGridColumnHeader">
-            <Setter Property="FontSize" Value="10" />
-        </Style>
     </UserControl.Resources>
     <Grid Margin="-5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="360" />
         </Grid.ColumnDefinitions>
-        
+
+        <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top">
+            <mainframe:InspectionLine HorizontalAlignment="Left" VerticalAlignment="Center" Width="2304" Height="732" />
+        </Viewbox>
+
+        <!--右侧功能栏-->
         <Grid Grid.Column="1">
             <Canvas>
                 <Grid

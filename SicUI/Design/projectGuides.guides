@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<ProjectGuidesConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ProjectItemGuides>
+    <ProjectItemGuide TargetFile="Models\Operations\Overviews\OverViewView.xaml">
+      <GuideModels>
+        <GuideModel>
+          <Guides>
+            <Guide Alignment="Top" Position="151" />
+            <Guide Alignment="Left" Position="1256" />
+            <Guide Alignment="Top" Position="200" />
+            <Guide Alignment="Top" Position="289" />
+            <Guide Alignment="Left" Position="1288" />
+            <Guide Alignment="Left" Position="1283" />
+          </Guides>
+        </GuideModel>
+      </GuideModels>
+    </ProjectItemGuide>
+    <ProjectItemGuide TargetFile="Controls\Mainframe\InspectionLine.xaml">
+      <GuideModels>
+        <GuideModel>
+          <Guides>
+            <Guide Alignment="Top" Position="233" />
+            <Guide Alignment="Left" Position="1979" />
+            <Guide Alignment="Top" Position="302" />
+            <Guide Alignment="Top" Position="432" />
+            <Guide Alignment="Left" Position="1992" />
+            <Guide Alignment="Left" Position="1741" />
+          </Guides>
+        </GuideModel>
+      </GuideModels>
+    </ProjectItemGuide>
+  </ProjectItemGuides>
+</ProjectGuidesConfiguration>

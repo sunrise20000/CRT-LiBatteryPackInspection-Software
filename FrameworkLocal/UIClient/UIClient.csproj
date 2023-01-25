@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MECF.Framework.UI.Client</RootNamespace>
     <AssemblyName>MECF.Framework.UI.Client</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\output\MECF.Framework\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;NET,EXPORT_TO_CSV</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -756,7 +756,6 @@
     <Compile Include="Themes\CenterBorderGapMaskConverter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Caliburn.Micro\Caliburn.snk" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -1634,7 +1633,7 @@
       <Name>MECF.Framework.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Sicentury.Core\Sicentury.Core.csproj">
-      <Project>{A78B3F87-4601-43F7-A941-EDB339CE35A9}</Project>
+      <Project>{a78b3f87-4601-43f7-a941-edb339ce35a9}</Project>
       <Name>Sicentury.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\UICore\UICore.csproj">

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MECF.Framework.UI.Core.LogicParts
+namespace SicUI.Controls.Mainframe
 {
     /// <summary>
-    /// Interaction logic for LiBattStation1.xaml
+    /// Interaction logic for InspectionLine.xaml
     /// </summary>
-    public partial class LiBattMoverTopView : UserControl
+    public partial class InspectionLine : UserControl
     {
-        public LiBattMoverTopView()
+        public InspectionLine()
         {
             InitializeComponent();
         }

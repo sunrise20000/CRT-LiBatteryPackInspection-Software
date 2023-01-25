@@ -17,6 +17,7 @@ using Aitex.Core.WCF;
 using CommandLine;
 using MECF.Framework.UI.Client.ClientBase;
 using SciChart.Charting.Visuals;
+using SicUI.Models.Operations.Overviews;
 
 namespace SicUI.Client
 {
@@ -238,7 +239,7 @@ namespace SicUI.Client
                             { nameof(MainView.SplashScreen), _splashScreen }
                         };
 
-                        DisplayRootViewFor<TestWinViewModel>(dictArguments);
+                        DisplayRootViewFor<MainViewModel>(dictArguments);
 
                         base.OnStartup(sender, e);
                     }
@@ -290,7 +291,7 @@ namespace SicUI.Client
             _container.Singleton<IWindowManager, WindowManager>();
             //container.Singleton<IPublisher, Publisher>();
 
-            _container.PerRequest<TestWinViewModel>();
+            _container.PerRequest<MainViewModel>();
         }
 
         protected override object GetInstance(Type service, string key)

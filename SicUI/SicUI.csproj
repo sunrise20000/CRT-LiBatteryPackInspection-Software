@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SicUI</RootNamespace>
     <AssemblyName>SicUI</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -172,6 +172,9 @@
     </Compile>
     <Compile Include="Controls\Mainframe\EFEMControl.xaml.cs">
       <DependentUpon>EFEMControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Mainframe\InspectionLine.xaml.cs">
+      <DependentUpon>InspectionLine.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Mainframe\M2C4EFEMView.xaml.cs">
       <DependentUpon>M2C4EFEMView.xaml</DependentUpon>
@@ -384,10 +387,6 @@
     <Compile Include="ProcessMonitorView.xaml.cs">
       <DependentUpon>ProcessMonitorView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TestWinView.xaml.cs">
-      <DependentUpon>TestWinView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="TestWinViewModel.cs" />
     <Page Include="Controls\AITPump.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -417,6 +416,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Mainframe\EFEMControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Mainframe\InspectionLine.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -680,10 +683,6 @@
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
-    <Page Include="TestWinView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -730,6 +729,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Design\projectGuides.guides" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -738,6 +738,14 @@
     <Resource Include="Themes\Font\iconfont.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Crt.UiCore\WpfControlLibrary1\Crt.UiCore.csproj">
+      <Project>{f361e446-2401-4a33-83b7-250e25dd2e74}</Project>
+      <Name>Crt.UiCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FrameworkLocal\UIClient\UIClient.csproj">
+      <Project>{a40b734c-f2ec-453c-a5fb-70cd46452bf1}</Project>
+      <Name>UIClient</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FrameworkLocal\UICore\UICore.csproj">
       <Project>{2c9e1df3-1aba-4972-be60-41dd9b3c47a7}</Project>
       <Name>UICore</Name>
@@ -745,6 +753,10 @@
     <ProjectReference Include="..\MECF.Framework.Common\MECF.Framework.Common.csproj">
       <Project>{efad063f-fa97-42b7-87f8-8279eba30d34}</Project>
       <Name>MECF.Framework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sicentury.Core\Sicentury.Core.csproj">
+      <Project>{a78b3f87-4601-43f7-a941-edb339ce35a9}</Project>
+      <Name>Sicentury.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
