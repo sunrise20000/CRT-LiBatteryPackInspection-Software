@@ -131,5 +131,8 @@
     <Resource Include="Resources\Robot\yamaha_robot_arm2.png" />
     <Resource Include="Resources\Robot\yamaha_robot_base.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Common\FeedOutConvyerBelt.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

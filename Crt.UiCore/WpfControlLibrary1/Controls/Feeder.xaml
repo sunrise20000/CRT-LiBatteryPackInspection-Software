@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Crt.UiCore.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="50" d:DesignWidth="220">
     <local:BatteryCarrierBase.Resources>
 
         <Storyboard x:Key="ToStandbyStoryboard">
@@ -20,7 +20,7 @@
         <Storyboard x:Key="ToEndStoryboard">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="liBatteryPack" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
                 <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="-137">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="-113">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <CubicEase EasingMode="EaseInOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
@@ -32,11 +32,12 @@
         </Storyboard>
     </local:BatteryCarrierBase.Resources>
     <Canvas>
-        <Image Source="/Crt.UiCore;component/Resources/Common/Feeder.png" Stretch="None"/>
+        <Image Source="/Crt.UiCore;component/Resources/Common/FeedOutConvyerBelt.png" Stretch="None"/>
 
         <local:LiBatteryPack x:Name="liBatteryPack" 
+                             IsShowBattery="false"
                              AllowSelected="False"
-                             HorizontalAlignment="Left" VerticalAlignment="Top" Margin="153,8,0,0" RenderTransformOrigin="0.5,0.5" >
+                             HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Canvas.Left="126" Canvas.Top="13" Height="24" Width="84" >
             <local:LiBatteryPack.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -49,7 +50,7 @@
 
         <!-- 位于抓取位置的电池 -->
         <local:LiBatteryPack x:Name="liBatteryPackInPickPos"
-                             HorizontalAlignment="Left" VerticalAlignment="Top" 
-                             Margin="14,8,0,0" />
+                             IsShowBattery="True"
+                             HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="13" Canvas.Top="13" />
     </Canvas>
 </local:BatteryCarrierBase>

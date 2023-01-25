@@ -30,12 +30,12 @@
         </Storyboard>
         <Storyboard x:Key="ToEndWithRotationStoryboard">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Mover" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
-                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <CubicEase EasingMode="EaseInOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
-               <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="-90">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="-90">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <CubicEase EasingMode="EaseInOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
