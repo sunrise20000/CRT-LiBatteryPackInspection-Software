@@ -33,14 +33,16 @@ namespace Crt.UiCore.Controls
                 return;*/
 
             BuildStoryboard();
-            
+
+            if (Storyboards == null || Storyboards.Count == 0)
+                return;
+
             foreach (var storyboard in Storyboards.Values)
             {
                 storyboard.Completed += StoryboardOnCompleted;
             }
 
             LastPosition = null;
-
             AnimationBusy = false;
 
             StoryboardMonitor();
@@ -109,7 +111,7 @@ namespace Crt.UiCore.Controls
         {
             if(Storyboards == null || Storyboards.Count == 0) 
                 return;
-            
+
             Task.Run(async () =>
             {
                 while (true)

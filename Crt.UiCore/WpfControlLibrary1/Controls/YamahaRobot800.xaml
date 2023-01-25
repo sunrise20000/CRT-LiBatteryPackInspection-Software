@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Crt.UiCore.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" IsEnabled="False">
     <local:BatteryCarrierBase.Resources>
 
         <Storyboard x:Key="ToStandbyStoryboard">
@@ -126,7 +126,7 @@
             <Image Source="/Crt.UiCore;component/Resources/Robot/yamaha_robot_base.png" />
 
             <local:RobotArmBase x:Name="Arm1" Height="244.5" Width="73" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="16" Canvas.Top="24" RenderTransformOrigin="0.5,0.15"
-                                Angle="{Binding Arm2Angle, RelativeSource={RelativeSource AncestorType=local:BatteryCarrierBase, Mode=FindAncestor}, Mode=OneWay}">
+                                Angle="{Binding Arm1Angle, RelativeSource={RelativeSource AncestorType=local:BatteryCarrierBase, Mode=FindAncestor}, Mode=OneWay}">
 
                 <Image Source="/Crt.UiCore;component/Resources/Robot/yamaha_robot_arm1.png"/>
 

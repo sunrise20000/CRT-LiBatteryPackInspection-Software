@@ -72,6 +72,9 @@
       <DependentUpon>Feeder.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\RobotArmBase.cs" />
+    <Compile Include="Controls\YamahaRobot800WithoutStoryboard.xaml.cs">
+      <DependentUpon>YamahaRobot800WithoutStoryboard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\YamahaRobot800.xaml.cs">
       <DependentUpon>YamahaRobot800.xaml</DependentUpon>
     </Compile>
@@ -84,6 +87,10 @@
     <Compile Include="Controls\LinearMotor.xaml.cs">
       <DependentUpon>LinearMotor.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\YamahaRobot800WithoutStoryboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\YamahaRobot800.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
