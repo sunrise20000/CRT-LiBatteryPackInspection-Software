@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace Crt.UiCore.Controls
+namespace Crt.UiCore.Controls.Base
 {
     public class RobotArmBase : Canvas
     {

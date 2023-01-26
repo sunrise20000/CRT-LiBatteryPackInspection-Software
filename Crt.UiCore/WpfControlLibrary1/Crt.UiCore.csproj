@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -48,6 +49,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RtCore\BatteryInfo.cs" />
+    <Compile Include="RtCore\ProductionModuleNames.cs" />
     <Page Include="Controls\BatteryFlipStage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -64,14 +67,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Controls\BatteryCarrierBase.cs" />
+    <Compile Include="Controls\Base\BatteryCarrierBase.cs" />
     <Compile Include="Controls\BatteryFlipStage.xaml.cs">
       <DependentUpon>BatteryFlipStage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Feeder.xaml.cs">
       <DependentUpon>Feeder.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\RobotArmBase.cs" />
+    <Compile Include="Controls\Base\RobotArmBase.cs" />
+    <Compile Include="Controls\NgConveyorBelt.xaml.cs">
+      <DependentUpon>NgConveyorBelt.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\YamahaRobot800WithoutStoryboard.xaml.cs">
       <DependentUpon>YamahaRobot800WithoutStoryboard.xaml</DependentUpon>
     </Compile>
@@ -87,6 +93,10 @@
     <Compile Include="Controls\LinearMotor.xaml.cs">
       <DependentUpon>LinearMotor.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\NgConveyorBelt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\YamahaRobot800WithoutStoryboard.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -151,5 +161,13 @@
   <ItemGroup>
     <Resource Include="Resources\Robot\yamaha_robot_arm2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Common\NGConvyerBelt.png" />
+    <Resource Include="Resources\Common\NGTranporterConvyerBelt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Common\BeltTextture.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

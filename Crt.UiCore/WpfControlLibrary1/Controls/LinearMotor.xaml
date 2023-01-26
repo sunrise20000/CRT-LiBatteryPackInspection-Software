@@ -1,11 +1,12 @@
-﻿<local:BatteryCarrierBase x:Class="Crt.UiCore.Controls.LinearMotor"
+﻿<base:BatteryCarrierBase x:Class="Crt.UiCore.Controls.LinearMotor"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Crt.UiCore.Controls"
+             xmlns:base="clr-namespace:Crt.UiCore.Controls.Base"
              mc:Ignorable="d" d:Height="90" d:Width="370" Height="72" Width="305">
-    <local:BatteryCarrierBase.Resources>
+    <base:BatteryCarrierBase.Resources>
         <Storyboard x:Key="ToStandbyStoryboard">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Mover" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
                 <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0">
@@ -50,7 +51,7 @@
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
 
-    </local:BatteryCarrierBase.Resources>
+    </base:BatteryCarrierBase.Resources>
     <Canvas VerticalAlignment="Top" Height="69" Width="306" HorizontalAlignment="Left">
         <Image Source="/Crt.UiCore;component/Resources/Motors/LinearMotor.png" />
 
@@ -66,8 +67,8 @@
             <Image x:Name="ImgGripperWide" Visibility="Visible" Source="/Crt.UiCore;component/Resources/Common/GripperWhiteWide.png"/>
             <Image x:Name="ImgGripperNarrow" Visibility="Hidden" Source="/Crt.UiCore;component/Resources/Common/GripperWhiteNarrow.png"/>
 
-            <local:LiBatteryPack x:Name="BatteryPack" IsShowBattery="{Binding HasBattery, RelativeSource={RelativeSource AncestorType=local:BatteryCarrierBase, Mode=FindAncestor}, Mode=OneWay}" 
+            <local:LiBatteryPack x:Name="BatteryPack" IsShowBattery="{Binding HasBattery, RelativeSource={RelativeSource AncestorType=base:BatteryCarrierBase, Mode=FindAncestor}, Mode=OneWay}" 
                                  VerticalAlignment="Top" HorizontalAlignment="Left" Canvas.Left="8" Canvas.Top="0" Height="25" Width="86" View="Front" />
         </Canvas>
     </Canvas>
-</local:BatteryCarrierBase>
+</base:BatteryCarrierBase>

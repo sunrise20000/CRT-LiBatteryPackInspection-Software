@@ -28,5 +28,6 @@
         <controls:Feeder x:Name="Feeder" Height="63" Canvas.Left="349" Canvas.Top="422.533" Width="298" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <controls:BatteryFlipStage x:Name="FlippingStage" Height="63" Canvas.Left="705" Canvas.Top="340" Width="106" HorizontalAlignment="Left" VerticalAlignment="Top" HasBattery="True" BatteryView="Front"/>
         <controls:YamahaRobot800WithoutStoryboard  Canvas.Left="162.662" Canvas.Top="273.88" Height="398" Width="104" HorizontalAlignment="Left" VerticalAlignment="Center" Arm1Angle="-67" Arm2Angle="152" GripperAngle="-81"/>
+        <controls:NgConveyorBelt x:Name="ngConveyor" Canvas.Left="271.662" Canvas.Top="542.725" Height="46" Width="531" HorizontalAlignment="Center" VerticalAlignment="Top" CurrentPosition="2"/>
     </Canvas>
 </Window>

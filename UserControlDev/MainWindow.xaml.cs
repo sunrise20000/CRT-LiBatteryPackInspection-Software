@@ -192,6 +192,34 @@ namespace UserControlDev
                     
                 }
             });
+
+            // NG Conveyor测试
+            Task.Run(async () =>
+            {
+                while (true)
+                {
+                    try
+                    {
+                        Invoke(() => ngConveyor.AddBattery());
+                        await Task.Delay(1000);
+                        Invoke(() => ngConveyor.AddBattery());
+                        await Task.Delay(1000);
+                        Invoke(() => ngConveyor.AddBattery());
+                        await Task.Delay(1000);
+                        Invoke(() => ngConveyor.AddBattery());
+                        await Task.Delay(1000);
+                        Invoke(() => ngConveyor.AddBattery());
+                        await Task.Delay(1000);
+
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
+                    }
+
+                }
+            });
         }
 
         private void Invoke(Action action)

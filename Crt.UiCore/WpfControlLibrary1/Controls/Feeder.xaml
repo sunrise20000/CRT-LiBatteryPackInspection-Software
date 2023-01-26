@@ -1,12 +1,13 @@
-﻿<local:BatteryCarrierBase x:Class="Crt.UiCore.Controls.Feeder"
+﻿<base:BatteryCarrierBase x:Class="Crt.UiCore.Controls.Feeder"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Crt.UiCore.Controls"
+             xmlns:base="clr-namespace:Crt.UiCore.Controls.Base"
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="220">
-    <local:BatteryCarrierBase.Resources>
+    <base:BatteryCarrierBase.Resources>
 
         <Storyboard x:Key="ToStandbyStoryboard">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="liBatteryPack" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
@@ -30,7 +31,7 @@
                 <DiscreteBooleanKeyFrame KeyTime="00:00:00" Value="True"/>
             </BooleanAnimationUsingKeyFrames>
         </Storyboard>
-    </local:BatteryCarrierBase.Resources>
+    </base:BatteryCarrierBase.Resources>
     <Canvas>
         <Image Source="/Crt.UiCore;component/Resources/Common/FeedOutConvyerBelt.png" Stretch="None"/>
 
@@ -53,4 +54,4 @@
                              IsShowBattery="True"
                              HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="13" Canvas.Top="13" />
     </Canvas>
-</local:BatteryCarrierBase>
+</base:BatteryCarrierBase>

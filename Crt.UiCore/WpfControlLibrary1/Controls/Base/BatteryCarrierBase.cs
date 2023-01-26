@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 
-namespace Crt.UiCore.Controls
+namespace Crt.UiCore.Controls.Base
 {
     public abstract class BatteryCarrierBase: ContentControl
     {
@@ -32,6 +31,7 @@ namespace Crt.UiCore.Controls
             if (isDesignMode)
                 return;*/
 
+            // 创建动画故事板
             BuildStoryboard();
 
             if (Storyboards == null || Storyboards.Count == 0)

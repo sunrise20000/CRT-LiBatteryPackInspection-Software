@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media.Animation;
+using Crt.UiCore.Controls.Base;
 
 namespace Crt.UiCore.Controls
 {
