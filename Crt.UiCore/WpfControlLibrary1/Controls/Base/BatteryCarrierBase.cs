@@ -17,6 +17,8 @@ namespace Crt.UiCore.Controls.Base
         protected Dictionary<int, Storyboard> Storyboards;
         protected int? LastPosition;
 
+        private Action _invokeOnAnimationComplete;
+        
         #endregion
 
         #region Constructors
@@ -39,7 +41,7 @@ namespace Crt.UiCore.Controls.Base
 
             foreach (var storyboard in Storyboards.Values)
             {
-                storyboard.Completed += StoryboardOnCompleted;
+                storyboard.Completed += OnStoryboardComplete;
             }
 
             LastPosition = null;
@@ -141,14 +143,29 @@ namespace Crt.UiCore.Controls.Base
             });
         }
 
+        /// <summary>
+        /// 设置动画完成后需要执行的任务。
+        /// </summary>
+        /// <param name="action"></param>
+        protected void DoOnAnimationDone(Action action)
+        {
+            _invokeOnAnimationComplete = action;
+        }
+
         #endregion
 
         #region Events
 
-        private void StoryboardOnCompleted(object sender, EventArgs e)
+        protected virtual void OnStoryboardComplete(object sender, EventArgs e)
         {
             LastPosition = CurrentPosition;
             AnimationBusy = false;
+
+            if (_invokeOnAnimationComplete != null)
+            {
+                Dispatcher?.Invoke(_invokeOnAnimationComplete);
+                _invokeOnAnimationComplete = null;
+            }
         }
 
         #endregion

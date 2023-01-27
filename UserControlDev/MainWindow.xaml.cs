@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
+using Crt.UiCore.RtCore;
 
 namespace UserControlDev
 {
@@ -196,21 +197,27 @@ namespace UserControlDev
             // NG Conveyor测试
             Task.Run(async () =>
             {
+                await Task.Delay(3000);
+                
+                var batteryCounter = 0;
                 while (true)
                 {
                     try
                     {
-                        Invoke(() => ngConveyor.AddBattery());
-                        await Task.Delay(1000);
-                        Invoke(() => ngConveyor.AddBattery());
-                        await Task.Delay(1000);
-                        Invoke(() => ngConveyor.AddBattery());
-                        await Task.Delay(1000);
-                        Invoke(() => ngConveyor.AddBattery());
-                        await Task.Delay(1000);
-                        Invoke(() => ngConveyor.AddBattery());
-                        await Task.Delay(1000);
+                        for (var i = 0; i < NgConveyorBelt.BATTERY_CAPACITY; i++)
+                        {
+                            if(i == 3)
+                                Invoke(()=>ngConveyor.AddBattery(new BatteryInfo()));
+                            else
+                                Invoke(() => ngConveyor.AddBattery(new BatteryInfo(PublicModuleNames.FeedInletA, $"BATT-{batteryCounter++}")));
+                            await Task.Delay(2000);
+                        }
 
+                        for (var i = 0; i < NgConveyorBelt.BATTERY_CAPACITY; i++)
+                        {
+                            Invoke(() => ngConveyor.PopBattery());
+                            await Task.Delay(2000);
+                        }
                     }
                     catch (Exception e)
                     {

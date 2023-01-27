@@ -9,49 +9,55 @@
              d:DesignHeight="47" d:DesignWidth="532">
     <base:BatteryCarrierBase.Resources>
 
-        <Storyboard x:Key="BeltToStandbyStoryboard"/>
+        <Storyboard x:Key="BeltToStandbyStoryboard">
+            <DoubleAnimationUsingKeyFrames 
+                Storyboard.TargetName="BdBeltTexture"
+                Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                <DiscreteDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
 
         <Storyboard x:Key="BeltAddOrRemoveBatteryStoryboard">
             <DoubleAnimation 
                 Storyboard.TargetName="BdBeltTexture" 
-                Storyboard.TargetProperty="(Border.Background).(Brush.RelativeTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
-                From="0" To="0.06"
-                Duration="00:0:00.600000" >
+                Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                From="0" To="86"
+                Duration="00:0:00.300000">
             </DoubleAnimation>
         </Storyboard>
 
         <Storyboard x:Key="BeltPopBatteryStoryboard">
             <DoubleAnimation 
                 Storyboard.TargetName="BdBeltTexture" 
-                Storyboard.TargetProperty="(Border.Background).(Brush.RelativeTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
-                From="0" To="-0.06"
-                Duration="00:0:00.600000">
+                Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                From="0" To="-86"
+                Duration="00:0:00.300000">
             </DoubleAnimation>
         </Storyboard>
 
     </base:BatteryCarrierBase.Resources>
     <Canvas ClipToBounds="True" Height="47" Width="532" HorizontalAlignment="Left" VerticalAlignment="Top">
         <Image Source="/Crt.UiCore;component/Resources/Common/NGConvyerBelt.png" Canvas.Left="-12"/>
-        <Border x:Name="BdBeltTexture" Height="27" Width="532" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="10">
+        <Border x:Name="BdBeltTexture" Height="27" Width="712" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="10" Canvas.Left="-90" RenderTransformOrigin="0.5,0.5">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Border.RenderTransform>
             <Border.Background>
                 <ImageBrush ImageSource="/Crt.UiCore;component/Resources/Common/BeltTextture.png" Stretch="None" TileMode="Tile"
-                            Viewport="0,0,5,5" ViewportUnits="Absolute" Viewbox="0,0,5,5" ViewboxUnits="Absolute">
-                    <ImageBrush.RelativeTransform>
-                        <TransformGroup>
-                            <ScaleTransform />
-                            <SkewTransform />
-                            <RotateTransform />
-                            <TranslateTransform X="0"/>
-                        </TransformGroup>
-                    </ImageBrush.RelativeTransform>
-                </ImageBrush>
+                            Viewport="0,0,5,5" ViewportUnits="Absolute" Viewbox="0,0,5,5" ViewboxUnits="Absolute"/>
+
             </Border.Background>
 
-            <!--<ItemsControl 
+            <ItemsControl 
                       HorizontalAlignment="Left" 
-                    VerticalAlignment="Top"  Height="27" Width="532" 
+                      Height="27" Width="532" 
                       ItemsSource="{Binding BatterySlots, RelativeSource={RelativeSource AncestorType=base:BatteryCarrierBase, Mode=FindAncestor}, Mode=OneWay}"
-                       Margin="0,2,0,0">
+                       Margin="90,2,0,0">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal"/>
@@ -59,15 +65,15 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <local:LiBatteryPack IsShowBattery="{Binding HasBattery}" Width="87"/>
+                        <local:LiBatteryPack IsShowBattery="{Binding HasBattery}" Width="88"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
-            </ItemsControl>-->
-            <StackPanel x:Name="stackPanel" 
+            </ItemsControl>
+            <!--<StackPanel x:Name="stackPanel" 
                     Orientation="Horizontal" 
-                    HorizontalAlignment="Left" 
-                    VerticalAlignment="Top"  Width="532" 
-                    DataContext="{Binding BatterySlots, RelativeSource={RelativeSource AncestorType=base:BatteryCarrierBase, Mode=FindAncestor}, Mode=OneWay}" Margin="0,2,0,0">
+                    HorizontalAlignment="Left"  Width="532" 
+                    DataContext="{Binding BatterySlots, RelativeSource={RelativeSource AncestorType=base:BatteryCarrierBase, Mode=FindAncestor}, Mode=OneWay}" 
+                        Margin="90,2,0,0">
                 <StackPanel.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -82,9 +88,9 @@
                 <local:LiBatteryPack IsShowBattery="True" Width="87"/>
                 <local:LiBatteryPack IsShowBattery="True" Width="87"/>
                 <local:LiBatteryPack IsShowBattery="True" Width="87"/>
-            </StackPanel>
+            </StackPanel>-->
 
         </Border>
-        
+
     </Canvas>
 </base:BatteryCarrierBase>

@@ -13,7 +13,22 @@ namespace Crt.UiCore.RtCore
     [DataContract]
     public class BatteryInfo : INotifyPropertyChanged
     {
-        #region
+
+        #region Constructors
+
+        public BatteryInfo()
+        {
+            
+        }
+
+        public BatteryInfo(PublicModuleNames module, string sn)
+        {
+           SetInfo(module, sn);
+        }
+
+        #endregion
+
+        #region Properties
 
         private PublicModuleNames _currentModule;
 
@@ -50,7 +65,47 @@ namespace Crt.UiCore.RtCore
             get => _hasBattery;
             set => SetField(ref _hasBattery, value);
         }
-        
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// 清除电池信息。
+        /// </summary>
+        public void ClearInfo()
+        {
+            HasBattery = false;
+            BatterySn = string.Empty;
+        }
+
+        /// <summary>
+        /// 设置电池信息。
+        /// </summary>
+        /// <param name="moduleName"></param>
+        /// <param name="sn"></param>
+        public void SetInfo(PublicModuleNames moduleName, string sn)
+        {
+            CurrentModule = moduleName;
+            BatterySn = sn;
+            HasBattery = true;
+        }
+
+        /// <summary>
+        /// 将当前电池信息传递到目标信息对象。
+        /// </summary>
+        /// <param name="targetInfo">待传递的目标信息对象。</param>
+        /// <param name="isClearMe">是否清除我的信息。</param>
+        public void TransferInfoTo(BatteryInfo targetInfo, bool isClearMe = true)
+        {
+            targetInfo.CurrentModule = CurrentModule;
+            targetInfo.BatterySn = BatterySn;
+            targetInfo.HasBattery = HasBattery;
+            
+            if(isClearMe)
+                ClearInfo();
+        }
+
         #endregion
 
         #region INotifyPropertyChanged Implementation
