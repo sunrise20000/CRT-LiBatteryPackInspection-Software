@@ -30,44 +30,44 @@ namespace UserControlDev
                         // Debug.WriteLine($"Move to {YamahaRobot800.Positions.Standby}");
                         Invoke(() =>
                         {
-                            RobotYamaha.CurrentPosition = (int)YamahaRobot800.Positions.Standby;
+                            RobotYamaha.SetPosition((int)YamahaRobot800.Positions.Standby);
                             RobotYamaha.HasBattery = false;
                         });
 
                         await Task.Delay(500);
 
                         // Debug.WriteLine($"Move to {YamahaRobot800.Positions.FeederA}");
-                        Invoke(() => RobotYamaha.CurrentPosition = (int)YamahaRobot800.Positions.FeederA);
+                        Invoke(() => RobotYamaha.SetPosition((int)YamahaRobot800.Positions.FeederA));
                         await Task.Delay(500);
                         Invoke(() => RobotYamaha.HasBattery = true);
                         await Task.Delay(500);
 
                         // Debug.WriteLine($"Move to {YamahaRobot800.Positions.Standby}");
-                        Invoke(() => RobotYamaha.CurrentPosition = (int)YamahaRobot800.Positions.Standby);
+                        Invoke(() => RobotYamaha.SetPosition((int)YamahaRobot800.Positions.Standby));
                         await Task.Delay(500);
 
                         // Debug.WriteLine($"Move to {YamahaRobot800.Positions.Station1A}");
-                        Invoke(() => RobotYamaha.CurrentPosition = (int)YamahaRobot800.Positions.Station1A);
+                        Invoke(() => RobotYamaha.SetPosition((int)YamahaRobot800.Positions.Station1A));
                         await Task.Delay(500);
                         Invoke(() => RobotYamaha.HasBattery = false);
                         await Task.Delay(500);
 
                         // Debug.WriteLine($"Move to {YamahaRobot800.Positions.Standby}");
-                        Invoke(() => RobotYamaha.CurrentPosition = (int)YamahaRobot800.Positions.Standby);
+                        Invoke(() => RobotYamaha.SetPosition((int)YamahaRobot800.Positions.Standby));
                         await Task.Delay(500);
 
                         // Debug.WriteLine($"Move to {YamahaRobot800.Positions.FeederB}");
-                        Invoke(() => RobotYamaha.CurrentPosition = (int)YamahaRobot800.Positions.FeederB);
+                        Invoke(() => RobotYamaha.SetPosition((int)YamahaRobot800.Positions.FeederB));
                         await Task.Delay(500);
                         Invoke(() => RobotYamaha.HasBattery = true);
                         await Task.Delay(500);
 
                         // Debug.WriteLine($"Move to {YamahaRobot800.Positions.Standby}");
-                        Invoke(() => RobotYamaha.CurrentPosition = (int)YamahaRobot800.Positions.Standby);
+                        Invoke(() => RobotYamaha.SetPosition((int)YamahaRobot800.Positions.Standby));
                         await Task.Delay(500);
 
                         // Debug.WriteLine($"Move to {YamahaRobot800.Positions.Station1B}");
-                        Invoke(() => RobotYamaha.CurrentPosition = (int)YamahaRobot800.Positions.Station1B);
+                        Invoke(() => RobotYamaha.SetPosition((int)YamahaRobot800.Positions.Station1B));
                         await Task.Delay(500);
                         Invoke(() => RobotYamaha.HasBattery = false);
                         await Task.Delay(500);
@@ -94,33 +94,33 @@ namespace UserControlDev
                         Invoke(() =>
                         {
                             LinearMotor.BatteryView = LinearMotor.BatteryViewTypes.Top;
-                            LinearMotor.CurrentPosition = (int)LinearMotor.Positions.Standby;
+                            LinearMotor.SetPosition((int)LinearMotor.Positions.Standby);
                             LinearMotor.HasBattery = false;
                         });
 
                         await Task.Delay(500);
 
                         // Debug.WriteLine($"Move to {LinearMotor.Positions.Standby}");
-                        Invoke(() => LinearMotor.CurrentPosition = (int)LinearMotor.Positions.Standby);
+                        Invoke(() => LinearMotor.SetPosition((int)LinearMotor.Positions.Standby));
                         await Task.Delay(500);
                         Invoke(() => LinearMotor.HasBattery = true);
                         await Task.Delay(500);
 
                         // Debug.WriteLine($"Move to {LinearMotor.Positions.End}");
-                        Invoke(() => LinearMotor.CurrentPosition = (int)LinearMotor.Positions.End);
+                        Invoke(() => LinearMotor.SetPosition((int)LinearMotor.Positions.End));
                         await Task.Delay(500);
                         Invoke(() => LinearMotor.HasBattery = false);
                         await Task.Delay(500);
 
                         // Debug.WriteLine($"Move to {LinearMotor.Positions.Standby}");
-                        Invoke(() => LinearMotor.CurrentPosition = (int)LinearMotor.Positions.Standby);
+                        Invoke(() => LinearMotor.SetPosition((int)LinearMotor.Positions.Standby));
                         Invoke(() => LinearMotor.BatteryView = LinearMotor.BatteryViewTypes.Front);
                         await Task.Delay(500);
                         Invoke(() => LinearMotor.HasBattery = true);
                         await Task.Delay(500);
 
                         // Debug.WriteLine($"Move to {LinearMotor.Positions.EndWithRotation}");
-                        Invoke(() => LinearMotor.CurrentPosition = (int)LinearMotor.Positions.EndWithRotation);
+                        Invoke(() => LinearMotor.SetPosition((int)LinearMotor.Positions.EndWithRotation));
                         await Task.Delay(500);
                         Invoke(() => LinearMotor.HasBattery = false);
                         await Task.Delay(500);
@@ -147,14 +147,14 @@ namespace UserControlDev
                         // Debug.WriteLine($"Move to {Feeder.Positions.Standby}");
                         Invoke(() =>
                         {
-                            Feeder.CurrentPosition = (int)Feeder.Positions.Standby;
+                            Feeder.SetPosition((int)Feeder.Positions.Standby);
                             Feeder.HasBattery = false;
                         });
 
                         await Task.Delay(500);
 
                         // Debug.WriteLine($"Move to {Feeder.Positions.End}");
-                        Invoke(() => Feeder.CurrentPosition = (int)Feeder.Positions.End);
+                        Invoke(() => Feeder.SetPosition((int)Feeder.Positions.End));
                         await Task.Delay(500);
                         Invoke(() => Feeder.HasBattery = true);
                         await Task.Delay(500);

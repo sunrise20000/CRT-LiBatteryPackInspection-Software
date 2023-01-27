@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
+using System.Windows.Threading;
 
 namespace Crt.UiCore.Controls.Base
 {
@@ -18,16 +20,25 @@ namespace Crt.UiCore.Controls.Base
         protected int? LastPosition;
 
         private Action _invokeOnAnimationComplete;
-        
+
+        private readonly ConcurrentQueue<(int position, Action doOnAnimationBegin, Action doOnAnimationEnd)>
+            _qPositions;
+
         #endregion
 
         #region Constructors
 
+        protected BatteryCarrierBase()
+        {
+            _qPositions = new ConcurrentQueue<(int position, Action doOnAnimationBegin, Action doOnAnimationEnd)>();
+        }
+        
 
         protected override void OnInitialized(EventArgs e)
         {
             base.OnInitialized(e);
 
+           
 
             /*var isDesignMode = DesignerProperties.GetIsInDesignMode(this);
             if (isDesignMode)
@@ -87,7 +98,7 @@ namespace Crt.UiCore.Controls.Base
         public int CurrentPosition
         {
             get => (int)GetValue(CurrentPositionProperty);
-            set => SetValue(CurrentPositionProperty, value);
+            private set => SetValue(CurrentPositionProperty, value);
         }
 
 
@@ -120,16 +131,20 @@ namespace Crt.UiCore.Controls.Base
                 {
                     try
                     {
-                        var currPos = Dispatcher.Invoke(() => (int)GetValue(CurrentPositionProperty));
-
-                        if (LastPosition != currPos && !AnimationBusy)
+                        if (_qPositions.TryDequeue(out var token))
                         {
-                            // Debug.WriteLine($"_lastPosition: {LastPosition}, CurrentPosition: {currPos}");
-                            var sb = Storyboards.ContainsKey(currPos) ? Storyboards[currPos] : null;
+                            var sb = Storyboards.ContainsKey(token.position) ? Storyboards[token.position] : null;
+                            _invokeOnAnimationComplete = token.doOnAnimationEnd;
 
-                            //Debug.WriteLine(Storyboards[currPos]);
-                            AnimationBusy = true;
-                            Dispatcher.Invoke(() => sb?.Begin());
+                            Dispatcher?.Invoke(() =>
+                            {
+                                LastPosition = CurrentPosition;
+                                CurrentPosition = token.position;
+                                AnimationBusy = true; 
+                                token.doOnAnimationBegin?.Invoke();
+                                sb?.Begin();
+                            });
+
                         }
                     }
                     catch (Exception ex)
@@ -138,18 +153,20 @@ namespace Crt.UiCore.Controls.Base
                     }
 
 
-                    await Task.Delay(10);
+                    await Task.Delay(5);
                 }
             });
         }
 
         /// <summary>
-        /// 设置动画完成后需要执行的任务。
+        /// 设置下一个位置。
         /// </summary>
-        /// <param name="action"></param>
-        protected void DoOnAnimationDone(Action action)
+        /// /// <param name="nextPosition">控件的位置。</param>
+        /// <param name="doOnAnimationBegin">启动动画前执行的动作</param>
+        /// <param name="doOnAnimationEnd">动画结束后的动作</param>
+        public void SetPosition(int nextPosition, Action doOnAnimationBegin = null, Action doOnAnimationEnd = null)
         {
-            _invokeOnAnimationComplete = action;
+            _qPositions.Enqueue((nextPosition, doOnAnimationBegin, doOnAnimationEnd));
         }
 
         #endregion
@@ -158,7 +175,6 @@ namespace Crt.UiCore.Controls.Base
 
         protected virtual void OnStoryboardComplete(object sender, EventArgs e)
         {
-            LastPosition = CurrentPosition;
             AnimationBusy = false;
 
             if (_invokeOnAnimationComplete != null)

@@ -35,7 +35,7 @@ namespace Crt.UiCore.Controls
                 self.liBatteryPackInPickPos.IsShowBattery = hasBattery;
 
                 if (self.HasBattery)
-                    self.CurrentPosition = (int)Positions.Standby;
+                    self.SetPosition((int)Positions.Standby);
             }
         }
 

@@ -140,32 +140,31 @@ namespace Crt.UiCore.Controls
 
         public void AddBattery(BatteryInfo info)
         {
-            if (AnimationBusy)
-                throw new InvalidOperationException("last operation is running.");
+            /*if (AnimationBusy)
+                throw new InvalidOperationException("last operation is running.");*/
             
-            // 当动画完成后，更新电池槽位状态。
-            DoOnAnimationDone(()=>
+            SetPosition((int)Positions.AddOrDequeue, 
+                () =>
+            {
+                // 更新影子槽位信息，用于动画显示
+                AddBatteryInfo(ShadowBatterySlots, (BatteryInfo)info.Clone());
+                
+                // 显示影子槽位用于动画显示
+                ShadowBatterySlotsItemsControl.Margin = new Thickness(4, 2, 0, 0);
+                BatterySlotsItemsControl.Visibility = Visibility.Collapsed;
+                ShadowBatterySlotsItemsControl.Visibility = Visibility.Visible;
+            }, 
+                () =>
             {
                 // 更新静态显示的电池槽位。
                 AddBatteryInfo(BatterySlots, info);
                 
-                CurrentPosition = (int)Positions.Standby;
-                
+                SetPosition((int)Positions.Standby);
+
                 // 隐藏影子槽位
                 BatterySlotsItemsControl.Visibility = Visibility.Visible;
                 ShadowBatterySlotsItemsControl.Visibility = Visibility.Collapsed;
             });
-
-            // 更新影子槽位信息，用于动画显示
-            AddBatteryInfo(ShadowBatterySlots, (BatteryInfo)info.Clone());
-
-            // 显示影子槽位用于动画显示
-            ShadowBatterySlotsItemsControl.Margin = new Thickness(4, 2, 0, 0);
-            BatterySlotsItemsControl.Visibility = Visibility.Collapsed;
-            ShadowBatterySlotsItemsControl.Visibility = Visibility.Visible;
-            
-            
-            CurrentPosition = (int)Positions.AddOrDequeue;
         }
 
         public BatteryInfo DequeueBattery()
@@ -175,24 +174,23 @@ namespace Crt.UiCore.Controls
 
             var info = new BatteryInfo();
             
-            // 当动画完成后，更新电池槽位状态。
-            DoOnAnimationDone(()=>
+            SetPosition((int)Positions.AddOrDequeue, () =>
+            {
+                ShadowBatterySlotsItemsControl.Margin = new Thickness(86, 2, 0, 0);
+                BatterySlotsItemsControl.Visibility = Visibility.Collapsed;
+                ShadowBatterySlotsItemsControl.Visibility = Visibility.Visible;
+            }, () =>
             {
                 // 更新静态显示的电池槽位。
                 info = DequeueBatteryInfo(BatterySlots);
-                CurrentPosition = (int)Positions.Standby;
+                
+                SetPosition((int)Positions.Standby);
 
                 // 隐藏影子槽位
                 BatterySlotsItemsControl.Visibility = Visibility.Visible;
                 ShadowBatterySlotsItemsControl.Visibility = Visibility.Collapsed;
                 DequeueBatteryInfo(ShadowBatterySlots);
             });
-
-            ShadowBatterySlotsItemsControl.Margin = new Thickness(86, 2, 0, 0);
-            BatterySlotsItemsControl.Visibility = Visibility.Collapsed;
-            ShadowBatterySlotsItemsControl.Visibility = Visibility.Visible;
-           
-            CurrentPosition = (int)Positions.AddOrDequeue;
 
             return info;
         }
@@ -203,27 +201,24 @@ namespace Crt.UiCore.Controls
                 throw new InvalidOperationException("last operation is running.");
 
             var info = new BatteryInfo();
-
-            // 当动画完成后，更新电池槽位状态。
-            DoOnAnimationDone(() =>
+            
+            SetPosition((int)Positions.Pop, () =>
+            {
+                BatterySlotsItemsControl.Visibility = Visibility.Collapsed;
+                ShadowBatterySlotsItemsControl.Visibility = Visibility.Visible;
+                ShadowBatterySlotsItemsControl.Margin = new Thickness(86, 2, 0, 0);
+            }, () =>
             {
                 // 更新静态显示的电池槽位。
                 info = PopBatteryInfo(BatterySlots);
-                
-                CurrentPosition = (int)Positions.Standby;
+
+                SetPosition((int)Positions.Standby);
 
                 // 隐藏影子槽位
                 BatterySlotsItemsControl.Visibility = Visibility.Visible;
                 ShadowBatterySlotsItemsControl.Visibility = Visibility.Collapsed;
                 PopBatteryInfo(ShadowBatterySlots);
-                
             });
-
-            BatterySlotsItemsControl.Visibility = Visibility.Collapsed;
-            ShadowBatterySlotsItemsControl.Visibility = Visibility.Visible;
-            ShadowBatterySlotsItemsControl.Margin = new Thickness(86, 2, 0, 0);
-
-            CurrentPosition = (int)Positions.Pop;
 
             return info;
 
@@ -234,12 +229,14 @@ namespace Crt.UiCore.Controls
         /// </summary>
         public void ClearBattery()
         {
-            CurrentPosition = (int)Positions.Standby;
-            for (var i = 0; i < BATTERY_CAPACITY; i++)
+            SetPosition((int)Positions.Standby, null, () =>
             {
-                BatterySlots[i].ClearInfo();
-                ShadowBatterySlots[i].ClearInfo();
-            }
+                for (var i = 0; i < BATTERY_CAPACITY; i++)
+                {
+                    BatterySlots[i].ClearInfo();
+                    ShadowBatterySlots[i].ClearInfo();
+                }
+            });
         }
 
         #endregion
