@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Media.Animation;
 using Crt.UiCore.Controls.Base;
 using Crt.UiCore.RtCore;
@@ -42,10 +43,15 @@ namespace Crt.UiCore.Controls
             InitializeComponent();
 
             var battInfoList = new List<BatteryInfo>();
+            var shadowBattInfoList = new List<BatteryInfo>();
             for (var i = 0; i < BATTERY_CAPACITY; i++)
+            {
                 battInfoList.Add(new BatteryInfo());
+                shadowBattInfoList.Add(new BatteryInfo());
+            }
 
             BatterySlots = new ReadOnlyCollection<BatteryInfo>(battInfoList);
+            ShadowBatterySlots = new ReadOnlyCollection<BatteryInfo>(shadowBattInfoList);
         }
 
         #region Properties
@@ -54,64 +60,69 @@ namespace Crt.UiCore.Controls
         /// 返回电池槽位的信息。
         /// </summary>
         public ReadOnlyCollection<BatteryInfo> BatterySlots { get; }
+        
+        /// <summary>
+        /// 用于动画的电池槽位信息。
+        /// </summary>
+        public ReadOnlyCollection<BatteryInfo> ShadowBatterySlots { get; }
 
         #endregion
 
         #region Methods
 
-        private void AddBatteryInfo(BatteryInfo info)
+        private void AddBatteryInfo(ReadOnlyCollection<BatteryInfo> targetSlotsList, BatteryInfo info)
         {
             // 如果最后一个槽位有电池，则抛异常。
-            if (BatterySlots[BATTERY_CAPACITY - 1].HasBattery)
+            if (targetSlotsList[BATTERY_CAPACITY - 1].HasBattery)
                 throw new InvalidOperationException("no empty slot to add battery.");
 
             // 整体后移一个槽位
             for (var i = BATTERY_CAPACITY - 1; i > 0; i--)
-                BatterySlots[i - 1].TransferInfoTo(BatterySlots[i]);
+                targetSlotsList[i - 1].TransferInfoTo(targetSlotsList[i]);
 
             // 如果没有给定电池信息，则创建一个空槽位。
             if (info == null)
                 info = new BatteryInfo();
             
-            info.TransferInfoTo(BatterySlots[0]);
+            info.TransferInfoTo(targetSlotsList[0]);
         }
 
-        private BatteryInfo DequeueBatteryInfo()
+        private BatteryInfo DequeueBatteryInfo(ReadOnlyCollection<BatteryInfo> targetSlotsList)
         {
             // 如果所有槽位均没有电池，则抛异常。
-            if (BatterySlots.FirstOrDefault(s => s.HasBattery) == null)
+            if (targetSlotsList.FirstOrDefault(s => s.HasBattery) == null)
                 throw new InvalidOperationException("no battery in any slot.");
 
             // 保存第一个槽位的电池信息。
             var battInfo = new BatteryInfo();
-            BatterySlots.Last().TransferInfoTo(battInfo);
+            targetSlotsList.Last().TransferInfoTo(battInfo);
 
             // 整体前移一个槽位。
             for (var i = BATTERY_CAPACITY - 1; i > 0; i--)
-                BatterySlots[i - 1].TransferInfoTo(BatterySlots[i]);
+                targetSlotsList[i - 1].TransferInfoTo(targetSlotsList[i]);
 
             // 清楚最后一个槽位电池信息。
-            BatterySlots[0].ClearInfo();
+            targetSlotsList[0].ClearInfo();
 
             return battInfo;
         }
 
-        private BatteryInfo PopBatteryInfo()
+        private BatteryInfo PopBatteryInfo(ReadOnlyCollection<BatteryInfo> targetSlotsList)
         {
             // 如果所有槽位均没有电池，则抛异常。
-            if (BatterySlots.FirstOrDefault(s => s.HasBattery) == null)
+            if (targetSlotsList.FirstOrDefault(s => s.HasBattery) == null)
                 throw new InvalidOperationException("no battery in any slot.");
 
             // 保存第一个槽位的电池信息。
             var battInfo = new BatteryInfo();
-            BatterySlots[0].TransferInfoTo(battInfo);
+            targetSlotsList[0].TransferInfoTo(battInfo);
 
             // 整体前移一个槽位。
             for (var i = 0; i < BATTERY_CAPACITY - 1; i++)
-                BatterySlots[i + 1].TransferInfoTo(BatterySlots[i]);
+                targetSlotsList[i + 1].TransferInfoTo(targetSlotsList[i]);
 
             // 清楚最后一个槽位电池信息。
-            BatterySlots.Last().ClearInfo();
+            targetSlotsList.Last().ClearInfo();
 
             return battInfo;
         }
@@ -129,27 +140,58 @@ namespace Crt.UiCore.Controls
 
         public void AddBattery(BatteryInfo info)
         {
+            if (AnimationBusy)
+                throw new InvalidOperationException("last operation is running.");
+            
             // 当动画完成后，更新电池槽位状态。
             DoOnAnimationDone(()=>
             {
-                CurrentPosition = (int)Positions.Standby;
-                AddBatteryInfo(info);
+                // 更新静态显示的电池槽位。
+                AddBatteryInfo(BatterySlots, info);
                 
+                CurrentPosition = (int)Positions.Standby;
+                
+                // 隐藏影子槽位
+                BatterySlotsItemsControl.Visibility = Visibility.Visible;
+                ShadowBatterySlotsItemsControl.Visibility = Visibility.Collapsed;
             });
+
+            // 更新影子槽位信息，用于动画显示
+            AddBatteryInfo(ShadowBatterySlots, (BatteryInfo)info.Clone());
+
+            // 显示影子槽位用于动画显示
+            ShadowBatterySlotsItemsControl.Margin = new Thickness(4, 2, 0, 0);
+            BatterySlotsItemsControl.Visibility = Visibility.Collapsed;
+            ShadowBatterySlotsItemsControl.Visibility = Visibility.Visible;
+            
+            
             CurrentPosition = (int)Positions.AddOrDequeue;
         }
 
         public BatteryInfo DequeueBattery()
         {
+            if (AnimationBusy)
+                throw new InvalidOperationException("last operation is running.");
+
             var info = new BatteryInfo();
             
             // 当动画完成后，更新电池槽位状态。
             DoOnAnimationDone(()=>
             {
+                // 更新静态显示的电池槽位。
+                info = DequeueBatteryInfo(BatterySlots);
                 CurrentPosition = (int)Positions.Standby;
-                info = DequeueBatteryInfo();
-                
+
+                // 隐藏影子槽位
+                BatterySlotsItemsControl.Visibility = Visibility.Visible;
+                ShadowBatterySlotsItemsControl.Visibility = Visibility.Collapsed;
+                DequeueBatteryInfo(ShadowBatterySlots);
             });
+
+            ShadowBatterySlotsItemsControl.Margin = new Thickness(86, 2, 0, 0);
+            BatterySlotsItemsControl.Visibility = Visibility.Collapsed;
+            ShadowBatterySlotsItemsControl.Visibility = Visibility.Visible;
+           
             CurrentPosition = (int)Positions.AddOrDequeue;
 
             return info;
@@ -157,19 +199,47 @@ namespace Crt.UiCore.Controls
 
         public BatteryInfo PopBattery()
         {
+            if (AnimationBusy)
+                throw new InvalidOperationException("last operation is running.");
+
             var info = new BatteryInfo();
 
             // 当动画完成后，更新电池槽位状态。
             DoOnAnimationDone(() =>
             {
+                // 更新静态显示的电池槽位。
+                info = PopBatteryInfo(BatterySlots);
+                
                 CurrentPosition = (int)Positions.Standby;
-                info = PopBatteryInfo();
+
+                // 隐藏影子槽位
+                BatterySlotsItemsControl.Visibility = Visibility.Visible;
+                ShadowBatterySlotsItemsControl.Visibility = Visibility.Collapsed;
+                PopBatteryInfo(ShadowBatterySlots);
                 
             });
+
+            BatterySlotsItemsControl.Visibility = Visibility.Collapsed;
+            ShadowBatterySlotsItemsControl.Visibility = Visibility.Visible;
+            ShadowBatterySlotsItemsControl.Margin = new Thickness(86, 2, 0, 0);
+
             CurrentPosition = (int)Positions.Pop;
 
             return info;
 
+        }
+
+        /// <summary>
+        /// 清除NG皮带线的电池信息。
+        /// </summary>
+        public void ClearBattery()
+        {
+            CurrentPosition = (int)Positions.Standby;
+            for (var i = 0; i < BATTERY_CAPACITY; i++)
+            {
+                BatterySlots[i].ClearInfo();
+                ShadowBatterySlots[i].ClearInfo();
+            }
         }
 
         #endregion

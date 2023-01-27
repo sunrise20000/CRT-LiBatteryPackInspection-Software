@@ -22,7 +22,7 @@
                 Storyboard.TargetName="BdBeltTexture" 
                 Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
                 From="0" To="86"
-                Duration="00:0:00.300000">
+                Duration="00:0:00.100000">
             </DoubleAnimation>
         </Storyboard>
 
@@ -31,7 +31,7 @@
                 Storyboard.TargetName="BdBeltTexture" 
                 Storyboard.TargetProperty="(Border.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
                 From="0" To="-86"
-                Duration="00:0:00.300000">
+                Duration="00:0:00.100000">
             </DoubleAnimation>
         </Storyboard>
 
@@ -52,24 +52,25 @@
                             Viewport="0,0,5,5" ViewportUnits="Absolute" Viewbox="0,0,5,5" ViewboxUnits="Absolute"/>
 
             </Border.Background>
-
             <ItemsControl 
+                x:Name="ShadowBatterySlotsItemsControl"
+                Visibility="Collapsed"
                       HorizontalAlignment="Left" 
                       Height="27" Width="532" 
-                      ItemsSource="{Binding BatterySlots, RelativeSource={RelativeSource AncestorType=base:BatteryCarrierBase, Mode=FindAncestor}, Mode=OneWay}"
-                       Margin="90,2,0,0">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <local:LiBatteryPack IsShowBattery="{Binding HasBattery}" Width="88"/>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-            <!--<StackPanel x:Name="stackPanel" 
+                      ItemsSource="{Binding ShadowBatterySlots, RelativeSource={RelativeSource AncestorType=base:BatteryCarrierBase, Mode=FindAncestor}, Mode=OneWay}"
+                       Margin="4,2,0,0">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <local:LiBatteryPack IsShowBattery="{Binding HasBattery}" AllowSelected="False" Width="88"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <!--<StackPanel x:Name="stackPanel" 
                     Orientation="Horizontal" 
                     HorizontalAlignment="Left"  Width="532" 
                     DataContext="{Binding BatterySlots, RelativeSource={RelativeSource AncestorType=base:BatteryCarrierBase, Mode=FindAncestor}, Mode=OneWay}" 
@@ -89,8 +90,26 @@
                 <local:LiBatteryPack IsShowBattery="True" Width="87"/>
                 <local:LiBatteryPack IsShowBattery="True" Width="87"/>
             </StackPanel>-->
-
         </Border>
+
+        <ItemsControl 
+            x:Name="BatterySlotsItemsControl"
+            HorizontalAlignment="Left" 
+            Height="27" Width="532" 
+            Visibility="Visible"
+            ItemsSource="{Binding BatterySlots, RelativeSource={RelativeSource AncestorType=base:BatteryCarrierBase, Mode=FindAncestor}, Mode=OneWay}" VerticalAlignment="Center" Canvas.Top="12">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <local:LiBatteryPack IsShowBattery="{Binding HasBattery}" Width="88"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
 
     </Canvas>
 </base:BatteryCarrierBase>

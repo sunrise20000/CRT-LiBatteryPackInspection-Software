@@ -11,7 +11,7 @@ namespace Crt.UiCore.RtCore
     /// </summary>
     [Serializable]
     [DataContract]
-    public class BatteryInfo : INotifyPropertyChanged
+    public class BatteryInfo : INotifyPropertyChanged, ICloneable
     {
 
         #region Constructors
@@ -105,6 +105,18 @@ namespace Crt.UiCore.RtCore
             if(isClearMe)
                 ClearInfo();
         }
+        
+        public object Clone()
+        {
+            var info = new BatteryInfo();
+            TransferInfoTo(info, false);
+            return info;
+        }
+
+        public override string ToString()
+        {
+            return $"{CurrentModule} - {BatterySn}";
+        }
 
         #endregion
 
@@ -126,5 +138,7 @@ namespace Crt.UiCore.RtCore
         }
 
         #endregion
+
+        
     }
 }

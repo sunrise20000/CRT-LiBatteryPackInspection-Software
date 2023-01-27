@@ -56,7 +56,7 @@ namespace Crt.UiCore.Controls.Base
 
         private bool _animationBusy = false;
 
-        private bool AnimationBusy
+        public bool AnimationBusy
         {
             get
             {
@@ -65,7 +65,7 @@ namespace Crt.UiCore.Controls.Base
                     return _animationBusy;
                 }
             }
-            set
+            private set
             {
                 lock (AnimationLock)
                 {
@@ -124,10 +124,10 @@ namespace Crt.UiCore.Controls.Base
 
                         if (LastPosition != currPos && !AnimationBusy)
                         {
-                            Debug.WriteLine($"_lastPosition: {LastPosition}, CurrentPosition: {currPos}");
+                            // Debug.WriteLine($"_lastPosition: {LastPosition}, CurrentPosition: {currPos}");
                             var sb = Storyboards.ContainsKey(currPos) ? Storyboards[currPos] : null;
 
-                            Debug.WriteLine(Storyboards[currPos]);
+                            //Debug.WriteLine(Storyboards[currPos]);
                             AnimationBusy = true;
                             Dispatcher.Invoke(() => sb?.Begin());
                         }

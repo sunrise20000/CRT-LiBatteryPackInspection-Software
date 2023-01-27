@@ -27,7 +27,7 @@ namespace UserControlDev
                 {
                     try
                     {
-                        Debug.WriteLine($"Move to {YamahaRobot800.Positions.Standby}");
+                        // Debug.WriteLine($"Move to {YamahaRobot800.Positions.Standby}");
                         Invoke(() =>
                         {
                             RobotYamaha.CurrentPosition = (int)YamahaRobot800.Positions.Standby;
@@ -36,37 +36,37 @@ namespace UserControlDev
 
                         await Task.Delay(500);
 
-                        Debug.WriteLine($"Move to {YamahaRobot800.Positions.FeederA}");
+                        // Debug.WriteLine($"Move to {YamahaRobot800.Positions.FeederA}");
                         Invoke(() => RobotYamaha.CurrentPosition = (int)YamahaRobot800.Positions.FeederA);
                         await Task.Delay(500);
                         Invoke(() => RobotYamaha.HasBattery = true);
                         await Task.Delay(500);
 
-                        Debug.WriteLine($"Move to {YamahaRobot800.Positions.Standby}");
+                        // Debug.WriteLine($"Move to {YamahaRobot800.Positions.Standby}");
                         Invoke(() => RobotYamaha.CurrentPosition = (int)YamahaRobot800.Positions.Standby);
                         await Task.Delay(500);
 
-                        Debug.WriteLine($"Move to {YamahaRobot800.Positions.Station1A}");
+                        // Debug.WriteLine($"Move to {YamahaRobot800.Positions.Station1A}");
                         Invoke(() => RobotYamaha.CurrentPosition = (int)YamahaRobot800.Positions.Station1A);
                         await Task.Delay(500);
                         Invoke(() => RobotYamaha.HasBattery = false);
                         await Task.Delay(500);
 
-                        Debug.WriteLine($"Move to {YamahaRobot800.Positions.Standby}");
+                        // Debug.WriteLine($"Move to {YamahaRobot800.Positions.Standby}");
                         Invoke(() => RobotYamaha.CurrentPosition = (int)YamahaRobot800.Positions.Standby);
                         await Task.Delay(500);
 
-                        Debug.WriteLine($"Move to {YamahaRobot800.Positions.FeederB}");
+                        // Debug.WriteLine($"Move to {YamahaRobot800.Positions.FeederB}");
                         Invoke(() => RobotYamaha.CurrentPosition = (int)YamahaRobot800.Positions.FeederB);
                         await Task.Delay(500);
                         Invoke(() => RobotYamaha.HasBattery = true);
                         await Task.Delay(500);
 
-                        Debug.WriteLine($"Move to {YamahaRobot800.Positions.Standby}");
+                        // Debug.WriteLine($"Move to {YamahaRobot800.Positions.Standby}");
                         Invoke(() => RobotYamaha.CurrentPosition = (int)YamahaRobot800.Positions.Standby);
                         await Task.Delay(500);
 
-                        Debug.WriteLine($"Move to {YamahaRobot800.Positions.Station1B}");
+                        // Debug.WriteLine($"Move to {YamahaRobot800.Positions.Station1B}");
                         Invoke(() => RobotYamaha.CurrentPosition = (int)YamahaRobot800.Positions.Station1B);
                         await Task.Delay(500);
                         Invoke(() => RobotYamaha.HasBattery = false);
@@ -90,7 +90,7 @@ namespace UserControlDev
                 {
                     try
                     {
-                        Debug.WriteLine($"Move to {LinearMotor.Positions.Standby}");
+                        // Debug.WriteLine($"Move to {LinearMotor.Positions.Standby}");
                         Invoke(() =>
                         {
                             LinearMotor.BatteryView = LinearMotor.BatteryViewTypes.Top;
@@ -100,26 +100,26 @@ namespace UserControlDev
 
                         await Task.Delay(500);
 
-                        Debug.WriteLine($"Move to {LinearMotor.Positions.Standby}");
+                        // Debug.WriteLine($"Move to {LinearMotor.Positions.Standby}");
                         Invoke(() => LinearMotor.CurrentPosition = (int)LinearMotor.Positions.Standby);
                         await Task.Delay(500);
                         Invoke(() => LinearMotor.HasBattery = true);
                         await Task.Delay(500);
 
-                        Debug.WriteLine($"Move to {LinearMotor.Positions.End}");
+                        // Debug.WriteLine($"Move to {LinearMotor.Positions.End}");
                         Invoke(() => LinearMotor.CurrentPosition = (int)LinearMotor.Positions.End);
                         await Task.Delay(500);
                         Invoke(() => LinearMotor.HasBattery = false);
                         await Task.Delay(500);
 
-                        Debug.WriteLine($"Move to {LinearMotor.Positions.Standby}");
+                        // Debug.WriteLine($"Move to {LinearMotor.Positions.Standby}");
                         Invoke(() => LinearMotor.CurrentPosition = (int)LinearMotor.Positions.Standby);
                         Invoke(() => LinearMotor.BatteryView = LinearMotor.BatteryViewTypes.Front);
                         await Task.Delay(500);
                         Invoke(() => LinearMotor.HasBattery = true);
                         await Task.Delay(500);
 
-                        Debug.WriteLine($"Move to {LinearMotor.Positions.EndWithRotation}");
+                        // Debug.WriteLine($"Move to {LinearMotor.Positions.EndWithRotation}");
                         Invoke(() => LinearMotor.CurrentPosition = (int)LinearMotor.Positions.EndWithRotation);
                         await Task.Delay(500);
                         Invoke(() => LinearMotor.HasBattery = false);
@@ -144,7 +144,7 @@ namespace UserControlDev
                 {
                     try
                     {
-                        Debug.WriteLine($"Move to {Feeder.Positions.Standby}");
+                        // Debug.WriteLine($"Move to {Feeder.Positions.Standby}");
                         Invoke(() =>
                         {
                             Feeder.CurrentPosition = (int)Feeder.Positions.Standby;
@@ -153,7 +153,7 @@ namespace UserControlDev
 
                         await Task.Delay(500);
 
-                        Debug.WriteLine($"Move to {Feeder.Positions.End}");
+                        // Debug.WriteLine($"Move to {Feeder.Positions.End}");
                         Invoke(() => Feeder.CurrentPosition = (int)Feeder.Positions.End);
                         await Task.Delay(500);
                         Invoke(() => Feeder.HasBattery = true);
@@ -197,14 +197,14 @@ namespace UserControlDev
             // NG Conveyor测试
             Task.Run(async () =>
             {
-                await Task.Delay(3000);
+                await Task.Delay(2000);
                 
                 var batteryCounter = 0;
                 while (true)
                 {
                     try
                     {
-                        for (var i = 0; i < NgConveyorBelt.BATTERY_CAPACITY; i++)
+                        /*for (var i = 0; i < NgConveyorBelt.BATTERY_CAPACITY; i++)
                         {
                             if(i == 3)
                                 Invoke(()=>ngConveyor.AddBattery(new BatteryInfo()));
@@ -217,6 +217,23 @@ namespace UserControlDev
                         {
                             Invoke(() => ngConveyor.PopBattery());
                             await Task.Delay(2000);
+                        }*/
+
+                        for (var i = 0; i < NgConveyorBelt.BATTERY_CAPACITY; i++)
+                        {
+                            if (i == 3)
+                                Invoke(() => ngConveyor.AddBattery(new BatteryInfo()));
+                            else
+                                Invoke(() => ngConveyor.AddBattery(new BatteryInfo(PublicModuleNames.FeedInletA, $"BATT-{batteryCounter++}")));
+                            await Task.Delay(200);
+                        }
+                        
+                        //Invoke(ngConveyor.ClearBattery);
+
+                        for (var i = 0; i < NgConveyorBelt.BATTERY_CAPACITY; i++)
+                        {
+                            Invoke(() => ngConveyor.DequeueBattery());
+                            await Task.Delay(500);
                         }
                     }
                     catch (Exception e)
