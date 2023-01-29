@@ -49,6 +49,12 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\GripperWithBattery.xaml.cs">
+      <DependentUpon>GripperWithBattery.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TransporterS1ToS2.xaml.cs">
+      <DependentUpon>TransporterS1ToS2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RtCore\BatteryInfo.cs" />
     <Compile Include="RtCore\ProductionModuleNames.cs" />
     <Page Include="Controls\BatteryFlipStage.xaml">
@@ -56,6 +62,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Feeder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\GripperWithBattery.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -94,6 +104,10 @@
       <DependentUpon>LinearMotor.xaml</DependentUpon>
     </Compile>
     <Page Include="Controls\NgConveyorBelt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TransporterS1ToS2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
