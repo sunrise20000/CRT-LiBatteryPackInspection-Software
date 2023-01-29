@@ -12,9 +12,9 @@
             <crtctrl:Feeder Canvas.Top="271" Canvas.Left="1956" Height="69" Width="304" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             <crtctrl:LinearMotor Canvas.Left="1526.4" Canvas.Top="258.631" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             <crtctrl:LinearMotor Canvas.Left="855.6" Canvas.Top="258.631" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <crtctrl:LinearMotor Canvas.Left="426.644" Canvas.Top="258.631" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <crtctrl:LinearMotor Canvas.Left="427" Canvas.Top="258.631" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <crtctrl:Feeder Canvas.Top="272" Canvas.Left="12" Height="68" Width="304" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <crtctrl:YamahaRobot800 Canvas.Top="187.067" Canvas.Left="205" CurrentPosition="1" Height="167" Width="259" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <crtctrl:YamahaRobot800 Canvas.Top="187.067" Canvas.Left="205" Height="167" Width="259" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         </Canvas>
 
         <Canvas  Height="368" Width="2268" Canvas.Left="0" Canvas.Top="366" RenderTransformOrigin="0.5,0.5"  >
@@ -31,9 +31,9 @@
             <crtctrl:LinearMotor Canvas.Left="855.6" Canvas.Top="258.631" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             <crtctrl:LinearMotor Canvas.Left="426.644" Canvas.Top="258.631" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             <crtctrl:Feeder Canvas.Top="272" Canvas.Left="12" Height="68" Width="304" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <crtctrl:YamahaRobot800 Canvas.Top="187.067" Canvas.Left="205" Height="167" Width="259" HorizontalAlignment="Center" VerticalAlignment="Top" CurrentPosition="2"/>
+            <crtctrl:YamahaRobot800 Canvas.Top="187.067" Canvas.Left="205" Height="167" Width="259" HorizontalAlignment="Center" VerticalAlignment="Top" />
         </Canvas>
 
-        <crtctrl:YamahaRobot800 Canvas.Top="77.095" Canvas.Left="1952.5" Height="387" Width="294" HorizontalAlignment="Left" VerticalAlignment="Center" CurrentPosition="3"/>
+        <crtctrl:YamahaRobot800 Canvas.Top="77.095" Canvas.Left="1952.5" Height="387" Width="294" HorizontalAlignment="Left" VerticalAlignment="Center" />
     </Canvas>
 </UserControl>

@@ -5,8 +5,6 @@ using Aitex.Core.RT.IOCore;
 using Aitex.Core.RT.OperationCenter;
 using Aitex.Core.RT.SCCore;
 using Aitex.Core.Util;
-using MECF.Framework.RT.EquipmentLibrary.Core.Extensions;
-using System.Threading;
 using System.Xml;
 
 namespace Mainframe.Devices

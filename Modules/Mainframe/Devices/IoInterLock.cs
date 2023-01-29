@@ -1,13 +1,8 @@
 ﻿using Aitex.Core.RT.DataCenter;
 using Aitex.Core.RT.Device;
-using Aitex.Core.RT.Event;
 using Aitex.Core.RT.IOCore;
 using Aitex.Core.RT.SCCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace Mainframe.Devices

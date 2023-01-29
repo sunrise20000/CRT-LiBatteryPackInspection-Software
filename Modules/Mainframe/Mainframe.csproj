@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Mainframe</RootNamespace>
     <AssemblyName>Mainframe</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,6 +41,10 @@
     <Reference Include="InfoHelp">
       <HintPath>..\..\ThirdParty\dlls\InfoHelp.dll</HintPath>
     </Reference>
+    <Reference Include="MECF.Framework.RT.Core, Version=1.0.8407.37443, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\MECF.Framework.RT.Core.dll</HintPath>
+    </Reference>
     <Reference Include="SessionLayer">
       <HintPath>..\..\ThirdParty\dlls\SessionLayer.dll</HintPath>
     </Reference>
@@ -64,11 +69,6 @@
     <Compile Include="Aligners\Routines\AlignerBaseRoutine.cs" />
     <Compile Include="Aligners\Routines\AlignerHomeRoutine.cs" />
     <Compile Include="Aligners\SicAligner.cs" />
-    <Compile Include="Buffers\BufferModule.cs" />
-    <Compile Include="Buffers\BufferModuleBase.cs" />
-    <Compile Include="Buffers\Routines\BufferCoolingRoutine.cs" />
-    <Compile Include="Buffers\Routines\BufferHomeRoutine.cs" />
-    <Compile Include="Buffers\SicBuffer.cs" />
     <Compile Include="Cassettes\CassetteModule.cs" />
     <Compile Include="Cassettes\CassetteModuleBase.cs" />
     <Compile Include="Cassettes\SicCassette.cs" />
@@ -80,81 +80,13 @@
     <Compile Include="Devices\SicAds.cs" />
     <Compile Include="Devices\SiemensIoProvider.cs" />
     <Compile Include="Devices\TcAds.cs" />
-    <Compile Include="EFEMs\EFEMModule.cs" />
-    <Compile Include="EFEMs\EFEMModuleBase.cs" />
-    <Compile Include="EFEMs\RobotModuleBase.cs" />
-    <Compile Include="EFEMs\Routines\EfemBaseRoutine.cs" />
-    <Compile Include="EFEMs\Routines\EFEMHomeRoutine.cs" />
-    <Compile Include="EFEMs\Routines\EfemSlitValveRoutine.cs" />
-    <Compile Include="EFEMs\Routines\TrayRobotMapRoutine.cs" />
-    <Compile Include="EFEMs\Routines\TrayRobotPickRoutine.cs" />
-    <Compile Include="EFEMs\Routines\TrayRobotPlaceRoutine.cs" />
-    <Compile Include="EFEMs\Routines\WaferRobotMapRoutine.cs" />
-    <Compile Include="EFEMs\Routines\WaferRobotPickRoutine.cs" />
-    <Compile Include="EFEMs\Routines\WaferRobotPlaceRoutine.cs" />
-    <Compile Include="EFEMs\SicEFEM.cs" />
-    <Compile Include="EFEMs\SicEfemRobot.cs" />
-    <Compile Include="EFEMs\Routines\TrayRobotHomeRoutine.cs" />
-    <Compile Include="EFEMs\TrayRobotModule.cs" />
-    <Compile Include="EFEMs\Routines\WaferRobotHomeRoutine.cs" />
-    <Compile Include="EFEMs\WaferRobotModule.cs" />
-    <Compile Include="LLs\LoadLockModule.cs" />
-    <Compile Include="LLs\LoadLockModuleBase.cs" />
-    <Compile Include="LLs\Routines\LoadHomeRoutine.cs" />
-    <Compile Include="LLs\Routines\LoadLockBaseRoutine.cs" />
-    <Compile Include="LLs\Routines\LoadLockClawRoutine.cs" />
-    <Compile Include="LLs\Routines\LoadLockGroupRoutine.cs" />
-    <Compile Include="LLs\Routines\LoadLockLeakCheckRoutine.cs" />
-    <Compile Include="LLs\Routines\LoadLockLiftRoutine.cs" />
-    <Compile Include="LLs\Routines\LoadLockPrepareTransferRoutine.cs" />
-    <Compile Include="LLs\Routines\LoadLockPumpRoutine.cs" />
-    <Compile Include="LLs\Routines\LoadLockPurgeRoutine.cs" />
-    <Compile Include="LLs\Routines\LoadLockServoToRoutine.cs" />
-    <Compile Include="LLs\Routines\LoadLockTrayAlignerRoutine.cs" />
-    <Compile Include="LLs\Routines\LoadLockTrayClawRoutine.cs" />
-    <Compile Include="LLs\Routines\LoadLockVentRoutine.cs" />
-    <Compile Include="LLs\Routines\LoadRotationHomeOffsetRoutine.cs" />
-    <Compile Include="LLs\Routines\LoadSeparateRoutine.cs" />
-    <Compile Include="LLs\SicLoadLock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TMs\Routines\TMBaseRoutine.cs" />
-    <Compile Include="TMs\Routines\TMHomeRoutine.cs" />
-    <Compile Include="TMs\Routines\TMLeakcheckRoutine.cs" />
-    <Compile Include="TMs\Routines\TMPressureBalancePidRoutine.cs" />
-    <Compile Include="TMs\Routines\TMPressureBalanceRoutine.cs" />
-    <Compile Include="TMs\Routines\TMPumpRoutine.cs" />
-    <Compile Include="TMs\Routines\TMPurgeRoutine.cs" />
-    <Compile Include="TMs\Routines\TMRobotExtendRoutine.cs" />
-    <Compile Include="TMs\Routines\TMRobotGoToRoutine.cs" />
-    <Compile Include="TMs\Routines\TMRobotHomeRoutine.cs" />
-    <Compile Include="TMs\Routines\TMRobotPickAndPlaceRoutine.cs" />
-    <Compile Include="TMs\Routines\TMRobotPickRoutine.cs" />
-    <Compile Include="TMs\Routines\TMRobotPlaceRoutine.cs" />
-    <Compile Include="TMs\Routines\TMRobotRetractRoutine.cs" />
-    <Compile Include="TMs\Routines\TMServoRoutine.cs" />
-    <Compile Include="TMs\Routines\TMSlitValveRoutine.cs" />
-    <Compile Include="TMs\Routines\TMVentRoutine.cs" />
-    <Compile Include="TMs\Routines\TMVerifySlitValveRoutine.cs" />
+    <Compile Include="TMs\Routines\TMFakeRoutine.cs" />
     <Compile Include="TMs\SicTM.cs" />
     <Compile Include="TMs\SicTMRobot.cs" />
     <Compile Include="TMs\TMModule.cs" />
     <Compile Include="TMs\TMModuleBase.cs" />
-    <Compile Include="UnLoads\Routines\UnLoadBaseRoutine.cs" />
-    <Compile Include="UnLoads\Routines\UnLoadClawRoutine.cs" />
-    <Compile Include="UnLoads\Routines\UnLoadCoolingRoutine.cs" />
-    <Compile Include="UnLoads\Routines\UnLoadHomeRoutine.cs" />
-    <Compile Include="UnLoads\Routines\UnLoadLeakCheckRoutine.cs" />
-    <Compile Include="UnLoads\Routines\UnLoadLiftRoutine.cs" />
-    <Compile Include="UnLoads\Routines\UnLoadPrepareTransferRoutine.cs" />
-    <Compile Include="UnLoads\Routines\UnLoadPumpRoutine.cs" />
-    <Compile Include="UnLoads\Routines\UnLoadCoolingAndPurgeRoutine.cs" />
-    <Compile Include="UnLoads\Routines\UnLoadPurgeRoutine.cs" />
-    <Compile Include="UnLoads\Routines\UnLoadSeparateRoutine.cs" />
-    <Compile Include="UnLoads\Routines\UnLoadServoToRoutine.cs" />
-    <Compile Include="UnLoads\Routines\UnLoadVentRoutine.cs" />
-    <Compile Include="UnLoads\SicUnLoad.cs" />
-    <Compile Include="UnLoads\UnLoadModule.cs" />
-    <Compile Include="UnLoads\UnLoadModuleBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Config\DeviceModelSystem.xml">
@@ -168,10 +100,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\FrameworkLocal\RTCore\RTCore.csproj">
-      <Project>{bcbd839a-c9a0-4be7-98ca-b0a88ad38e5a}</Project>
-      <Name>RTCore</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\FrameworkLocal\RTEquipmentLibrary\RTEquipmentLibrary.csproj">
       <Project>{090a1e9c-1087-4c8a-b4e0-ff074459e071}</Project>
       <Name>RTEquipmentLibrary</Name>
@@ -183,10 +111,6 @@
     <ProjectReference Include="..\..\Sicentury.Core\Sicentury.Core.csproj">
       <Project>{a78b3f87-4601-43f7-a941-edb339ce35a9}</Project>
       <Name>Sicentury.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SicPM\SicPM.csproj">
-      <Project>{DC5FD3DC-4CF4-4484-9EF9-1B878B25A6D5}</Project>
-      <Name>SicPM</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

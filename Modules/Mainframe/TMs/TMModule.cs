@@ -1,4 +1,9 @@
-﻿using Aitex.Core.RT.DataCenter;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
+using Aitex.Core.RT.DataCenter;
 using Aitex.Core.RT.Device;
 using Aitex.Core.RT.Device.Unit;
 using Aitex.Core.RT.Event;
@@ -8,21 +13,10 @@ using Aitex.Core.RT.Routine;
 using Aitex.Core.RT.SCCore;
 using Aitex.Core.Util;
 using Aitex.Core.Utilities;
-using Aitex.Sorter.Common;
-using Mainframe.Devices;
-using MECF.Framework.Common.Device.Bases;
+using Mainframe.TMs.Routines;
 using MECF.Framework.Common.Equipment;
 using MECF.Framework.Common.Event;
 using MECF.Framework.Common.PLC;
-using MECF.Framework.Common.Schedulers;
-using SicPM.Devices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Mainframe.TMs.Routines;
 using SicAds = Mainframe.Devices.SicAds;
 
 namespace Mainframe.TMs
@@ -37,23 +31,15 @@ namespace Mainframe.TMs
             Homing,
             Picking,
             Placing,
-            PickAndPlacing,
             Pump,
             Vent,
             Error,
             Purge,
-            LeakCheck,
             ServoPressure,
-            PrepareTransfer,
-            PostTransfer,
             Transfer,
             RobotMove,
-            OpenSlitValve,
-            CloseSlitValve,
             RobotHome,
             RobotGoto,
-            RobotExtend,
-            RobotRetract,
             NotConnect,
         }
 
@@ -70,8 +56,6 @@ namespace Mainframe.TMs
             Vent,
             Purge,
             LeakCheck,
-            PrepareTransfer,
-            PostTransfer,
             OpenSlitValve,
             CloseSlitValve,
             ServoPressure,
@@ -141,15 +125,6 @@ namespace Mainframe.TMs
         {
             get
             {
-                if (FsmState == (int)STATE.Purge)
-                {
-                    return _purgeRoutine.LoopCounter + 1;
-                }
-                else if (FsmState == (int)STATE.LeakCheck)
-                {
-                    return _leakCheckRoutine.LoopCounter + 1;
-                }
-
                 return 0;
             }
         }
@@ -158,14 +133,6 @@ namespace Mainframe.TMs
         {
             get
             {
-                if (FsmState == (int)STATE.Purge)
-                {
-                    return _purgeRoutine.LoopTotalTime;
-                }
-                else if (FsmState == (int)STATE.LeakCheck)
-                {
-                    return _leakCheckRoutine.LoopTotalTime;
-                }
 
                 return 0;
             }
@@ -185,20 +152,7 @@ namespace Mainframe.TMs
         public Dictionary<ModuleName, IoSlitValve> SlitValves { get; set; } = new Dictionary<ModuleName, IoSlitValve>();
         public Dictionary<ModuleName, bool> SlitValveInstalled { get; set; } = new Dictionary<ModuleName, bool>();
 
-        private TMRobotGotoRoutine _gotoRoutine;
-        private TMRobotPickRoutine _pickRoutine;
-        private TMRobotPlaceRoutine _placeRoutine;
-        private TMRobotHomeRoutine _homeRobotRoutine;
-        private TMHomeRoutine _homeTMRoutine;
-        private TMPumpRoutine _dryPumpRoutine;
-        private TMVentRoutine _ventRoutine;
-        private TMPurgeRoutine _purgeRoutine;
-        private TMLeakCheckRoutine _leakCheckRoutine;
-        private TMSlitValveRoutine _slitValveRoutine;
-        private TMRobotExtendRoutine _extendRoutine;
-        private TMRobotRetractRoutine _retractRoutine;
-        private TMVerifySlitValveRoutine _slitValveVerifyRoutine;
-        private TMServoRoutine _servoTMRoutine;
+        private TMFakeRoutine _fakeRoutine;
 
         private bool _isInit;
         private bool _isStartTMRobotHome;
@@ -247,20 +201,7 @@ namespace Mainframe.TMs
 
         private void InitRoutine()
         {
-            _gotoRoutine = new TMRobotGotoRoutine();
-            _pickRoutine = new TMRobotPickRoutine();
-            _placeRoutine = new TMRobotPlaceRoutine();
-            _homeRobotRoutine = new TMRobotHomeRoutine();
-            _homeTMRoutine = new TMHomeRoutine();
-            _dryPumpRoutine = new TMPumpRoutine();
-            _ventRoutine = new TMVentRoutine();
-            _leakCheckRoutine = new TMLeakCheckRoutine();
-            _slitValveRoutine = new TMSlitValveRoutine();
-            _extendRoutine = new TMRobotExtendRoutine();
-            _retractRoutine = new TMRobotRetractRoutine();
-            _slitValveVerifyRoutine = new TMVerifySlitValveRoutine();
-            _purgeRoutine = new TMPurgeRoutine();
-            _servoTMRoutine = new TMServoRoutine(); 
+            _fakeRoutine = new TMFakeRoutine();
 
         }
 
@@ -322,18 +263,6 @@ namespace Mainframe.TMs
             PumpValve = DEVICE.GetDevice<IoValve>("TM.TMFastRough");
             ChamberGuage = DEVICE.GetDevice<IoPressureMeter3>("TM.TMPressure");
             ForelineGuage = DEVICE.GetDevice<IoPressureMeter3>("TM.ForelinePressure");
-
-            //SlitValves[ModuleName.PM1] = DEVICE.GetDevice<IoSlitValve>("TM.PM1Door");
-            //SlitValves[ModuleName.PM2] = DEVICE.GetDevice<IoSlitValve>("TM.PM2Door");
-            //SlitValves[ModuleName.UnLoad] = DEVICE.GetDevice<IoSlitValve>("TM.TMUnLoadDoor");
-            //SlitValves[ModuleName.LoadLock] = DEVICE.GetDevice<IoSlitValve>("TM.LLDoor");
-            //SlitValves[ModuleName.Buffer] = DEVICE.GetDevice<IoSlitValve>("TM.LLDoor");
-
-            //SlitValveInstalled[ModuleName.PM1] = SC.GetValue<bool>("TM.PM1SlitValveEnabled");
-            //SlitValveInstalled[ModuleName.PM2] = SC.GetValue<bool>("TM.PM2SlitValveEnabled");
-            //SlitValveInstalled[ModuleName.UnLoad] = SC.GetValue<bool>("TM.UnLoadSlitValveEnabled");
-            //SlitValveInstalled[ModuleName.LoadLock] = SC.GetValue<bool>("TM.LoadLockSlitValveEnabled");
-            //SlitValveInstalled[ModuleName.Buffer] = SC.GetValue<bool>("TM.BufferSlitValveEnabled");
         }
 
         private void InitFsm()
@@ -365,76 +294,6 @@ namespace Mainframe.TMs
             Transition(STATE.Idle, MSG.RobotHome, FsmStartRobotHome, STATE.RobotHome);
             Transition(STATE.RobotHome, FSM_MSG.TIMER, FsmMonitorTask, STATE.Idle);
             Transition(STATE.RobotHome, MSG.Abort, FsmAbortTask, STATE.Idle);
-
-            //robot pick
-            Transition(STATE.Idle, MSG.RobotPick, FsmStartRobotPick, STATE.Picking);
-            Transition(STATE.Picking, FSM_MSG.TIMER, FsmMonitorTask, STATE.Idle);
-            Transition(STATE.Picking, MSG.Abort, FsmAbortTask, STATE.Idle);
-
-            //robot place
-            Transition(STATE.Idle, MSG.RobotPlace, FsmStartRobotPlace, STATE.Placing);
-            Transition(STATE.Placing, FSM_MSG.TIMER, FsmMonitorTask, STATE.Idle);
-            Transition(STATE.Placing, MSG.Abort, FsmAbortTask, STATE.Idle);
-
-            //robot gtot
-            Transition(STATE.Idle, MSG.RobotGoto, FsmStartRobotGoto, STATE.RobotGoto);
-            Transition(STATE.RobotGoto, FSM_MSG.TIMER, FsmMonitorTask, STATE.Idle);
-            Transition(STATE.RobotGoto, MSG.Abort, FsmAbortTask, STATE.Idle);
-
-            //robot extend
-            Transition(STATE.Idle, MSG.RobotExtend, FsmStartRobotExtend, STATE.RobotExtend);
-            Transition(STATE.RobotExtend, FSM_MSG.TIMER, FsmMonitorTask, STATE.Idle);
-            Transition(STATE.RobotExtend, MSG.Abort, FsmAbortTask, STATE.Idle);
-
-            //robot retract
-            Transition(STATE.Idle, MSG.RobotRetract, FsmStartRobotRetract, STATE.RobotRetract);
-            Transition(STATE.RobotRetract, FSM_MSG.TIMER, FsmMonitorTask, STATE.Idle);
-            Transition(STATE.RobotRetract, MSG.Abort, FsmAbortTask, STATE.Idle);
-
-            //prepare transfer
-            Transition(STATE.Idle, MSG.PrepareTransfer, FsmStartPrepareTransfer, STATE.PrepareTransfer);
-            Transition(STATE.PrepareTransfer, FSM_MSG.TIMER, FsmMonitorTask, STATE.Idle);
-            Transition(STATE.PrepareTransfer, MSG.Abort, FsmAbortTask, STATE.Idle);
-
-            //post transfer
-            Transition(STATE.Idle, MSG.PostTransfer, FsmStartPostTransfer, STATE.PostTransfer);
-            Transition(STATE.PostTransfer, FSM_MSG.TIMER, FsmMonitorTask, STATE.Idle);
-            Transition(STATE.PostTransfer, MSG.Abort, FsmAbortTask, STATE.Idle);
-
-            //Pump
-            Transition(STATE.Idle, MSG.Pump, FsmStartPump, STATE.Pump);
-            Transition(STATE.Pump, FSM_MSG.TIMER, FsmMonitorTask, STATE.Idle);
-            Transition(STATE.Pump, MSG.Abort, FsmAbortTask, STATE.Idle);
-
-            //ServoToLL
-            Transition(STATE.Idle, MSG.ServoPressure, FsmStartServoTM, STATE.ServoPressure);
-            Transition(STATE.ServoPressure, FSM_MSG.TIMER, FsmMonitorTask, STATE.Idle);
-            Transition(STATE.ServoPressure, MSG.Abort, FsmAbortTask, STATE.Idle); 
-
-            //Vent
-            Transition(STATE.Idle, MSG.Vent, FsmStartVent, STATE.Vent);
-            Transition(STATE.Vent, FSM_MSG.TIMER, FsmMonitorTask, STATE.Idle);
-            Transition(STATE.Vent, MSG.Abort, FsmAbortTask, STATE.Idle);
-
-            //Purge
-            Transition(STATE.Idle, MSG.Purge, FsmStartPurge, STATE.Purge);
-            Transition(STATE.Purge, FSM_MSG.TIMER, FsmMonitorTask, STATE.Idle);
-            Transition(STATE.Purge, MSG.Abort, FsmAbortTask, STATE.Idle);
-
-            //Leak check
-            Transition(STATE.Idle, MSG.LeakCheck, FsmStartLeakCheck, STATE.LeakCheck);
-            Transition(STATE.LeakCheck, FSM_MSG.TIMER, FsmMonitorTask, STATE.Idle);
-            Transition(STATE.LeakCheck, MSG.Abort, FsmAbortTask, STATE.Idle);
-
-            //open SlitValve
-            Transition(STATE.Idle, MSG.OpenSlitValve, FsmStartOpenSlitValve, STATE.OpenSlitValve);
-            Transition(STATE.OpenSlitValve, FSM_MSG.TIMER, FsmMonitorTask, STATE.Idle);
-            Transition(STATE.OpenSlitValve, MSG.Abort, FsmAbortTask, STATE.Idle);
-
-            //close SlitValve
-            Transition(STATE.Idle, MSG.CloseSlitValve, FsmStartCloseSlitValve, STATE.CloseSlitValve);
-            Transition(STATE.CloseSlitValve, FSM_MSG.TIMER, FsmMonitorTask, STATE.Idle);
-            Transition(STATE.CloseSlitValve, MSG.Abort, FsmAbortTask, STATE.Idle);
         }
 
         private void InitOp()
@@ -551,13 +410,7 @@ namespace Mainframe.TMs
 
             DATA.Subscribe($"{Name}.CurrentRoutineLoop", () => CurrentRoutineLoop, SubscriptionAttribute.FLAG.IgnoreSaveDB);
             DATA.Subscribe($"{Name}.CurrentRoutineLoopTotal", () => CurrentRoutineLoopTotal, SubscriptionAttribute.FLAG.IgnoreSaveDB);
-
-            DATA.Subscribe($"{Name}.LeakCheckElapseTime", () =>
-            {
-                if (FsmState == (int)STATE.LeakCheck)
-                    return _leakCheckRoutine.ElapsedTime;
-                return 0;
-            });
+            
 
             DATA.Subscribe($"{Name}.AtATM", () =>
             {
@@ -618,17 +471,17 @@ namespace Mainframe.TMs
 
             if (FsmState == (int)STATE.Picking)
             {
-                _pickRoutine.Abort();
+                _fakeRoutine.Abort();
 
             }
             if (FsmState == (int)STATE.Placing)
             {
-                _placeRoutine.Abort();
+                _fakeRoutine.Abort();
             }
 
             if (FsmState == (int)STATE.RobotGoto)
             {
-                _gotoRoutine.Abort();
+                _fakeRoutine.Abort();
             }
 
             if (FsmState == (int)STATE.Init)
@@ -636,7 +489,7 @@ namespace Mainframe.TMs
 
             if (FsmState == (int)STATE.ServoPressure)
             {
-                _servoTMRoutine.Abort();
+                _fakeRoutine.Abort();
             }
 
             return true;
@@ -710,7 +563,7 @@ namespace Mainframe.TMs
 
         private bool FsmStartHome(object[] param)
         {
-            Result ret = StartRoutine(_homeTMRoutine);
+            Result ret = StartRoutine(_fakeRoutine);
             if (ret == Result.FAIL || ret == Result.DONE)
                 return false;
 
@@ -763,7 +616,7 @@ namespace Mainframe.TMs
 
         private bool FsmStartRobotHome(object[] param)
         {
-            Result ret = StartRoutine(_homeRobotRoutine);
+            Result ret = StartRoutine(_fakeRoutine);
             if (ret == Result.FAIL || ret == Result.DONE)
                 return false;
 
@@ -803,181 +656,7 @@ namespace Mainframe.TMs
             IsOnline = true;
             return true;
         }
-
-        private bool FsmStartRobotPick(object[] param)
-        {
-            _pickRoutine.Init(ModuleHelper.Converter((string)param[0]), (int)param[1], (int)param[2]);
-
-            Result ret = StartRoutine(_pickRoutine);
-            if (ret == Result.FAIL || ret == Result.DONE)
-                return false;
-            return ret == Result.RUN;
-        }
-
-        private bool FsmStartRobotPlace(object[] param)
-        {
-            _placeRoutine.Init(ModuleHelper.Converter((string)param[0]), (int)param[1], (int)param[2]);
-
-            Result ret = StartRoutine(_placeRoutine);
-            if (ret == Result.FAIL || ret == Result.DONE)
-                return false;
-            return ret == Result.RUN;
-        }
-
-        private bool FsmStartRobotGoto(object[] param)
-        {
-            _gotoRoutine.Init(ModuleHelper.Converter((string)param[0]), (int)param[1], (int)param[2], (string)param[3], (string)param[4]);
-
-            Result ret = StartRoutine(_gotoRoutine);
-            if (ret == Result.FAIL || ret == Result.DONE)
-                return false;
-            return ret == Result.RUN;
-        }
-
-        private bool FsmStartRobotExtend(object[] param)
-        {
-            _extendRoutine.Init(ModuleHelper.Converter((string)param[0]), (int)param[1], (int)param[2]);
-
-            Result ret = StartRoutine(_extendRoutine);
-            if (ret == Result.FAIL || ret == Result.DONE)
-                return false;
-            return ret == Result.RUN;
-        }
-
-        private bool FsmStartRobotRetract(object[] param)
-        {
-            _retractRoutine.Init(ModuleHelper.Converter((string)param[0]), (int)param[1], (int)param[2]);
-
-            Result ret = StartRoutine(_retractRoutine);
-            if (ret == Result.FAIL || ret == Result.DONE)
-                return false;
-            return ret == Result.RUN;
-        }
-
-        private bool FsmStartPrepareTransfer(object[] param)
-        {
-            QueueRoutine.Clear();
-
-            //if (SC.GetValue<bool>("TM.IsTurboPumpEnabled"))
-            //{
-            //    _turboPumpRoutine.Init();
-            //    QueueRoutine.Enqueue(_turboPumpRoutine);
-            //}
-            //else
-            //{
-            //    _dryPumpRoutine.Init();
-            //    QueueRoutine.Enqueue(_dryPumpRoutine);
-            //}
-
-            //_slitValveRoutine.Init((string)param[0], true);
-            //QueueRoutine.Enqueue(_slitValveRoutine);
-
-
-            Result ret = StartRoutine();
-            if (ret == Result.FAIL || ret == Result.DONE)
-                return false;
-            return ret == Result.RUN;
-        }
-
-        private bool FsmStartPostTransfer(object[] param)
-        {
-            _slitValveRoutine.Init((string)param[0], false);
-
-            Result ret = StartRoutine(_slitValveRoutine);
-            if (ret == Result.FAIL || ret == Result.DONE)
-                return false;
-            return ret == Result.RUN;
-        }
-
-        private bool FsmStartPump(object[] param)
-        {
-            Result ret;
-
-            //if (SC.GetValue<bool>("TM.IsTurboPumpEnabled"))
-            //{
-            //    _turboPumpRoutine.Init();
-            //    ret = StartRoutine(_turboPumpRoutine);
-            //}
-            //else
-            //{
-                _dryPumpRoutine.Init();
-                ret = StartRoutine(_dryPumpRoutine);
-            //}
-
-            if (ret == Result.FAIL || ret == Result.DONE)
-                return false;
-            return ret == Result.RUN;
-        }
-
-        private bool FsmStartVent(object[] param)
-        {
-            Result ret = StartRoutine(_ventRoutine);
-            if (ret == Result.FAIL || ret == Result.DONE)
-                return false;
-            return ret == Result.RUN;
-        }
-
-        private bool FsmStartPurge(object[] param)
-        {
-            if (param != null && param.Length == 2
-                && param[0] is int purgeLoop && param[1] is int purgePumpDelay)
-            {
-                _purgeRoutine.Init(purgeLoop, purgePumpDelay);
-            }
-            
-            Result ret = StartRoutine(_purgeRoutine);
-            if (ret == Result.FAIL || ret == Result.DONE)
-                return false;
-            return ret == Result.RUN;
-        }
-
-        private bool FsmStartServoTM(object[] param)
-        {
-            Result ret = StartRoutine(_servoTMRoutine);
-            if (ret == Result.FAIL || ret == Result.DONE)
-                return false;
-            return ret == Result.RUN;
-        }
-
         
-
-        private bool FsmStartLeakCheck(object[] param)
-        {
-            if (param != null && param.Length >= 2)
-            {
-                _leakCheckRoutine.Init((int)param[0], (int)param[1]);
-            }
-            else
-            {
-                _leakCheckRoutine.Init();
-            }
-
-            Result ret = StartRoutine(_leakCheckRoutine);
-            if (ret == Result.FAIL || ret == Result.DONE)
-                return false;
-            return ret == Result.RUN;
-        }
-
-        private bool FsmStartOpenSlitValve(object[] param)
-        {
-            _slitValveRoutine.Init((string)param[0], true);
-
-            Result ret = StartRoutine(_slitValveRoutine);
-            if (ret == Result.FAIL || ret == Result.DONE)
-                return false;
-            return ret == Result.RUN;
-        }
-
-        private bool FsmStartCloseSlitValve(object[] param)
-        {
-            _slitValveRoutine.Init((string)param[0], false);
-
-            Result ret = StartRoutine(_slitValveRoutine);
-            if (ret == Result.FAIL || ret == Result.DONE)
-                return false;
-            return ret == Result.RUN;
-        }
-
 
         public override bool Home(out string reason)
         {
@@ -985,48 +664,7 @@ namespace Mainframe.TMs
             reason = string.Empty;
             return true;
         }
-
-        public override bool Pick(ModuleName target, Hand blade, int targetSlot, out string reason)
-        {
-            reason = string.Empty;
-            if (CheckToPostMessage((int)MSG.RobotPick, target.ToString(), targetSlot, blade))
-                return true;
-
-            return false;
-        }
-
-        public override bool Place(ModuleName target, Hand blade, int targetSlot, out string reason)
-        {
-            reason = string.Empty;
-            if (CheckToPostMessage((int)MSG.RobotPlace, target.ToString(), targetSlot, blade))
-                return true;
-            
-            return false;
-        }
-
-        public override bool PickAndPlace(ModuleName pickTarget, Hand pickHand, int pickSlot, ModuleName placeTarget, Hand placeHand,
-            int placeSlot, out string reason)
-        {
-            CheckToPostMessage((int)MSG.RobotPickAndPlace, pickTarget.ToString(), pickHand, pickSlot, placeHand, placeSlot);
-
-            reason = string.Empty;
-            return true;
-        }
-
-        public override int Purge(int loopCount, int pumpDelay)
-        {
-            if (CheckToPostMessage((int)MSG.Purge, loopCount, pumpDelay))
-                return (int)MSG.Purge;
-
-            return (int)FSM_MSG.NONE;
-        }
-
-        public override bool Goto(ModuleName target, Hand blade, int targetSlot, out string reason)
-        {
-            CheckToPostMessage((int)MSG.RobotGoto, target.ToString(), targetSlot, blade);
-            reason = string.Empty;
-            return true;
-        }
+        
 
         private void TMDevice_OnDeviceAlarmStateChanged(string module, AlarmEventItem alarmItem)
         {

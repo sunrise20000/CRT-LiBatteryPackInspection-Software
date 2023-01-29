@@ -4,7 +4,6 @@ using Aitex.Core.RT.Event;
 using Aitex.Core.RT.Fsm;
 using Aitex.Core.RT.OperationCenter;
 using Aitex.Core.RT.Routine;
-using Aitex.Core.Util;
 using Aitex.Core.Utilities;
 using Aitex.Sorter.Common;
 using MECF.Framework.Common.Equipment;

@@ -1,17 +1,12 @@
 ﻿using Aitex.Core.RT.Device;
-using Aitex.Core.RT.Event;
 using Aitex.Core.RT.IOCore;
 using Aitex.Core.RT.Log;
 using Aitex.Core.Util;
 using MECF.Framework.Common.IOCore;
 using MECF.Framework.Common.PLC;
 using MECF.Framework.RT.Core.IoProviders;
-using MECF.Framework.RT.Core.IoProviders.Siemens;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace Mainframe.Devices

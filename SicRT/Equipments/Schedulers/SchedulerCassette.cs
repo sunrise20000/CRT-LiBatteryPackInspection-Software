@@ -1,9 +1,7 @@
 ﻿using Aitex.Core.RT.Fsm;
 using Aitex.Core.Util;
-using SicRT.Scheduler;
 using MECF.Framework.Common.Equipment;
 using MECF.Framework.Common.SubstrateTrackings;
-using SicRT.Equipments;
 using SicRT.Equipments.Systems;
 using Mainframe.Cassettes;
 

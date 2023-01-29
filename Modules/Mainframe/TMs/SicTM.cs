@@ -5,15 +5,10 @@ using Aitex.Core.RT.IOCore;
 using Aitex.Core.RT.SCCore;
 using Aitex.Core.Util;
 using Mainframe.Devices;
-using MECF.Framework.Common.Device.Bases;
 using MECF.Framework.Common.Equipment;
 using MECF.Framework.RT.EquipmentLibrary.HardwareUnits.TMs;
-using SicPM.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace Mainframe.TMs
@@ -41,9 +36,6 @@ namespace Mainframe.TMs
 
 
         private IoInterLock _tmIoInterLock;
-        private SicPM.Devices.IoInterLock _pm1InterLock;
-
-        private SicPM.Devices.IoMFC _tmMfc;
 
         public AIAccessor AILoadLockTempAlarm { get; set; }
         public AIAccessor AIBufferTempAlarm { get; set; }
@@ -131,10 +123,7 @@ namespace Mainframe.TMs
             _forelineGuage_PS7 = DEVICE.GetDevice<IoPressureMeter3>("TM.ForelinePressure");
             _loadLockGuage_PT3 = DEVICE.GetDevice<IoPressureMeter3>("TM.LLPressure");
 
-            _tmMfc = DEVICE.GetDevice<SicPM.Devices.IoMFC>("TM.Mfc60");
-
             _tmIoInterLock = DEVICE.GetDevice<IoInterLock>("TM.IoInterLock");
-            _pm1InterLock = DEVICE.GetDevice<SicPM.Devices.IoInterLock>("PM1.PMInterLock");
 
             return base.Initialize();
         }
@@ -208,11 +197,7 @@ namespace Mainframe.TMs
             {
                 if (!isOpen)
                 {
-                    if (_pm1InterLock != null && _pm1InterLock.DiChamLidClosed == false)
-                    {
-                        EV.PostAlarmLog(Module, $"Can not set {module} slit valve {open},InterLock check failed [DI-00(PM1)] ");
-                        return false;
-                    }
+                    return true;
                 }
             }
 
@@ -450,7 +435,6 @@ namespace Mainframe.TMs
         public override bool SetVentMfc(double flow, out string reason)
         {
             reason = "";
-            _tmMfc.Ramp(flow, 0);
             return true;
         }
 

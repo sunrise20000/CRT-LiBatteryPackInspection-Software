@@ -54,15 +54,7 @@ namespace SicRT.Instances
                 var NSX = new NSXBreakerII("TM", "NSXBreakerII", "NSXBreakerII");
                 NSX.Initialize();
             }
-
-            if (SC.GetConfigItem("ITAUPSA.EnableDevice").BoolValue)
-            {
-                SicPM.Devices.IoInterLock pmInterlock = DEVICE.GetDevice<SicPM.Devices.IoInterLock>("PM1.PMInterLock");
-                var ITA1 = new ITAUPS("PM1", "ITAUPSA", "ITAUPSA", null, null);
-                ITA1.Initialize();
-                QueueDevice(ITA1);
-            }
-
+            
 
             if (SC.GetConfigItem("ITAUPSB.EnableDevice").BoolValue)
             {

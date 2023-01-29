@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Aitex.Core.Common;
 using Aitex.Core.RT.Event;
 using Aitex.Core.Util;
 using MECF.Framework.Common.Equipment;
 using MECF.Framework.Common.Schedulers;
 using MECF.Framework.Common.SubstrateTrackings;
-using SicRT.Scheduler;
 
 namespace SicRT.Modules.Schedulers
 {

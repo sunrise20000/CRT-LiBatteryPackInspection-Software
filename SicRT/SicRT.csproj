@@ -109,20 +109,11 @@
     <Compile Include="Equipments\Schedulers\SchedulerDBCallback.cs" />
     <Compile Include="Equipments\Schedulers\SchedulerAligner.cs" />
     <Compile Include="Equipments\Schedulers\SchedulerCassette.cs" />
-    <Compile Include="Equipments\Schedulers\SchedulerLoadLock.cs" />
-    <Compile Include="Equipments\Schedulers\SchedulerTrayRobot.cs" />
-    <Compile Include="Equipments\Schedulers\SchedulerUnLoad.cs" />
-    <Compile Include="Equipments\Schedulers\SchedulerWaferRobot.cs" />
     <Compile Include="Equipments\Systems\DeviceManager.cs" />
-    <Compile Include="Equipments\ReturnAllWafer.cs" />
     <Compile Include="Equipments\AutoTransfer.cs" />
-    <Compile Include="Equipments\HomeAll.cs" />
     <Compile Include="Equipments\ManualTransfer.cs" />
     <Compile Include="Equipments\Systems\EquipmentManager.cs" />
-    <Compile Include="Equipments\Schedulers\SchedulerBuffer.cs" />
     <Compile Include="Equipments\Schedulers\SchedulerModule.cs" />
-    <Compile Include="Equipments\Schedulers\SchedulerPM.cs" />
-    <Compile Include="Equipments\Schedulers\SchedulerTMRobot.cs" />
     <Compile Include="Equipments\Schedulers\SchedulerModuleFactory.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <ApplicationDefinition Include="Instances\App.xaml">
@@ -203,10 +194,6 @@
     <ProjectReference Include="..\Modules\Mainframe\Mainframe.csproj">
       <Project>{424e9610-fa50-49cd-b5be-baf256dbf327}</Project>
       <Name>Mainframe</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modules\SicPM\SicPM.csproj">
-      <Project>{dc5fd3dc-4cf4-4484-9ef9-1b878b25a6d5}</Project>
-      <Name>SicPM</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

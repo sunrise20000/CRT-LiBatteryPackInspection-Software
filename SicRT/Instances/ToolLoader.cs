@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Aitex.Common.Util;
+﻿using Aitex.Common.Util;
 using Aitex.Core.RT.ConfigCenter;
 using Aitex.Core.RT.DataCenter;
 using Aitex.Core.RT.DataCollection;
@@ -12,7 +10,6 @@ using Aitex.Core.RT.RecipeCenter;
 using Aitex.Core.RT.SCCore;
 using Aitex.Core.Util;
 using Aitex.Core.WCF;
-using SicRT.Modules;
 using MECF.Framework.Common.Account;
 using MECF.Framework.Common.Communications;
 using MECF.Framework.Common.Equipment;
@@ -23,12 +20,7 @@ using MECF.Framework.RT.Core.Applications;
 using MECF.Framework.RT.Core.Backend;
 using MECF.Framework.RT.Core.IoProviders;
 using SorterRT.Modules;
-using SicRT.Equipments;
 using SicRT.Equipments.Systems;
-using SicPM.RecipeExecutions;
-using System.IO;
-using System.Reflection;
-using DocumentFormat.OpenXml.ExtendedProperties;
 using MECF.Framework.RT.EquipmentLibrary.Core;
 
 namespace SicRT.Instances
@@ -98,7 +90,7 @@ namespace SicRT.Instances
 
             RtSystemManager.Instance.AddCustomBackend("SC", new BackendSCConfigView());
 
-            RecipeFileManager.Instance.Initialize(new SicRecipeFileContext(),true,SC.GetValue<bool>("System.RecipeSaveToDB"));
+            //RecipeFileManager.Instance.Initialize(new SicRecipeFileContext(),true,SC.GetValue<bool>("System.RecipeSaveToDB"));
 
             Singleton<EquipmentManager>.Instance.Initialize();
 

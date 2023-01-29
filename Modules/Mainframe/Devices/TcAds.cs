@@ -4,13 +4,11 @@ using System.Text.RegularExpressions;
 using System.Xml;
 using Aitex.Core.RT.Device;
 using Aitex.Core.RT.Event;
-using Aitex.Core.RT.Log;
 using Aitex.Core.RT.SCCore;
 using MECF.Framework.Common.Communications;
 using MECF.Framework.Common.Event;
 using MECF.Framework.Common.PLC;
 using MECF.Framework.RT.Core.IoProviders.Siemens;
-using MECF.Framework.RT.EquipmentLibrary.HardwareUnits.Efems.Rorzes;
 
 namespace Mainframe.Devices
 {

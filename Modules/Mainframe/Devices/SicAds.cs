@@ -1,5 +1,4 @@
 ﻿using System.Xml;
-using Aitex.Core.RT.SCCore;
 
 namespace Mainframe.Devices
 {

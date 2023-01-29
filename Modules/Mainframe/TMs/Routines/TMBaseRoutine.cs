@@ -54,7 +54,6 @@ namespace Mainframe.TMs.Routines
         protected IoSensor SensorBufferLowWaferPresence = null;
         private IoInterLock _tmIoInterLock;
         //传盘后PM腔检查Tray是否放好Sensor
-        public SicPM.Devices.IoSensor _reactorSuspectorCheck;
 
         private IoLift4 _loadLift;
         private IoLift4 _unLoadLift;
@@ -76,9 +75,6 @@ namespace Mainframe.TMs.Routines
             _tmIoInterLock = DEVICE.GetDevice<IoInterLock>("TM.IoInterLock");
             _loadLift = DEVICE.GetDevice<IoLift4>($"{ModuleName.LoadLock}.LLLift");
             _unLoadLift = DEVICE.GetDevice<IoLift4>($"{ModuleName.UnLoad}.UnLoadLift");
-
-
-            _reactorSuspectorCheck = DEVICE.GetDevice<SicPM.Devices.IoSensor>($"PM1.SensorReactorSuspectorCheck");
         }
 
         public virtual Result Start(params object[] objs)
@@ -448,15 +444,6 @@ namespace Mainframe.TMs.Routines
         {
             Tuple<bool, Result> ret = Execute(id, () =>
             {
-                if (SC.GetValue<bool>("PM.PM1.ReactorSuspectorCheckEnable"))
-                {
-                    if (_reactorSuspectorCheck.Value)
-                    {
-                        EV.PostAlarmLog(Module, $"check reactor suspector sensor present failed");
-                        return false;
-                    }
-                }
-
                 return true;
             });
 
@@ -1668,26 +1655,7 @@ namespace Mainframe.TMs.Routines
                     throw (new RoutineBreakException());
             }
         }
-
-        public void SetMFCToSetPoint(int id, SicPM.Devices.IoMFC _mfc, double setPoint)
-        {
-            Tuple<bool, Result> ret = Execute(id, () =>
-            {
-                Notify($"Set  MFC value to default");
-                _mfc.Ramp(setPoint, 0);
-                return true;
-            });
-
-            if (ret.Item1)
-            {
-                if (ret.Item2 == Result.FAIL)
-                {
-                    throw (new RoutineFaildException());
-                }
-                else
-                    throw (new RoutineBreakException());
-            }
-        }
+        
 
         public void OpenFastVent(int id, TM tm, double basePressure, int timeout)
         {

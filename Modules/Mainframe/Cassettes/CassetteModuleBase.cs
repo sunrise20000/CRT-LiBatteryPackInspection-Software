@@ -1,7 +1,6 @@
 ﻿using Aitex.Core.RT.Device;
 using Aitex.Sorter.Common;
 using MECF.Framework.Common.Equipment;
-using MECF.Framework.Common.Fsm;
 using MECF.Framework.Common.Schedulers;
 using MECF.Framework.Common.SubstrateTrackings;
 using MECF.Framework.RT.Core;

@@ -2,23 +2,17 @@
 using Aitex.Core.RT.DataCenter;
 using Aitex.Core.RT.Device;
 using Aitex.Core.RT.Event;
-using Aitex.Core.RT.IOCore;
 using Aitex.Core.RT.Log;
-using Aitex.Core.RT.OperationCenter;
 using Aitex.Core.RT.SCCore;
 using Aitex.Core.Util;
 using DePacker;
 using Global;
-using Mainframe.Devices;
 using MECF.Framework.Common.CommonData;
 using MECF.Framework.Common.Event;
 //using RTOverEthernetDevelopmentKit;
 using SessionLayer;
 using System;
-using System.Collections.ObjectModel;
 using System.Runtime.InteropServices;
-using System.Runtime.Serialization;
-using System.Xml;
 
 namespace Mainframe.Devices
 {

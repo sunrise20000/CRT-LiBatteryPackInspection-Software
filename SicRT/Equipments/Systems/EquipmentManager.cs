@@ -13,23 +13,14 @@ using MECF.Framework.Common.Equipment;
 using MECF.Framework.Common.Fsm;
 using MECF.Framework.Common.SubstrateTrackings;
 using MECF.Framework.RT.Core.IoProviders;
-using Mainframe.Buffers;
-using Mainframe.LLs;
 using Mainframe.TMs;
-using SicPM;
 using SicRT.Instances;
 using SicRT.Modules;
 using System.Linq;
 using System.Threading.Tasks;
-using Aitex.Core.RT.DBCore;
 using Aitex.Core.RT.Device.Unit;
 using Mainframe.Aligners;
-using Mainframe.UnLoads;
-using Mainframe.EFEMs;
 using Mainframe.Cassettes;
-using Aitex.Core.RT.SCCore;
-using MECF.Framework.Common.DBCore;
-using SicPM.Devices;
 using MECF.Framework.RT.Core;
 
 namespace SicRT.Equipments.Systems
@@ -142,9 +133,6 @@ namespace SicRT.Equipments.Systems
 
         private ManualTransfer _manualTransfer;
         private AutoTransfer _auto = null;
-        private HomeAll _homeAll;
-
-        private ReturnAllWafer _returnAll;
         private List<string> _modules = new List<string>();
         //readonly IEnumerable<PropertyInfo> IEntityModules;
 
@@ -153,22 +141,13 @@ namespace SicRT.Equipments.Systems
 
         private MECF.Framework.RT.EquipmentLibrary.HardwareUnits.UPS.ITAUPS _upsPM2A = null;
         private MECF.Framework.RT.EquipmentLibrary.HardwareUnits.UPS.ITAUPS _upsPM2B = null;
-
-        private IoUPS _pm1UPS = null;
-        private IoUPS _pm2UPS = null;
+        
         //AETEmp
         private MECF.Framework.RT.EquipmentLibrary.HardwareUnits.Temps.AE.AETemp _aeTemp = null;
-        private SicAETemp _pmAETemp = null;
-        //
-        private IoInterLock _pmInterLock = null;
+
         private Mainframe.Devices.IoInterLock _tmInterLock = null;
         private IoSlitValve _pm1SlitValve = null;
         private PeriodicJob _thread;
-        //
-        private SicPM.Devices.IoSignalTower _st = null;
-        //
-        private IoTC _tc = null;
-        private IoPTOffsetAndK _pt1, _pt2,_pt3,_pt4,_pt9,_pt10;
 
 
         public EquipmentManager()
@@ -207,9 +186,7 @@ namespace SicRT.Equipments.Systems
             Singleton<EventManager>.Instance.OnAlarmEvent += Instance_OnAlarmEvent;
 
             _manualTransfer = new ManualTransfer();
-            _homeAll = new HomeAll();
             _auto = new AutoTransfer();
-            _returnAll = new ReturnAllWafer();
 
             return true;
         }
@@ -221,43 +198,13 @@ namespace SicRT.Equipments.Systems
             Modules[ModuleName.TM] = tm;
             tm.OnEnterError += OnModuleError;
 
-            var ll = new LoadLockModule(ModuleName.LoadLock);
-            Modules[ModuleName.LoadLock] = ll;
-            ll.OnEnterError += OnModuleError;
-
-            var unlaod = new UnLoadModule(ModuleName.UnLoad);
-            Modules[ModuleName.UnLoad] = unlaod;
-            unlaod.OnEnterError += OnModuleError;
-
-            var buffer = new BufferModule(ModuleName.Buffer);
-            Modules[ModuleName.Buffer] = buffer;
-            buffer.OnEnterError += OnModuleError;
-
-
-            var pm1 = new PMModule(ModuleName.PM1);
-            Modules[ModuleName.PM1] = pm1;
-            //pm1.OnEnterError += OnModuleError;
-
-            //var pm2 = new PMModule(ModuleName.PM2);
-            //Modules[ModuleName.PM2] = pm2;
-            //pm2.OnEnterError += OnModuleError;
+           
 
             var aligner = new AlignerModule(ModuleName.Aligner);
             Modules[ModuleName.Aligner] = aligner;
             aligner.OnEnterError += OnModuleError;
 
-            var efem = new EFEMModule(ModuleName.EFEM);
-            Modules[ModuleName.EFEM] = efem;
-            efem.OnEnterError += OnModuleError;
-
-            var waferRobot = new WaferRobotModule(ModuleName.WaferRobot);
-            Modules[ModuleName.WaferRobot] = waferRobot;
-            waferRobot.OnEnterError += OnModuleError;
-            
-            var trayRobot = new TrayRobotModule(ModuleName.TrayRobot);
-            Modules[ModuleName.TrayRobot] = trayRobot;
-            trayRobot.OnEnterError += OnModuleError;
-
+           
             var cassal = new CassetteModule(ModuleName.CassAL, 25);
             Modules[ModuleName.CassAL] = cassal;
             cassal.OnEnterError += OnModuleError;
@@ -282,29 +229,18 @@ namespace SicRT.Equipments.Systems
             }
 
             _pm1SlitValve = DEVICE.GetDevice<IoSlitValve>("TM.PM1Door");
-            _pmInterLock = DEVICE.GetDevice<IoInterLock>("PM1.PMInterLock");
+          
             _tmInterLock = DEVICE.GetDevice<Mainframe.Devices.IoInterLock>("TM.IoInterLock");
             _upsPM1A = DEVICE.GetDevice<MECF.Framework.RT.EquipmentLibrary.HardwareUnits.UPS.ITAUPS>("PM1.ITAUPSA");
             _upsPM1B = DEVICE.GetDevice<MECF.Framework.RT.EquipmentLibrary.HardwareUnits.UPS.ITAUPS>("PM1.ITAUPSB");
-            _pm1UPS = DEVICE.GetDevice<IoUPS>("PM1.UPS");
-
+           
             _upsPM2A = DEVICE.GetDevice<MECF.Framework.RT.EquipmentLibrary.HardwareUnits.UPS.ITAUPS>("PM2.ITAUPSA");
             _upsPM2B = DEVICE.GetDevice<MECF.Framework.RT.EquipmentLibrary.HardwareUnits.UPS.ITAUPS>("PM2.ITAUPSB");
-            _pm2UPS = DEVICE.GetDevice<IoUPS>("PM2.UPS");
+            
 
             //AETemp
             _aeTemp = DEVICE.GetDevice<MECF.Framework.RT.EquipmentLibrary.HardwareUnits.Temps.AE.AETemp>("PM1.AETemp");
-            _pmAETemp = DEVICE.GetDevice<SicAETemp>("PM1.PMAETemp");
-            //
-            _st = DEVICE.GetDevice<SicPM.Devices.IoSignalTower>("PM1.SignalTower");
-            _tc = DEVICE.GetDevice<IoTC>("PM1.TC1");
-            _pt1 = DEVICE.GetDevice<IoPTOffsetAndK>("PM1.PT1OffsetAndK");
-            _pt2 = DEVICE.GetDevice<IoPTOffsetAndK>("PM1.PT2OffsetAndK");
-            _pt3 = DEVICE.GetDevice<IoPTOffsetAndK>("PM1.PT3OffsetAndK");
-            _pt4 = DEVICE.GetDevice<IoPTOffsetAndK>("PM1.PT4OffsetAndK");
-            _pt9 = DEVICE.GetDevice<IoPTOffsetAndK>("PM1.PT9OffsetAndK");
-            _pt10 = DEVICE.GetDevice<IoPTOffsetAndK>("PM1.PT10OffsetAndK");
-            //
+            
             _thread = new PeriodicJob(200, OnTimer, "PmSlitDoor", false, true);
             Task.Delay(15000).ContinueWith((a) => _thread.Start());
 
@@ -348,23 +284,7 @@ namespace SicRT.Equipments.Systems
             Transition(RtState.AutoRunning, FSM_MSG.TIMER, fAutoTransfer, RtState.AutoRunning);
 
             Transition(RtState.AutoRunning, MSG.ABORT, fAbortAutoTransfer, RtState.AutoIdle);
-            Transition(RtState.AutoRunning, MSG.JobDone, null, RtState.AutoIdle);
-
-            Transition(RtState.AutoRunning, MSG.FAJobCommand, FsmFAJobCommand, RtState.AutoRunning);
-            Transition(RtState.AutoRunning, MSG.CreateJob, FsmCreateJob, RtState.AutoRunning);
-            Transition(RtState.AutoRunning, MSG.StartJob, FsmStartJob, RtState.AutoRunning);
-            Transition(RtState.AutoRunning, MSG.PauseJob, FsmPauseJob, RtState.AutoRunning);
-            Transition(RtState.AutoRunning, MSG.ResumeJob, FsmResumeJob, RtState.AutoRunning);
-            Transition(RtState.AutoRunning, MSG.StopJob, FsmStopJob, RtState.AutoRunning);
-            Transition(RtState.AutoRunning, MSG.AbortJob, FsmAbortJob, RtState.AutoRunning);
-
-            Transition(RtState.AutoIdle, FSM_MSG.TIMER, FsmMonitorAutoIdle, RtState.AutoIdle);
-            Transition(RtState.AutoIdle, MSG.SetManualMode, FsmStartSetManualMode, RtState.Idle);
-            Transition(RtState.AutoIdle, MSG.FAJobCommand, FsmFAJobCommand, RtState.AutoIdle);
-            Transition(RtState.AutoIdle, MSG.CreateJob, FsmCreateJob, RtState.AutoIdle);
-            Transition(RtState.AutoIdle, MSG.StartJob, FsmStartJob, RtState.AutoRunning);
-            Transition(RtState.AutoIdle, MSG.ABORT, FsmAbort, RtState.AutoIdle);
-            Transition(RtState.AutoIdle, MSG.AbortJob, FsmAbortJob, RtState.AutoIdle);
+            
 
             EnterExitTransition<RtState, FSM_MSG>(RtState.AutoRunning, null, FSM_MSG.NONE, fExitAutoTransfer);
 
@@ -527,7 +447,7 @@ namespace SicRT.Equipments.Systems
 
         void InitSetPSUY()
         {
-            Task.Delay(2000).ContinueWith(x=> _tc.SetPCPSUY());
+           
         }
         void InitPTOffsetAndK()
         {
@@ -536,23 +456,7 @@ namespace SicRT.Equipments.Systems
 
         void SetPTOffsetAndK()
         {
-            _pt1.SetPTOffset();
-            _pt1.SetPTK();
-
-            _pt2.SetPTOffset();
-            _pt2.SetPTK();
-
-            _pt3.SetPTOffset();
-            _pt3.SetPTK();
-
-            _pt4.SetPTOffset();
-            _pt4.SetPTK();
-
-            _pt9.SetPTOffset();
-            _pt9.SetPTK();
-
-            _pt10.SetPTOffset();
-            _pt10.SetPTK();
+           
         }
 
         //EventManager触发OnAlarmEvent事件，即EV.PostAlarmLog触发
@@ -600,34 +504,17 @@ namespace SicRT.Equipments.Systems
                         }
                         break;
                 }
-
-                if (_st != null)
-                {
-                    _st.SwitchOffBuzzer(false);
-                }
             }
-
         }
 
         #region Init
         private bool FsmStartHome(object[] objs)
         {
-            return _homeAll.Start() == Result.RUN;
+            return true;
         }
 
         private bool FsmMonitorHome(object[] objs)
         {
-            Result ret = _homeAll.Monitor();
-            if (ret == Result.DONE)
-            {
-                _homeAll.Clear();
-                return true;
-            }
-            if (ret == Result.FAIL)
-            {
-                _homeAll.Clear();
-                PostMsg(MSG.ERROR);
-            }
             return false;
         }
 
@@ -684,13 +571,7 @@ namespace SicRT.Equipments.Systems
         private bool fAutoTransfer(object[] objs)
         {
             Result ret = _auto.Monitor();
-
-            if (_auto.CheckAllJobDone())
-            {
-                if (!CheckToPostMessage((int)MSG.JobDone))
-                    return false;
-            }
-
+            
             return ret == Result.DONE;
         }
 
@@ -751,12 +632,12 @@ namespace SicRT.Equipments.Systems
 
         private bool FsmMonitorReturnAllWafer(object[] param)
         {
-            return _returnAll.Monitor() == Result.DONE;
+            return true;
         }
 
         private bool FsmStartReturnAllWafer(object[] param)
         {
-            return _returnAll.Start() == Result.RUN;
+            return true;
         }
         #endregion
 
@@ -842,8 +723,6 @@ namespace SicRT.Equipments.Systems
 
         private bool FsmCreateJob(object[] param)
         {
-            _auto.CreateJob((Dictionary<string, object>)param[0]);
-
             return true;
         }
 
@@ -851,31 +730,26 @@ namespace SicRT.Equipments.Systems
 
         private bool FsmAbortJob(object[] param)
         {
-            _auto.AbortJob((string)param[0]);
             return true;
         }
 
         private bool FsmStopJob(object[] param)
         {
-            _auto.StopJob((string)param[0]);
             return true;
         }
 
         private bool FsmResumeJob(object[] param)
         {
-            _auto.ResumeJob((string)param[0]);
             return true;
         }
 
         private bool FsmPauseJob(object[] param)
         {
-            _auto.PauseJob((string)param[0]);
             return true;
         }
 
         private bool FsmStartJob(object[] param)
         {
-            _auto.StartJob((string)param[0]);
             return true;
         }
 
@@ -907,29 +781,11 @@ namespace SicRT.Equipments.Systems
             var tm = Modules[ModuleName.TM] as TMModule;
             tm.InvokeOffline();
 
-            var ll = Modules[ModuleName.LoadLock] as LoadLockModule;
-            ll.InvokeOffline();
+          
 
-            var buffer = Modules[ModuleName.Buffer] as BufferModule;
-            buffer.InvokeOffline();
-
-            var unLoad = Modules[ModuleName.UnLoad] as UnLoadModule;
-            unLoad.InvokeOffline();
-
-            var efem = Modules[ModuleName.EFEM] as EFEMModule;
-            efem.InvokeOffline();
-
-            var waferRobot = Modules[ModuleName.WaferRobot] as WaferRobotModule;
-            waferRobot.InvokeOffline();
-
-            var trayRobot = Modules[ModuleName.TrayRobot] as TrayRobotModule;
-            trayRobot.InvokeOffline();
-
+            
             var aligner = Modules[ModuleName.Aligner] as AlignerModule;
             aligner.InvokeOffline();
-
-            var pm1 = Modules[ModuleName.PM1] as PMModule;
-            pm1.InvokeOffline();
 
             var cassAL = Modules[ModuleName.CassAL] as CassetteModule;
             cassAL.InvokeOffline();
@@ -953,31 +809,11 @@ namespace SicRT.Equipments.Systems
 
             var tm = Modules[ModuleName.TM] as TMModule;
             tm.InvokeOnline();
-
-            var ll = Modules[ModuleName.LoadLock] as LoadLockModule;
-            ll.InvokeOnline();
-
-            var buffer = Modules[ModuleName.Buffer] as BufferModule;
-            buffer.InvokeOnline();
-
-            var unLoad = Modules[ModuleName.UnLoad] as UnLoadModule;
-            unLoad.InvokeOnline();
-
-            var efem = Modules[ModuleName.EFEM] as EFEMModule;
-            efem.InvokeOnline();
-
-            var waferRobot = Modules[ModuleName.WaferRobot] as WaferRobotModule;
-            waferRobot.InvokeOnline();
-
-            var trayRobot = Modules[ModuleName.TrayRobot] as TrayRobotModule;
-            trayRobot.InvokeOnline();
+            
 
             var aligner = Modules[ModuleName.Aligner] as AlignerModule;
             aligner.InvokeOnline();
-
-            var pm1 = Modules[ModuleName.PM1] as PMModule;
-            pm1.InvokeOnline();
-
+            
             var cassAL = Modules[ModuleName.CassAL] as CassetteModule;
             cassAL.InvokeOnline();
 
@@ -1262,67 +1098,19 @@ namespace SicRT.Equipments.Systems
         {
             if (_pm1SlitValve != null)
             {
-                if (_pmInterLock != null && _pmInterLock.DoPMASlitDoorClosed != _pm1SlitValve.IsClose)
-                {
-                    _pmInterLock.DoPMASlitDoorClosed = _pm1SlitValve.IsClose;
-                }
-
-                if (_tmInterLock != null && _pmInterLock != null)
-                {
-                    if (_tmInterLock.DoPm1LidClosed != _pmInterLock.DiChamLidClosed)
-                    {
-                        _tmInterLock.DoPm1LidClosed = _pmInterLock.DiChamLidClosed;
-                    }
-
-                    if (_tmInterLock.DoRectorAATMTransferReady != _pmInterLock.DoReactorATMTransferReady)
-                    {
-                        _tmInterLock.DoRectorAATMTransferReady = _pmInterLock.DoReactorATMTransferReady;
-                    }
-                    if (_tmInterLock.DoRectorAProcessTransferReady != _pmInterLock.DoReactorVACTransferReady)
-                    {
-                        _tmInterLock.DoRectorAProcessTransferReady = _pmInterLock.DoReactorVACTransferReady;
-                    }
-                }
+                
             }
         }
 
         private void MonitorUPSAlarm()
         {
             string sReason;
-            if (_upsPM1A != null && _upsPM1B != null && _pm1UPS != null)
-            {
-                bool _power = !(_upsPM1A.UPSPowerAlarm || _upsPM1B.UPSPowerAlarm);
-                bool _lowerBattery = !(_upsPM1A.UPSLowerBatteryAlarm || _upsPM1B.UPSLowerBatteryAlarm);
-
-
-                if (_pm1UPS.UPSEnable == _power)
-                {
-                    //_pm1UPS.UPSEnable = _power; 
-                    _pm1UPS.SetUPSEnable(_power, out sReason);
-                }
-                if (_pm1UPS.UPSLowBattery == _lowerBattery)
-                {
-                    //_pm1UPS.UPSLowBattery = _lowerBattery; 
-                    _pm1UPS.SetUPSLowBattery(_lowerBattery, out sReason);
-                }
-            }
 
         }
 
         private void MonitorAETemp()
         {
-            if (_aeTemp != null && _pmAETemp != null)
-            {
-                string sReason;
-                if (!_aeTemp.IsConnected)
-                {
-                    _pmAETemp.SetPyroCommunicationError(true, out sReason);
-                }
-                else
-                {
-                    _pmAETemp.SetPyroCommunicationError(false, out sReason);
-                }
-            }
+          
             
         }
         #endregion

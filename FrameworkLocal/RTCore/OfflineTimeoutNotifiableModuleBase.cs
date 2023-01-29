@@ -5,7 +5,6 @@ using Aitex.Core.RT.DataCenter;
 using Aitex.Core.RT.Event;
 using Aitex.Core.RT.OperationCenter;
 using Aitex.Core.RT.SCCore;
-using MECF.Framework.Common.Equipment;
 
 namespace MECF.Framework.RT.Core
 {
