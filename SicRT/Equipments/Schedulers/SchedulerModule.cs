@@ -33,7 +33,7 @@ namespace SicRT.Modules.Schedulers
             Load,
             Unload,
 
-            Align,
+            Feeding,
 
             TransferTarget,
 
@@ -56,7 +56,7 @@ namespace SicRT.Modules.Schedulers
 
         public ModuleName Module
         {
-            get { return ModuleHelper.Converter(_module); }
+            get { return _module; }
         }
         public virtual bool IsAvailable { get; }
         public virtual bool IsOnline { get; }
@@ -70,13 +70,13 @@ namespace SicRT.Modules.Schedulers
         private R_TRIG[] firstDetectTrayArriveTrigs = new R_TRIG[25];
         private R_TRIG[] firstDetectTrayLeaveTrigs = new R_TRIG[25];
 
-        protected string _module;
+        protected ModuleName _module;
 
         protected TaskType _task = TaskType.None;
 
         protected ModuleName _inProcessRobot;
 
-        public SchedulerModule(string module)
+        public SchedulerModule(ModuleName module)
         {
             _module = module;
             for (int i = 0; i < firstDetectWaferArriveTrigs.Length; i++)
@@ -185,7 +185,7 @@ namespace SicRT.Modules.Schedulers
         {
             lock (SyncRoot)
             {
-                return WaferManager.Instance.GetWafer(ModuleHelper.Converter(_module), slot);
+                return WaferManager.Instance.GetWafer(_module, slot);
             }
         }
 
@@ -193,7 +193,7 @@ namespace SicRT.Modules.Schedulers
         {
             lock (SyncRoot)
             {
-                return WaferManager.Instance.CheckWafer(ModuleHelper.Converter(_module), slot, waferStatus);
+                return WaferManager.Instance.CheckWafer(_module, slot, waferStatus);
             }
         }
 
@@ -201,7 +201,7 @@ namespace SicRT.Modules.Schedulers
         {
             lock (SyncRoot)
             {
-                return WaferManager.Instance.CheckHasWafer(ModuleHelper.Converter(_module), slot);
+                return WaferManager.Instance.CheckHasWafer(_module, slot);
             }
         }
 
@@ -209,7 +209,7 @@ namespace SicRT.Modules.Schedulers
         {
             lock (SyncRoot)
             {
-                return WaferManager.Instance.CheckNoWafer(ModuleHelper.Converter(_module), slot);
+                return WaferManager.Instance.CheckNoWafer(_module, slot);
             }
         }
 
@@ -217,7 +217,7 @@ namespace SicRT.Modules.Schedulers
         {
             lock (SyncRoot)
             {
-                return WaferManager.Instance.CheckHasTray(ModuleHelper.Converter(_module), slot);
+                return WaferManager.Instance.CheckHasTray(_module, slot);
             }
         }
 
@@ -225,7 +225,7 @@ namespace SicRT.Modules.Schedulers
         {
             lock (SyncRoot)
             {
-                return WaferManager.Instance.CheckNoTray(ModuleHelper.Converter(_module), slot);
+                return WaferManager.Instance.CheckNoTray(_module, slot);
             }
         }
 
@@ -257,7 +257,7 @@ namespace SicRT.Modules.Schedulers
         {
             lock (SyncRoot)
             {
-                WaferInfo wi = WaferManager.Instance.GetWafer(ModuleHelper.Converter(_module), slot);
+                WaferInfo wi = WaferManager.Instance.GetWafer(_module, slot);
                 if (wi == null)
                     return false;
 
@@ -269,7 +269,7 @@ namespace SicRT.Modules.Schedulers
         {
             lock (SyncRoot)
             {
-                WaferInfo wi = WaferManager.Instance.GetWafer(ModuleHelper.Converter(_module), slot);
+                WaferInfo wi = WaferManager.Instance.GetWafer(_module, slot);
                 if (wi == null)
                     return false;
 
@@ -580,7 +580,7 @@ namespace SicRT.Modules.Schedulers
             }
         }
 
-        public virtual bool Aligning()
+        public virtual bool Feeding()
         {
             lock (SyncRoot)
             {

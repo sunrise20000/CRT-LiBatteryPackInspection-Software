@@ -108,13 +108,13 @@ namespace SicRT.Equipments
                     else if (source != ModuleName.Aligner)
                     {
                         _moveTaskQueue.Enqueue(new EfemRobotMover(new MoveItemEx(source, ss, ModuleName.Aligner, 0, 0)));
-                        _moveTaskQueue.Enqueue(new AlignerAlignRoutine());
+                        _moveTaskQueue.Enqueue(new FeederFeedRoutine());
                         if (target != ModuleName.Aligner)
                             _moveTaskQueue.Enqueue(new EfemRobotMover(new MoveItemEx(ModuleName.Aligner, 0, target, ds, 0)));
                     }
                     else
                     {
-                        _moveTaskQueue.Enqueue(new AlignerAlignRoutine()); 
+                        _moveTaskQueue.Enqueue(new FeederFeedRoutine()); 
                         if (target != ModuleName.Aligner)
                             _moveTaskQueue.Enqueue(new EfemRobotMover(new MoveItemEx(ModuleName.Aligner, 0, target, ds, 0)));
                     }

@@ -1027,7 +1027,7 @@ namespace Mainframe.Devices
 
         public void Monitor()
         {
-            _doLLAtProcessPress.Value = _aiLLPressure != null && _aiLLPressure.FloatValue <= _scLoadLockVacBasePressure.DoubleValue;
+            //_doLLAtProcessPress.Value = _aiLLPressure != null && _aiLLPressure.FloatValue <= _scLoadLockVacBasePressure.DoubleValue;
 
         }
 

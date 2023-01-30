@@ -9,29 +9,19 @@ namespace SicRT.Modules.Schedulers
 {
     public class SchedulerCassette : SchedulerModule
     {
-        public override bool IsAvailable
-        {
-            get { return _cass.IsOnline; }
+        public override bool IsAvailable => _cass.IsOnline;
 
-        }
-        public override bool IsOnline
-        {
-            get { return _cass.IsOnline; }
+        public override bool IsOnline => _cass.IsOnline;
 
-        }
-        public override bool IsError
-        {
-            get { return _cass.IsError; }
-
-        }
+        public override bool IsError => _cass.IsError;
 
         private CassetteModule _cass = null;
 
         private int _entityTaskToken = (int)FSM_MSG.NONE;
 
-        public SchedulerCassette(ModuleName module) : base(module.ToString())
+        public SchedulerCassette(ModuleName module) : base(module)
         {
-            _module = module.ToString();
+            _module = module;
             _cass = Singleton<EquipmentManager>.Instance.Modules[module] as CassetteModule;
         }
 

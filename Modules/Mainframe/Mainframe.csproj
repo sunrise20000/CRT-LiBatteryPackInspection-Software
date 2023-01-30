@@ -41,10 +41,6 @@
     <Reference Include="InfoHelp">
       <HintPath>..\..\ThirdParty\dlls\InfoHelp.dll</HintPath>
     </Reference>
-    <Reference Include="MECF.Framework.RT.Core, Version=1.0.8407.37443, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\MECF.Framework.RT.Core.dll</HintPath>
-    </Reference>
     <Reference Include="SessionLayer">
       <HintPath>..\..\ThirdParty\dlls\SessionLayer.dll</HintPath>
     </Reference>
@@ -63,12 +59,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Aligners\AlignerModule.cs" />
-    <Compile Include="Aligners\AlignerModuleBase.cs" />
-    <Compile Include="Aligners\Routines\AlignerAlignRoutine.cs" />
-    <Compile Include="Aligners\Routines\AlignerBaseRoutine.cs" />
-    <Compile Include="Aligners\Routines\AlignerHomeRoutine.cs" />
-    <Compile Include="Aligners\SicAligner.cs" />
+    <Compile Include="Feeder\CrtDevFeeder.cs" />
+    <Compile Include="Feeder\FeederModule.cs" />
+    <Compile Include="Feeder\FeederModuleBase.cs" />
+    <Compile Include="Feeder\Routines\FeederFeedRoutine.cs" />
+    <Compile Include="Feeder\Routines\FeederBaseRoutine.cs" />
+    <Compile Include="Feeder\Routines\FeederHomeRoutine.cs" />
     <Compile Include="Cassettes\CassetteModule.cs" />
     <Compile Include="Cassettes\CassetteModuleBase.cs" />
     <Compile Include="Cassettes\SicCassette.cs" />
@@ -100,6 +96,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\FrameworkLocal\RTCore\RTCore.csproj">
+      <Project>{bcbd839a-c9a0-4be7-98ca-b0a88ad38e5a}</Project>
+      <Name>RTCore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\FrameworkLocal\RTEquipmentLibrary\RTEquipmentLibrary.csproj">
       <Project>{090a1e9c-1087-4c8a-b4e0-ff074459e071}</Project>
       <Name>RTEquipmentLibrary</Name>
@@ -122,5 +122,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

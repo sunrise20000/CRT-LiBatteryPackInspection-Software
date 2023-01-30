@@ -6,8 +6,6 @@ using Aitex.Core.RT.DBCore;
 using Aitex.Core.RT.Event;
 using Aitex.Core.RT.Log;
 using Aitex.Core.RT.OperationCenter;
-using Aitex.Core.RT.RecipeCenter;
-using Aitex.Core.RT.SCCore;
 using Aitex.Core.Util;
 using Aitex.Core.WCF;
 using MECF.Framework.Common.Account;
@@ -70,23 +68,18 @@ namespace SicRT.Instances
             IoProviderManager.Instance.Initialize(ioProviderPathFile);
 
             IoManager.Instance.Initialize(PathManager.GetCfgDir() + "interlock.xml");
-
-  
-            IoManager.Instance.Initialize(PathManager.GetCfgDir() + "interlockPM.xml");
+            
 
             WaferManager.Instance.Initialize();
 
             Singleton<DeviceManager>.Instance.DisableAsyncInitialize = true;
-
-            Singleton<DeviceManager>.Instance.Initialize(PathManager.GetCfgDir() + "DeviceModelPM.xml", "Sic", ModuleName.PM1, "PM1", false);
-            //Singleton<DeviceManager>.Instance.Initialize(PathManager.GetCfgDir() + "DeviceModelPM.xml", "Sic", ModuleName.PM2, "PM2", false);
-
+            
             Singleton<DeviceManager>.Instance.Initialize(PathManager.GetCfgDir() + "DeviceModelSystem.xml", "Sic", ModuleName.System, "TM", true);
 
             Singleton<DeviceEntity>.Instance.Initialize();
 
             //DataCollectionManager.Instance.Initialize(new string[] { "System", "PM1", "PM2" }, RtInstance.DATABASE_NAME); 
-            DataCollectionManager.Instance.Initialize(new string[] { "System",  "IO.PM1" ,  "IO.TM" ,  "PM1" }, RtInstance.DATABASE_NAME);
+            DataCollectionManager.Instance.Initialize(new string[] { "System",  "IO.TM"  }, RtInstance.DATABASE_NAME);
 
             RtSystemManager.Instance.AddCustomBackend("SC", new BackendSCConfigView());
 

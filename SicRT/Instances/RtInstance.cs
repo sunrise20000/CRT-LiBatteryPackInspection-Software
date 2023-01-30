@@ -15,12 +15,12 @@ namespace SorterRT.Modules
         /// <summary>
         /// CVD系统名称
         /// </summary>
-        public const string SYSTEM_NAME = "Sic";
+        public const string SYSTEM_NAME = "Crt";
 
         /// <summary>
         /// CVD 数据库名称
         /// </summary>
-        public const string DATABASE_NAME = "sicdb";
+        public const string DATABASE_NAME = "crtlibatt";
 
         /// <summary>
         /// 

@@ -163,7 +163,7 @@ namespace SicRT.Modules
 
         public void Clear()
         {
-            foreach (var sch in LstAllSchedulers)
+            foreach (var sch in dictAllSchedulers.Values)
             {
                 sch.ResetTask();
             }
@@ -175,7 +175,7 @@ namespace SicRT.Modules
 
         public void ResetTask()
         {
-            foreach (var sch in LstAllSchedulers.Where(sch => !sch.IsOnline))
+            foreach (var sch in dictAllSchedulers.Values.Where(sch => !sch.IsOnline))
             {
                 sch.ResetTask();
             }
@@ -219,7 +219,7 @@ namespace SicRT.Modules
             MonitorCleanTasks();
 
             // 如果没有Module发生错误，则将信号灯设置为绿色
-            if (!LstAllSchedulers.Any(x => x.IsError)) ;
+            if (!dictAllSchedulers.Values.Any(x => x.IsError)) ;
                 //_signalTower..CreateLight(LightType.Green);
 
             return Result.RUN;
@@ -230,33 +230,34 @@ namespace SicRT.Modules
 
         public Result MonitorModuleTasks()
         {
-            MonitorAlignerTask();
+            MonitorFeederTask(SchFeederA);
+            MonitorFeederTask(SchFeederB);
 
             return Result.RUN;
         }
         
-        private void MonitorAlignerTask()
+        private void MonitorFeederTask(SchedulerFeeder schFeeder)
         {
-            if (!SchAligner.IsAvailable)
+            if (!schFeeder.IsAvailable)
             {
                 return;
             }
 
             
-            if (SchAligner.FirstDetectWaferArrive(0) || SchAligner.FirstDetectWaferLeave(0))
+            if (schFeeder.FirstDetectWaferArrive(0) || schFeeder.FirstDetectWaferLeave(0))
             {
-                SchAligner.ResetAlignedStatus();
+                schFeeder.ResetFedStatus();
             }
 
-            if (!SchAligner.IsAvailable)
+            if (!schFeeder.IsAvailable)
             {
                 return;
             }
 
-            if (SchAligner.HasWafer(0) && SchAligner.CheckWaferNextStepIsThis(ModuleName.Aligner, 0))
+            if (schFeeder.HasWafer(0) && schFeeder.CheckWaferNextStepIsThis(ModuleName.Aligner, 0))
             {
-                SchAligner.Aligning();
-                SchAligner.GetWaferInfo(0).NextSequenceStep++;
+                schFeeder.Feed();
+                schFeeder.GetWaferInfo(0).NextSequenceStep++;
             }
         }
 

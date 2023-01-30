@@ -27,7 +27,7 @@ namespace SicRT.Instances
 
         public override bool Initialize()
         {
-            if (SC.GetConfigItem("AETemp.EnableDevice").BoolValue)
+            /*if (SC.GetConfigItem("AETemp.EnableDevice").BoolValue)
             {
                 var aetemp = new AETemp("PM1", "AETemp", "AETemp");
                 aetemp.Initialize();
@@ -85,7 +85,7 @@ namespace SicRT.Instances
                 QueueDevice(KCVX);
             }
 
-            GetDevice<SignalTowerBase>("PM1.SignalTower").CustomSignalTower();
+            GetDevice<SignalTowerBase>("PM1.SignalTower").CustomSignalTower();*/
 
             return true;
         }

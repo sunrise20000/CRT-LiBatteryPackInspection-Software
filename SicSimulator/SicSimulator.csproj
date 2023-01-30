@@ -171,12 +171,6 @@
     <Resource Include="Resources\MyLogoPurple.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Config\_ioDefinePM.xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Config\IODefinePlatform.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

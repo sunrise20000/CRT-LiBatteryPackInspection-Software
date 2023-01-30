@@ -1,8 +1,5 @@
-﻿using System;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 using Aitex.Common.Util;
-using Aitex.Core.WCF;
-using SicSimulator.Views;
 using MECF.Framework.UI.Core.Applications;
 
 namespace SicSimulator.Instances

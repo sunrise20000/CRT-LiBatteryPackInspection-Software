@@ -13,18 +13,22 @@ using MECF.Framework.Common.Equipment;
 using MECF.Framework.Common.Fsm;
 using MECF.Framework.Common.SubstrateTrackings;
 using MECF.Framework.RT.Core.IoProviders;
-using Mainframe.TMs;
 using SicRT.Instances;
 using SicRT.Modules;
 using System.Linq;
 using System.Threading.Tasks;
-using Aitex.Core.RT.Device.Unit;
 using Mainframe.Aligners;
-using Mainframe.Cassettes;
 using MECF.Framework.RT.Core;
+using MECF.Framework.Common.PLC;
+using Aitex.Core.RT.SCCore;
+using Mainframe.Devices;
+using MECF.Framework.Common.Event;
 
 namespace SicRT.Equipments.Systems
 {
+
+    #region FSM State & Messages
+    
     public enum RtState
     {
         Init,
@@ -38,16 +42,23 @@ namespace SicRT.Equipments.Systems
 
         Cycle,
 
-        PlatformCycle,
-
         ReturnAllWafer,
+        
+        PlcConnected,
+        PlDisconnected,
 
         Error,
         ShutDown = 999
 
     }
+
+    #endregion
+
     public class EquipmentManager : FsmDevice
     {
+
+        #region FSM State & Messages
+        
         public enum MSG
         {
             HOME,
@@ -57,17 +68,8 @@ namespace SicRT.Equipments.Systems
 
             MoveWafer,
             ReturnAllWafer,
-            PlatformCycle,
-
-            HomeUnit,
-
-            PauseAuto,
-            ResumeAuto,
 
             Stop,
-            StopPlatformCycle,
-
-            StartCycle,
 
             SetAutoMode,
             SetManualMode,
@@ -79,31 +81,54 @@ namespace SicRT.Equipments.Systems
             StopJob,
             AbortJob,
 
-            JobDone,
-
-            FAJobCommand,
-
             SetOnline,
             SetOffline,
-
+            
+            PlcConnected,
+            PlcDisconnected,
+            
             ModuleError,
             ShutDown = 999,
         }
 
-        public Dictionary<ModuleName, ModuleFsmDevice> Modules { get; set; }
+        #endregion
 
-        public bool IsAutoMode
+        #region Variables
+
+        private ManualTransfer _manualTransfer;
+        private AutoTransfer _auto = null;
+        private List<string> _modules = new List<string>();
+
+        private Mainframe.Devices.IoInterLock _ioInterlock;
+
+        #endregion
+
+        #region Constructors
+
+        public EquipmentManager()
         {
-            get
-            {
-                return FsmState == (int)RtState.AutoRunning;
-            }
+            Module = ModuleName.System.ToString();
+            Name = ModuleName.System.ToString();
+
+            // 包含系统中所有模组的字典
+            Modules = new Dictionary<ModuleName, ModuleFsmDevice>();
+
         }
 
-        public bool IsInit
-        {
-            get { return FsmState == (int)RtState.Init; }
-        }
+        #endregion
+
+        #region Properties
+
+        public IAdsPlc Plc { get; private set; }
+
+        /// <summary>
+        /// 返回包含系统所有模组的字典。
+        /// </summary>
+        public Dictionary<ModuleName, ModuleFsmDevice> Modules { get; private set; }
+
+        public bool IsAutoMode => FsmState == (int)RtState.AutoRunning;
+
+        public bool IsInit => FsmState == (int)RtState.Init;
 
         public bool IsOnline
         {
@@ -111,54 +136,20 @@ namespace SicRT.Equipments.Systems
             set;
         }
 
-        public bool IsIdle
-        {
-            get { return FsmState == (int)RtState.Idle; }
-        }
-        public bool IsAlarm
-        {
-            get { return FsmState == (int)RtState.Error; }
-        }
+        public bool IsIdle => FsmState == (int)RtState.Idle;
 
-        public bool IsRunning
-        {
-            get
-            {
-                return FsmState == (int)RtState.Initializing
-                       || FsmState == (int)RtState.Transfer
-                       || FsmState == (int)RtState.Cycle
-                       || FsmState == (int)RtState.AutoRunning;
-            }
-        }
+        public bool IsAlarm => FsmState == (int)RtState.Error;
 
-        private ManualTransfer _manualTransfer;
-        private AutoTransfer _auto = null;
-        private List<string> _modules = new List<string>();
-        //readonly IEnumerable<PropertyInfo> IEntityModules;
-
-        private MECF.Framework.RT.EquipmentLibrary.HardwareUnits.UPS.ITAUPS _upsPM1A = null;
-        private MECF.Framework.RT.EquipmentLibrary.HardwareUnits.UPS.ITAUPS _upsPM1B = null;
-
-        private MECF.Framework.RT.EquipmentLibrary.HardwareUnits.UPS.ITAUPS _upsPM2A = null;
-        private MECF.Framework.RT.EquipmentLibrary.HardwareUnits.UPS.ITAUPS _upsPM2B = null;
+        public bool IsRunning =>
+            FsmState == (int)RtState.Initializing
+            || FsmState == (int)RtState.Transfer
+            || FsmState == (int)RtState.Cycle
+            || FsmState == (int)RtState.AutoRunning;
         
-        //AETEmp
-        private MECF.Framework.RT.EquipmentLibrary.HardwareUnits.Temps.AE.AETemp _aeTemp = null;
 
-        private Mainframe.Devices.IoInterLock _tmInterLock = null;
-        private IoSlitValve _pm1SlitValve = null;
-        private PeriodicJob _thread;
+        #endregion
 
-
-        public EquipmentManager()
-        {
-            Module = "System";
-            Name = "System";
-
-            Modules = new Dictionary<ModuleName, ModuleFsmDevice>();
-
-        }
-
+    
         public override bool Initialize()
         {
             InitModules();
@@ -174,15 +165,16 @@ namespace SicRT.Equipments.Systems
             });
             EnableFsm(100, RtState.Init);
 
-            BuildTransitionTable();
+            InitRoutine();
 
-            SubscribeDataVariable();
+            InitDevice();
 
-            SubscribeOperation();
+            InitFsm();
 
-            InitSetPSUY();
-            InitPTOffsetAndK();
+            InitData();
 
+            InitOp();
+            
             Singleton<EventManager>.Instance.OnAlarmEvent += Instance_OnAlarmEvent;
 
             _manualTransfer = new ManualTransfer();
@@ -191,33 +183,80 @@ namespace SicRT.Equipments.Systems
             return true;
         }
 
+        private void InitRoutine()
+        {
+            
+        }
+
+        private void InitDevice()
+        {
+            if (SC.GetValue<bool>("System.IsSimulatorMode"))
+            {
+                Plc = DEVICE.GetOptionDevice($"{Module}.MainPLC", typeof(WcfPlc)) as IAdsPlc;
+
+                (Plc as WcfPlc).Initialize();
+            }
+            else
+            {
+                Plc = DEVICE.GetOptionDevice($"{Module}.MainPLC", typeof(SicAds)) as IAdsPlc;
+
+                (Plc as SicAds).Initialize();
+            }
+
+            //System.Diagnostics.Debug.Assert(Plc != null, "System.TcAds not define");
+            if (Plc != null)
+            {
+                Plc.OnDeviceAlarmStateChanged += OnModuleDeviceAlarmStateChanged;
+                Plc.OnConnected += PlcConnected;
+                Plc.OnDisconnected += PlcDisconnected;
+            }
+        }
+
+        #region PLC Events
+
+        private void PlcDisconnected()
+        {
+            CheckToPostMessage(MSG.PlcDisconnected);
+        }
+
+        private void PlcConnected()
+        {
+            CheckToPostMessage(MSG.PlcConnected);
+        }
+
+        private void OnModuleDeviceAlarmStateChanged(string deviceId, AlarmEventItem alarmItem)
+        {
+            if (!alarmItem.IsAcknowledged)
+            {
+                if (alarmItem.Level == EventLevel.Alarm)
+                {
+                    EV.PostAlarmLog(alarmItem.Source, alarmItem.Description);
+                }
+                else
+                {
+                    EV.PostWarningLog(alarmItem.Source, alarmItem.Description);
+                }
+            }
+
+
+            //EV.PostAlarmLog(Module, obj.Description);
+        }
+
+
+        #endregion
+
         private void InitModules()
         {
-            var tm = new TMModule(ModuleName.TM);
+            var feederA = new FeederModule(ModuleName.FeederA);
+            Modules[ModuleName.FeederA] = feederA;
+            feederA.OnEnterError += OnModuleError;
 
-            Modules[ModuleName.TM] = tm;
-            tm.OnEnterError += OnModuleError;
-
-           
-
-            var aligner = new AlignerModule(ModuleName.Aligner);
-            Modules[ModuleName.Aligner] = aligner;
-            aligner.OnEnterError += OnModuleError;
-
-           
-            var cassal = new CassetteModule(ModuleName.CassAL, 25);
-            Modules[ModuleName.CassAL] = cassal;
-            cassal.OnEnterError += OnModuleError;
-
-            var cassar = new CassetteModule(ModuleName.CassAR, 25);
-            Modules[ModuleName.CassAR] = cassar;
-            cassar.OnEnterError += OnModuleError;
-
-            var cassbl = new CassetteModule(ModuleName.CassBL, 8);
-            Modules[ModuleName.CassBL] = cassbl;
-            cassbl.OnEnterError += OnModuleError;
-
-            _modules = new List<string>() { "System" };
+            var feederB = new FeederModule(ModuleName.FeederB);
+            Modules[ModuleName.FeederB] = feederB;
+            feederB.OnEnterError += OnModuleError;
+            
+            // 把我自己添加到字典
+            _modules = new List<string>() { ModuleName.System.ToString()};
             foreach (var modulesKey in Modules.Keys)
             {
                 _modules.Add(modulesKey.ToString());
@@ -227,34 +266,21 @@ namespace SicRT.Equipments.Systems
             {
                 modulesValue.Initialize();
             }
-
-            _pm1SlitValve = DEVICE.GetDevice<IoSlitValve>("TM.PM1Door");
-          
-            _tmInterLock = DEVICE.GetDevice<Mainframe.Devices.IoInterLock>("TM.IoInterLock");
-            _upsPM1A = DEVICE.GetDevice<MECF.Framework.RT.EquipmentLibrary.HardwareUnits.UPS.ITAUPS>("PM1.ITAUPSA");
-            _upsPM1B = DEVICE.GetDevice<MECF.Framework.RT.EquipmentLibrary.HardwareUnits.UPS.ITAUPS>("PM1.ITAUPSB");
-           
-            _upsPM2A = DEVICE.GetDevice<MECF.Framework.RT.EquipmentLibrary.HardwareUnits.UPS.ITAUPS>("PM2.ITAUPSA");
-            _upsPM2B = DEVICE.GetDevice<MECF.Framework.RT.EquipmentLibrary.HardwareUnits.UPS.ITAUPS>("PM2.ITAUPSB");
             
-
-            //AETemp
-            _aeTemp = DEVICE.GetDevice<MECF.Framework.RT.EquipmentLibrary.HardwareUnits.Temps.AE.AETemp>("PM1.AETemp");
-            
-            _thread = new PeriodicJob(200, OnTimer, "PmSlitDoor", false, true);
-            Task.Delay(15000).ContinueWith((a) => _thread.Start());
-
-            //IEntityModules = this.GetType().GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public)
-            //   .Where(t => t.PropertyType.GetInterfaces().Contains(typeof(IEntity)) && t.PropertyType.GetInterfaces().Contains(typeof(IModuleEntity)));
+            _ioInterlock = DEVICE.GetDevice<Mainframe.Devices.IoInterLock>("TM.IoInterLock");
         }
 
-        private void BuildTransitionTable()
+        private void InitFsm()
         {
             //ShutDown
             Transition(RtState.Init, MSG.ShutDown, FsmStartShutDown, RtState.ShutDown);
             Transition(RtState.Idle, MSG.ShutDown, FsmStartShutDown, RtState.ShutDown);
             Transition(RtState.AutoIdle, MSG.ShutDown, FsmStartShutDown, RtState.ShutDown);
             EnterExitTransition<RtState, FSM_MSG>(RtState.ShutDown, FsmShutDown, null, null);
+
+            //connection
+            AnyStateTransition(MSG.PlcDisconnected, FsmOnDisconnected, RtState.PlDisconnected);
+            Transition(RtState.PlDisconnected, MSG.PlcConnected, FsmOnConnected, RtState.Init);
 
             //Init sequence
             Transition(RtState.Init, MSG.HOME, FsmStartHome, RtState.Initializing);
@@ -303,7 +329,7 @@ namespace SicRT.Equipments.Systems
             Transition(RtState.Transfer, MSG.ABORT, FsmAbort, RtState.Idle);
         }
 
-        void SubscribeDataVariable()
+        private void InitData()
         {
             DATA.Subscribe("Rt.Status", () => StringFsmStatus);
             DATA.Subscribe("System.IsOnline", () => IsOnline);
@@ -312,10 +338,10 @@ namespace SicRT.Equipments.Systems
             DATA.Subscribe("System.IsBusy", () => IsRunning);
             DATA.Subscribe("System.IsAutoRunning", () => IsRunning);
             DATA.Subscribe("System.Modules", () => _modules);
-            DATA.Subscribe("System.LiveAlarmEvent", () => EV.GetAlarmEvent());
+            DATA.Subscribe("System.LiveAlarmEvent", EV.GetAlarmEvent);
         }
 
-        void SubscribeOperation()
+        private void InitOp()
         {
             OP.Subscribe("CreateWafer", InvokeCreateWafer);
 
@@ -328,12 +354,12 @@ namespace SicRT.Equipments.Systems
             OP.Subscribe("AlterWaferInfo", InvokeAlterWaferInfo);
 
 
-            OP.Subscribe("System.ReturnAllWafer", (string cmd, object[] args) =>
+            OP.Subscribe("System.ReturnAllWafer", (cmd, args) =>
             {
                 return CheckToPostMessage((int)MSG.ReturnAllWafer);
             });
 
-            OP.Subscribe("System.MoveWafer", (string cmd, object[] args) =>
+            OP.Subscribe("System.MoveWafer", (cmd, args) =>
             {
                 if (!Enum.TryParse((string)args[0], out ModuleName source))
                 {
@@ -373,140 +399,61 @@ namespace SicRT.Equipments.Systems
                 return CheckToPostMessage((int)MSG.MoveWafer, source, (int)args[1], destination, (int)args[3]);
             });
 
-            OP.Subscribe("System.HomeAll", (string cmd, object[] args) =>
-            {
-                return CheckToPostMessage((int)MSG.HOME);
-            });
-            OP.Subscribe("System.Abort", (string cmd, object[] args) =>
-            {
-                return CheckToPostMessage((int)MSG.ABORT);
-            });
+            OP.Subscribe("System.HomeAll", (cmd, args) => CheckToPostMessage((int)MSG.HOME));
+            OP.Subscribe("System.Abort", (cmd, args) => CheckToPostMessage((int)MSG.ABORT));
 
-            OP.Subscribe("System.Reset", (string cmd, object[] args) =>
-            {
-                return CheckToPostMessage((int)MSG.RESET);
-            });
+            OP.Subscribe("System.Reset", (cmd, args) => CheckToPostMessage((int)MSG.RESET));
 
-            OP.Subscribe("System.SetAutoMode", (string cmd, object[] args) =>
-            {
-                return CheckToPostMessage((int)MSG.SetAutoMode);
-            });
-            OP.Subscribe("System.SetManualMode", (string cmd, object[] args) =>
-            {
-                return CheckToPostMessage((int)MSG.SetManualMode);
-            });
+            OP.Subscribe("System.SetAutoMode", (cmd, args) => CheckToPostMessage((int)MSG.SetAutoMode));
+            OP.Subscribe("System.SetManualMode", (cmd, args) => CheckToPostMessage((int)MSG.SetManualMode));
 
-            OP.Subscribe("System.CreateJob", (string cmd, object[] args) =>
-            {
-                return CheckToPostMessage((int)MSG.CreateJob, args[0]);
-            });
+            OP.Subscribe("System.CreateJob", (cmd, args) => CheckToPostMessage((int)MSG.CreateJob, args[0]));
 
-            OP.Subscribe("System.StartJob", (string cmd, object[] args) =>
-            {
-                return CheckToPostMessage((int)MSG.StartJob, args[0]);
-            });
+            OP.Subscribe("System.StartJob", (cmd, args) => CheckToPostMessage((int)MSG.StartJob, args[0]));
 
-            OP.Subscribe("System.PauseJob", (string cmd, object[] args) =>
-            {
-                return CheckToPostMessage((int)MSG.PauseJob, args[0]);
-            });
+            OP.Subscribe("System.PauseJob", (cmd, args) => CheckToPostMessage((int)MSG.PauseJob, args[0]));
 
-            OP.Subscribe("System.ResumeJob", (string cmd, object[] args) =>
-            {
-                return CheckToPostMessage((int)MSG.ResumeJob, args[0]);
-            });
+            OP.Subscribe("System.ResumeJob", (cmd, args) => CheckToPostMessage((int)MSG.ResumeJob, args[0]));
 
-            OP.Subscribe("System.StopJob", (string cmd, object[] args) =>
-            {
-                return CheckToPostMessage((int)MSG.StopJob, args[0]);
-            });
+            OP.Subscribe("System.StopJob", (cmd, args) => CheckToPostMessage((int)MSG.StopJob, args[0]));
 
-            OP.Subscribe("System.AbortJob", (string cmd, object[] args) =>
-            {
-                return CheckToPostMessage((int)MSG.AbortJob, args[0]);
-            });
+            OP.Subscribe("System.AbortJob", (cmd, args) => CheckToPostMessage((int)MSG.AbortJob, args[0]));
 
-            OP.Subscribe("System.SetOnline", (string cmd, object[] args) =>
-            {
-                return CheckToPostMessage((int)MSG.SetOnline);
-            });
+            OP.Subscribe("System.SetOnline", (cmd, args) => CheckToPostMessage((int)MSG.SetOnline));
 
-            OP.Subscribe("System.SetOffline", (string cmd, object[] args) =>
-            {
-                return CheckToPostMessage((int)MSG.SetOffline);
-            });
-            OP.Subscribe("System.ShutDown", (string cmd, object[] args) =>
-            {
-                return CheckToPostMessage((int)MSG.ShutDown, null);
-            });
-            //OP.Subscribe("System.StartAutoRun", (string cmd, object[] args) =>
-            //{
-            //    return CheckToPostMessage((int)MSG.StartJob, args[0]);
-            //}); 
+            OP.Subscribe("System.SetOffline", (cmd, args) => CheckToPostMessage((int)MSG.SetOffline));
+            OP.Subscribe("System.ShutDown", (cmd, args) => CheckToPostMessage((int)MSG.ShutDown, null));
         }
-
-        void InitSetPSUY()
-        {
-           
-        }
-        void InitPTOffsetAndK()
-        {
-            Task.Delay(2000).ContinueWith(x => SetPTOffsetAndK());
-        }
-
-        void SetPTOffsetAndK()
-        {
-           
-        }
-
-        //EventManager触发OnAlarmEvent事件，即EV.PostAlarmLog触发
-        //具体值到 EventManager里面找
-        //private void Instance_OnAlarmEvent(EventItem obj)
-        //{
-        //    if (obj.EventEnum == "ALARM_EVENT")
-        //    {
-        //        //这里应该触发IoSignalTower的警报动作
-        //        if (_st != null)
-        //        {
-        //            MECF.Framework.Common.Device.Bases.SignalLightBase islL = _st.CreateLight(MECF.Framework.Common.Device.Bases.LightType.Red);
-        //            if (islL != null)
-        //            {
-        //                islL.StateSetPoint = MECF.Framework.Common.Device.Bases.TowerLightStatus.On;
-        //            }
-        //            //
-        //            MECF.Framework.Common.Device.Bases.SignalLightBase islB = _st.CreateLight(MECF.Framework.Common.Device.Bases.LightType.Buzzer);
-        //            if (islB != null)
-        //            {
-        //                islB.StateSetPoint = MECF.Framework.Common.Device.Bases.TowerLightStatus.On;
-        //            }
-        //        }
-        //    }
-        //}
+        
         private void Instance_OnAlarmEvent(EventItem obj)
         {
-            FSM_MSG msg = FSM_MSG.NONE;
-            if (obj.Level == EventLevel.Warning)
-                msg = FSM_MSG.WARNING;
-            else if (obj.Level == EventLevel.Alarm)
+            var msg = FSM_MSG.NONE;
+            switch (obj.Level)
             {
-                msg = FSM_MSG.ALARM;
+                case EventLevel.Warning:
+                    msg = FSM_MSG.WARNING;
+                    break;
+                case EventLevel.Alarm:
+                    msg = FSM_MSG.ALARM;
 
-                switch (obj.Source)
-                {
-                    case "PM1":
-                    case "PM2":
-                    case "EFEM":
-                    case "TM":
-                    default:
-                        if (Modules.ContainsKey(ModuleHelper.Converter(obj.Source)))
-                        {
-                            Modules[ModuleHelper.Converter(obj.Source)]?.PostMsg(msg, obj.Id, obj.Description);
-                        }
-                        break;
-                }
+                    switch (obj.Source)
+                    {
+                        case "PM1":
+                        case "PM2":
+                        case "EFEM":
+                        case "TM":
+                        default:
+                            if (Modules.ContainsKey(ModuleHelper.Converter(obj.Source)))
+                            {
+                                Modules[ModuleHelper.Converter(obj.Source)]?.PostMsg(msg, obj.Id, obj.Description);
+                            }
+                            break;
+                    }
+
+                    break;
             }
         }
-
+        
         #region Init
         private bool FsmStartHome(object[] objs)
         {
@@ -533,13 +480,27 @@ namespace SicRT.Equipments.Systems
 
         #endregion
 
+        #region Plc
+
+        private bool FsmOnConnected(object[] param)
+        {
+            return true;
+        }
+
+        private bool FsmOnDisconnected(object[] param)
+        {
+            return true;
+        }
+
+        #endregion
+
         #region AutoTransfer
 
         private bool FsmMonitorAutoIdle(object[] param)
         {
             //fMonitorFAJob(param);
 
-            Result ret = _auto.Monitor();
+            var ret = _auto.Monitor();
 
             //if (!_auto.CheckAllJobDone())
             //{
@@ -563,14 +524,14 @@ namespace SicRT.Equipments.Systems
         private bool fStartAutoTransfer(object[] objs)
         {
 
-            Result ret = _auto.Start(objs);
+            var ret = _auto.Start(objs);
 
             return ret == Result.RUN;
         }
 
         private bool fAutoTransfer(object[] objs)
         {
-            Result ret = _auto.Monitor();
+            var ret = _auto.Monitor();
             
             return ret == Result.DONE;
         }
@@ -644,7 +605,7 @@ namespace SicRT.Equipments.Systems
         #region Transfer
         private bool fStartTransfer(object[] objs)
         {
-            Result ret = _manualTransfer.Start(objs);
+            var ret = _manualTransfer.Start(objs);
             if (ret == Result.FAIL || ret == Result.DONE)
                 return false;
             return ret == Result.RUN;
@@ -653,7 +614,7 @@ namespace SicRT.Equipments.Systems
 
         private bool fTransfer(object[] objs)
         {
-            Result ret = _manualTransfer.Monitor(objs);
+            var ret = _manualTransfer.Monitor(objs);
             if (ret == Result.FAIL)
             {
                 PostMsg(MSG.ERROR);
@@ -704,54 +665,7 @@ namespace SicRT.Equipments.Systems
         }
 
         #endregion
-
-        private bool FsmFAJobCommand(object[] param)
-        {
-            switch ((string)param[0])
-            {
-                case "CreateProcessJob":
-                    //_auto.CreateProcessJob((string)param[1], (string)param[2], (List<int>)param[3], (bool)param[4]);
-                    break;
-                case "CreateControlJob":
-                    //_auto.CreateControlJob((string)param[1], (string)param[2], (List<string>)param[3], (bool)param[4]);
-                    CheckToPostMessage((int)MSG.StartJob, (string)param[1]);
-                    break;
-            }
-
-            return true;
-        }
-
-        private bool FsmCreateJob(object[] param)
-        {
-            return true;
-        }
-
-
-
-        private bool FsmAbortJob(object[] param)
-        {
-            return true;
-        }
-
-        private bool FsmStopJob(object[] param)
-        {
-            return true;
-        }
-
-        private bool FsmResumeJob(object[] param)
-        {
-            return true;
-        }
-
-        private bool FsmPauseJob(object[] param)
-        {
-            return true;
-        }
-
-        private bool FsmStartJob(object[] param)
-        {
-            return true;
-        }
+        
 
         private bool FsmAbort(object[] param)
         {
@@ -778,27 +692,11 @@ namespace SicRT.Equipments.Systems
         {
             IsOnline = false;
 
-            var tm = Modules[ModuleName.TM] as TMModule;
-            tm.InvokeOffline();
-
-          
-
-            
-            var aligner = Modules[ModuleName.Aligner] as AlignerModule;
-            aligner.InvokeOffline();
-
-            var cassAL = Modules[ModuleName.CassAL] as CassetteModule;
-            cassAL.InvokeOffline();
-
-            var cassAR = Modules[ModuleName.CassAR] as CassetteModule;
-            cassAR.InvokeOffline();
-
-            var cassBL = Modules[ModuleName.CassBL] as CassetteModule;
-            cassBL.InvokeOffline();
-
-            //var pm2 = Modules[ModuleName.PM2] as PMModule;
-            //pm2.InvokeOffline();
-
+            foreach (var module in Modules.Values)
+            {
+                if(module is OfflineTimeoutNotifiableModuleBase m)
+                    m.InvokeOffline();
+            }
 
             return true;
         }
@@ -807,33 +705,21 @@ namespace SicRT.Equipments.Systems
         {
             IsOnline = true;
 
-            var tm = Modules[ModuleName.TM] as TMModule;
-            tm.InvokeOnline();
-            
-
-            var aligner = Modules[ModuleName.Aligner] as AlignerModule;
-            aligner.InvokeOnline();
-            
-            var cassAL = Modules[ModuleName.CassAL] as CassetteModule;
-            cassAL.InvokeOnline();
-
-            var cassAR = Modules[ModuleName.CassAR] as CassetteModule;
-            cassAR.InvokeOnline();
-
-            var cassBL = Modules[ModuleName.CassBL] as CassetteModule;
-            cassBL.InvokeOnline();
-
-            //var pm2 = Modules[ModuleName.PM2] as PMModule;
-            //pm2.InvokeOnline();
-
+            foreach (var module in Modules.Values)
+            {
+                if (module is OfflineTimeoutNotifiableModuleBase m)
+                    m.InvokeOnline();
+            }
 
             return true;
         }
+        
         #region cassette popup menu
+        
         private bool InvokeReturnWafer(string arg1, object[] args)
         {
-            ModuleName target = ModuleHelper.Converter(args[0].ToString());
-            int slot = (int)args[1];
+            var target = ModuleHelper.Converter(args[0].ToString());
+            var slot = (int)args[1];
 
             if (ModuleHelper.IsLoadPort(target))
             {
@@ -847,7 +733,7 @@ namespace SicRT.Equipments.Systems
                 return false;
             }
 
-            WaferInfo wafer = WaferManager.Instance.GetWafer(target, slot);
+            var wafer = WaferManager.Instance.GetWafer(target, slot);
             if (wafer.IsEmpty)
             {
                 EV.PostInfoLog("System", string.Format("No wafer at {0} {1}, return operation is not valid", target.ToString(), slot + 1));
@@ -863,8 +749,8 @@ namespace SicRT.Equipments.Systems
 
         private bool InvokeDeleteWafer(string arg1, object[] args)
         {
-            ModuleName chamber = ModuleHelper.Converter(args[0].ToString());
-            int slot = (int)args[1];
+            var chamber = ModuleHelper.Converter(args[0].ToString());
+            var slot = (int)args[1];
 
             if (chamber == ModuleName.TrayRobot || chamber == ModuleName.CassBL)
             {
@@ -908,9 +794,9 @@ namespace SicRT.Equipments.Systems
 
         private bool InvokeCreateWafer(string arg1, object[] args)
         {
-            ModuleName chamber = ModuleHelper.Converter(args[0].ToString());
-            int slot = (int)args[1];
-            WaferStatus state = WaferStatus.Normal;
+            var chamber = ModuleHelper.Converter(args[0].ToString());
+            var slot = (int)args[1];
+            var state = WaferStatus.Normal;
 
             if (chamber == ModuleName.TrayRobot || chamber == ModuleName.CassBL)
             {
@@ -956,8 +842,8 @@ namespace SicRT.Equipments.Systems
 
         private bool InvokeDeleteTray(string arg1, object[] args)
         {
-            ModuleName chamber = ModuleHelper.Converter(args[0].ToString());
-            int slot = (int)args[1];
+            var chamber = ModuleHelper.Converter(args[0].ToString());
+            var slot = (int)args[1];
 
             if (WaferManager.Instance.CheckHasTray(chamber, slot))
             {
@@ -987,7 +873,7 @@ namespace SicRT.Equipments.Systems
             // args[3]: RecipeName
             // args[4]: processCount
             
-            ModuleName chamber = ModuleHelper.Converter(args[0].ToString());
+            var chamber = ModuleHelper.Converter(args[0].ToString());
             var slot = (int)args[1];
             var waferId = args[2].ToString();
             var recipeName = args[3].ToString();
@@ -1001,7 +887,7 @@ namespace SicRT.Equipments.Systems
 
                 if (!string.IsNullOrEmpty(recipeName) && waferInfo.ProcessJob?.Sequence != null && waferInfo.ProcessState == EnumWaferProcessStatus.Idle)
                 {
-                    for (int i = 0; i < waferInfo.ProcessJob.Sequence.Steps.Count; i++)
+                    for (var i = 0; i < waferInfo.ProcessJob.Sequence.Steps.Count; i++)
                     {
                         if (!String.IsNullOrEmpty(waferInfo.ProcessJob.Sequence.Steps[i].RecipeName))
                         {
@@ -1023,11 +909,11 @@ namespace SicRT.Equipments.Systems
 
         #endregion
 
-        private void OnModuleError(string module)
+        private void OnModuleError(object sender, string module)
         {
             if (FsmState == (int)RtState.AutoRunning)
             {
-                ModuleName mod = ModuleHelper.Converter(module);
+                var mod = ModuleHelper.Converter(module);
 
                 PostMsg(MSG.ModuleError, module);
             }
@@ -1067,52 +953,7 @@ namespace SicRT.Equipments.Systems
                 modulesValue.Terminate();
             }
         }
-
-
-        public bool OnTimer()
-        {
-            //MonitorModuleAlarm();
-            MonitorPmTmInfo();
-            MonitorUPSAlarm();
-            MonitorAETemp(); //AE通断，DO220
-            return true;
-        }
-
-        //public void MonitorModuleAlarm()
-        //{
-        //    var alarms = EV.GetAlarmEvent();
-        //    if (alarms != null && StringFsmStatus != "Initializing")
-        //    {
-        //        foreach (var modulesNa in Modules.Keys)
-        //        {
-        //            if (alarms.FindAll(a => a.Level == EventLevel.Alarm && a.Source == modulesNa.ToString()).Count > 0 && Modules[modulesNa].StringFsmStatus.ToLower() != "error")
-        //            {
-        //                Modules[modulesNa].PostMsg(MSG.ERROR);
-        //            }
-        //        }
-        //    }
-        //}
-
-
-        private void MonitorPmTmInfo()
-        {
-            if (_pm1SlitValve != null)
-            {
-                
-            }
-        }
-
-        private void MonitorUPSAlarm()
-        {
-            string sReason;
-
-        }
-
-        private void MonitorAETemp()
-        {
-          
-            
-        }
+        
         #endregion
     }
 }

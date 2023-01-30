@@ -107,7 +107,7 @@
   <ItemGroup>
     <Compile Include="Equipments\DemoUtils.cs" />
     <Compile Include="Equipments\Schedulers\SchedulerDBCallback.cs" />
-    <Compile Include="Equipments\Schedulers\SchedulerAligner.cs" />
+    <Compile Include="Equipments\Schedulers\SchedulerFeeder.cs" />
     <Compile Include="Equipments\Schedulers\SchedulerCassette.cs" />
     <Compile Include="Equipments\Systems\DeviceManager.cs" />
     <Compile Include="Equipments\AutoTransfer.cs" />

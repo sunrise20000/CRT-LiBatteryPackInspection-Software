@@ -1,16 +1,221 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" ?>
 <IO_DEFINE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <VersionID Name="V2.2.3.0" />
-  <Dig_In>
-    <DI_ITEM Index="0" Name="DI_Dummy0" BufferOffset="0" Addr="0" Description="" />
-  </Dig_In>
-  <Dig_Out>
-    <DO_ITEM Index="0" Name="DO_Dummy0" BufferOffset="0" Addr="0" Description="V84" />
-  </Dig_Out>
-  <Ana_In>
-    <AI_ITEM Index="0" Name="AI_Dummy0" BufferOffset="0" Addr="0" Description="" />
-  </Ana_In>
-  <Ana_Out>
-    <AO_ITEM Index="8" Name="AO_Dummy0" BufferOffset="8" Addr="8" Description="" />
-  </Ana_Out>
+	<Dig_In>
+		<DI_ITEM Index="0" Name="DI_SYS_Start" BufferOffset="0" Addr="0" Description=""/>
+		<DI_ITEM Index="1" Name="DI_SYS_Abort" BufferOffset="1" Addr="1" Description=""/>
+		<DI_ITEM Index="2" Name="DI_SYS_Reset" BufferOffset="2" Addr="2" Description=""/>
+		<DI_ITEM Index="3" Name="DI_SYS_EMO1" BufferOffset="3" Addr="3" Description=""/>
+		<DI_ITEM Index="4" Name="DI_F1A_Stop" BufferOffset="4" Addr="4" Description=""/>
+		<DI_ITEM Index="5" Name="DI_F1A_Monitor" BufferOffset="5" Addr="5" Description=""/>
+		<DI_ITEM Index="6" Name="DI_F1A_SlowDown" BufferOffset="6" Addr="6" Description=""/>
+		<DI_ITEM Index="7" Name="DI_F1A_StopCylExtend" BufferOffset="7" Addr="7" Description=""/>
+		<DI_ITEM Index="8" Name="DI_F1A_StopCylBack" BufferOffset="8" Addr="8" Description=""/>
+		<DI_ITEM Index="9" Name="DI_F1A_Block" BufferOffset="9" Addr="9" Description=""/>
+		<DI_ITEM Index="10" Name="DI_F1A_BattOnLine" BufferOffset="10" Addr="10" Description=""/>
+		<DI_ITEM Index="11" Name="DI_F1B_Monitor" BufferOffset="11" Addr="11" Description=""/>
+		<DI_ITEM Index="12" Name="DI_F1B_SlowDown" BufferOffset="12" Addr="12" Description=""/>
+		<DI_ITEM Index="13" Name="DI_F1B_Stop" BufferOffset="13" Addr="13" Description=""/>
+		<DI_ITEM Index="14" Name="DI_F1B_StopCylExtend" BufferOffset="14" Addr="14" Description=""/>
+		<DI_ITEM Index="15" Name="DI_F1B_StopCylBack" BufferOffset="15" Addr="15" Description=""/>
+		<DI_ITEM Index="16" Name="DI_F1B_Block" BufferOffset="16" Addr="16" Description=""/>
+		<DI_ITEM Index="17" Name="DI_F1B_BattOnLine" BufferOffset="17" Addr="17" Description=""/>
+		<DI_ITEM Index="18" Name="DI_EU1A_GateOpened1" BufferOffset="18" Addr="18" Description=""/>
+		<DI_ITEM Index="19" Name="DI_EU1A_GateOpened2" BufferOffset="19" Addr="19" Description=""/>
+		<DI_ITEM Index="20" Name="DI_EU1A_GateOpened3" BufferOffset="20" Addr="20" Description=""/>
+		<DI_ITEM Index="21" Name="DI_EU1B_GateOpened1" BufferOffset="21" Addr="21" Description=""/>
+		<DI_ITEM Index="22" Name="DI_EU1B_GateOpened2" BufferOffset="22" Addr="22" Description=""/>
+		<DI_ITEM Index="23" Name="DI_EU1B_GateOpened3" BufferOffset="23" Addr="23" Description=""/>
+		<DI_ITEM Index="24" Name="DI_SYS_PowerOff" BufferOffset="24" Addr="24" Description=""/>
+		<DI_ITEM Index="25" Name="DI_SYS_CompressAirLow" BufferOffset="25" Addr="25" Description=""/>
+		<DI_ITEM Index="32" Name="DI_S1A_LiftUp" BufferOffset="32" Addr="32" Description=""/>
+		<DI_ITEM Index="33" Name="DI_S1A_LiftDown" BufferOffset="33" Addr="33" Description=""/>
+		<DI_ITEM Index="34" Name="DI_S1A_Gripped" BufferOffset="34" Addr="34" Description=""/>
+		<DI_ITEM Index="35" Name="DI_S1A_Released" BufferOffset="35" Addr="35" Description=""/>
+		<DI_ITEM Index="36" Name="DI_S1A_BattInPos" BufferOffset="36" Addr="36" Description=""/>
+		<DI_ITEM Index="37" Name="DI_S1B_LiftUp" BufferOffset="37" Addr="37" Description=""/>
+		<DI_ITEM Index="38" Name="DI_S1B_LiftDown" BufferOffset="38" Addr="38" Description=""/>
+		<DI_ITEM Index="39" Name="DI_S1B_Gripped" BufferOffset="39" Addr="39" Description=""/>
+		<DI_ITEM Index="40" Name="DI_S1B_Released" BufferOffset="40" Addr="40" Description=""/>
+		<DI_ITEM Index="41" Name="DI_S1B_BattInPos" BufferOffset="41" Addr="41" Description=""/>
+		<DI_ITEM Index="48" Name="DI_S2A_LiftUp" BufferOffset="48" Addr="48" Description=""/>
+		<DI_ITEM Index="49" Name="DI_S2A_LiftDown" BufferOffset="49" Addr="49" Description=""/>
+		<DI_ITEM Index="50" Name="DI_S2B_LiftUp" BufferOffset="50" Addr="50" Description=""/>
+		<DI_ITEM Index="51" Name="DI_S2B_LiftDown" BufferOffset="51" Addr="51" Description=""/>
+		<DI_ITEM Index="52" Name="DI_S2A_VRotateGripped" BufferOffset="52" Addr="52" Description=""/>
+		<DI_ITEM Index="53" Name="DI_S2A_VRotateReleased" BufferOffset="53" Addr="53" Description=""/>
+		<DI_ITEM Index="54" Name="DI_S2B_VRotateGripped" BufferOffset="54" Addr="54" Description=""/>
+		<DI_ITEM Index="55" Name="DI_S2B_VRotateReleased" BufferOffset="55" Addr="55" Description=""/>
+		<DI_ITEM Index="56" Name="DI_S2A_HRotateGripped" BufferOffset="56" Addr="56" Description=""/>
+		<DI_ITEM Index="57" Name="DI_S2A_HRotateReleased" BufferOffset="57" Addr="57" Description=""/>
+		<DI_ITEM Index="58" Name="DI_S2B_HRotateGripped" BufferOffset="58" Addr="58" Description=""/>
+		<DI_ITEM Index="59" Name="DI_S2B_HRotateReleased" BufferOffset="59" Addr="59" Description=""/>
+		<DI_ITEM Index="60" Name="DI_S2A_VGrabBatInPos" BufferOffset="60" Addr="60" Description=""/>
+		<DI_ITEM Index="61" Name="DI_S2A_HGrabBatInPos" BufferOffset="61" Addr="61" Description=""/>
+		<DI_ITEM Index="62" Name="DI_S2B_VGrabBatInPos" BufferOffset="62" Addr="62" Description=""/>
+		<DI_ITEM Index="63" Name="DI_S2B_HGrabBatInPos" BufferOffset="63" Addr="63" Description=""/>
+		<DI_ITEM Index="64" Name="DI_EU2_GateClosed1" BufferOffset="64" Addr="64" Description=""/>
+		<DI_ITEM Index="65" Name="DI_EU2_GateClosed2" BufferOffset="65" Addr="65" Description=""/>
+		<DI_ITEM Index="66" Name="DI_EU2_GateClosed3" BufferOffset="66" Addr="66" Description=""/>
+		<DI_ITEM Index="67" Name="DI_EU2_GateClosed4" BufferOffset="67" Addr="67" Description=""/>
+		<DI_ITEM Index="68" Name="DI_NG_BatStop" BufferOffset="68" Addr="68" Description=""/>
+		<DI_ITEM Index="80" Name="DI_EU3_GateClose1" BufferOffset="80" Addr="80" Description=""/>
+		<DI_ITEM Index="81" Name="DI_EU3_GateClose2" BufferOffset="81" Addr="81" Description=""/>
+		<DI_ITEM Index="82" Name="DI_EU3_GateClose3" BufferOffset="82" Addr="82" Description=""/>
+		<DI_ITEM Index="83" Name="DI_S3A_LIftUp" BufferOffset="83" Addr="83" Description=""/>
+		<DI_ITEM Index="84" Name="DI_S3A_LiftDown" BufferOffset="84" Addr="84" Description=""/>
+		<DI_ITEM Index="85" Name="DI_S3A_Gripped" BufferOffset="85" Addr="85" Description=""/>
+		<DI_ITEM Index="86" Name="DI_S3A_Released" BufferOffset="86" Addr="86" Description=""/>
+		<DI_ITEM Index="87" Name="DI_S3B_LIftUp" BufferOffset="87" Addr="87" Description=""/>
+		<DI_ITEM Index="88" Name="DI_S3B_LiftDown" BufferOffset="88" Addr="88" Description=""/>
+		<DI_ITEM Index="89" Name="DI_S3B_Gripped" BufferOffset="89" Addr="89" Description=""/>
+		<DI_ITEM Index="90" Name="DI_S3B_Released" BufferOffset="90" Addr="90" Description=""/>
+		<DI_ITEM Index="91" Name="DI_S3A_BatInPos" BufferOffset="91" Addr="91" Description=""/>
+		<DI_ITEM Index="92" Name="DI_S3B_BatInPos" BufferOffset="92" Addr="92" Description=""/>
+		<DI_ITEM Index="93" Name="DI_F2A_BatIn" BufferOffset="93" Addr="93" Description=""/>
+		<DI_ITEM Index="94" Name="DI_F2A_BatOut" BufferOffset="94" Addr="94" Description=""/>
+		<DI_ITEM Index="95" Name="DI_F2B_BatIn" BufferOffset="95" Addr="95" Description=""/>
+		<DI_ITEM Index="96" Name="DI_F2B_BatOut" BufferOffset="96" Addr="96" Description=""/>
+		<DI_ITEM Index="97" Name="DI_SYS_DownstreamIsBusy" BufferOffset="97" Addr="97" Description=""/>
+		<DI_ITEM Index="98" Name="DI_NG_BatInCylinder" BufferOffset="98" Addr="98" Description=""/>
+		<DI_ITEM Index="99" Name="DI_NG_BatEnterNGLine" BufferOffset="99" Addr="99" Description=""/>
+		<DI_ITEM Index="100" Name="DI_NG_NGCYlinderExtend" BufferOffset="100" Addr="100" Description=""/>
+		<DI_ITEM Index="101" Name="DI_NG_NGCYlinderBack" BufferOffset="101" Addr="101" Description=""/>
+		<DI_ITEM Index="128" Name="DI_F1A_FeederBusySW" BufferOffset="128" Addr="128" Description=""/>
+		<DI_ITEM Index="129" Name="DI_F1B_FeederBusySW" BufferOffset="129" Addr="129" Description=""/>
+		<DI_ITEM Index="130" Name="DI_T1_RobotBusySW" BufferOffset="130" Addr="130" Description=""/>
+		<DI_ITEM Index="131" Name="DI_T1_RobotAlarmSW" BufferOffset="131" Addr="131" Description=""/>
+		<DI_ITEM Index="132" Name="DI_T1_GrippperBusySW" BufferOffset="132" Addr="132" Description=""/>
+		<DI_ITEM Index="134" Name="DI_T1_GripperAlarmSW" BufferOffset="134" Addr="134" Description=""/>
+		<DI_ITEM Index="135" Name="DI_S1A_MotorBusySW" BufferOffset="135" Addr="135" Description=""/>
+		<DI_ITEM Index="136" Name="DI_S1A_MotorAlarmSW" BufferOffset="136" Addr="136" Description=""/>
+		<DI_ITEM Index="137" Name="DI_S1B_MotorBusySW" BufferOffset="137" Addr="137" Description=""/>
+		<DI_ITEM Index="138" Name="DI_S1B_MotorAlarmSW" BufferOffset="138" Addr="138" Description=""/>
+		<DI_ITEM Index="139" Name="DI_V1_MotorBusySW" BufferOffset="139" Addr="139" Description=""/>
+		<DI_ITEM Index="140" Name="DI_V1_MotorAlarmSW" BufferOffset="140" Addr="140" Description=""/>
+	</Dig_In>
+	<Dig_Out>
+		<DO_ITEM Index="1" Name="DO_F1A_TriggerQRScanner" BufferOffset="1" Addr="1" Description=""/>
+		<DO_ITEM Index="2" Name="DO_F1B_TriggerQRScanner" BufferOffset="2" Addr="2" Description=""/>
+		<DO_ITEM Index="3" Name="DO_F1A_BlockCyExtend" BufferOffset="3" Addr="3" Description=""/>
+		<DO_ITEM Index="4" Name="DO_F1A_BlockCyBack" BufferOffset="4" Addr="4" Description=""/>
+		<DO_ITEM Index="5" Name="DO_F1B_BlockCyExtend" BufferOffset="5" Addr="5" Description=""/>
+		<DO_ITEM Index="6" Name="DO_F1B_BlockCyBack" BufferOffset="6" Addr="6" Description=""/>
+		<DO_ITEM Index="7" Name="DO_S1A_LiftCyUp" BufferOffset="7" Addr="7" Description=""/>
+		<DO_ITEM Index="8" Name="DO_S1A_LiftCyDown" BufferOffset="8" Addr="8" Description=""/>
+		<DO_ITEM Index="9" Name="DO_S1B_LiftCyUp" BufferOffset="9" Addr="9" Description=""/>
+		<DO_ITEM Index="10" Name="DO_S1B_LiftCyDown" BufferOffset="10" Addr="10" Description=""/>
+		<DO_ITEM Index="11" Name="DO_S1A_Grip" BufferOffset="11" Addr="11" Description=""/>
+		<DO_ITEM Index="12" Name="DO_S1A_Release" BufferOffset="12" Addr="12" Description=""/>
+		<DO_ITEM Index="13" Name="DO_S1B_Grip" BufferOffset="13" Addr="13" Description=""/>
+		<DO_ITEM Index="14" Name="DO_S1B_Release" BufferOffset="14" Addr="14" Description=""/>
+		<DO_ITEM Index="15" Name="DO_V1_Trig2D_1" BufferOffset="15" Addr="15" Description=""/>
+		<DO_ITEM Index="16" Name="DO_V1_Trig2D_2" BufferOffset="16" Addr="16" Description=""/>
+		<DO_ITEM Index="17" Name="DO_V1_Trig3D_1" BufferOffset="17" Addr="17" Description=""/>
+		<DO_ITEM Index="18" Name="DO_V1_Trig3D_2" BufferOffset="18" Addr="18" Description=""/>
+		<DO_ITEM Index="19" Name="DO_EU1_Light" BufferOffset="19" Addr="19" Description=""/>
+		<DO_ITEM Index="20" Name="DO_EU1_LightTowerRed" BufferOffset="20" Addr="20" Description=""/>
+		<DO_ITEM Index="21" Name="DO_EU1_LightTowerYellow" BufferOffset="21" Addr="21" Description=""/>
+		<DO_ITEM Index="22" Name="DO_EU1_LightTowerGreen" BufferOffset="22" Addr="22" Description=""/>
+		<DO_ITEM Index="23" Name="DO_EU1_LightTowerBuzzel" BufferOffset="23" Addr="23" Description=""/>
+		<DO_ITEM Index="32" Name="DO_S2A_LiftUp" BufferOffset="32" Addr="32" Description=""/>
+		<DO_ITEM Index="33" Name="DO_S2A_LiftDown" BufferOffset="33" Addr="33" Description=""/>
+		<DO_ITEM Index="34" Name="DO_S2B_LiftUp" BufferOffset="34" Addr="34" Description=""/>
+		<DO_ITEM Index="35" Name="DO_S2B_LiftDown" BufferOffset="35" Addr="35" Description=""/>
+		<DO_ITEM Index="36" Name="DO_S2A_VRotateGrip" BufferOffset="36" Addr="36" Description=""/>
+		<DO_ITEM Index="37" Name="DO_S2A_VRotateRelease" BufferOffset="37" Addr="37" Description=""/>
+		<DO_ITEM Index="38" Name="DO_S2B_VRotateGrip" BufferOffset="38" Addr="38" Description=""/>
+		<DO_ITEM Index="39" Name="DO_S2B_VRotateRelease" BufferOffset="39" Addr="39" Description=""/>
+		<DO_ITEM Index="40" Name="DO_S2A_HRotateGrip" BufferOffset="40" Addr="40" Description=""/>
+		<DO_ITEM Index="41" Name="DO_S2A_HRotateRelease" BufferOffset="41" Addr="41" Description=""/>
+		<DO_ITEM Index="42" Name="DO_S2B_HRotateGrip" BufferOffset="42" Addr="42" Description=""/>
+		<DO_ITEM Index="43" Name="DO_S2B_HRotateRelease" BufferOffset="43" Addr="43" Description=""/>
+		<DO_ITEM Index="44" Name="DO_V2_Trig2D1" BufferOffset="44" Addr="44" Description=""/>
+		<DO_ITEM Index="45" Name="DO_V2_Trig2D2" BufferOffset="45" Addr="45" Description=""/>
+		<DO_ITEM Index="46" Name="DO_V2_Trig3D" BufferOffset="46" Addr="46" Description=""/>
+		<DO_ITEM Index="47" Name="DO_EU2_Light" BufferOffset="47" Addr="47" Description=""/>
+		<DO_ITEM Index="64" Name="DO_S3A_LiftUp" BufferOffset="64" Addr="64" Description=""/>
+		<DO_ITEM Index="65" Name="DO_S3A_LiftDown" BufferOffset="65" Addr="65" Description=""/>
+		<DO_ITEM Index="66" Name="DO_S3B_LiftUp" BufferOffset="66" Addr="66" Description=""/>
+		<DO_ITEM Index="67" Name="DO_S3B_LiftDown" BufferOffset="67" Addr="67" Description=""/>
+		<DO_ITEM Index="68" Name="DO_S3A_Grip" BufferOffset="68" Addr="68" Description=""/>
+		<DO_ITEM Index="69" Name="DO_S3A_Release" BufferOffset="69" Addr="69" Description=""/>
+		<DO_ITEM Index="70" Name="DO_S3B_Grip" BufferOffset="70" Addr="70" Description=""/>
+		<DO_ITEM Index="71" Name="DO_S3B_Release" BufferOffset="71" Addr="71" Description=""/>
+		<DO_ITEM Index="73" Name="DO_V3_Trig2D1" BufferOffset="73" Addr="73" Description=""/>
+		<DO_ITEM Index="74" Name="DO_V3_Trig2D2" BufferOffset="74" Addr="74" Description=""/>
+		<DO_ITEM Index="75" Name="DO_V3_Trig3D" BufferOffset="75" Addr="75" Description=""/>
+		<DO_ITEM Index="76" Name="DO_S3_Light" BufferOffset="76" Addr="76" Description=""/>
+		<DO_ITEM Index="77" Name="DO_NG_NGCylinderExtend" BufferOffset="77" Addr="77" Description=""/>
+		<DO_ITEM Index="78" Name="DO_NG_NGCylinderBack" BufferOffset="78" Addr="78" Description=""/>
+		<DO_ITEM Index="112" Name="DO_F1A_StartFeedingSW" BufferOffset="112" Addr="112" Description=""/>
+		<DO_ITEM Index="113" Name="DO_F1B_StartFeedingSW" BufferOffset="113" Addr="113" Description=""/>
+		<DO_ITEM Index="114" Name="DO_T1_RobotHomeSW" BufferOffset="114" Addr="114" Description=""/>
+		<DO_ITEM Index="115" Name="DO_T1_GripperHomeSW" BufferOffset="115" Addr="115" Description=""/>
+		<DO_ITEM Index="116" Name="DO_T1_GripperReleaseSW" BufferOffset="116" Addr="116" Description=""/>
+		<DO_ITEM Index="117" Name="DO_T1_GripperClampSW" BufferOffset="117" Addr="117" Description=""/>
+		<DO_ITEM Index="118" Name="DO_T1A_GoHighPosSW" BufferOffset="118" Addr="118" Description=""/>
+		<DO_ITEM Index="119" Name="DO_T1A_PickSW" BufferOffset="119" Addr="119" Description=""/>
+		<DO_ITEM Index="120" Name="DO_T1A_PlaceSW" BufferOffset="120" Addr="120" Description=""/>
+		<DO_ITEM Index="121" Name="DO_T1B_GoHighPosSW" BufferOffset="121" Addr="121" Description=""/>
+		<DO_ITEM Index="122" Name="DO_T1B_PickSW" BufferOffset="122" Addr="122" Description=""/>
+		<DO_ITEM Index="123" Name="DO_T1B_PlaceSW" BufferOffset="123" Addr="123" Description=""/>
+		<DO_ITEM Index="124" Name="DO_S1A_HomeSW" BufferOffset="124" Addr="124" Description=""/>
+		<DO_ITEM Index="125" Name="DO_S1A_JogNegSideSW" BufferOffset="125" Addr="125" Description=""/>
+		<DO_ITEM Index="126" Name="DO_S1A_JogPosSideSW" BufferOffset="126" Addr="126" Description=""/>
+		<DO_ITEM Index="127" Name="DO_S1A_GoNegSideSW" BufferOffset="127" Addr="127" Description=""/>
+		<DO_ITEM Index="128" Name="DO_S1A_GoPosSideSW" BufferOffset="128" Addr="128" Description=""/>
+		<DO_ITEM Index="129" Name="DO_S1B_HomeSW" BufferOffset="129" Addr="129" Description=""/>
+		<DO_ITEM Index="130" Name="DO_S1B_JogNegSideSW" BufferOffset="130" Addr="130" Description=""/>
+		<DO_ITEM Index="131" Name="DO_S1B_JogPosSideSW" BufferOffset="131" Addr="131" Description=""/>
+		<DO_ITEM Index="132" Name="DO_S1B_GoNegSideSW" BufferOffset="132" Addr="132" Description=""/>
+		<DO_ITEM Index="133" Name="DO_S1B_GoPosSideSW" BufferOffset="133" Addr="133" Description=""/>
+		<DO_ITEM Index="134" Name="DO_V1_HomeSW" BufferOffset="134" Addr="134" Description=""/>
+		<DO_ITEM Index="135" Name="DO_V1_JogNegSideSW" BufferOffset="135" Addr="135" Description=""/>
+		<DO_ITEM Index="136" Name="DO_V1_JogPosSideSW" BufferOffset="136" Addr="136" Description=""/>
+		<DO_ITEM Index="137" Name="DO_V1_GoNegSideSW" BufferOffset="137" Addr="137" Description=""/>
+		<DO_ITEM Index="138" Name="DO_V1_GoPosSideSW" BufferOffset="138" Addr="138" Description=""/>
+	</Dig_Out>
+	<Ana_In>
+		<AI_ITEM Index="0" Name="AI_T1_GripperPositionRT" BufferOffset="0" Addr="0" Description=""/>
+		<AI_ITEM Index="1" Name="AI_T1_GripperReleasePositionFB" BufferOffset="1" Addr="1" Description=""/>
+		<AI_ITEM Index="2" Name="AI_T1_GripperClampPositionFB" BufferOffset="2" Addr="2" Description=""/>
+		<AI_ITEM Index="3" Name="AI_T1_GripperAlarmCode" BufferOffset="3" Addr="3" Description=""/>
+		<AI_ITEM Index="4" Name="AI_T1_RobotAlarmCode" BufferOffset="4" Addr="4" Description=""/>
+		<AI_ITEM Index="5" Name="AI_S1_MotorSpeedFB" BufferOffset="5" Addr="5" Description=""/>
+		<AI_ITEM Index="6" Name="AI_S1A_MotorPositionRT" BufferOffset="6" Addr="6" Description=""/>
+		<AI_ITEM Index="7" Name="AI_S1A_MotorNegPositionFB" BufferOffset="7" Addr="7" Description=""/>
+		<AI_ITEM Index="8" Name="AI_S1A_MotorPosPositionFB" BufferOffset="8" Addr="8" Description=""/>
+		<AI_ITEM Index="9" Name="AI_S1A_Cam2DTrigPositionFB" BufferOffset="9" Addr="9" Description=""/>
+		<AI_ITEM Index="10" Name="AI_S1A_Cam3DTrigPositionFB" BufferOffset="10" Addr="10" Description=""/>
+		<AI_ITEM Index="11" Name="AI_S1A_MotorAlarmCode" BufferOffset="11" Addr="11" Description=""/>
+		<AI_ITEM Index="12" Name="AI_S1A_MotorSpeedFB" BufferOffset="12" Addr="12" Description=""/>
+		<AI_ITEM Index="13" Name="AI_S1B_MotorPositionRT" BufferOffset="13" Addr="13" Description=""/>
+		<AI_ITEM Index="14" Name="AI_S1B_MotorNegPositionFB" BufferOffset="14" Addr="14" Description=""/>
+		<AI_ITEM Index="15" Name="AI_S1B_MotorPosPositionFB" BufferOffset="15" Addr="15" Description=""/>
+		<AI_ITEM Index="16" Name="AI_S1B_Cam2DTrigPositionFB" BufferOffset="16" Addr="16" Description=""/>
+		<AI_ITEM Index="17" Name="AI_S1B_Cam3DTrigPositionFB" BufferOffset="17" Addr="17" Description=""/>
+		<AI_ITEM Index="18" Name="AI_S1B_MotorAlarmCode" BufferOffset="18" Addr="18" Description=""/>
+		<AI_ITEM Index="19" Name="AI_V1_MotorSpeedFB" BufferOffset="19" Addr="19" Description=""/>
+		<AI_ITEM Index="20" Name="AI_V1_MotorPositionRT" BufferOffset="20" Addr="20" Description=""/>
+		<AI_ITEM Index="21" Name="AI_V1_MotorNegPositionFB" BufferOffset="21" Addr="21" Description=""/>
+		<AI_ITEM Index="22" Name="AI_V1_MotorPosPositionFB" BufferOffset="22" Addr="22" Description=""/>
+		<AI_ITEM Index="23" Name="AI_V1_MotorAlarmCode" BufferOffset="23" Addr="23" Description=""/>
+	</Ana_In>
+	<Ana_Out>
+		<AO_ITEM Index="0" Name="AO_T1_ReleasePosition" BufferOffset="0" Addr="0" Description=""/>
+		<AO_ITEM Index="1" Name="AO_T1_ClampPosition" BufferOffset="1" Addr="1" Description=""/>
+		<AO_ITEM Index="2" Name="AO_S1A_Speed" BufferOffset="2" Addr="2" Description=""/>
+		<AO_ITEM Index="3" Name="AO_S1A_NegPosition" BufferOffset="3" Addr="3" Description=""/>
+		<AO_ITEM Index="4" Name="AO_S1A_PosPosition" BufferOffset="4" Addr="4" Description=""/>
+		<AO_ITEM Index="5" Name="AO_S1A_Cam2DTrigPosition" BufferOffset="5" Addr="5" Description=""/>
+		<AO_ITEM Index="6" Name="AO_S1A_Cam3DTrigPosition" BufferOffset="6" Addr="6" Description=""/>
+		<AO_ITEM Index="7" Name="AO_S1B_Speed" BufferOffset="7" Addr="7" Description=""/>
+		<AO_ITEM Index="8" Name="AO_S1B_NegPosition" BufferOffset="8" Addr="8" Description=""/>
+		<AO_ITEM Index="9" Name="AO_S1B_PosPosition" BufferOffset="9" Addr="9" Description=""/>
+		<AO_ITEM Index="10" Name="AO_S1B_Cam2DTrigPosition" BufferOffset="10" Addr="10" Description=""/>
+		<AO_ITEM Index="11" Name="AO_S1B_Cam3DTrigPosition" BufferOffset="11" Addr="11" Description=""/>
+		<AO_ITEM Index="12" Name="AO_V1_Speed" BufferOffset="12" Addr="12" Description=""/>
+		<AO_ITEM Index="13" Name="AO_V1_NegPosition" BufferOffset="13" Addr="13" Description=""/>
+		<AO_ITEM Index="14" Name="AO_V1_PosPosition" BufferOffset="14" Addr="14" Description=""/>
+	</Ana_Out>
 </IO_DEFINE>

@@ -7,33 +7,27 @@ namespace SicRT.Modules.Schedulers
     {
         #region Variables
 
+        protected SchedulerFeeder SchFeederA;
+        protected SchedulerFeeder SchFeederB;
         
-        protected SchedulerAligner SchAligner;
-        //protected SchedulerPM _pm2 = new SchedulerPM(ModuleName.PM2);
-
-        protected SchedulerCassette SchCassAL;
-        protected SchedulerCassette SchCassAR;
-        protected SchedulerCassette SchCassBL;
-        
-        protected List<SchedulerCassette> LstCassetteSchedulers;
-        protected List<SchedulerModule> LstAllSchedulers;
+        protected Dictionary<ModuleName, SchedulerModule> dictAllSchedulers;
 
         #endregion
 
         protected SchedulerModuleFactory()
         {
-            SchAligner = new SchedulerAligner();
-            SchCassAL = new SchedulerCassette(ModuleName.CassAL);
-            SchCassAR = new SchedulerCassette(ModuleName.CassAR);
-            SchCassBL = new SchedulerCassette(ModuleName.CassBL);
-            LstCassetteSchedulers = new List<SchedulerCassette>(new[] { SchCassAL, SchCassAR, SchCassBL });
-            LstAllSchedulers = new List<SchedulerModule>(new SchedulerModule[]
+            SchFeederA = new SchedulerFeeder(ModuleName.FeederA);
+            SchFeederB = new SchedulerFeeder(ModuleName.FeederB);
+
+            dictAllSchedulers = new Dictionary<ModuleName, SchedulerModule>
             {
-                SchAligner,
-                SchCassAL,
-                SchCassAR,
-                SchCassBL
-            });
+                {
+                    ModuleName.FeederA, SchFeederA
+                },
+                {
+                    ModuleName.FeederB, SchFeederB
+                },
+            };
         }
 
         protected SchedulerModule GetModule(string name)
@@ -42,25 +36,10 @@ namespace SicRT.Modules.Schedulers
             return GetModule(module);
         }
 
-        protected SchedulerModule GetModule(ModuleName name)
+        protected SchedulerModule GetModule(ModuleName module)
         {
-            switch (name)
-            {
-                case ModuleName.TMRobot:
-                case ModuleName.WaferRobot:
-                case ModuleName.TrayRobot:
-                case ModuleName.PM1:
-                    return null;
-                case ModuleName.CassAL:
-                    return SchCassAL;
-                case ModuleName.CassAR:
-                    return SchCassAR;
-                case ModuleName.CassBL:
-                    return SchCassBL;
-                case ModuleName.UnLoad:
-                case ModuleName.Aligner:
-                    return SchAligner;
-            }
+            if(dictAllSchedulers.ContainsKey(module))
+                return dictAllSchedulers[module];
 
             return null;
         }

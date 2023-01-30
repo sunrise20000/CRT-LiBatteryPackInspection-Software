@@ -18,48 +18,20 @@
 					 doUnLoadPumpDownRoutineRunning="DO_UnLoadPumpDownRoutineRunning" doUnLoadVentUpRoutineRunning="DO_UnLoadVentUpRoutineRunning"
 					 />
 	</IoInterLocks>
-
-	<IoMfcs classType="SicPM.Devices.IoMFC" assembly="SicPM">
-		<IoMfc3 id="Mfc60"  module="TM" display="Mfc60" schematicId="Mfc60" unit="sccm" aiFlow="AI_M60FlowRead" aoFlow="AO_M60FlowSetpoint" scBasePath="TM.MFC" aioType="float" />
-	</IoMfcs>
-
-	<TcAdses assembly="SicPM" classType="SicPM.Devices.SicAds">
-		<TcAds id="MainPLC" module="PM1" display="" schematicId="" unit=""  option="true"  />
-		<TcAds id="MainPLC" module="PM2" display="" schematicId="" unit=""  option="true"  />
-	</TcAdses>
-
-	<WcfPlcs assembly="MECF.Framework.Common" classType="MECF.Framework.Common.PLC.WcfPlc" >
-		<WcfPlc id="MainPLC" module="PM1" display="" schematicId="" unit="" option="true" />
-		<WcfPlc id="MainPLC" module="PM2" display="" schematicId="" unit="" option="true" />
-	</WcfPlcs>
-
-	<TcAdses assembly="Mainframe" classType="Mainframe.Devices.SicAds">
-		<TcAds id="MainPLC" module="TM" display="" schematicId="" unit=""  option="true"  />
-	</TcAdses>
-
-	<WcfPlcs assembly="MECF.Framework.Common" classType="MECF.Framework.Common.PLC.WcfPlc" >
-		<WcfPlc id="MainPLC" module="TM" display="" schematicId="" unit="" option="true" />
-	</WcfPlcs>
 	
+	<TcAdses assembly="Mainframe" classType="Mainframe.Devices.SicAds">
+		<TcAds id="MainPLC" module="System" display="" schematicId="" unit=""  option="true"  />
+	</TcAdses>
 
-	<TMs assembly="Mainframe" classType="Mainframe.TMs.SicTM">
-		<TM id="TM" module="System"  display="" schematicId="" unit="" DiTMLidClosedAlarm="DI_TMLidClosed" DiLLLidClosedAlarm="DI_LLLidClosed" DiBufferLidClosedAlarm="DI_BufferLidClosed" aiLLTemp="AI_LoadTemp" aiBufferTemp="AI_BufferTemp"/>
-	</TMs>
+	<WcfPlcs assembly="MECF.Framework.Common" classType="MECF.Framework.Common.PLC.WcfPlc" >
+		<WcfPlc id="MainPLC" module="System" display="" schematicId="" unit="" option="true" />
+	</WcfPlcs>
 
-	<EFEMs assembly="Mainframe" classType="Mainframe.EFEMs.SicEFEM">
-		<Buffer id="EFEM" module="EFEM"  display="" schematicId="" unit="" />
-	</EFEMs>
-
-	<LLs assembly="Mainframe" classType="Mainframe.LLs.SicLoadLock">
-		<TM id="LoadLock" module="LoadLock"  display="" schematicId="" unit="" />
-	</LLs>
-
-	<Unloads assembly="Mainframe" classType="Mainframe.UnLoads.SicUnLoad">
-		<Unload id="UnLoad" module="UnLoad"  display="" schematicId="" unit="" />
-	</Unloads>
-
-	<Buffers assembly="Mainframe" classType="Mainframe.Buffers.SicBuffer">
-		<Buffer id="Buffer" module="Buffer"  display="" schematicId="" unit="" />
-	</Buffers>
+	<Feeders assembly="Mainframe" classType="Mainframe.Feeder.CrtDevFeeder">
+		<!-- id对应Name属性，Module对应Module属性 -->
+		<FeederA id="FeederA" module="FeederA" display="" schematicId="" unit="" DIBattMon="DI_F1A_Monitor" DIBattBlock="DI_F1A_Block"/>
+		<FeederB id="FeederB" module="FeederB" display="" schematicId="" unit="" DIBattMon="DI_F1B_Monitor" DIBattBlock="DI_F1B_Block"/>
+	</Feeders>
+	
 
 </DeviceModelDefine>

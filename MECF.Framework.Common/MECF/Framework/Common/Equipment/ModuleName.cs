@@ -243,46 +243,10 @@ namespace MECF.Framework.Common.Equipment
 		Buffer7 = 116,
 		[EnumMember]
 		Buffer8 = 117,
-		[EnumMember]
-		Robot1 = 118,
-		[EnumMember]
-		Robot2 = 119,
-		[EnumMember]
-		CassetteRobot = 120,
-		[EnumMember]
-		SignalTower = 121,
+
 		[EnumMember]
 		TurnStation = 122,
-		[EnumMember]
-		InternalCassette1 = 123,
-		[EnumMember]
-		InternalCassette2 = 124,
-		[EnumMember]
-		InternalCassette3 = 125,
-		[EnumMember]
-		InternalCassette4 = 126,
-		[EnumMember]
-		InternalCassette5 = 127,
-		[EnumMember]
-		InternalCassette6 = 128,
-		[EnumMember]
-		InternalCassette7 = 129,
-		[EnumMember]
-		InternalCassette8 = 130,
-		[EnumMember]
-		InternalCassette9 = 131,
-		[EnumMember]
-		InternalCassette10 = 132,
-		[EnumMember]
-		Prs1 = 133,
-		[EnumMember]
-		Prs2 = 134,
-		[EnumMember]
-		Prs3 = 135,
-		[EnumMember]
-		Prs4 = 136,
-		[EnumMember]
-		PreHeat = 137,
+	
 		[EnumMember]
 		UnLoad = 138,
 		[EnumMember]
@@ -290,6 +254,18 @@ namespace MECF.Framework.Common.Equipment
 		[EnumMember]
 		TrayRobot = 140,
 		[EnumMember]
-		Load = 141
-	}
+		Load = 141,
+        [EnumMember]
+        FeederA = 142,
+        [EnumMember]
+        FeederB,
+        [EnumMember]
+        Transport1,
+		[EnumMember]
+        Station1,
+        [EnumMember]
+        Station2,
+        [EnumMember]
+        Vision1,
+    }
 }

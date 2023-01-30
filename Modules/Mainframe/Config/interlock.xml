@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" ?>
 <Interlock xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<VersionID Name="v20220628"/>
-	<Action do="TM.DO_Dummy0" value="true" tip="" tip.zh-CN="" tip.en-US="DO-0">
-		<Limit di="TM.DI_Dummy0" value="true" tip="" tip.zh-CN="" tip.en-US="DI-0"/>
+	<Action do="TM.DO_S1B_LiftCyDown" value="true" tip="" tip.zh-CN="" tip.en-US="DO-10">
+		<Limit di="TM.DI_EU1B_GateOpened1" value="true" tip="" tip.zh-CN="" tip.en-US="DI-21"/>
 	</Action>
 </Interlock>

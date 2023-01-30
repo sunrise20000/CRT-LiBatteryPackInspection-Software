@@ -6,6 +6,7 @@ using Aitex.Core.RT.Event;
 using Aitex.Core.RT.IOCore;
 using Aitex.Core.RT.Log;
 using Aitex.Core.RT.SCCore;
+using MECF.Framework.Common.Equipment;
 using MECF.Framework.Common.Event;
 
 namespace Aitex.Core.RT.Device
@@ -34,8 +35,8 @@ namespace Aitex.Core.RT.Device
 
 		public BaseDevice()
 		{
-			ScBasePath = "System";
-			IoBasePath = "System";
+			ScBasePath = ModuleName.System.ToString();
+			IoBasePath = ModuleName.System.ToString();
 			AlarmList = new Dictionary<string, AlarmEventItem>();
 		}
 
